@@ -1,3 +1,5 @@
+#define HASHA_LIBRARY_BUILD
+
 #include "../include/hasha/sha2.h"
 
 #define SHR(x, n) ((x) >> (n))
@@ -190,7 +192,7 @@ HASHA_EXPORT HASHA_INLINE void sha2_512_transform(sha2_512_context *ctx, const u
     uint64_t a, b, c, d, e, f, g, h;
     uint64_t T1, T2;
 
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < 16; ++i) {
         m[i] = ((uint64_t)block[i * 8] << 56) |
                ((uint64_t)block[i * 8 + 1] << 48) |
                ((uint64_t)block[i * 8 + 2] << 40) |
@@ -201,7 +203,7 @@ HASHA_EXPORT HASHA_INLINE void sha2_512_transform(sha2_512_context *ctx, const u
                ((uint64_t)block[i * 8 + 7]);
     }
 
-    for (int i = 16; i < 80; i++) {
+    for (int i = 16; i < 80; ++i) {
         m[i] = sigma1_64(m[i - 2]) + m[i - 7] + sigma0_64(m[i - 15]) + m[i - 16];
     }
 
@@ -214,7 +216,7 @@ HASHA_EXPORT HASHA_INLINE void sha2_512_transform(sha2_512_context *ctx, const u
     g = ctx->state[6];
     h = ctx->state[7];
 
-    for (int i = 0; i < 80; i++) {
+    for (int i = 0; i < 80; ++i) {
         T1 = h + SIGMA1_64(e) + CH(e, f, g) + SHA2_512_K[i] + m[i];
         T2 = SIGMA0_64(a) + MAJ(a, b, c);
 
@@ -283,13 +285,13 @@ HASHA_EXPORT HASHA_INLINE void sha2_512_finalize(sha2_512_context *ctx, uint8_t 
     }
 
     memset(ctx->buffer + buffer_fill, 0, SHA2_512_BLOCK_SIZE - buffer_fill - 16);
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; ++i) {
         ctx->buffer[SHA2_512_BLOCK_SIZE - 1 - i] = (ctx->bit_count >> (8 * i)) & 0xff;
     }
 
     sha2_512_transform(ctx, ctx->buffer);
 
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; ++i) {
         digest[i * 8 + 0] = (ctx->state[i] >> 56) & 0xff;
         digest[i * 8 + 1] = (ctx->state[i] >> 48) & 0xff;
         digest[i * 8 + 2] = (ctx->state[i] >> 40) & 0xff;

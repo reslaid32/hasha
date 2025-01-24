@@ -1,3 +1,5 @@
+#define HASHA_LIBRARY_BUILD
+
 #include "../include/hasha/sha3.h"
 
 HASHA_EXPORT HASHA_INLINE void sha3_224_init(sha3_224_context *ctx) {

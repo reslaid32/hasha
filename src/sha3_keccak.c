@@ -1,3 +1,5 @@
+#define HASHA_LIBRARY_BUILD
+
 #include "../include/hasha/sha3_keccak.h"
 
 HASHA_EXPORT HASHA_INLINE void sha3_keccak_permutation(uint64_t *state) {

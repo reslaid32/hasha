@@ -58,7 +58,9 @@ install: $(TARGET_LIB)
 	install -m 755 $(TARGET_LIB) $(INSTALL_LIB)
 
 	# Install the header file
-	install -d $(INCLUDEDIR)
+	# install -d $(INCLUDEDIR)
+
+	mkdir -p $(INSTALL_INCDIR)
 	install -m 644 $(wildcard $(INC)/hasha/*.h) $(INSTALL_INCDIR)
 
 	@echo "libhasha installed"
