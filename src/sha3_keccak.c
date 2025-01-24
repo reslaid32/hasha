@@ -2,7 +2,7 @@
 
 #include "../include/hasha/sha3_keccak.h"
 
-HASHA_EXPORT HASHA_INLINE void sha3_keccak_permutation(uint64_t *state) {
+HASHA_EXPORT HASHA_INLINE void keccak_permutation(uint64_t *state) {
     for (int round = 0; round < SHA3_KECCAK_ROUNDS; ++round) {
         uint64_t C[5], D[5], B[5][5];
 

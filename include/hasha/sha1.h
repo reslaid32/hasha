@@ -1,0 +1,34 @@
+#if !defined(LIBHASHA_SHA1_H_LOADED)
+#define LIBHASHA_SHA1_H_LOADED
+
+#include "export.h"
+
+#include <stdint.h>
+#include <stddef.h>
+
+#define SHA1_BLOCK_SIZE 64
+#define SHA1_DIGEST_SIZE 20
+
+typedef struct {
+    uint32_t state[5];
+    uint64_t bit_count;
+    uint8_t buffer[SHA1_BLOCK_SIZE];
+} sha1_context;
+
+static const uint32_t SHA1_K[4] = {
+    0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xCA62C1D6
+};
+
+static const uint32_t SHA1_H0[5] = {
+    0x67452301, 0xEFCDAB89,
+    0x98BADCFE, 0x10325476,
+    0xC3D2E1F0
+};
+
+HASHA_EXPORT HASHA_INLINE void sha1_transform(sha1_context *ctx, const uint8_t *block);
+HASHA_EXPORT HASHA_INLINE void sha1_init(sha1_context *ctx);
+HASHA_EXPORT HASHA_INLINE void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len);
+HASHA_EXPORT HASHA_INLINE void sha1_finalize(sha1_context *ctx, uint8_t *digest);
+HASHA_EXPORT HASHA_INLINE void sha1(const uint8_t *data, size_t len, uint8_t *digest);
+
+#endif // LIBHASHA_SHA1_H_LOADED
