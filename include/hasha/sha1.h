@@ -9,6 +9,8 @@
 #define SHA1_BLOCK_SIZE 64
 #define SHA1_DIGEST_SIZE 20
 
+HASHA_EXTERN_C_BEG
+
 typedef struct {
     uint32_t state[5];
     uint64_t bit_count;
@@ -30,5 +32,7 @@ HASHA_EXPORT HASHA_INLINE void sha1_init(sha1_context *ctx);
 HASHA_EXPORT HASHA_INLINE void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len);
 HASHA_EXPORT HASHA_INLINE void sha1_finalize(sha1_context *ctx, uint8_t *digest);
 HASHA_EXPORT HASHA_INLINE void sha1(const uint8_t *data, size_t len, uint8_t *digest);
+
+HASHA_EXTERN_C_END
 
 #endif // LIBHASHA_SHA1_H_LOADED

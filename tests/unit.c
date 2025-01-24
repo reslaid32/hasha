@@ -1,10 +1,5 @@
 
-#include <hasha/crc.h>
-#include <hasha/md5.h>
-#include <hasha/sha1.h>
-#include <hasha/sha2.h>
-#include <hasha/sha3.h>
-#include <hasha/keccak.h>
+#include "../include/hasha/all.h"
 
 #include <string.h>
 #include <assert.h>
