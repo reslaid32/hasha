@@ -25,7 +25,16 @@ TEST_SRCS = $(wildcard $(TEST_SRC)/*.c)
 TEST_OBJS = $(patsubst $(TEST_SRC)/%.c,$(OBJ)/%.o,$(TEST_SRCS))
 TEST_EXEC = $(TEST_BIN)/unit_tests
 
-all: $(TARGET_LIB)
+EXAMPLES_SRC = examples
+EXAMPLES_BIN = $(BIN)/examples
+
+EXAMPLES_SRCS = $(wildcard $(EXAMPLES_SRC)/*.c)
+EXAMPLES_OBJS = $(patsubst $(EXAMPLES_SRC)/%.c,$(OBJ)/%.o,$(EXAMPLES_SRCS))
+EXAMPLES_EXEC = $(patsubst $(EXAMPLES_SRC)/%.c,$(EXAMPLES_BIN)/%,$(EXAMPLES_SRCS))
+
+all: lib examples
+
+lib: $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJS)
 	mkdir -p $(BIN)
@@ -41,7 +50,13 @@ $(OBJ)/%.o: $(TEST_SRC)/%.c
 
 $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIB)
 	mkdir -p $(TEST_BIN)
-	$(CC) $(LDFLAGS_TEST) -I$(INC) -o $@ $^ -L$(BIN) -ltini -g
+	$(CC) $(LDFLAGS_TEST) -I$(INC) -o $@ $^ -L$(BIN) -lhasha -g
+
+examples: $(EXAMPLES_EXEC)
+
+$(EXAMPLES_BIN)/%: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
+	mkdir -p $(EXAMPLES_BIN)
+	$(CC) $(CFLAGS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
 
 clean-garbage:
 	rm -rf $(OBJ)
