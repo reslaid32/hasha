@@ -2,6 +2,6 @@
 void rununit(void);
 int main(void) {
     rununit();
-    printf("All tests passed!\n");
+    printf("[ALL TESTS]   PASSED!\n");
     return 0;
 }
