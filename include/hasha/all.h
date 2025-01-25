@@ -1,3 +1,5 @@
+#include "bits.h"
+
 #include "crc.h"
 #include "md5.h"
 #include "sha1.h"
