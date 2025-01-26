@@ -36,5 +36,5 @@ jobs:
       shell: msys2 {0}
       run: |
         make -f Makefile.mingw all
-        cp ./bin/lihasha.dll ./bin/examples/
+        cp ./bin/libhasha.dll ./bin/examples/
         make -f Makefile.mingw bench
