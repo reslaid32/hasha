@@ -98,4 +98,8 @@ tests: $(TEST_EXEC)
 check: $(TEST_EXEC)
 	$(TEST_EXEC)
 
-.PHONY: all tests clean clean-garbage install uninstall check
+bench: $(BIN)/examples/bench
+	@echo "Running benchmark..."
+	$(BIN)/examples/bench
+
+.PHONY: all tests bench clean clean-garbage install uninstall check
