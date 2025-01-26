@@ -28,6 +28,6 @@ jobs:
     - name: Build and test
       shell: msys2 {0}
       run: |
-        make all
+        make -f Makefile.mingw all
         cp ./bin/libhasha.dll ./bin/tests/
-        make check
+        make -f Makefile.mingw check
