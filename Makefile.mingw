@@ -2,8 +2,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -I./include -fPIC
 LDFLAGS = -shared
-LDFLAGS_TEST = 
-DEFS = 
+LDFLAGS_TEST =
+DEFS =
+MARCH =
+MARCH_LD =
 
 BIN = bin
 SRC = src
@@ -40,19 +42,19 @@ lib: $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJS)
 	mkdir -p $(BIN)
-	$(CC) $(LDFLAGS) -I$(INC) -o $@ $^
+	$(CC) $(LDFLAGS) $(MARCH_LD) -I$(INC) -o $@ $^
 
 $(OBJ)/%.o: $(SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(DEFS) $(MARCH) -I$(INC) -c $< -o $@
 
 $(OBJ)/%.o: $(TEST_SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@ -g
+	$(CC) $(CFLAGS) $(DEFS) $(MARCH) -I$(INC) -c $< -o $@ -g
 
 $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIB)
 	mkdir -p $(TEST_BIN)
-	$(CC) $(LDFLAGS_TEST) -I$(INC) -o $@ $^ -L$(BIN) -lhasha -g
+	$(CC) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(BIN) -lhasha -g
 
 examples: $(EXAMPLES_EXEC)
 

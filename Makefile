@@ -1,8 +1,10 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -I./include -fPIC
 LDFLAGS = -shared
-LDFLAGS_TEST = 
-DEFS = 
+LDFLAGS_TEST =
+DEFS =
+MARCH =
+MARCH_LD =
 
 BIN = bin
 SRC = src
@@ -39,25 +41,25 @@ lib: $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJS)
 	mkdir -p $(BIN)
-	$(CC) $(LDFLAGS) $(DEFS) -I$(INC) -o $@ $^
+	$(CC) $(LDFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $^
 
 $(OBJ)/%.o: $(SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@
 
 $(OBJ)/%.o: $(TEST_SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@ -g
+	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
 
 $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIB)
 	mkdir -p $(TEST_BIN)
-	$(CC) $(LDFLAGS_TEST) -I$(INC) -o $@ $^ -L$(BIN) -lhasha -g
+	$(CC) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(BIN) -lhasha -g
 
 examples: $(EXAMPLES_EXEC)
 
 $(EXAMPLES_BIN)/%: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 	mkdir -p $(EXAMPLES_BIN)
-	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
+	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
 
 clean-garbage:
 	rm -rf $(OBJ)
