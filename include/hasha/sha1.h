@@ -3,9 +3,7 @@
 
 #include "export.h"
 #include "bits.h"
-
-#include <stdint.h>
-#include <stddef.h>
+#include "std.h"
 
 #define SHA1_BLOCK_SIZE 64
 // #define SHA1_DIGEST_SIZE 20

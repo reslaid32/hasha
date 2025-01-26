@@ -19,14 +19,8 @@
 #endif
 #endif
 
-#if defined(HASHA_WITH_EXECUTABLE)
-#define HASHA_INLINE inline
-#else
-#define HASHA_INLINE
-#endif // HASHA_WITH_EXECUTABLE
-
 #if !defined(HASHA_PUBLIC_FUNC)
-#define HASHA_PUBLIC_FUNC HASHA_EXPORT HASHA_INLINE
+#define HASHA_PUBLIC_FUNC HASHA_EXPORT
 #endif // HASHA_PUBLIC_FUNC
 
 #if !defined(HASHA_PRIVATE_FUNC)

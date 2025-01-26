@@ -1,7 +1,6 @@
 #define HASHA_LIBRARY_BUILD
 
 #include "../include/hasha/md5.h"
-#include <string.h>
 
 #define MD5_ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
 #define MD5_F(x, y, z) (((x) & (y)) | (~(x) & (z)))

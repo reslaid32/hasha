@@ -3,9 +3,7 @@
 
 #include "export.h"
 #include "bits.h"
-
-#include <stdint.h>
-#include <stddef.h>
+#include "std.h"
 
 #define MD5_BLOCK_SIZE 64
 // #define MD5_DIGEST_SIZE 16

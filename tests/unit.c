@@ -2,6 +2,7 @@
 #include "../include/hasha/all.h"
 
 #include <string.h>
+#include <stdio.h>
 #include <assert.h>
 
 void print_hash(const uint8_t *hash, size_t len) {

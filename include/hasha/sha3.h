@@ -4,10 +4,7 @@
 #include "export.h"
 #include "bits.h"
 #include "sha3_keccak.h"
-
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include "std.h"
 
 #define KECCAK_ROUNDS 24
 

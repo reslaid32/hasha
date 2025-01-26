@@ -2,6 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -I./include -fPIC
 LDFLAGS = -shared
 LDFLAGS_TEST = 
+DEFS = 
 
 BIN = bin
 SRC = src
@@ -38,15 +39,15 @@ lib: $(TARGET_LIB)
 
 $(TARGET_LIB): $(OBJS)
 	mkdir -p $(BIN)
-	$(CC) $(LDFLAGS) -I$(INC) -o $@ $^
+	$(CC) $(LDFLAGS) $(DEFS) -I$(INC) -o $@ $^
 
 $(OBJ)/%.o: $(SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@
 
 $(OBJ)/%.o: $(TEST_SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@ -g
+	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -c $< -o $@ -g
 
 $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIB)
 	mkdir -p $(TEST_BIN)
@@ -56,7 +57,7 @@ examples: $(EXAMPLES_EXEC)
 
 $(EXAMPLES_BIN)/%: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 	mkdir -p $(EXAMPLES_BIN)
-	$(CC) $(CFLAGS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
+	$(CC) $(CFLAGS) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
 
 clean-garbage:
 	rm -rf $(OBJ)

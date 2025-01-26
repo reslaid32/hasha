@@ -2,8 +2,7 @@
 #define LIBHASHA_SHA3_KECCAK_H_LOADED
 
 #include "export.h"
-
-#include <stdint.h>
+#include "std.h"
 
 #if !defined(SHA3_KECCAK_ROUNDS)
 #define SHA3_KECCAK_ROUNDS 24

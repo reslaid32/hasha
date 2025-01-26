@@ -2,9 +2,7 @@
 #define LIBHASHA_CRC_H_LOADED
 
 #include "export.h"
-
-#include <stdint.h>
-#include <stddef.h>
+#include "std.h"
 
 #define CRC32_POLYNOMIAL 0xEDB88320
 

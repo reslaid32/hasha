@@ -3,11 +3,7 @@
 
 #include "export.h"
 #include "bits.h"
-
-#include <stdint.h>
-#include <stddef.h>
-#include <string.h>
-#include <stdio.h>
+#include "std.h"
 
 #define SHA2_224_BLOCK_SIZE 64
 // #define SHA2_224_DIGEST_SIZE 28

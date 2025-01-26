@@ -2,9 +2,6 @@
 
 #include "../include/hasha/blake3.h"
 
-#include <string.h>
-#include <stdio.h>
-
 #define BLAKE3_FLAG_CHUNK_START (1u << 0)
 #define BLAKE3_FLAG_CHUNK_END   (1u << 1)
 #define BLAKE3_FLAG_PARENT      (1u << 2)

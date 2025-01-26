@@ -5,9 +5,7 @@
 #include "bits.h"
 #include "sha3_keccak.h"
 
-#include <stdint.h>
-#include <stddef.h>
-#include <string.h>
+#include "std.h"
 
 #define KECCAK_224_RATE 144
 // #define KECCAK_224_DIGEST_SIZE 28

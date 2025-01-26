@@ -1,7 +1,6 @@
 #define HASHA_LIBRARY_BUILD
 
 #include "../include/hasha/sha1.h"
-#include <string.h>
 
 #define SHA1_ROTL(a, b) (((a) << (b)) | ((a) >> (32 - (b))))
 

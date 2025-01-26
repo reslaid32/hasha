@@ -3,9 +3,7 @@
 
 #include "export.h"
 #include "bits.h"
-
-#include <stdint.h>
-#include <stddef.h>
+#include "std.h"
 
 HASHA_EXTERN_C_BEG
 
