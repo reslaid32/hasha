@@ -35,7 +35,7 @@ EXAMPLES_SRCS = $(wildcard $(EXAMPLES_SRC)/*.c)
 EXAMPLES_OBJS = $(patsubst $(EXAMPLES_SRC)/%.c,$(OBJ)/%.o,$(EXAMPLES_SRCS))
 EXAMPLES_EXEC = $(patsubst $(EXAMPLES_SRC)/%.c,$(EXAMPLES_BIN)/%,$(EXAMPLES_SRCS))
 
-all: lib examples
+all: lib examples tests
 
 lib: $(TARGET_LIB)
 
@@ -93,7 +93,9 @@ uninstall:
 
 	@echo "libhasha uninstalled"
 
+tests: $(TEST_EXEC)
+
 check: $(TEST_EXEC)
 	$(TEST_EXEC)
 
-.PHONY: all clean clean-garbage install uninstall check
+.PHONY: all tests clean clean-garbage install uninstall check
