@@ -120,6 +120,7 @@ int main(int argc, char *argv[]) {
     size_t length = 0;
     uint8_t digest[64]; // Maximum digest size
     size_t digest_size = 0;
+    int needFree = 0;
     const char *expected_hash = NULL;
 
     if (argc > 4 && strcmp(argv[4], "-verify") == 0) {
@@ -150,19 +151,20 @@ int main(int argc, char *argv[]) {
         fseek(file, 0, SEEK_SET); // Reset file pointer to the beginning
 
         // Allocate memory to read the entire file
-        data = malloc(length);
+        data = (uint8_t*)malloc(length);
         if (!data) {
             perror("Error allocating memory");
             fclose(file);
             return EXIT_FAILURE;
         }
+        needFree = 1;
 
         // Read the entire file into memory
         fread(data, 1, length, file);
         fclose(file);
     } else if (strcmp(data_source, "-stdin") == 0) {
         size_t capacity = 1024;
-        data = malloc(capacity);
+        data = (uint8_t*)malloc(capacity);
         if (!data) {
             perror("Error allocating memory");
             return EXIT_FAILURE;
@@ -172,7 +174,7 @@ int main(int argc, char *argv[]) {
         while ((ch = getchar()) != EOF) {
             if (length >= capacity) {
                 capacity *= 2;
-                data = realloc(data, capacity);
+                data = (uint8_t*)realloc(data, capacity);
                 if (!data) {
                     perror("Error reallocating memory");
                     return EXIT_FAILURE;
@@ -180,6 +182,7 @@ int main(int argc, char *argv[]) {
             }
             data[length++] = (uint8_t)ch;
         }
+        needFree = 1;
     } else {
         fprintf(stderr, "Error: Unsupported data source '%s'\n", data_source);
         return EXIT_FAILURE;
@@ -193,6 +196,10 @@ int main(int argc, char *argv[]) {
         verify_hash(digest, digest_size, expected_hash);
     } else {
         print_digest(digest, digest_size);
+    }
+
+    if (needFree) {
+        free(data);
     }
 
     return EXIT_SUCCESS;
