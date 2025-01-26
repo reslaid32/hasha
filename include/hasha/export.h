@@ -25,6 +25,14 @@
 #define HASHA_INLINE
 #endif // HASHA_WITH_EXECUTABLE
 
+#if !defined(HASHA_PUBLIC_FUNC)
+#define HASHA_PUBLIC_FUNC HASHA_EXPORT HASHA_INLINE
+#endif // HASHA_PUBLIC_FUNC
+
+#if !defined(HASHA_PRIVATE_FUNC)
+#define HASHA_PRIVATE_FUNC static inline
+#endif // HASHA_PRIVATE_FUNC
+
 #if !defined(HASHA_EXTERN_C)
 #if defined(__cplusplus)
 #define HASHA_EXTERN_C extern "C"

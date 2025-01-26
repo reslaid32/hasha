@@ -69,7 +69,7 @@ static void md5_transform(md5_context *ctx, const uint8_t *block) {
     ctx->state[3] += d;
 }
 
-HASHA_EXPORT HASHA_INLINE void md5_init(md5_context *ctx) {
+HASHA_PUBLIC_FUNC void md5_init(md5_context *ctx) {
     ctx->state[0] = 0x67452301;
     ctx->state[1] = 0xEFCDAB89;
     ctx->state[2] = 0x98BADCFE;
@@ -78,7 +78,7 @@ HASHA_EXPORT HASHA_INLINE void md5_init(md5_context *ctx) {
     memset(ctx->buffer, 0, MD5_BLOCK_SIZE);
 }
 
-HASHA_EXPORT HASHA_INLINE void md5_update(md5_context *ctx, const uint8_t *data, size_t len) {
+HASHA_PUBLIC_FUNC void md5_update(md5_context *ctx, const uint8_t *data, size_t len) {
     size_t buffer_space = MD5_BLOCK_SIZE - (ctx->bit_count / 8) % MD5_BLOCK_SIZE;
     ctx->bit_count += len * 8;
 
@@ -98,7 +98,7 @@ HASHA_EXPORT HASHA_INLINE void md5_update(md5_context *ctx, const uint8_t *data,
     memcpy(ctx->buffer, data, len);
 }
 
-HASHA_EXPORT HASHA_INLINE void md5_finalize(md5_context *ctx, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void md5_finalize(md5_context *ctx, uint8_t *digest) {
     size_t buffer_index = (ctx->bit_count / 8) % MD5_BLOCK_SIZE;
     ctx->buffer[buffer_index++] = 0x80;
 
@@ -121,7 +121,7 @@ HASHA_EXPORT HASHA_INLINE void md5_finalize(md5_context *ctx, uint8_t *digest) {
     }
 }
 
-HASHA_EXPORT HASHA_INLINE void md5(const uint8_t *data, size_t len, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void md5(const uint8_t *data, size_t len, uint8_t *digest) {
     md5_context ctx;
     md5_init(&ctx);
     md5_update(&ctx, data, len);

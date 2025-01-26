@@ -2,16 +2,18 @@
 #define LIBHASHA_SHA1_H_LOADED
 
 #include "export.h"
+#include "bits.h"
 
 #include <stdint.h>
 #include <stddef.h>
 
 #define SHA1_BLOCK_SIZE 64
-#define SHA1_DIGEST_SIZE 20
+// #define SHA1_DIGEST_SIZE 20
+#define SHA1_DIGEST_SIZE HASHA_bB(160)
 
 HASHA_EXTERN_C_BEG
 
-typedef struct {
+typedef struct HASHA_EXPORT {
     uint32_t state[5];
     uint64_t bit_count;
     uint8_t buffer[SHA1_BLOCK_SIZE];
@@ -27,11 +29,11 @@ static const uint32_t SHA1_H0[5] = {
     0xC3D2E1F0
 };
 
-HASHA_EXPORT HASHA_INLINE void sha1_transform(sha1_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha1_init(sha1_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len);
-HASHA_EXPORT HASHA_INLINE void sha1_finalize(sha1_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha1(const uint8_t *data, size_t len, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha1_transform(sha1_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha1_init(sha1_context *ctx);
+HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len);
+HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha1(const uint8_t *data, size_t len, uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

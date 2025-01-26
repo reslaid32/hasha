@@ -196,4 +196,49 @@ void rununit() {
         assert(compare_hash(output, expected_hash, KECCAK_512_DIGEST_SIZE) == 0);
         printf("KECCAK-512:   Passed\n");
     }
+    {
+        uint8_t output[HASHA_bB(224)];
+
+        blake3((const uint8_t*)input, strlen(input), output, HASHA_bB(224));
+
+        const char *expected_hash = "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c562";
+        assert(compare_hash(output, expected_hash, HASHA_bB(224)) == 0);
+        printf("BLAKE3-224:   Passed\n");
+    }
+    {
+        uint8_t output[HASHA_bB(256)];
+
+        blake3((const uint8_t*)input, strlen(input), output, HASHA_bB(256));
+
+        const char *expected_hash = "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200f";
+        assert(compare_hash(output, expected_hash, HASHA_bB(256)) == 0);
+        printf("BLAKE3-256:   Passed\n");
+    }
+    {
+        uint8_t output[HASHA_bB(384)];
+
+        blake3((const uint8_t*)input, strlen(input), output, HASHA_bB(384));
+
+        const char *expected_hash = "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200fe992405f0d785b599a2e3387f6d34d01";
+        assert(compare_hash(output, expected_hash, HASHA_bB(384)) == 0);
+        printf("BLAKE3-384:   Passed\n");
+    }
+    {
+        uint8_t output[HASHA_bB(512)];
+
+        blake3((const uint8_t*)input, strlen(input), output, HASHA_bB(512));
+
+        const char *expected_hash = "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200fe992405f0d785b599a2e3387f6d34d01faccfeb22fb697ef3fd53541241a338c";
+        assert(compare_hash(output, expected_hash, HASHA_bB(512)) == 0);
+        printf("BLAKE3-512:   Passed\n");
+    }
+    {
+        uint8_t output[HASHA_bB(1024)];
+
+        blake3((const uint8_t*)input, strlen(input), output, HASHA_bB(1024));
+
+        const char *expected_hash = "ea8f163db38682925e4491c5e58d4bb3506ef8c14eb78a86e908c5624a67200fe992405f0d785b599a2e3387f6d34d01faccfeb22fb697ef3fd53541241a338cc68876568ab5c6e524abbcfe881e5b4e1ac9336f3f932d412248c9829536699f07a1b1ce35ffdfe0be5d00c083a8dfd29c9a4303d1374cd70e6abcec6e6b796c";
+        assert(compare_hash(output, expected_hash, HASHA_bB(1024)) == 0);
+        printf("BLAKE3-1024:  Passed\n");
+    }
 }

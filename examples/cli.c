@@ -17,6 +17,7 @@ void print_usage(const char *program_name) {
     printf("\nSupported algorithms:\n");
     printf("  crc32, md5, sha1, sha224, sha256, sha384, sha512, sha512_224, sha512_256,\n");
     printf("  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, keccak256, keccak384, keccak512\n");
+    printf("  blake3_<digestlen>\n");
     printf("\nData source options:\n");
     printf("  -s <string>        Hash a string provided as an argument\n");
     printf("  -f <file_path>     Hash the contents of a file\n");
@@ -78,6 +79,12 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length, uint8_
     } else if (strcmp(algorithm, "keccak512") == 0) {
         *digest_size = KECCAK_512_DIGEST_SIZE;
         keccak_512(data, length, digest);
+    } else if (strncmp(algorithm, "blake3_", 7) == 0) {
+        const char *len_str = algorithm + 7;
+        char *end;
+        long len = strtol(len_str, &end, 10);
+        *digest_size = HASHA_bB(len);
+        blake3(data, length, digest, *digest_size);
     } else {
         fprintf(stderr, "Error: Unsupported algorithm '%s'\n", algorithm);
         exit(EXIT_FAILURE);

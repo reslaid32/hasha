@@ -2,6 +2,7 @@
 #define LIBHASHA_SHA2_H_LOADED
 
 #include "export.h"
+#include "bits.h"
 
 #include <stdint.h>
 #include <stddef.h>
@@ -9,22 +10,28 @@
 #include <stdio.h>
 
 #define SHA2_224_BLOCK_SIZE 64
-#define SHA2_224_DIGEST_SIZE 28
+// #define SHA2_224_DIGEST_SIZE 28
+#define SHA2_224_DIGEST_SIZE HASHA_bB(224)
 
 #define SHA2_256_BLOCK_SIZE 64
-#define SHA2_256_DIGEST_SIZE 32
+// #define SHA2_256_DIGEST_SIZE 32
+#define SHA2_256_DIGEST_SIZE HASHA_bB(256)
 
 #define SHA2_384_BLOCK_SIZE 128
-#define SHA2_384_DIGEST_SIZE 48
+// #define SHA2_384_DIGEST_SIZE 48
+#define SHA2_384_DIGEST_SIZE HASHA_bB(384)
 
 #define SHA2_512_BLOCK_SIZE 128
-#define SHA2_512_DIGEST_SIZE 64
+// #define SHA2_512_DIGEST_SIZE 64
+#define SHA2_512_DIGEST_SIZE HASHA_bB(512)
 
 #define SHA2_512_224_BLOCK_SIZE 128
-#define SHA2_512_224_DIGEST_SIZE 28
+// #define SHA2_512_224_DIGEST_SIZE 28
+#define SHA2_512_224_DIGEST_SIZE HASHA_bB(224)
 
 #define SHA2_512_256_BLOCK_SIZE 128
-#define SHA2_512_256_DIGEST_SIZE 32
+// #define SHA2_512_256_DIGEST_SIZE 32
+#define SHA2_512_256_DIGEST_SIZE HASHA_bB(256)
 
 HASHA_EXTERN_C_BEG
 
@@ -130,41 +137,41 @@ static const uint64_t SHA2_512_256_H0[8] = {
     0x2b0199fc2c85b8aa, 0x0eb72ddc81c52ca2
 };
 
-HASHA_EXPORT HASHA_INLINE void sha2_224_transform(sha2_224_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_224_init(sha2_224_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_224_update(sha2_224_context *ctx, const uint8_t *data, size_t length);
-HASHA_EXPORT HASHA_INLINE void sha2_224_finalize(sha2_224_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_224(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_224_transform(sha2_224_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_224_init(sha2_224_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_224_update(sha2_224_context *ctx, const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void sha2_224_finalize(sha2_224_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_224(const uint8_t *data, size_t length, uint8_t *digest);
 
-HASHA_EXPORT HASHA_INLINE void sha2_256_transform(sha2_256_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_256_init(sha2_256_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_256_update(sha2_256_context *ctx, const uint8_t *data, size_t length);
-HASHA_EXPORT HASHA_INLINE void sha2_256_finalize(sha2_256_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_256(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_256_transform(sha2_256_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_256_init(sha2_256_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_256_update(sha2_256_context *ctx, const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void sha2_256_finalize(sha2_256_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_256(const uint8_t *data, size_t length, uint8_t *digest);
 
-HASHA_EXPORT HASHA_INLINE void sha2_384_transform(sha2_384_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_384_init(sha2_384_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_384_update(sha2_384_context *ctx, const uint8_t *data, size_t length);
-HASHA_EXPORT HASHA_INLINE void sha2_384_finalize(sha2_384_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_384(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_384_transform(sha2_384_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_384_init(sha2_384_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_384_update(sha2_384_context *ctx, const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void sha2_384_finalize(sha2_384_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_384(const uint8_t *data, size_t length, uint8_t *digest);
 
-HASHA_EXPORT HASHA_INLINE void sha2_512_transform(sha2_512_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_512_init(sha2_512_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_512_update(sha2_512_context *ctx, const uint8_t *data, size_t len);
-HASHA_EXPORT HASHA_INLINE void sha2_512_finalize(sha2_512_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_512(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_transform(sha2_512_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_512_init(sha2_512_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_512_update(sha2_512_context *ctx, const uint8_t *data, size_t len);
+HASHA_PUBLIC_FUNC void sha2_512_finalize(sha2_512_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512(const uint8_t *data, size_t length, uint8_t *digest);
 
-HASHA_EXPORT HASHA_INLINE void sha2_512_224_transform(sha2_512_224_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_512_224_init(sha2_512_224_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_512_224_update(sha2_512_224_context *ctx, const uint8_t *data, size_t length);
-HASHA_EXPORT HASHA_INLINE void sha2_512_224_finalize(sha2_512_224_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_512_224(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_224_transform(sha2_512_224_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_512_224_init(sha2_512_224_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_512_224_update(sha2_512_224_context *ctx, const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void sha2_512_224_finalize(sha2_512_224_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_224(const uint8_t *data, size_t length, uint8_t *digest);
 
-HASHA_EXPORT HASHA_INLINE void sha2_512_256_transform(sha2_512_256_context *ctx, const uint8_t *block);
-HASHA_EXPORT HASHA_INLINE void sha2_512_256_init(sha2_512_256_context *ctx);
-HASHA_EXPORT HASHA_INLINE void sha2_512_256_update(sha2_512_256_context *ctx, const uint8_t *data, size_t length);
-HASHA_EXPORT HASHA_INLINE void sha2_512_256_finalize(sha2_512_256_context *ctx, uint8_t *digest);
-HASHA_EXPORT HASHA_INLINE void sha2_512_256(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_256_transform(sha2_512_256_context *ctx, const uint8_t *block);
+HASHA_PUBLIC_FUNC void sha2_512_256_init(sha2_512_256_context *ctx);
+HASHA_PUBLIC_FUNC void sha2_512_256_update(sha2_512_256_context *ctx, const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void sha2_512_256_finalize(sha2_512_256_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_256(const uint8_t *data, size_t length, uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

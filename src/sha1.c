@@ -5,7 +5,7 @@
 
 #define SHA1_ROTL(a, b) (((a) << (b)) | ((a) >> (32 - (b))))
 
-HASHA_EXPORT HASHA_INLINE void sha1_transform(sha1_context *ctx, const uint8_t *block) {
+HASHA_PUBLIC_FUNC void sha1_transform(sha1_context *ctx, const uint8_t *block) {
     uint32_t w[80];
     uint32_t a, b, c, d, e;
 
@@ -55,7 +55,7 @@ HASHA_EXPORT HASHA_INLINE void sha1_transform(sha1_context *ctx, const uint8_t *
     ctx->state[4] += e;
 }
 
-HASHA_EXPORT HASHA_INLINE void sha1_init(sha1_context *ctx) {
+HASHA_PUBLIC_FUNC void sha1_init(sha1_context *ctx) {
     // ctx->state[0] = 0x67452301;
     // ctx->state[1] = 0xEFCDAB89;
     // ctx->state[2] = 0x98BADCFE;
@@ -66,7 +66,7 @@ HASHA_EXPORT HASHA_INLINE void sha1_init(sha1_context *ctx) {
     memset(ctx->buffer, 0, SHA1_BLOCK_SIZE);
 }
 
-HASHA_EXPORT HASHA_INLINE void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len) {
+HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len) {
     size_t buffer_space = SHA1_BLOCK_SIZE - (ctx->bit_count / 8) % SHA1_BLOCK_SIZE;
     ctx->bit_count += len * 8;
 
@@ -86,7 +86,7 @@ HASHA_EXPORT HASHA_INLINE void sha1_update(sha1_context *ctx, const uint8_t *dat
     memcpy(ctx->buffer, data, len);
 }
 
-HASHA_EXPORT HASHA_INLINE void sha1_finalize(sha1_context *ctx, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest) {
     size_t buffer_index = (ctx->bit_count / 8) % SHA1_BLOCK_SIZE;
     ctx->buffer[buffer_index++] = 0x80;
 
@@ -110,7 +110,7 @@ HASHA_EXPORT HASHA_INLINE void sha1_finalize(sha1_context *ctx, uint8_t *digest)
     }
 }
 
-HASHA_EXPORT HASHA_INLINE void sha1(const uint8_t *data, size_t len, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void sha1(const uint8_t *data, size_t len, uint8_t *digest) {
     sha1_context ctx;
     sha1_init(&ctx);
     sha1_update(&ctx, data, len);

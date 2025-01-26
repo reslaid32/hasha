@@ -10,8 +10,8 @@
 
 HASHA_EXTERN_C_BEG
 
-HASHA_EXPORT HASHA_INLINE void      crc32_init_table(uint32_t *crc_table);
-HASHA_EXPORT HASHA_INLINE uint32_t  crc32(const uint8_t *data, size_t len);
+HASHA_PUBLIC_FUNC void      crc32_init_table(uint32_t *crc_table);
+HASHA_PUBLIC_FUNC uint32_t  crc32(const uint8_t *data, size_t len);
 
 HASHA_EXTERN_C_END
 

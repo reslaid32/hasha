@@ -34,7 +34,7 @@ static const int SHA3_RHO_OFFSETS[5][5] = {
 };
 #endif // SHA3_RHO_OFFSETS_IMPLEMENTATION
 
-HASHA_EXPORT HASHA_INLINE void keccak_permutation(uint64_t *state);
+HASHA_PUBLIC_FUNC void keccak_permutation(uint64_t *state);
 
 HASHA_EXTERN_C_END
 

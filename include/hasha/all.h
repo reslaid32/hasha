@@ -6,3 +6,4 @@
 #include "sha2.h"
 #include "sha3.h"
 #include "keccak.h"
+#include "blake3.h"
