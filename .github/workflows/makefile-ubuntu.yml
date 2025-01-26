@@ -16,3 +16,6 @@ jobs:
 
     - name: Performing test
       run: sudo make all install check uninstall
+
+    - name: Performing benchmark
+      run: sudo make all install bench uninstall
