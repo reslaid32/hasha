@@ -1,9 +1,9 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -I./include -fPIC
+CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize -O3
 LDFLAGS = -shared
 LDFLAGS_TEST =
 DEFS =
-MARCH =
+MARCH = -march=native
 MARCH_LD =
 
 BIN = bin
