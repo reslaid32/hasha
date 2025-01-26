@@ -108,6 +108,8 @@ int verify_hash(const uint8_t *calculated_digest, size_t digest_size, const char
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
+        hashaver_t hashav = hashaver();
+        printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor, hashav.patch);
         print_usage(argv[0]);
         return EXIT_FAILURE;
     }

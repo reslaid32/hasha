@@ -51,4 +51,8 @@
 #endif // __cplusplus
 #endif // HASHA_EXTERN_C_END
 
+#if !defined(HASHA_VER)
+#define HASHA_VER 1
+#endif // HASHA_VER
+
 #endif // HASHA_EXPORT_H_LOADED

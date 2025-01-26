@@ -1,4 +1,5 @@
 #include "bits.h"
+#include "ver.h"
 
 #include "crc.h"
 #include "md5.h"

@@ -183,6 +183,8 @@ void runbench() {
 }
 
 int main() {
+    hashaver_t hashav = hashaver();
+    printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor, hashav.patch);
     runbench();
     return 0;
 }
