@@ -1,0 +1,32 @@
+name: Makefile CI [Windows]
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+
+    - name: Install required tools
+      run: |
+        pacman -S --noconfirm make mingw-w64-x86_64-gcc
+
+    - name: Build and test
+      shell: msys2 {0}
+      run: |
+        make all
+        cp ./bin/libhasha.dll ./bin/tests/
+        make check
