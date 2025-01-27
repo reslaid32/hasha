@@ -65,7 +65,8 @@ $(EXAMPLES_BIN)/%.exe: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 clean-garbage:
 	rm -rf $(OBJ)
 
-clean: rm -rf $(BIN)
+clean:
+	rm -rf $(BIN)
 
 clean-all: clean
 
