@@ -65,44 +65,17 @@ $(EXAMPLES_BIN)/%.exe: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 clean-garbage:
 	rm -rf $(OBJ)
 
-clean-lib:
-	rm -rf $(OBJ) $(TARGET_LIB)
+clean: rm -rf $(BIN)
 
-clean: clean-garbage clean-lib
-
-clean-all:
-	rm -rf $(BIN)
-
-install: $(TARGET_LIB)
-	# Install the shared library
-	install -d $(LIBDIR)
-	install -m 755 $(TARGET_LIB) $(INSTALL_LIB)
-
-	# Install the header file
-	# install -d $(INCLUDEDIR)
-
-	mkdir -p $(INSTALL_INCDIR)
-	install -m 644 $(wildcard $(INC)/hasha/*.h) $(INSTALL_INCDIR)
-
-	@echo "libhasha installed"
-
-# Uninstall the library and header file
-uninstall:
-	# Remove the shared library
-	rm -f $(INSTALL_LIB)
-
-	# Remove the header file
-	rm -rf $(INSTALL_INCDIR)
-
-	@echo "libhasha uninstalled"
+clean-all: clean
 
 tests: $(TEST_EXEC)
 
 check: $(TEST_EXEC)
 	$(TEST_EXEC)
 
-bench: $(BIN)/examples/bench
+bench: $(BIN)/examples/hashabench
 	@echo "Running benchmark..."
-	$(BIN)/examples/bench
+	$(BIN)/examples/hashabench
 
-.PHONY: all tests bench clean clean-garbage install uninstall check
+.PHONY: all tests bench clean clean-garbage check

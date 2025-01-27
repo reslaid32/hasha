@@ -12,6 +12,7 @@ INC = include
 OBJ = $(BIN)/tmp
 
 DESTDIR = /usr/
+BINDIR = $(DESTDIR)/bin
 LIBDIR = $(DESTDIR)/lib
 INCLUDEDIR = $(DESTDIR)/include
 TEST_SRC = tests
@@ -65,12 +66,11 @@ clean-garbage:
 	rm -rf $(OBJ)
 
 clean:
-	rm -rf $(OBJ) $(TARGET_LIB)
-
-clean-all:
 	rm -rf $(BIN)
 
-install: $(TARGET_LIB)
+clean-all: clean
+
+install-lib: $(TARGET_LIB)
 	# Install the shared library
 	install -d $(LIBDIR)
 	install -m 755 $(TARGET_LIB) $(INSTALL_LIB)
@@ -84,7 +84,7 @@ install: $(TARGET_LIB)
 	@echo "libhasha installed"
 
 # Uninstall the library and header file
-uninstall:
+uninstall-lib:
 	# Remove the shared library
 	rm -f $(INSTALL_LIB)
 
@@ -93,13 +93,33 @@ uninstall:
 
 	@echo "libhasha uninstalled"
 
+install-execs: $(EXAMPLES_EXEC)
+	# Install example executables to the binary directory
+	install -d $(BINDIR)
+	for exec in $(EXAMPLES_EXEC); do \
+		install -m 755 $$exec $(BINDIR); \
+	done
+
+	@echo "hasha utils installed"
+
+uninstall-execs:
+	# Remove installed example executables
+	for exec in $(notdir $(EXAMPLES_EXEC)); do \
+		rm -f $(BINDIR)/$$exec; \
+	done
+
+	@echo "hasha utils uninstalled"
+
+install: install-lib install-execs
+uninstall: uninstall-execs uninstall-lib
+
 tests: $(TEST_EXEC)
 
 check: $(TEST_EXEC)
 	$(TEST_EXEC)
 
-bench: $(BIN)/examples/bench
+bench: $(BIN)/examples/hashabench
 	@echo "Running benchmark..."
-	$(BIN)/examples/bench
+	$(BIN)/examples/hashabench
 
-.PHONY: all tests bench clean clean-garbage install uninstall check
+.PHONY: all tests bench clean clean-garbage install-lib install-execs install uninstall-execs uninstall-lib uninstall check

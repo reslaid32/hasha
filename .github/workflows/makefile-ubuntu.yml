@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Performing test
-      run: sudo make all install check uninstall
+      run: sudo make all install check uninstall clean
 
     - name: Performing benchmark
-      run: sudo make all install bench uninstall
+      run: sudo make all install bench uninstall clean
