@@ -5,7 +5,7 @@
 static uint32_t crc32_table[256];
 static int crc32_table_initialized = 0;
 
-HASHA_PUBLIC_FUNC void crc32_init_table(uint32_t *crc_table) {
+HASHA_PRIVATE_FUNC void crc32_init_table(uint32_t *crc_table) {
     for (uint32_t i = 0; i < 256; i++) {
         uint32_t crc = i;
         for (uint8_t j = 0; j < 8; j++) {

@@ -122,4 +122,4 @@ bench: $(BIN)/examples/hashabench
 	@echo "Running benchmark..."
 	$(BIN)/examples/hashabench
 
-.PHONY: all tests bench clean clean-garbage install-lib install-execs install uninstall-execs uninstall-lib uninstall check
+.PHONY: all tests bench clean clean-all clean-garbage install-lib install-execs install uninstall-execs uninstall-lib uninstall check
