@@ -3,7 +3,7 @@
 
 #include "export.h"
 #include "bits.h"
-#include "sha3_keccak.h"
+#include "keccak_perm.h"
 
 #include "std.h"
 

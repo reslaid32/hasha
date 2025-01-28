@@ -1,6 +1,6 @@
 #define HASHA_LIBRARY_BUILD
 
-#include "../include/hasha/sha3_keccak.h"
+#include "../include/hasha/keccak_perm.h"
 
 HASHA_PRIVATE_FUNC void theta(uint64_t *state) {
     uint64_t C[5], D[5];

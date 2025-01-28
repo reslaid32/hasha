@@ -1,5 +1,5 @@
-#if !defined(LIBHASHA_SHA3_KECCAK_H_LOADED)
-#define LIBHASHA_SHA3_KECCAK_H_LOADED
+#if !defined(LIBHASHA_KECCAK_PERM_H_LOADED)
+#define LIBHASHA_KECCAK_PERM_H_LOADED
 
 #include "export.h"
 #include "std.h"
@@ -37,4 +37,4 @@ HASHA_PUBLIC_FUNC void keccak_permutation(uint64_t *state);
 
 HASHA_EXTERN_C_END
 
-#endif // LIBHASHA_SHA3_KECCAK_H_LOADED
+#endif // LIBHASHA_KECCAK_PERM_H_LOADED
