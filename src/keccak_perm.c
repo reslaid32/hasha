@@ -51,6 +51,10 @@ HASHA_PRIVATE_FUNC void theta(uint64_t *state) {
     state[24] ^= D[4];
 }
 
+HASHA_PRIVATE_FUNC void theta_simd(uint64_t *state) {
+    
+}
+
 HASHA_PRIVATE_FUNC void rho_pi(uint64_t *state) {
     uint64_t B[5][5];
     
