@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize
+CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -march=native -O2
 LDFLAGS = -shared
 LDFLAGS_TEST =
 DEFS =

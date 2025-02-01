@@ -131,7 +131,7 @@ HASHA_PUBLIC_FUNC void blake3_update(blake3_context *ctx, const uint8_t *data, s
 }
 
 HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest, size_t length) {
-    uint32_t f, b, x, *in, *cv, m[16], root[16];
+    uint32_t f, b, x = 0, *in, *cv, m[16], root[16];
     size_t i;
 
     cv = ctx->cv;
