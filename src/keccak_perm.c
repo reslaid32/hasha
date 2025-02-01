@@ -17,6 +17,8 @@
  * The variant is selected entirely at compile time. No runtime dispatch is used.
  */
 
+#define HASHA_LIBRARY_BUILD
+
 #include "../include/hasha/keccak_perm.h"
 
 #include <stdint.h>

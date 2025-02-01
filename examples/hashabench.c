@@ -26,7 +26,7 @@
 void print_usage(const char *prog_name) {
     printf("Usage: %s [OPTIONS]\n", prog_name);
     printf("Options:\n");
-    printf("  -t, --iters NUM     Number of iterations for benchmarking (default: 1000)\n");
+    printf("  -t, --iters NUM     Number of iterations for benchmarking (default: 1000000)\n");
     printf("  -i, --input STRING   Input string to hash (default: 'hello')\n");
     printf("  -h, --help           Show this help message\n");
 }
@@ -36,7 +36,7 @@ void print_usage(const char *prog_name) {
 #endif // CLOCK_MONOTONIC
 
 int main(int argc, char *argv[]) {
-    int iterations = 1000;  // Default number of iterations
+    int iterations = 1000000;  // Default number of iterations
     const char *input = "hello"; // Default input string
 
     static struct option long_options[] = {
