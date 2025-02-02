@@ -8,13 +8,19 @@
 
 ### SHA-256 Benchmark
 
-![SHA-256 Benchmark](./assets/sha256.png)
+<div style="display: flex; gap: 10px;">
+   <img src="./assets/sha256.png" alt="SHA-256 Benchmark" width="400">
+   <img src="./assets/sha512.png" alt="SHA-512 Benchmark" width="400">
+</div>
 
 ## SHA-3
 
 ### SHA3-256 Benchmark
 
-![SHA3-256 Benchmark](./assets/sha3_256.png)
+<div style="display: flex; gap: 10px;">
+   <img src="./assets/sha3_256.png" alt="SHA3-256 Benchmark" width="400">
+   <img src="./assets/sha3_512.png" alt="SHA3-512 Benchmark" width="400">
+</div>
 
 ### Supported Algorithms
 

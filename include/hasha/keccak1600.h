@@ -7,6 +7,7 @@
 HASHA_EXTERN_C_BEG
 
 // HASHA_PUBLIC_FUNC void keccakf1600_software(uint64_t *state);
+
 HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
 
 HASHA_EXTERN_C_END

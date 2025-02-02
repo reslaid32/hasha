@@ -25,7 +25,11 @@
   #define HASHA_ACCELERATION HASHA_ACCELERATION_DISABLED
 #endif
 
+HASHA_EXTERN_C_BEG
+
 HASHA_DEPRECATED("libhasha hw acceleration deprecated")
 HASHA_PUBLIC_FUNC int hashacel(void);
+
+HASHA_EXTERN_C_END
 
 #endif // HASHA_ACEL_H_LOADED
