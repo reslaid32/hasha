@@ -10,12 +10,12 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-// #define COMPARE_WITH_OPENSSL
+// #define INCLUDE_OPENSSL
 
-#if defined(COMPARE_WITH_OPENSSL)
+#if defined(INCLUDE_OPENSSL)
 #include <openssl/sha.h>
 #include <openssl/evp.h>
-#endif // COMPARE_WITH_OPENSSL
+#endif // INCLUDE_OPENSSL
 
 #if !defined(CLOCK_MONOTONIC)
 #define CLOCK_MONOTONIC 1
@@ -65,6 +65,7 @@ HASHA_PRIVATE_FUNC char *trim(char *str) {
     return str;
 }
 
+#if defined(INCLUDE_OPENSSL)
 void openssl_evp_checksum(const EVP_MD *evpmd, const unsigned char *data, size_t len, unsigned char *digest) {
     EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
     if (!mdctx) {
@@ -90,7 +91,7 @@ void openssl_evp_checksum(const EVP_MD *evpmd, const unsigned char *data, size_t
 
     EVP_MD_CTX_free(mdctx);
 }
-
+#endif // INCLUDE_OPENSSL
 
 int main(int argc, char *argv[]) {
     int iterations = 1000000;         // Default iterations
@@ -208,7 +209,7 @@ int main(int argc, char *argv[]) {
                 BENCHMARK(iterations, "hasha SHA512/256", sha2_512_256, result_file, (const uint8_t*)input, input_len, output);
             }
 
-            #if defined(COMPARE_WITH_OPENSSL)
+            #if defined(INCLUDE_OPENSSL)
             else if (strcmp(token, "openssl-sha224") == 0) {
                 BENCHMARK(iterations, "openssl SHA224", SHA224, result_file, (const uint8_t*)input, input_len, output);
             }
@@ -221,9 +222,9 @@ int main(int argc, char *argv[]) {
             else if (strcmp(token, "openssl-sha512") == 0) {
                 BENCHMARK(iterations, "openssl SHA512", SHA512, result_file, (const uint8_t*)input, input_len, output);
             }
-            #endif // COMPARE_WITH_OPENSSL
+            #endif // INCLUDE_OPENSSL
 
-            #if defined(COMPARE_WITH_OPENSSL)
+            #if defined(INCLUDE_OPENSSL)
             else if (strcmp(token, "openssl-evp-sha224") == 0) {
                 BENCHMARK(iterations, "openssl-evp SHA224", openssl_evp_checksum, result_file, EVP_sha224(), (const uint8_t*)input, input_len, output);
             }
@@ -236,7 +237,7 @@ int main(int argc, char *argv[]) {
             else if (strcmp(token, "openssl-evp-sha512") == 0) {
                 BENCHMARK(iterations, "openssl-evp SHA512", openssl_evp_checksum, result_file, EVP_sha512(), (const uint8_t*)input, input_len, output);
             }
-            #endif // COMPARE_WITH_OPENSSL
+            #endif // INCLUDE_OPENSSL
 
             else if (strcmp(token, "sha3_224") == 0) {
                 BENCHMARK(iterations, "hasha SHA3-224", sha3_224, result_file, (const uint8_t*)input, input_len, output);
@@ -251,7 +252,7 @@ int main(int argc, char *argv[]) {
                 BENCHMARK(iterations, "hasha SHA3-512", sha3_512, result_file, (const uint8_t*)input, input_len, output);
             }
 
-            #if defined(COMPARE_WITH_OPENSSL)
+            #if defined(INCLUDE_OPENSSL)
             else if (strcmp(token, "openssl-evp-sha3_224") == 0) {
                 BENCHMARK(iterations, "openssl-evp SHA3-224", openssl_evp_checksum, result_file, EVP_sha3_224(), (const uint8_t*)input, input_len, output);
             }
@@ -264,7 +265,7 @@ int main(int argc, char *argv[]) {
             else if (strcmp(token, "openssl-evp-sha3_512") == 0) {
                 BENCHMARK(iterations, "openssl-evp SHA3-512", openssl_evp_checksum, result_file, EVP_sha3_512(), (const uint8_t*)input, input_len, output);
             }
-            #endif // COMPARE_WITH_OPENSSL
+            #endif // INCLUDE_OPENSSL
 
             else if (strcmp(token, "keccak224") == 0) {
                 BENCHMARK(iterations, "hasha KECCAK-224", keccak_224, result_file, (const uint8_t*)input, input_len, output);
