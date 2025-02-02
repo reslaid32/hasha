@@ -1,7 +1,10 @@
 #if !defined(HASHA_ACEL_H_LOADED)
 #define HASHA_ACEL_H_LOADED
 
-#include "../include/hasha/export.h"
+#include "export.h"
+
+/* Disable hardware acceleration (legacy code) */
+#define HASHA_DISABLE_ACCELERATION
 
 #if !defined(HASHA_ACEL_STATUSES_DEFINED)
 #define HASHA_ACEL_STATUSES_DEFINED
@@ -11,7 +14,6 @@
 #define HASHA_ACCELERATION_NANO     0xF
 
 #endif // HASHA_ACEL_STATUSES_DEFINED
-
 
 #if defined(HASHA_DISABLE_ACCELERATION)
   #define HASHA_ACCELERATION HASHA_ACCELERATION_DISABLED
@@ -23,6 +25,7 @@
   #define HASHA_ACCELERATION HASHA_ACCELERATION_DISABLED
 #endif
 
+HASHA_DEPRECATED("libhasha hw acceleration deprecated")
 HASHA_PUBLIC_FUNC int hashacel(void);
 
 #endif // HASHA_ACEL_H_LOADED

@@ -1,6 +1,10 @@
 #if !defined(HASHA_EXPORT_H_LOADED)
 #define HASHA_EXPORT_H_LOADED
 
+#if !defined(HASHA_DEPRECATED)
+#define HASHA_DEPRECATED(msg) __attribute__((deprecated(msg)))
+#endif // HASHA_DEPRECATED
+
 #ifdef HASHA_WITH_EXECUTABLE
 #define HASHA_EXPORT
 #else
