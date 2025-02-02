@@ -60,7 +60,7 @@ examples: $(EXAMPLES_EXEC)
 
 $(EXAMPLES_BIN)/%: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 	mkdir -p $(EXAMPLES_BIN)
-	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -g
+	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -lssl -lcrypto -g
 
 clean-garbage:
 	rm -rf $(OBJ)

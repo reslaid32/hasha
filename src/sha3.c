@@ -24,7 +24,7 @@ HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx, const uint8_t *dat
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -33,7 +33,7 @@ HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx, const uint8_t *dat
 HASHA_PUBLIC_FUNC void sha3_224_finalize(sha3_224_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x06; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccak_permutation((uint64_t *)ctx->state);
+    keccakf1600((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -41,7 +41,7 @@ HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx, uint8_t *digest) 
     size_t i = 0;
     while (i < SHA3_224_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -78,7 +78,7 @@ HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx, const uint8_t *dat
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -87,7 +87,7 @@ HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx, const uint8_t *dat
 HASHA_PUBLIC_FUNC void sha3_256_finalize(sha3_256_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x06; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccak_permutation((uint64_t *)ctx->state);
+    keccakf1600((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -95,7 +95,7 @@ HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx, uint8_t *digest) 
     size_t i = 0;
     while (i < SHA3_256_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -132,7 +132,7 @@ HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx, const uint8_t *dat
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -141,7 +141,7 @@ HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx, const uint8_t *dat
 HASHA_PUBLIC_FUNC void sha3_384_finalize(sha3_384_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x06; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccak_permutation((uint64_t *)ctx->state);
+    keccakf1600((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -149,7 +149,7 @@ HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx, uint8_t *digest) 
     size_t i = 0;
     while (i < SHA3_384_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -186,7 +186,7 @@ HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx, const uint8_t *dat
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -195,7 +195,7 @@ HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx, const uint8_t *dat
 HASHA_PUBLIC_FUNC void sha3_512_finalize(sha3_512_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x06; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccak_permutation((uint64_t *)ctx->state);
+    keccakf1600((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -203,7 +203,7 @@ HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx, uint8_t *digest) 
     size_t i = 0;
     while (i < SHA3_512_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccak_permutation((uint64_t *)ctx->state);
+            keccakf1600((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
