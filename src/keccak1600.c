@@ -20,7 +20,7 @@
 #define HASHA_LIBRARY_BUILD
 
 #include "../include/hasha/acel.h"
-#include "../include/hasha/keccak_perm.h"
+#include "../include/hasha/keccak1600.h"
 
 #include <stdint.h>
 #include <stdio.h>
