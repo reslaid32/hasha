@@ -6,7 +6,7 @@
 
 ## SHA-2
 
-### SHA-256 Benchmark
+### SHA 256 & 512 Benchmark
 
 <div style="display: flex; gap: 10px;">
    <img src="./assets/sha256.png" alt="SHA-256 Benchmark" width="400">
@@ -15,7 +15,7 @@
 
 ## SHA-3
 
-### SHA3-256 Benchmark
+### SHA3 256 & 512 Benchmark
 
 <div style="display: flex; gap: 10px;">
    <img src="./assets/sha3_256.png" alt="SHA3-256 Benchmark" width="400">
