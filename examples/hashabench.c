@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 
-#define COMPARE_WITH_OPENSSL
+// #define COMPARE_WITH_OPENSSL
 
 #if defined(COMPARE_WITH_OPENSSL)
 #include <openssl/sha.h>

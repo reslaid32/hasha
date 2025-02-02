@@ -5,6 +5,7 @@ LDFLAGS_TEST =
 DEFS =
 MARCH = -march=native
 MARCH_LD =
+EXAMPLES_l = 
 
 BIN = bin
 SRC = src
@@ -60,7 +61,7 @@ examples: $(EXAMPLES_EXEC)
 
 $(EXAMPLES_BIN)/%: $(EXAMPLES_SRC)/%.c $(TARGET_LIB)
 	mkdir -p $(EXAMPLES_BIN)
-	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha -lssl -lcrypto -g
+	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(BIN) -lhasha $(EXAMPLES_l) -g
 
 clean-garbage:
 	rm -rf $(OBJ)
