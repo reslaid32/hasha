@@ -3,7 +3,8 @@
 ## **libhasha is a standalone lightweight hashing library supporting multiple hashing algorithms written in C**
 
 ## ![openssl_hasha_benchmark](./assets/benchmark_results.png)
-- **Processor: Intel Core i5 7th generation.**
+- **Processor: Intel Core i5 7th generation.** (
+in sha2 libhasha is 2 times faster than libopenssl )
 
 ### Supported Algorithms
 
