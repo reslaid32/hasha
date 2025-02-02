@@ -24,8 +24,15 @@
 #endif // HASHA_PUBLIC_FUNC
 
 #if !defined(HASHA_PRIVATE_FUNC)
-#define HASHA_PRIVATE_FUNC static __always_inline
+    #if defined(_MSC_VER)
+        #define HASHA_PRIVATE_FUNC static __forceinline
+    #elif defined(__GNUC__) || defined(__clang__)
+        #define HASHA_PRIVATE_FUNC static __inline__ __attribute__((always_inline))
+    #else
+        #define HASHA_PRIVATE_FUNC static inline
+    #endif
 #endif // HASHA_PRIVATE_FUNC
+
 
 #if !defined(HASHA_EXTERN_C)
 #if defined(__cplusplus)
