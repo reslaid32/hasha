@@ -1,16 +1,15 @@
-name: Makefile CI
+name: (arm64) On Ubuntu
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: [ self-hosted, ubuntu-latest, arm64 ]
+    
     steps:
     - uses: actions/checkout@v4
 
@@ -19,3 +18,4 @@ jobs:
 
     - name: Performing benchmark
       run: sudo make all install bench uninstall clean
+
