@@ -24,7 +24,7 @@
 #endif // HASHA_PUBLIC_FUNC
 
 #if !defined(HASHA_PRIVATE_FUNC)
-#define HASHA_PRIVATE_FUNC static inline
+#define HASHA_PRIVATE_FUNC static __always_inline
 #endif // HASHA_PRIVATE_FUNC
 
 #if !defined(HASHA_EXTERN_C)
@@ -51,8 +51,8 @@
 #endif // __cplusplus
 #endif // HASHA_EXTERN_C_END
 
-#if !defined(HASHA_VER)
-#define HASHA_VER 1
-#endif // HASHA_VER
+// #if !defined(HASHA_VER)
+// #define HASHA_VER hashaver()
+// #endif // HASHA_VER
 
 #endif // HASHA_EXPORT_H_LOADED

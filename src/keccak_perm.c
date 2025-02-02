@@ -19,6 +19,7 @@
 
 #define HASHA_LIBRARY_BUILD
 
+#include "../include/hasha/acel.h"
 #include "../include/hasha/keccak_perm.h"
 
 #include <stdint.h>
@@ -28,24 +29,6 @@
 // #ifdef _OPENMP
 // #include <omp.h>
 // #endif
-
-/*-----------------------------------------------------------------------------
-  Configuration: choose acceleration at compile time
-
-  - If KECCAK_DISABLE_ACCELERATION is defined then neither SIMD nor nano is used.
-  - Otherwise, if __AVX2__ is defined then the SIMD (AVX2) version is used.
-  - Otherwise, if KECCAK_USE_NANO is defined then the nano (NEON) version is used.
-  - Otherwise, fall back to the software version.
------------------------------------------------------------------------------*/
-#if defined(KECCAK_DISABLE_ACCELERATION)
-  #define KECCAK_ACCELERATION 0
-#elif defined(__AVX2__)
-  #define KECCAK_ACCELERATION 1
-#elif defined(__ARM_NEON)
-  #define KECCAK_ACCELERATION 2
-#else
-  #define KECCAK_ACCELERATION 0
-#endif
 
 /* --- Shared Constants --- */
 #define SHA3_KECCAK_ROUNDS 24
@@ -80,7 +63,6 @@ static const int SHA3_RHO_OFFSETS[5][5] = {
      - Loop unrolling in theta, rho_pi, and chi.
      - Compute independent values in parallel.
   ===========================================================================*/
-#if KECCAK_ACCELERATION == 0 || defined(KECCAK_DISABLE_ACCELERATION)
 
 HASHA_PRIVATE_FUNC void theta_software(uint64_t *state) {
     uint64_t C0, C1, C2, C3, C4;
@@ -157,15 +139,12 @@ HASHA_PUBLIC_FUNC void keccak_permutation_software(uint64_t *state) {
     }
 }
 
-#endif  /* End of software implementation */
-
-
 /*=============================================================================
    Variant 1: SIMD Implementation (AVX2)
    Each state is represented as an array of 25 __m256i values (4 lanes per vector).
    Additional unrolling is applied in inner loops.
   ===========================================================================*/
-#if KECCAK_ACCELERATION == 1
+#if HASHA_ACCELERATION == HASHA_ACCELERATION_SIMD
 
 #include <immintrin.h>
 
@@ -254,7 +233,7 @@ HASHA_PUBLIC_FUNC void keccak_permutation_simd(__m256i state[25]) {
    Each state is represented as an array of 25 uint64x2_t values (2 lanes per vector).
    Unrolling and inlining is applied similar to the other variants.
   ===========================================================================*/
-#if KECCAK_ACCELERATION == 2
+#if HASHA_ACCELERATION == HASHA_ACCELERATION_NANO
 
 #include <arm_neon.h>
 
@@ -363,7 +342,7 @@ HASHA_PUBLIC_FUNC void keccak_permutation_nano(uint64x2_t state[25]) {
   ===========================================================================*/
 HASHA_PUBLIC_FUNC
 void keccak_permutation(uint64_t *state) {
-#if KECCAK_ACCELERATION == 1
+#if HASHA_ACCELERATION == HASHA_ACCELERATION_SIMD
     // AVX2 variant: use __m256i (4 lanes per vector)
     __m256i simd_state[25];
     int i;
@@ -376,7 +355,7 @@ void keccak_permutation(uint64_t *state) {
         // Extract lane 0; _mm256_extract_epi64 is used if available.
         state[i] = (uint64_t)_mm256_extract_epi64(simd_state[i], 0);
     }
-#elif KECCAK_ACCELERATION == 2
+#elif HASHA_ACCELERATION == HASHA_ACCELERATION_NANO
     // NEON variant: use uint64x2_t (2 lanes per vector)
     uint64x2_t nano_state[25];
     int i;
