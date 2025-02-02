@@ -33,6 +33,10 @@
 // Function to display help/usage information
 HASHA_PRIVATE_FUNC void print_usage(const char *prog_name) {
     printf("Usage: %s [OPTIONS]\n", prog_name);
+    printf("\nSupported algorithms:\n");
+    printf("  crc32, md5, sha1, sha224, sha256, sha384, sha512, sha512_224, sha512_256,\n");
+    printf("  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, keccak256, keccak384, keccak512\n");
+    printf("  blake3_<digestlen>\n");
     printf("Options:\n");
     printf("  -t, --iters NUM     Number of iterations for benchmarking (default: 1000000)\n");
     printf("  -i, --input STRING   Input string to hash (default: 'hello')\n");
