@@ -41,7 +41,7 @@
   #define KECCAK_ACCELERATION 0
 #elif defined(__AVX2__)
   #define KECCAK_ACCELERATION 1
-#elif defined(KECCAK_USE_NANO)
+#elif defined(__ARM_NEON)
   #define KECCAK_ACCELERATION 2
 #else
   #define KECCAK_ACCELERATION 0
@@ -258,10 +258,25 @@ HASHA_PUBLIC_FUNC void keccak_permutation_simd(__m256i state[25]) {
 
 #include <arm_neon.h>
 
+/* 
+ * Replace the problematic ROTL64_nano with a version that uses variable shift 
+ * intrinsics. The vshlq_u64 intrinsic accepts a vector of shift counts (as int64x2_t).
+ */
 static inline uint64x2_t ROTL64_nano(uint64x2_t x, int n) {
-    return vorrq_u64(vshlq_n_u64(x, n),
-                     vshrq_n_u64(x, 64 - n));
+    int64x2_t shift = vdupq_n_s64(n);
+    /* For a right shift we use a negative shift count: (n - 64) */
+    int64x2_t neg_shift = vdupq_n_s64(n - 64);
+    return vorrq_u64(vshlq_u64(x, shift),
+                     vshlq_u64(x, neg_shift));
 }
+
+/*
+ * Some toolchains may not provide a 64‐bit “bitwise NOT” intrinsic.
+ * Define vmvnq_u64 if it is not already defined.
+ */
+#ifndef vmvnq_u64
+  #define vmvnq_u64(x) veorq_u64((x), vdupq_n_u64(0xFFFFFFFFFFFFFFFFULL))
+#endif
 
 HASHA_PRIVATE_FUNC void theta_nano(uint64x2_t state[25]) {
     uint64x2_t C[5], D[5];
