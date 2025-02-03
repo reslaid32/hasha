@@ -16,15 +16,6 @@ const char *stringize_acel_status(int acel) {
     }
 }
 
-int in_range(int x, int min, int max) {
-    if (min > max) {
-        int tmp = min;
-        min = max;
-        max = tmp;
-    }
-    return (x >= min && x <= max);
-}
-
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         goto usage;
