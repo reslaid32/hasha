@@ -38,6 +38,11 @@
 #endif // HASHA_PRIVATE_FUNC
 
 
+#if !defined(HASHA_PUBLIC_HO_FUNC)
+/* public header only function */
+#define HASHA_PUBLIC_HO_FUNC HASHA_PRIVATE_FUNC
+#endif // HASHA_PUBLIC_HO_FUNC
+
 #if !defined(HASHA_EXTERN_C)
 #if defined(__cplusplus)
 #define HASHA_EXTERN_C extern "C"
@@ -65,5 +70,13 @@
 // #if !defined(HASHA_VER)
 // #define HASHA_VER hashaver()
 // #endif // HASHA_VER
+
+#if !defined(HASHA_CONSTRUCTOR)
+#define HASHA_CONSTRUCTOR __attribute__((constructor))
+#endif /* HASHA_CONSTRUCTOR */
+
+#if !defined(HASHA_DESTRUCTOR)
+#define HASHA_DESTRUCTOR __attribute__((destructor))
+#endif /* HASHA_DESTRUCTOR */
 
 #endif // HASHA_EXPORT_H_LOADED
