@@ -1,5 +1,4 @@
 #include "../include/hasha/all.h"
-#include "../include/hasha/bits.h"
 
 #include <string.h>
 #include <stdio.h>

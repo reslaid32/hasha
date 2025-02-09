@@ -1,11 +1,10 @@
 #if !defined(LIBHASHA_KECCAK_H_LOADED)
 #define LIBHASHA_KECCAK_H_LOADED
 
-#include "export.h"
-#include "bits.h"
+#include "internal/export.h"
+#include "internal/bits.h"
+#include "internal/std.h"
 #include "keccak1600.h"
-
-#include "std.h"
 
 #define KECCAK_224_RATE 144
 // #define KECCAK_224_DIGEST_SIZE 28

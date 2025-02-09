@@ -1,10 +1,10 @@
 #if !defined(LIBHASHA_SHA3_H_LOADED)
 #define LIBHASHA_SHA3_H_LOADED
 
-#include "export.h"
-#include "bits.h"
+#include "internal/export.h"
+#include "internal/bits.h"
+#include "internal/std.h"
 #include "keccak1600.h"
-#include "std.h"
 
 #define KECCAK_ROUNDS 24
 

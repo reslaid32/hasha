@@ -1,9 +1,9 @@
 #if !defined(LIBHASHA_MD5_H_LOADED)
 #define LIBHASHA_MD5_H_LOADED
 
-#include "export.h"
-#include "bits.h"
-#include "std.h"
+#include "internal/export.h"
+#include "internal/bits.h"
+#include "internal/std.h"
 
 #define MD5_BLOCK_SIZE 64
 // #define MD5_DIGEST_SIZE 16

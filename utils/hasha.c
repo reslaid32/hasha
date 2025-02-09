@@ -1,11 +1,10 @@
-#include "../include/hasha/ver.h"
-#include "../include/hasha/acel.h"
+#include "../include/hasha/internal/ver.h"
+#include "../include/hasha/internal/acel.h"
 
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <time.h>
 
 const char *stringize_acel_status(int acel) {
     switch (acel) {

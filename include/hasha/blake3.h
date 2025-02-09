@@ -1,9 +1,9 @@
 #if !defined(LIBHASHA_BLAKE3_H_LOADED)
 #define LIBHASHA_BLAKE3_H_LOADED
 
-#include "export.h"
-#include "bits.h"
-#include "std.h"
+#include "internal/export.h"
+#include "internal/bits.h"
+#include "internal/std.h"
 
 HASHA_EXTERN_C_BEG
 

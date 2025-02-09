@@ -1,9 +1,9 @@
 #if !defined(LIBHASHA_SHA1_H_LOADED)
 #define LIBHASHA_SHA1_H_LOADED
 
-#include "export.h"
-#include "bits.h"
-#include "std.h"
+#include "internal/export.h"
+#include "internal/bits.h"
+#include "internal/std.h"
 
 #define SHA1_BLOCK_SIZE 64
 // #define SHA1_DIGEST_SIZE 20
