@@ -40,25 +40,25 @@ HASHA_PUBLIC_FUNC void sha3_224_init(sha3_224_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx, const uint8_t *data, size_t length);
 HASHA_PUBLIC_FUNC void sha3_224_finalize(sha3_224_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx, uint8_t *digest);
-HASHA_PUBLIC_FUNC void sha3_224(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_224_oneshot(const uint8_t *data, size_t length, uint8_t *digest);
 
 HASHA_PUBLIC_FUNC void sha3_256_init(sha3_256_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx, const uint8_t *data, size_t length);
 HASHA_PUBLIC_FUNC void sha3_256_finalize(sha3_256_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx, uint8_t *digest);
-HASHA_PUBLIC_FUNC void sha3_256(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_256_oneshot(const uint8_t *data, size_t length, uint8_t *digest);
 
 HASHA_PUBLIC_FUNC void sha3_384_init(sha3_384_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx, const uint8_t *data, size_t length);
 HASHA_PUBLIC_FUNC void sha3_384_finalize(sha3_384_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx, uint8_t *digest);
-HASHA_PUBLIC_FUNC void sha3_384(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_384_oneshot(const uint8_t *data, size_t length, uint8_t *digest);
 
 HASHA_PUBLIC_FUNC void sha3_512_init(sha3_512_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx, const uint8_t *data, size_t length);
 HASHA_PUBLIC_FUNC void sha3_512_finalize(sha3_512_context *ctx);
 HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx, uint8_t *digest);
-HASHA_PUBLIC_FUNC void sha3_512(const uint8_t *data, size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_512_oneshot(const uint8_t *data, size_t length, uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

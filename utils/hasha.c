@@ -26,10 +26,14 @@ int main(int argc, char *argv[]) {
         if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
             printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor, hashav.patch);
             return EXIT_SUCCESS;
-        } else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--accelerating") == 0) {
+        }
+        #if 0
+        else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--accelerating") == 0) {
             int hashac = hashacel();
             printf("libhasha hw accelerating: %s [%s (0x%0x)]\n", hashac ? "true" : "false", stringize_acel_status(hashac), hashac);
-        } else {
+        }
+        #endif
+        else {
             fprintf(stderr, "Unknown option: %s\n", argv[i]);
             goto usage;
         }
@@ -38,6 +42,6 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 
     usage:
-        fprintf(stderr, "Usage: %s [-v|--version] [-a|--accelerating]\n", argv[0]);
+        fprintf(stderr, "Usage: %s [-v|--version]\n", argv[0]);
         return EXIT_FAILURE;
 }

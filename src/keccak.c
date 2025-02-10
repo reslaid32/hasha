@@ -48,7 +48,7 @@ HASHA_PUBLIC_FUNC void keccak_224_squeeze(keccak_224_context *ctx, uint8_t *dige
     }
 }
 
-HASHA_PUBLIC_FUNC void keccak_224(const uint8_t *data, size_t length, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void keccak_224_oneshot(const uint8_t *data, size_t length, uint8_t *digest) {
     keccak_224_context ctx;
     keccak_224_init(&ctx);
     keccak_224_absorb(&ctx, data, length);
@@ -102,7 +102,7 @@ HASHA_PUBLIC_FUNC void keccak_256_squeeze(keccak_256_context *ctx, uint8_t *dige
     }
 }
 
-HASHA_PUBLIC_FUNC void keccak_256(const uint8_t *data, size_t length, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void keccak_256_oneshot(const uint8_t *data, size_t length, uint8_t *digest) {
     keccak_256_context ctx;
     keccak_256_init(&ctx);
     keccak_256_absorb(&ctx, data, length);
@@ -156,7 +156,7 @@ HASHA_PUBLIC_FUNC void keccak_384_squeeze(keccak_384_context *ctx, uint8_t *dige
     }
 }
 
-HASHA_PUBLIC_FUNC void keccak_384(const uint8_t *data, size_t length, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void keccak_384_oneshot(const uint8_t *data, size_t length, uint8_t *digest) {
     keccak_384_context ctx;
     keccak_384_init(&ctx);
     keccak_384_absorb(&ctx, data, length);
@@ -210,7 +210,7 @@ HASHA_PUBLIC_FUNC void keccak_512_squeeze(keccak_512_context *ctx, uint8_t *dige
     }
 }
 
-HASHA_PUBLIC_FUNC void keccak_512(const uint8_t *data, size_t length, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void keccak_512_oneshot(const uint8_t *data, size_t length, uint8_t *digest) {
     keccak_512_context ctx;
     keccak_512_init(&ctx);
     keccak_512_absorb(&ctx, data, length);

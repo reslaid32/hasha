@@ -19,7 +19,7 @@ HASHA_PRIVATE_FUNC void crc32_init_table(uint32_t *crc_table) {
     }
 }
 
-HASHA_PUBLIC_FUNC uint32_t crc32(const uint8_t *data, size_t len) {
+HASHA_PUBLIC_FUNC uint32_t crc32_oneshot(const uint8_t *data, size_t len) {
     if (!crc32_table_initialized) {
         crc32_init_table(crc32_table);
         crc32_table_initialized = 1;

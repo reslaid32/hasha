@@ -120,7 +120,7 @@ HASHA_PUBLIC_FUNC void md5_finalize(md5_context *ctx, uint8_t *digest) {
     }
 }
 
-HASHA_PUBLIC_FUNC void md5(const uint8_t *data, size_t len, uint8_t *digest) {
+HASHA_PUBLIC_FUNC void md5_oneshot(const uint8_t *data, size_t len, uint8_t *digest) {
     md5_context ctx;
     md5_init(&ctx);
     md5_update(&ctx, data, len);

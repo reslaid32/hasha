@@ -18,7 +18,7 @@ typedef struct HASHA_EXPORT {
 HASHA_PUBLIC_FUNC void blake3_init(blake3_context *ctx);
 HASHA_PUBLIC_FUNC void blake3_update(blake3_context *ctx, const uint8_t *data, size_t length);
 HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest, size_t length);
-HASHA_PUBLIC_FUNC void blake3(const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length);
+HASHA_PUBLIC_FUNC void blake3_oneshot(const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length);
 
 HASHA_EXTERN_C_END
 

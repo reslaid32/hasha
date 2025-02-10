@@ -24,20 +24,17 @@ INCLUDEDIR = $(DESTDIR)/include
 TEST_SRC = tests
 
 TARGET_LIBHASHA = $(LIB)/libhasha.so
-TARGET_LIBHASHAPP = $(LIB)/libhashapp.so
-
 INSTALL_LIBHASHA = $(LIBDIR)/libhasha.so
-INSTALL_LIBHASHAPP = $(LIBDIR)/libhashapp.so
 INSTALL_INCDIR = $(INCLUDEDIR)/hasha
 
 SRCS 	= $(wildcard $(SRC)/*.c)
 SRCSXX 	= $(wildcard $(SRC)/*.cc)
 
 OBJS = $(patsubst $(SRC)/%.c,$(OBJ)/%.c.o,$(SRCS))
-OBJSXX = $(patsubst $(SRC)/%.c,$(OBJ)/%.cc.o,$(SRCSXX))
 
 TEST_SRCS = $(wildcard $(TEST_SRC)/*.c)
 TEST_SRCSXX = $(wildcard $(TEST_SRC)/*.cc)
+
 TEST_OBJS = $(patsubst $(TEST_SRC)/%.c,$(OBJ)/%.c.o,$(TEST_SRCS))
 TEST_OBJSXX = $(patsubst $(TEST_SRC)/%.cc,$(OBJ)/%.cc.o,$(TEST_SRCS))
 TEST_EXEC = $(BIN)/unit
@@ -52,25 +49,16 @@ UTILS_EXEC = $(patsubst $(UTILS_SRC)/%.c,$(UTILS_BIN)/%,$(UTILS_SRCS))
 
 all: lib utils tests
 
-lib: $(TARGET_LIBHASHA) $(TARGET_LIBHASHAPP)
+lib: $(TARGET_LIBHASHA)
 
 $(TARGET_LIBHASHA): $(OBJS)
 	mkdir -p $(BIN)
 	mkdir -p $(LIB)
 	$(CC) $(LDFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $^
 
-$(TARGET_LIBHASHAPP): $(OBJSXX)
-	mkdir -p $(BIN)
-	mkdir -p $(LIB)
-	$(CXX) $(LDFLAGS) $(MARCH) $(DEFS) -I$(INC) -L$(LIB) -lhasha -o $@ $^
-
 $(OBJ)/%.c.o: $(SRC)/%.c
 	mkdir -p $(OBJ)
 	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@
-
-$(OBJ)/%.cc.o: $(SRCXX)/%.cc
-	mkdir -p $(OBJ)
-	$(CXX) $(CXXFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@
 
 # Tests
 $(OBJ)/%.c.o: $(TEST_SRC)/%.c
@@ -85,9 +73,9 @@ $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIBHASHA)
 	mkdir -p $(BIN)
 	$(CC) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -g
 
-$(TEST_EXECXX): $(TEST_OBJSXX) $(TARGET_LIBHASHAPP)
+$(TEST_EXECXX): $(TEST_OBJSXX)
 	mkdir -p $(BIN)
-	$(CXX) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -lhashapp -g
+	$(CXX) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -g
 
 utils: $(UTILS_EXEC)
 
@@ -103,16 +91,15 @@ clean:
 
 clean-all: clean
 
-install-lib: $(TARGET_LIBHASHA) $(TARGET_LIBHASHAPP)
+install-lib: $(TARGET_LIBHASHA)
 	# Install the shared library
 	install -d $(LIBDIR)
 	install -m 755 $(TARGET_LIBHASHA) $(INSTALL_LIBHASHA)
-	install -m 755 $(TARGET_LIBHASHAPP) $(INSTALL_LIBHASHAPP)
 
 	# Install the header file
 	# install -d $(INCLUDEDIR)
 
-	mkdir -p $(INSTALL_INCDIR) $(INSTALL_INCDIR)/internal $(INSTALL_INCDIR)/pp
+	mkdir -p $(INSTALL_INCDIR) $(INSTALL_INCDIR)/internal
 	# install -m 644 $(wildcard $(INC)/hasha/*) $(INSTALL_INCDIR)
 	cp -r $(wildcard $(INC)/hasha/*) $(INSTALL_INCDIR)
 
@@ -122,7 +109,6 @@ install-lib: $(TARGET_LIBHASHA) $(TARGET_LIBHASHAPP)
 uninstall-lib:
 	# Remove the shared library
 	rm -f $(INSTALL_LIBHASHA)
-	rm -f $(INSTALL_LIBHASHAPP)
 
 	# Remove the header file
 	rm -rf $(INSTALL_INCDIR)

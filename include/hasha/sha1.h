@@ -31,7 +31,7 @@ HASHA_PUBLIC_FUNC void sha1_transform(sha1_context *ctx, const uint8_t *block);
 HASHA_PUBLIC_FUNC void sha1_init(sha1_context *ctx);
 HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data, size_t len);
 HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest);
-HASHA_PUBLIC_FUNC void sha1(const uint8_t *data, size_t len, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha1_oneshot(const uint8_t *data, size_t len, uint8_t *digest);
 
 HASHA_EXTERN_C_END
 
