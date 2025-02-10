@@ -1,5 +1,6 @@
 #include "internal/bits.h"
 #include "internal/ver.h"
+#include "internal/oneshot.h"
 
 #include "crc.h"
 #include "md5.h"

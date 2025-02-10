@@ -33,12 +33,12 @@ SRCSXX 	= $(wildcard $(SRC)/*.cc)
 OBJS = $(patsubst $(SRC)/%.c,$(OBJ)/%.c.o,$(SRCS))
 
 TEST_SRCS = $(wildcard $(TEST_SRC)/*.c)
-TEST_SRCSXX = $(wildcard $(TEST_SRC)/*.cc)
-
 TEST_OBJS = $(patsubst $(TEST_SRC)/%.c,$(OBJ)/%.c.o,$(TEST_SRCS))
-TEST_OBJSXX = $(patsubst $(TEST_SRC)/%.cc,$(OBJ)/%.cc.o,$(TEST_SRCS))
 TEST_EXEC = $(BIN)/unit
-TEST_EXECXX = $(BIN)/unitpp
+
+# TEST_SRCSXX = $(wildcard $(TEST_SRC)/*.cc)
+# TEST_OBJSXX = $(patsubst $(TEST_SRC)/%.cc,$(OBJ)/%.cc.o,$(TEST_SRCSXX))
+# TEST_EXECXX = $(BIN)/unitpp
 
 UTILS_SRC = utils
 UTILS_BIN = $(BIN)/utils
@@ -47,9 +47,13 @@ UTILS_SRCS = $(wildcard $(UTILS_SRC)/*.c)
 UTILS_OBJS = $(patsubst $(UTILS_SRC)/%.c,$(OBJ)/%.c.o,$(UTILS_SRCS))
 UTILS_EXEC = $(patsubst $(UTILS_SRC)/%.c,$(UTILS_BIN)/%,$(UTILS_SRCS))
 
-all: lib utils tests
+# UTILS_SRCSXX = $(wildcard $(UTILS_SRC)/*.cc)
+# UTILS_OBJSXX = $(patsubst $(UTILS_SRC)/%.cc,$(OBJ)/%.cc.o,$(UTILS_SRCSXX))
+# UTILS_EXECXX = $(patsubst $(UTILS_SRC)/%.cc,$(UTILS_BIN)/%,$(UTILS_SRCSXX))
 
 lib: $(TARGET_LIBHASHA)
+
+all: lib utilsall testsall
 
 $(TARGET_LIBHASHA): $(OBJS)
 	mkdir -p $(BIN)
@@ -65,23 +69,29 @@ $(OBJ)/%.c.o: $(TEST_SRC)/%.c
 	mkdir -p $(OBJ)
 	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
 
-$(OBJ)/%.cc.o: $(TEST_SRC)/%.cc
-	mkdir -p $(OBJ)
-	$(CXX) $(CXXFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
+# $(OBJ)/%.cc.o: $(TEST_SRC)/%.cc
+# 	mkdir -p $(OBJ)
+# 	$(CXX) $(CXXFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
 
 $(TEST_EXEC): $(TEST_OBJS) $(TARGET_LIBHASHA)
 	mkdir -p $(BIN)
 	$(CC) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -g
 
-$(TEST_EXECXX): $(TEST_OBJSXX)
-	mkdir -p $(BIN)
-	$(CXX) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -g
+# $(TEST_EXECXX): $(TEST_OBJSXX)
+# 	mkdir -p $(BIN)
+# 	$(CXX) $(LDFLAGS_TEST) $(MARCH_LD) -I$(INC) -o $@ $^ -L$(LIB) -lhasha -g
 
 utils: $(UTILS_EXEC)
+# utilspp: $(UTILS_EXECXX)
+utilsall: utils # utilspp
 
 $(UTILS_BIN)/%: $(UTILS_SRC)/%.c $(TARGET_LIBHASHA)
 	mkdir -p $(UTILS_BIN)
 	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(LIB) -lhasha $(UTILS_l) -g
+
+# $(UTILS_BIN)/%: $(UTILS_SRC)/%.cc $(TARGET_LIBHASHA)
+# 	mkdir -p $(UTILS_BIN)
+# 	$(CXX) $(CXXFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(LIB) -lhasha $(UTILS_l) -g
 
 clean-garbage:
 	rm -rf $(OBJ)
@@ -135,16 +145,20 @@ uninstall-execs:
 install: install-lib install-execs
 uninstall: uninstall-execs uninstall-lib
 
-tests: $(TEST_EXEC) $(TEST_EXECXX)
+tests: $(TEST_EXEC)
+# testspp: $(TEST_EXECXX)
+testsall: tests # testspp
 
 check: $(TEST_EXEC)
 	$(TEST_EXEC)
 
-checkpp: $(TEST_EXECXX)
-	$(TEST_EXECXX)
+# checkpp: $(TEST_EXECXX)
+# 	$(TEST_EXECXX)
+
+checkall: check # checkpp
 
 bench: $(BIN)/utils/hashabench
 	@echo "Running benchmark..."
 	$(BIN)/utils/hashabench
 
-.PHONY: all tests bench clean clean-all clean-garbage install-lib install-execs install uninstall-execs uninstall-lib uninstall check checkpp
+.PHONY: all tests bench clean clean-all clean-garbage install-lib install-execs install uninstall-execs uninstall-lib uninstall check checkpp checkall utils utilspp utilsall
