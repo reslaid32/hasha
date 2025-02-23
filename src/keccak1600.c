@@ -1,21 +1,3 @@
-/*
- * keccak_perm.c
- *
- * This file defines three variants of the Keccak‑f[1600] permutation:
- *
- *   1. A software (plain C) implementation, available via keccakf1600_software().
- *   2. A SIMD version using AVX2 (operates on 4 states in parallel).
- *   3. A “nano” version using ARM NEON (operates on 2 states in parallel).
- *
- * The wrapper function, keccakf1600(), always accepts a pointer to
- * 25 uint64_t words (a single Keccak state) and will call the accelerated variant
- * if available, or fall back to the software version.
- *
- * In addition, the new function keccakf1600_batch() processes an array of
- * states concurrently using OpenMP to utilize all available CPU threads.
- *
- * The variant is selected entirely at compile time. No runtime dispatch is used.
- */
 
 #define HASHA_LIBRARY_BUILD
 
@@ -132,3 +114,32 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t * restrict state) {
     KECCAKF_ROUND(state, 0x8000000080008008ULL);
 }
 
+#if defined(__clang__)
+HASHA_PUBLIC_FUNC void keccakf1600_clang_vectorized(_vec200_u64 *state)
+{
+    KECCAKF_ROUND((*state), 0x0000000000000001ULL);
+    KECCAKF_ROUND((*state), 0x0000000000008082ULL);
+    KECCAKF_ROUND((*state), 0x800000000000808aULL);
+    KECCAKF_ROUND((*state), 0x8000000080008000ULL);
+    KECCAKF_ROUND((*state), 0x000000000000808bULL);
+    KECCAKF_ROUND((*state), 0x0000000080000001ULL);
+    KECCAKF_ROUND((*state), 0x8000000080008081ULL);
+    KECCAKF_ROUND((*state), 0x8000000000008009ULL);
+    KECCAKF_ROUND((*state), 0x000000000000008aULL);
+    KECCAKF_ROUND((*state), 0x0000000000000088ULL);
+    KECCAKF_ROUND((*state), 0x0000000080008009ULL);
+    KECCAKF_ROUND((*state), 0x000000008000000aULL);
+    KECCAKF_ROUND((*state), 0x000000008000808bULL);
+    KECCAKF_ROUND((*state), 0x800000000000008bULL);
+    KECCAKF_ROUND((*state), 0x8000000000008089ULL);
+    KECCAKF_ROUND((*state), 0x8000000000008003ULL);
+    KECCAKF_ROUND((*state), 0x8000000000008002ULL);
+    KECCAKF_ROUND((*state), 0x8000000000000080ULL);
+    KECCAKF_ROUND((*state), 0x000000000000800aULL);
+    KECCAKF_ROUND((*state), 0x800000008000000aULL);
+    KECCAKF_ROUND((*state), 0x8000000080008081ULL);
+    KECCAKF_ROUND((*state), 0x8000000000008080ULL);
+    KECCAKF_ROUND((*state), 0x0000000080000001ULL);
+    KECCAKF_ROUND((*state), 0x8000000080008008ULL);
+}
+#endif

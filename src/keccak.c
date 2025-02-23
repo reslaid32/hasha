@@ -24,7 +24,7 @@ HASHA_PUBLIC_FUNC void keccak_224_absorb(keccak_224_context *ctx, const uint8_t 
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -33,7 +33,7 @@ HASHA_PUBLIC_FUNC void keccak_224_absorb(keccak_224_context *ctx, const uint8_t 
 HASHA_PUBLIC_FUNC void keccak_224_finalize(keccak_224_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x01; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccakf1600((uint64_t *)ctx->state);
+    keccakf1600_do((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -41,7 +41,7 @@ HASHA_PUBLIC_FUNC void keccak_224_squeeze(keccak_224_context *ctx, uint8_t *dige
     size_t i = 0;
     while (i < KECCAK_224_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -78,7 +78,7 @@ HASHA_PUBLIC_FUNC void keccak_256_absorb(keccak_256_context *ctx, const uint8_t 
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -87,7 +87,7 @@ HASHA_PUBLIC_FUNC void keccak_256_absorb(keccak_256_context *ctx, const uint8_t 
 HASHA_PUBLIC_FUNC void keccak_256_finalize(keccak_256_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x01; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccakf1600((uint64_t *)ctx->state);
+    keccakf1600_do((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -95,7 +95,7 @@ HASHA_PUBLIC_FUNC void keccak_256_squeeze(keccak_256_context *ctx, uint8_t *dige
     size_t i = 0;
     while (i < KECCAK_256_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -132,7 +132,7 @@ HASHA_PUBLIC_FUNC void keccak_384_absorb(keccak_384_context *ctx, const uint8_t 
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -141,7 +141,7 @@ HASHA_PUBLIC_FUNC void keccak_384_absorb(keccak_384_context *ctx, const uint8_t 
 HASHA_PUBLIC_FUNC void keccak_384_finalize(keccak_384_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x01; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccakf1600((uint64_t *)ctx->state);
+    keccakf1600_do((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -149,7 +149,7 @@ HASHA_PUBLIC_FUNC void keccak_384_squeeze(keccak_384_context *ctx, uint8_t *dige
     size_t i = 0;
     while (i < KECCAK_384_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -186,7 +186,7 @@ HASHA_PUBLIC_FUNC void keccak_512_absorb(keccak_512_context *ctx, const uint8_t 
         i += absorb_bytes;
 
         if (ctx->absorb_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->absorb_index = 0;
         }
     }
@@ -195,7 +195,7 @@ HASHA_PUBLIC_FUNC void keccak_512_absorb(keccak_512_context *ctx, const uint8_t 
 HASHA_PUBLIC_FUNC void keccak_512_finalize(keccak_512_context *ctx) {
     ctx->state[ctx->absorb_index] ^= 0x01; // Padding
     ctx->state[ctx->rate - 1] ^= 0x80;
-    keccakf1600((uint64_t *)ctx->state);
+    keccakf1600_do((uint64_t *)ctx->state);
     ctx->squeeze_index = 0;
 }
 
@@ -203,7 +203,7 @@ HASHA_PUBLIC_FUNC void keccak_512_squeeze(keccak_512_context *ctx, uint8_t *dige
     size_t i = 0;
     while (i < KECCAK_512_DIGEST_SIZE) {
         if (ctx->squeeze_index == ctx->rate) {
-            keccakf1600((uint64_t *)ctx->state);
+            keccakf1600_do((uint64_t *)ctx->state);
             ctx->squeeze_index = 0;
         }
         digest[i++] = ctx->state[ctx->squeeze_index++];

@@ -47,9 +47,10 @@ HASHA_PRIVATE_FUNC void print_usage(const char *prog_name) {
     printf("  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, keccak256, keccak384, keccak512\n");
     printf("  blake3_<digestlen>\n");
     printf("Options:\n");
-    printf("  -t, --iters NUM     Number of iterations for benchmarking (default: 1000000)\n");
+    printf("  -t, --iters NUM      Number of iterations for benchmarking (default: 1000000)\n");
     printf("  -i, --input STRING   Input string to hash (default: 'hello')\n");
     printf("  -a, --algos STRING   Space- (or comma-) separated list of algorithms to benchmark (default: all)\n");
+    printf("  -r, --svres PATH     Save benchmark results to a file\n");
     printf("  -h, --help           Show this help message\n");
 }
 
@@ -277,6 +278,14 @@ int main(int argc, char *argv[]) {
             }
             else if (strcmp(token, "keccak512") == 0) {
                 BENCHMARK(iterations, "hasha KECCAK-512", keccak_512_oneshot, result_file, (const uint8_t*)input, input_len, output);
+            }
+            else if (strcmp(token, "keccakf1600") == 0) {
+                uint64_t state[200] = { 0,1,2,3,4,5,6,7,8,9, 0 };  
+                BENCHMARK(iterations, "KECCAKF-1600", keccakf1600, result_file, state);
+            }
+            else if (strcmp(token, "keccakf1600do") == 0) {
+                uint64_t state[200] = { 0,1,2,3,4,5,6,7,8,9, 0 };  
+                BENCHMARK(iterations, "KECCAKF-1600-DO", keccakf1600_do, result_file, state);
             }
             else if (strncmp(token, "blake3_", 7) == 0) {
                 char *endptr;
