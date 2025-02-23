@@ -13,6 +13,7 @@ HASHA_EXTERN_C_BEG
 
 HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
 
+#if 0
 #if defined(__clang__)
 
   typedef uint64_t _vec200_u64 __attribute__((vector_size(200)));
@@ -25,7 +26,6 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
     keccakf1600_clang_vectorized((_vec200_u64*)state);
   }
 #endif
-
 /* gcc */
 #if !defined(__clang__) && defined(__GNUC__)
 #define __HASHA_NO_VECTORIZE
@@ -36,6 +36,9 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
 #else
 #define keccakf1600_do(pstate) keccakf1600(pstate)
 #endif
+#endif
+
+#define keccakf1600_do(pstate) keccakf1600(pstate)
 
 HASHA_EXTERN_C_END
 

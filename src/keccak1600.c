@@ -114,6 +114,7 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t * restrict state) {
     KECCAKF_ROUND(state, 0x8000000080008008ULL);
 }
 
+#if 0
 #if defined(__clang__)
 HASHA_PUBLIC_FUNC void keccakf1600_clang_vectorized(_vec200_u64 *state)
 {
@@ -142,4 +143,5 @@ HASHA_PUBLIC_FUNC void keccakf1600_clang_vectorized(_vec200_u64 *state)
     KECCAKF_ROUND((*state), 0x0000000080000001ULL);
     KECCAKF_ROUND((*state), 0x8000000080008008ULL);
 }
+#endif
 #endif
