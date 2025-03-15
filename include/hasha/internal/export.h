@@ -1,6 +1,8 @@
 #if !defined(HASHA_EXPORT_H_LOADED)
 #define HASHA_EXPORT_H_LOADED
 
+#include "./debug.h"
+
 #if !defined(HASHA_DEPRECATED)
 #define HASHA_DEPRECATED(msg) __attribute__((deprecated(msg)))
 #endif  // HASHA_DEPRECATED

@@ -2,25 +2,26 @@
 
 ## **libhasha is a standalone lightweight hashing library supporting multiple hashing algorithms written in C**
 
-# Benchmarks
+# Benchmarks (2.0.0)
+ - All
+   <div style="display: flex; gap: 10px;">
+      <img src="./assets/bench.1m-iter.png" alt="1M iters" width="400">
+      <img src="./assets/bench.per-iter.png" alt="per iter" width="400">
+   </div>
 
-## SHA-2
+# Benchmarks (1.0.5)
 
-### SHA 256 & 512 Benchmark
+ - SHA-2
+   <div style="display: flex; gap: 10px;">
+      <img src="./assets/sha256.png" alt="SHA-256 Benchmark" width="400">
+      <img src="./assets/sha512.png" alt="SHA-512 Benchmark" width="400">
+   </div>
 
-<div style="display: flex; gap: 10px;">
-   <img src="./assets/sha256.png" alt="SHA-256 Benchmark" width="400">
-   <img src="./assets/sha512.png" alt="SHA-512 Benchmark" width="400">
-</div>
-
-## SHA-3
-
-### SHA3 256 & 512 Benchmark
-
-<div style="display: flex; gap: 10px;">
-   <img src="./assets/sha3_256.png" alt="SHA3-256 Benchmark" width="400">
-   <img src="./assets/sha3_512.png" alt="SHA3-512 Benchmark" width="400">
-</div>
+ - SHA-3
+   <div style="display: flex; gap: 10px;">
+      <img src="./assets/sha3_256.png" alt="SHA3-256 Benchmark" width="400">
+      <img src="./assets/sha3_512.png" alt="SHA3-512 Benchmark" width="400">
+   </div>
 
 ### Supported Algorithms
 

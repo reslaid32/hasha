@@ -215,7 +215,7 @@ HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
   if (((uintptr_t)state & (32 - 1)) != 0)
   {
     HASHA_DEBUG(
-        "[alignerr] align is not 32\n           "
+        "[libhasha.keccakf1600] align is not 32"
         "using keccakf1600_scalar_imp instead "
         "of keccakf1600_vec_imp\n");
     return keccakf1600_scalar_imp(state);
