@@ -1,4 +1,4 @@
-name: (x86_64) On Ubuntu
+name: (x86_64) On Ubuntu [LLVM]
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
 
     - name: Performing test
       run: |
-        sudo make all install checkall uninstall clean CC=clang DEFS=-DHASHA_MAYBE_VECTORIZE
+        sudo make all install checkall uninstall clean CC=clang
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean CC=clang DEFS=-DHASHA_MAYBE_VECTORIZE
+        sudo make all install bench uninstall clean CC=clang

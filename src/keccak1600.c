@@ -158,6 +158,18 @@ HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
   HASHA_KECCAKF1600_ROUND(state, 0x8000000080008008ULL);
 }
 
+#define STRINGIFY2(x) #x
+#define STRINGIFY(x) STRINGIFY2(x)
+
+#define DO_PRAGMA(x) _Pragma(#x)
+
+// Macro to emit a message.
+#define PRAGMA_MESSAGE(msg) DO_PRAGMA(message msg)
+
+// Now print the message with your macro value.
+PRAGMA_MESSAGE(
+    "[hasha] keccakf1600 ImplID: " STRINGIFY(HASHA_KECCAKF1600_IMPLID))
+
 #if HASHA_KECCAKF1600_IMPLID == 0
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
 {
