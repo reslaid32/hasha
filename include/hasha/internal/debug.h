@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/debug.h
+ */
+
 #if !defined(HASHA_DEBUG_H_LOADED)
 #define HASHA_DEBUG_H_LOADED
 

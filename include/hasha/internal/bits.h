@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/bits.h
+ */
+
 #if !defined(LIBHASHA_BITS_H_LOADED)
 #define LIBHASHA_BITS_H_LOADED
 

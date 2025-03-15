@@ -1,3 +1,24 @@
+/**
+ * @file hasha/blake3.h
+ * @brief Header file for the BLAKE3 hashing algorithm.
+ *
+ * This file provides the interface for the BLAKE3 cryptographic hash
+ * function, including the definition of the hash state context and
+ * function declarations for initializing, updating, finalizing, and
+ * computing the hash in a one-shot operation.
+ *
+ * The BLAKE3 algorithm is designed for high performance and security,
+ * processing data in chunks and producing variable-length digests. This
+ * header is part of the libhasha library.
+ *
+ * @note The implementation assumes that the target system supports the
+ * necessary integer types and that sufficient memory is allocated for the
+ * digest.
+ *
+ * @see https://github.com/BLAKE3-team/BLAKE3 for further details on the
+ * BLAKE3 algorithm.
+ */
+
 #if !defined(LIBHASHA_BLAKE3_H_LOADED)
 #define LIBHASHA_BLAKE3_H_LOADED
 
@@ -14,7 +35,7 @@ HASHA_EXTERN_C_BEG
  * It includes buffers for input data, the current hash state, and other
  * necessary variables for processing the data in chunks.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   /**
    * @brief Input buffer for storing data being processed.

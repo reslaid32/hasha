@@ -1,3 +1,19 @@
+/**
+ * @file hasha/crc.h
+ * @brief Header file for CRC32 checksum calculation.
+ *
+ * This file provides the definitions and function declaration for
+ * computing the CRC32 checksum, a cyclic redundancy check used to detect
+ * errors in data. It includes the definition of the CRC32 polynomial and a
+ * convenient one-shot function that performs initialization, update, and
+ * finalization of the CRC32 calculation in a single call.
+ *
+ * @note The CRC32 calculation uses the commonly used 32-bit polynomial
+ * (0xEDB88320).
+ *
+ * @see https://en.wikipedia.org/wiki/Cyclic_redundancy_check
+ */
+
 #if !defined(LIBHASHA_CRC_H_LOADED)
 #define LIBHASHA_CRC_H_LOADED
 

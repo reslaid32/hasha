@@ -1,3 +1,7 @@
+/**
+ * @file hasha/all.h
+ */
+
 #include "blake3.h"
 #include "crc.h"
 #include "internal/bits.h"

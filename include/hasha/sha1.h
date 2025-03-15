@@ -1,3 +1,25 @@
+/**
+ * @file hasha/sha1.h
+ * @brief Header file for the SHA-1 cryptographic hash algorithm.
+ *
+ * This header file defines the interface for the SHA-1 hash function,
+ * including the context structure, constants, and function declarations
+ * required for computing a SHA-1 hash. SHA-1 is a widely-used
+ * cryptographic hash function that produces a 160-bit (20-byte) hash
+ * value, and is commonly used for data integrity verification.
+ *
+ * The functions provided in this file allow for incremental hashing via
+ * context initialization, data updating, and finalization, as well as a
+ * one-shot function for computing the hash of an entire input in a single
+ * call.
+ *
+ * @note SHA-1 is considered weak for modern cryptographic applications and
+ * should be used only in legacy systems or non-critical applications.
+ *
+ * @see https://en.wikipedia.org/wiki/SHA-1 for further information on
+ * SHA-1.
+ */
+
 #if !defined(LIBHASHA_SHA1_H_LOADED)
 #define LIBHASHA_SHA1_H_LOADED
 
@@ -28,7 +50,7 @@ HASHA_EXTERN_C_BEG
  * the intermediate state variables, bit count, and buffer used to store
  * input data.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint32_t state[5];  /**< The SHA-1 state variables (5 words). */
   uint64_t bit_count; /**< The number of processed bits. */

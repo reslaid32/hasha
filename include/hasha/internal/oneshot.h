@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/oneshot.h
+ */
+
 #if !defined(HASHA_ONESHOT_H_LOADED)
 #define HASHA_ONESHOT_H_LOADED
 

@@ -1,4 +1,7 @@
-/* hasha main header */
+/**
+ * @file hasha/lib.h
+ */
+
 #if !defined(HASHA_LOADED)
 #define HASHA_LOADED
 

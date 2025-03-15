@@ -1,3 +1,29 @@
+/**
+ * @file hasha/keccak.h
+ * @brief Header file for Keccak-based hash functions.
+ *
+ * This header file defines the interface for various Keccak hash
+ * functions, including Keccak-224, Keccak-256, Keccak-384, and Keccak-512.
+ * It provides macro definitions for the rate and digest sizes of each
+ * variant, as well as a common context structure for holding the internal
+ * state of the hash computation.
+ *
+ * The functions declared in this file include those for initializing the
+ * context, absorbing input data, finalizing the hash computation, and
+ * squeezing out the final digest. Additionally, one-shot operations are
+ * provided for convenience.
+ *
+ * The core transformation is based on the Keccak-f[1600] permutation (see
+ * keccak1600.h) and adheres to the specifications set forth in the SHA-3
+ * standard.
+ *
+ * @note The rate and digest sizes are defined in accordance with the SHA-3
+ * standard.
+ *
+ * @see https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf for
+ * further details on the SHA-3 standard.
+ */
+
 #if !defined(LIBHASHA_KECCAK_H_LOADED)
 #define LIBHASHA_KECCAK_H_LOADED
 
@@ -88,7 +114,7 @@ HASHA_EXTERN_C_BEG
  * includes the state array, rate, capacity, and indices for absorbing and
  * squeezing data.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   /**
    * @brief The Keccak state array.

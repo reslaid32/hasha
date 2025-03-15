@@ -1,3 +1,33 @@
+/**
+ * @file hasha/keccak1600.h
+ * @brief Keccak-f[1600] permutation implementation for libhasha.
+ *
+ * This header provides the core Keccak-f[1600] permutation function,
+ * which is the fundamental transformation used in Keccak-based hashing
+ * algorithms, including SHA-3. The permutation operates on a 1600-bit
+ * state and is applied iteratively during the hashing process.
+ *
+ * @details
+ * The Keccak-f[1600] function performs a sequence of nonlinear
+ * transformations on a 200-byte state array, following the Keccak
+ * permutation rules. This is a key component of Keccak-based cryptographic
+ * algorithms. The library provides a generic reference implementation,
+ * but optimized implementations may also be available depending on the
+ * target architecture.
+ *
+ * ## Features
+ * - Implements the Keccak-f[1600] permutation on a 1600-bit state.
+ * - Optimized for performance using platform-specific enhancements where
+ * available.
+ * - Provides an implementation ID to identify different optimizations.
+ *
+ * ## References
+ * - The Keccak sponge function family: https://keccak.team/
+ * - SHA-3 Standard (FIPS 202): https://doi.org/10.6028/NIST.FIPS.202
+ *
+ * @note This implementation follows the FIPS 202 specification for SHA-3.
+ */
+
 #if !defined(LIBHASHA_KECCAK1600_H_LOADED)
 #define LIBHASHA_KECCAK1600_H_LOADED
 

@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/export.h
+ */
+
 #if !defined(HASHA_EXPORT_H_LOADED)
 #define HASHA_EXPORT_H_LOADED
 

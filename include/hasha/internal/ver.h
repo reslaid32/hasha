@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/ver.h
+ */
+
 #if !defined(LIBHASHA_VER_H_LOADED)
 #define LIBHASHA_VER_H_LOADED
 
@@ -5,7 +9,7 @@
 
 HASHA_EXTERN_C_BEG
 
-typedef struct HASHA_EXPORT
+typedef struct
 {
   unsigned major, minor, patch;
 } hashaver_t;

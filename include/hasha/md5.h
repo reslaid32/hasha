@@ -1,3 +1,21 @@
+/**
+ * @file hasha/md5.h
+ * @brief Header file for the MD5 cryptographic hash function.
+ *
+ * This header file defines the interface for computing the MD5 hash, a
+ * widely-used cryptographic hash algorithm that produces a 128-bit
+ * (16-byte) digest. The MD5 algorithm processes data in 512-bit blocks and
+ * is commonly used for checksum calculations and data integrity
+ * verification.
+ *
+ * @note MD5 is considered cryptographically broken and unsuitable for
+ * secure applications. It is provided primarily for legacy support and
+ * non-critical usage scenarios.
+ *
+ * @see https://en.wikipedia.org/wiki/MD5 for further details on the MD5
+ * algorithm.
+ */
+
 #if !defined(LIBHASHA_MD5_H_LOADED)
 #define LIBHASHA_MD5_H_LOADED
 
@@ -26,7 +44,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, bit count, and buffer used
  * during the MD5 hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint32_t state[4]; /**< Current MD5 state (4 words). */
   uint64_t

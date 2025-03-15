@@ -1,3 +1,27 @@
+/**
+ * @file hasha/sha3.h
+ * @brief Header file for SHA3 cryptographic hash functions.
+ *
+ * This header file defines the interface for the SHA3 family of hash
+ * functions, including SHA3-224, SHA3-256, SHA3-384, and SHA3-512. It
+ * provides macro definitions for the rate and digest sizes of each
+ * variant, a common context structure for holding the internal state
+ * during the hashing process, and function declarations for initializing,
+ * absorbing data, finalizing, squeezing the digest, and performing
+ * one-shot hash computations.
+ *
+ * The SHA3 functions utilize the Keccak-f[1600] permutation (see
+ * keccak1600.h) as the core transformation. The library processes input
+ * data in chunks and generates a hash digest according to the variant's
+ * specification.
+ *
+ * @note The rate and digest sizes are defined in accordance with the SHA3
+ * standard.
+ *
+ * @see https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.202.pdf for
+ * further details on the SHA3 standard.
+ */
+
 #if !defined(LIBHASHA_SHA3_H_LOADED)
 #define LIBHASHA_SHA3_H_LOADED
 
@@ -65,7 +89,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, rate, capacity, and indexes
  * used during the SHA3 hashing process.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint8_t state[200]; /**< State array used during the SHA3 computation. */
   size_t rate;        /**< Rate of the SHA3 algorithm. */

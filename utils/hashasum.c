@@ -11,9 +11,9 @@ void print_digest(const uint8_t *digest, size_t size)
   printf("\n");
 }
 
-void print_usage(const char *program_name)
+void print_usage(const char *execu)
 {
-  printf("Usage: %s <algorithm> <data_source> [data]\n", program_name);
+  printf("Usage: %s <algorithm> <data_source> [data]\n", execu);
   printf("\nSupported algorithms:\n");
   printf(
       "  crc32, md5, sha1, sha224, sha256, sha384, sha512, sha512_224, "

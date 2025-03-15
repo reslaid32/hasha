@@ -1,3 +1,25 @@
+/**
+ * @file hasha/sha2.h
+ * @brief Header file for SHA-2 cryptographic hash functions.
+ *
+ * This header file defines the interface for the SHA-2 family of hash
+ * algorithms, including SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224,
+ * and SHA-512/256.
+ *
+ * It provides macro definitions for block and digest sizes, context
+ * structures for maintaining the hash state, and declarations for
+ * functions that perform the core transformations, initialization,
+ * updating, finalization, and one-shot hash computations. The
+ * implementation adheres to the standards specified in FIPS 180-4.
+ *
+ * @note The SHA-2 algorithms defined in this file process data in
+ * fixed-size blocks and output a fixed-length digest. They are designed
+ * for high performance and security in cryptographic applications.
+ *
+ * @see https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf for
+ * further details on SHA-2.
+ */
+
 #if !defined(LIBHASHA_SHA2_H_LOADED)
 #define LIBHASHA_SHA2_H_LOADED
 
@@ -99,7 +121,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 224-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -115,7 +137,7 @@ typedef struct HASHA_EXPORT
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 256-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -131,7 +153,7 @@ typedef struct HASHA_EXPORT
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 384-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint64_t state[8];     /**< Internal state (8 words). */
   uint64_t bit_count[2]; /**< Bit count representing the total input length
@@ -147,7 +169,7 @@ typedef struct HASHA_EXPORT
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -163,7 +185,7 @@ typedef struct HASHA_EXPORT
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-224-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -179,7 +201,7 @@ typedef struct HASHA_EXPORT
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-256-bit hash computation.
  */
-typedef struct HASHA_EXPORT
+typedef struct
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t

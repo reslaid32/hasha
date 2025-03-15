@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/std.h
+ */
+
 #if !defined(HASHA_STD_H_LOADED)
 #define HASHA_STD_H_LOADED
 

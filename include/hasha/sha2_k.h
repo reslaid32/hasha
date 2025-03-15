@@ -1,3 +1,15 @@
+/**
+ * @file hasha/sha2_k.h
+ * @brief SHA-2 Constants for Hash Computation
+ *
+ * This header defines the round constants (K) and initial hash values (H0)
+ * used in various SHA-2 hashing algorithms, including SHA-224, SHA-256,
+ * SHA-384, SHA-512, SHA-512/224, and SHA-512/256.
+ *
+ * These constants are precomputed fractional values of cube roots and
+ * square roots of prime numbers, as specified in the FIPS 180-4 standard.
+ */
+
 #if !defined(LIBHASHA_SHA2_K_H_LOADED)
 #define LIBHASHA_SHA2_K_H_LOADED
 

@@ -1,3 +1,7 @@
+/**
+ * @file hasha/internal/acel.h
+ */
+
 #if !defined(HASHA_ACEL_H_LOADED)
 #define HASHA_ACEL_H_LOADED
 
