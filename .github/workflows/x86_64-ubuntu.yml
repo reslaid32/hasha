@@ -18,6 +18,11 @@ jobs:
       run: |
         ulimit -c unlimited
 
+    - name: Install necessary packages
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gdb
+
     - name: Performing test
       run: |
         sudo make all install checkall uninstall clean || (echo "Segmentation fault occurred"; gdb -batch -ex "bt" -ex "quit" ./bin/unit core.*)
