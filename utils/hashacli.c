@@ -1,3 +1,5 @@
+/* hashacli.c (hasha.c -> hashacli.c) */
+
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>

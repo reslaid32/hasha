@@ -6,162 +6,580 @@
 #include "internal/std.h"
 #include "sha2_k.h"
 
+/**
+ * @def SHA2_224_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 224-bit algorithm (64
+ * bytes).
+ */
 #define SHA2_224_BLOCK_SIZE 64
-// #define SHA2_224_DIGEST_SIZE 28
+
+/**
+ * @def SHA2_224_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 224-bit algorithm (28
+ * bytes).
+ */
 #define SHA2_224_DIGEST_SIZE HASHA_bB(224)
 
+/**
+ * @def SHA2_256_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 256-bit algorithm (64
+ * bytes).
+ */
 #define SHA2_256_BLOCK_SIZE 64
-// #define SHA2_256_DIGEST_SIZE 32
+
+/**
+ * @def SHA2_256_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 256-bit algorithm (32
+ * bytes).
+ */
 #define SHA2_256_DIGEST_SIZE HASHA_bB(256)
 
+/**
+ * @def SHA2_384_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 384-bit algorithm (128
+ * bytes).
+ */
 #define SHA2_384_BLOCK_SIZE 128
-// #define SHA2_384_DIGEST_SIZE 48
+
+/**
+ * @def SHA2_384_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 384-bit algorithm (48
+ * bytes).
+ */
 #define SHA2_384_DIGEST_SIZE HASHA_bB(384)
 
+/**
+ * @def SHA2_512_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 512-bit algorithm (128
+ * bytes).
+ */
 #define SHA2_512_BLOCK_SIZE 128
-// #define SHA2_512_DIGEST_SIZE 64
+
+/**
+ * @def SHA2_512_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 512-bit algorithm (64
+ * bytes).
+ */
 #define SHA2_512_DIGEST_SIZE HASHA_bB(512)
 
+/**
+ * @def SHA2_512_224_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 512-224 algorithm (128
+ * bytes).
+ */
 #define SHA2_512_224_BLOCK_SIZE 128
-// #define SHA2_512_224_DIGEST_SIZE 28
+
+/**
+ * @def SHA2_512_224_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 512-224 algorithm (28
+ * bytes).
+ */
 #define SHA2_512_224_DIGEST_SIZE HASHA_bB(224)
 
+/**
+ * @def SHA2_512_256_BLOCK_SIZE
+ * @brief The block size in bytes for the SHA-2 512-256 algorithm (128
+ * bytes).
+ */
 #define SHA2_512_256_BLOCK_SIZE 128
-// #define SHA2_512_256_DIGEST_SIZE 32
+
+/**
+ * @def SHA2_512_256_DIGEST_SIZE
+ * @brief The digest size in bytes for the SHA-2 512-256 algorithm (32
+ * bytes).
+ */
 #define SHA2_512_256_DIGEST_SIZE HASHA_bB(256)
 
 HASHA_EXTERN_C_BEG
 
+/**
+ * @struct sha2_224_context
+ * @brief Context structure for SHA-2 224-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 224-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint32_t state[8];
-  uint64_t bit_count;
-  uint8_t buffer[SHA2_224_BLOCK_SIZE];
+  uint32_t state[8]; /**< Internal state (8 words). */
+  uint64_t
+      bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[SHA2_224_BLOCK_SIZE]; /**< Buffer used for processing data
+                                          in 512-bit blocks. */
 } sha2_224_context;
 
+/**
+ * @struct sha2_256_context
+ * @brief Context structure for SHA-2 256-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 256-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint32_t state[8];
-  uint64_t bit_count;
-  uint8_t buffer[SHA2_256_BLOCK_SIZE];
+  uint32_t state[8]; /**< Internal state (8 words). */
+  uint64_t
+      bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[SHA2_256_BLOCK_SIZE]; /**< Buffer used for processing data
+                                          in 512-bit blocks. */
 } sha2_256_context;
 
+/**
+ * @struct sha2_384_context
+ * @brief Context structure for SHA-2 384-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 384-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint64_t state[8];
-  uint64_t bit_count[2];
-  uint8_t buffer[SHA2_384_BLOCK_SIZE];
+  uint64_t state[8];     /**< Internal state (8 words). */
+  uint64_t bit_count[2]; /**< Bit count representing the total input length
+                            (2 parts). */
+  uint8_t buffer[SHA2_384_BLOCK_SIZE]; /**< Buffer used for processing data
+                                          in 512-bit blocks. */
 } sha2_384_context;
 
+/**
+ * @struct sha2_512_context
+ * @brief Context structure for SHA-2 512-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 512-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint64_t state[8];
-  uint64_t bit_count;
-  uint8_t buffer[SHA2_512_BLOCK_SIZE];
+  uint64_t state[8]; /**< Internal state (8 words). */
+  uint64_t
+      bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[SHA2_512_BLOCK_SIZE]; /**< Buffer used for processing data
+                                          in 512-bit blocks. */
 } sha2_512_context;
 
+/**
+ * @struct sha2_512_224_context
+ * @brief Context structure for SHA-2 512-224-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 512-224-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint64_t state[8];
-  uint64_t bit_count;
-  uint8_t buffer[SHA2_512_224_BLOCK_SIZE];
+  uint64_t state[8]; /**< Internal state (8 words). */
+  uint64_t
+      bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[SHA2_512_224_BLOCK_SIZE]; /**< Buffer used for processing
+                                              data in 512-bit blocks. */
 } sha2_512_224_context;
 
+/**
+ * @struct sha2_512_256_context
+ * @brief Context structure for SHA-2 512-256-bit hashing.
+ *
+ * This structure holds the internal state, bit count, and buffer used
+ * during the SHA-2 512-256-bit hash computation.
+ */
 typedef struct HASHA_EXPORT
 {
-  uint64_t state[8];
-  uint64_t bit_count;
-  uint8_t buffer[SHA2_512_256_BLOCK_SIZE];
+  uint64_t state[8]; /**< Internal state (8 words). */
+  uint64_t
+      bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[SHA2_512_256_BLOCK_SIZE]; /**< Buffer used for processing
+                                              data in 512-bit blocks. */
 } sha2_512_256_context;
 
-static const uint32_t SHA2_224_H0[8] = {0xc1059ed8, 0x367cd507, 0x3070dd17,
-                                        0xf70e5939, 0xffc00b31, 0x68581511,
-                                        0x64f98fa7, 0xbefa4fa4};
-
-static const uint32_t SHA2_256_H0[8] = {0x6a09e667, 0xbb67ae85, 0x3c6ef372,
-                                        0xa54ff53a, 0x510e527f, 0x9b05688c,
-                                        0x1f83d9ab, 0x5be0cd19};
-
-static const uint64_t SHA2_384_H0[8] = {
-    0xcbbb9d5dc1059ed8, 0x629a292a367cd507, 0x9159015a3070dd17,
-    0x152fecd8f70e5939, 0x67332667ffc00b31, 0x8eb44a8768581511,
-    0xdb0c2e0d64f98fa7, 0x47b5481dbefa4fa4};
-
-static const uint64_t SHA2_512_H0[8] = {
-    0x6a09e667f3bcc908, 0xbb67ae8584caa73b, 0x3c6ef372fe94f82b,
-    0xa54ff53a5f1d36f1, 0x510e527fade682d1, 0x9b05688c2b3e6c1f,
-    0x1f83d9abfb41bd6b, 0x5be0cd19137e2179};
-
-static const uint64_t SHA2_512_224_H0[8] = {
-    0x8c3d37c819544da2, 0x73e1996689dcd4d6, 0x1dfab7ae32ff9c82,
-    0x679dd514582f9fcf, 0x0f6d2b697bd44da8, 0x77e36f7304c48942,
-    0x3f9d85a86a1d36c8, 0x1112e6ad91d692a1};
-
-static const uint64_t SHA2_512_256_H0[8] = {
-    0x22312194fc2bf72c, 0x9f555fa3c84c64c2, 0x2393b86b6f53b151,
-    0x963877195940eabd, 0x96283ee2a88effe3, 0xbe5e1e2553863992,
-    0x2b0199fc2c85b8aa, 0x0eb72ddc81c52ca2};
-
+/**
+ * @brief Transforms the data in the SHA-2 224-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 224-bit hash
+ * computation. It processes the input data block and updates the internal
+ * state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 224-bit context structure.
+ * @param data Pointer to the input data block (64 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_224_transform(sha2_224_context *ctx,
-                                          const uint8_t *block);
+                                          const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 224-bit context.
+ *
+ * This function initializes the SHA-2 224-bit context to start a new hash
+ * computation.
+ *
+ * @param ctx Pointer to the SHA-2 224-bit context structure to initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_224_init(sha2_224_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 224-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2 224-bit
+ * context state.
+ *
+ * @param ctx Pointer to the SHA-2 224-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_224_update(sha2_224_context *ctx,
                                        const uint8_t *data, size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 224-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 224-bit hash calculation and outputs
+ * the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 224-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 224-bit digest (28 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_224_finalize(sha2_224_context *ctx,
                                          uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 224-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 224-bit hash of the provided data in a
+ * single call. It initializes, updates, and finalizes the SHA-2 224-bit
+ * computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 224-bit digest (28 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_224_oneshot(const uint8_t *data, size_t length,
                                         uint8_t *digest);
 
+/**
+ * @brief Transforms the data in the SHA-2 256-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 256-bit hash
+ * computation. It processes the input data block and updates the internal
+ * state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 256-bit context structure.
+ * @param data Pointer to the input data block (64 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_256_transform(sha2_256_context *ctx,
-                                          const uint8_t *block);
+                                          const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 256-bit context.
+ *
+ * This function initializes the SHA-2 256-bit context to start a new hash
+ * computation.
+ *
+ * @param ctx Pointer to the SHA-2 256-bit context structure to initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_256_init(sha2_256_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 256-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2 256-bit
+ * context state.
+ *
+ * @param ctx Pointer to the SHA-2 256-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_256_update(sha2_256_context *ctx,
                                        const uint8_t *data, size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 256-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 256-bit hash calculation and outputs
+ * the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 256-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 256-bit digest (32 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_256_finalize(sha2_256_context *ctx,
                                          uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 256-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 256-bit hash of the provided data in a
+ * single call. It initializes, updates, and finalizes the SHA-2 256-bit
+ * computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 256-bit digest (32 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_256_oneshot(const uint8_t *data, size_t length,
                                         uint8_t *digest);
 
+/**
+ * @brief Transforms the data in the SHA-2 384-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 384-bit hash
+ * computation. It processes the input data block and updates the internal
+ * state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 384-bit context structure.
+ * @param data Pointer to the input data block (128 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_384_transform(sha2_384_context *ctx,
-                                          const uint8_t *block);
+                                          const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 384-bit context.
+ *
+ * This function initializes the SHA-2 384-bit context to start a new hash
+ * computation.
+ *
+ * @param ctx Pointer to the SHA-2 384-bit context structure to initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_384_init(sha2_384_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 384-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2 384-bit
+ * context state.
+ *
+ * @param ctx Pointer to the SHA-2 384-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_384_update(sha2_384_context *ctx,
                                        const uint8_t *data, size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 384-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 384-bit hash calculation and outputs
+ * the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 384-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 384-bit digest (48 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_384_finalize(sha2_384_context *ctx,
                                          uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 384-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 384-bit hash of the provided data in a
+ * single call. It initializes, updates, and finalizes the SHA-2 384-bit
+ * computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 384-bit digest (48 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_384_oneshot(const uint8_t *data, size_t length,
                                         uint8_t *digest);
 
+/**
+ * @brief Transforms the data in the SHA-2 512-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 512-bit hash
+ * computation. It processes the input data block and updates the internal
+ * state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 512-bit context structure.
+ * @param data Pointer to the input data block (128 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_transform(sha2_512_context *ctx,
-                                          const uint8_t *block);
+                                          const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 512-bit context.
+ *
+ * This function initializes the SHA-2 512-bit context to start a new hash
+ * computation.
+ *
+ * @param ctx Pointer to the SHA-2 512-bit context structure to initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_init(sha2_512_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 512-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2 512-bit
+ * context state.
+ *
+ * @param ctx Pointer to the SHA-2 512-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_update(sha2_512_context *ctx,
-                                       const uint8_t *data, size_t len);
+                                       const uint8_t *data, size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 512-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 512-bit hash calculation and outputs
+ * the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 512-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-bit digest (64 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_finalize(sha2_512_context *ctx,
                                          uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 512-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 512-bit hash of the provided data in a
+ * single call. It initializes, updates, and finalizes the SHA-2 512-bit
+ * computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-bit digest (64 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_oneshot(const uint8_t *data, size_t length,
                                         uint8_t *digest);
 
+/**
+ * @brief Transforms the data in the SHA-2 512-224-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 512-224-bit
+ * hash computation. It processes the input data block and updates the
+ * internal state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 512-224-bit context structure.
+ * @param data Pointer to the input data block (128 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_224_transform(sha2_512_224_context *ctx,
-                                              const uint8_t *block);
+                                              const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 512-224-bit context.
+ *
+ * This function initializes the SHA-2 512-224-bit context to start a new
+ * hash computation.
+ *
+ * @param ctx Pointer to the SHA-2 512-224-bit context structure to
+ * initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_224_init(sha2_512_224_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 512-224-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2
+ * 512-224-bit context state.
+ *
+ * @param ctx Pointer to the SHA-2 512-224-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_224_update(sha2_512_224_context *ctx,
                                            const uint8_t *data,
                                            size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 512-224-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 512-224-bit hash calculation and
+ * outputs the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 512-224-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-224-bit digest (28 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_224_finalize(sha2_512_224_context *ctx,
                                              uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 512-224-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 512-224-bit hash of the provided data
+ * in a single call. It initializes, updates, and finalizes the SHA-2
+ * 512-224-bit computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-224-bit digest (28 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_224_oneshot(const uint8_t *data,
                                             size_t length,
                                             uint8_t *digest);
 
+/**
+ * @brief Transforms the data in the SHA-2 512-256-bit context.
+ *
+ * This function performs the transformation step of the SHA-2 512-256-bit
+ * hash computation. It processes the input data block and updates the
+ * internal state of the context.
+ *
+ * @param ctx Pointer to the SHA-2 512-256-bit context structure.
+ * @param data Pointer to the input data block (128 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_256_transform(sha2_512_256_context *ctx,
-                                              const uint8_t *block);
+                                              const uint8_t *data);
+
+/**
+ * @brief Initializes the SHA-2 512-256-bit context.
+ *
+ * This function initializes the SHA-2 512-256-bit context to start a new
+ * hash computation.
+ *
+ * @param ctx Pointer to the SHA-2 512-256-bit context structure to
+ * initialize.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_256_init(sha2_512_256_context *ctx);
+
+/**
+ * @brief Updates the SHA-2 512-256-bit context with new data.
+ *
+ * This function processes the provided data and updates the SHA-2
+ * 512-256-bit context state.
+ *
+ * @param ctx Pointer to the SHA-2 512-256-bit context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ */
 HASHA_PUBLIC_FUNC void sha2_512_256_update(sha2_512_256_context *ctx,
                                            const uint8_t *data,
                                            size_t length);
+
+/**
+ * @brief Finalizes the SHA-2 512-256-bit computation and produces the hash
+ * digest.
+ *
+ * This function finalizes the SHA-2 512-256-bit hash calculation and
+ * outputs the resulting digest into the provided buffer.
+ *
+ * @param ctx Pointer to the SHA-2 512-256-bit context structure.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-256-bit digest (32 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_256_finalize(sha2_512_256_context *ctx,
                                              uint8_t *digest);
+
+/**
+ * @brief Computes the SHA-2 512-256-bit hash in a one-shot operation.
+ *
+ * This function computes the SHA-2 512-256-bit hash of the provided data
+ * in a single call. It initializes, updates, and finalizes the SHA-2
+ * 512-256-bit computation internally.
+ *
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final SHA-2
+ * 512-256-bit digest (32 bytes).
+ */
 HASHA_PUBLIC_FUNC void sha2_512_256_oneshot(const uint8_t *data,
                                             size_t length,
                                             uint8_t *digest);

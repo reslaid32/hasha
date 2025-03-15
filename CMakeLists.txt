@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(libhasha)
+project(hasha)
 
 set(CMAKE_C_COMPILER gcc)
 set(CMAKE_CXX_COMPILER g++)
@@ -26,25 +26,20 @@ foreach(SRC ${SRCS})
   set(OBJS ${OBJS} ${CMAKE_BINARY_DIR}/obj/${SRC_NAME}.o)
 endforeach()
 
-add_library(libhasha SHARED ${SRCS})
+add_library(hasha SHARED ${SRCS})
 
-set_target_properties(libhasha PROPERTIES
-  LIBRARY_OUTPUT_DIRECTORY ${LIBRARY_OUTPUT_PATH}
-  PREFIX ""
-)
+target_include_directories(hasha PUBLIC ${INCLUDE_DIR})
 
-target_include_directories(libhasha PUBLIC ${INCLUDE_DIR})
+target_link_libraries(hasha PRIVATE)
 
-target_link_libraries(libhasha PRIVATE)
-
-install(TARGETS libhasha DESTINATION lib)
+install(TARGETS hasha DESTINATION lib)
 install(DIRECTORY ${INCLUDE_DIR}/hasha DESTINATION include)
 
 foreach(UTIL_SRC ${UTILS_SRCS})
   get_filename_component(UTIL_NAME ${UTIL_SRC} NAME_WE)
   add_executable(${UTIL_NAME} ${UTIL_SRC})
   target_include_directories(${UTIL_NAME} PUBLIC ${INCLUDE_DIR})
-  target_link_libraries(${UTIL_NAME} libhasha)
+  target_link_libraries(${UTIL_NAME} hasha)
   # set_target_properties(${UTIL_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}/utils)
   install(TARGETS ${UTIL_NAME} DESTINATION bin)
 endforeach()
