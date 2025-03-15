@@ -25,8 +25,8 @@ jobs:
 
     - name: Performing test
       run: |
-        sudo make all install checkall uninstall clean || (echo "Segmentation fault occurred"; gdb -batch -ex "bt" -ex "quit" ./bin/unit core.*)
+        sudo make all install checkall uninstall clean || (echo "Segmentation fault occurred"; gdb -batch -ex "bt" -ex "quit" ./bin/unit)
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean || (echo "Segmentation fault occurred during benchmark"; gdb -batch -ex "bt" -ex "quit" ./bin/unit core.*)
+        sudo make all install bench uninstall clean
