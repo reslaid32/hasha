@@ -20,7 +20,7 @@
 #define CLOCK_MONOTONIC 1
 #endif // CLOCK_MONOTONIC
 
-#define BENCHMARK(ITERATIONS, HASHNAME, FUNC, FILE_, ...) do {                \
+#define BENCHMARK(ITERATIONS, LABEL, FUNC, FILE_, ...) do {                \
     struct timespec start, end;                                         \
     clock_gettime(CLOCK_MONOTONIC, &start);                             \
     for (int i = 0; i < (ITERATIONS); ++i) {                            \
@@ -33,9 +33,9 @@
     double time_taken_s = (double)time_taken_us / 1000000.0;              \
     double avg_time_per_iteration = (double)time_taken_us / (ITERATIONS);   \
     printf("%s: Total time: %lld us (%lf s), Avg per iteration: %.2f us\n", \
-           HASHNAME, time_taken_us, time_taken_s, avg_time_per_iteration); \
+           LABEL, time_taken_us, time_taken_s, avg_time_per_iteration); \
     if (FILE_) {                                                           \
-        fprintf(FILE_, "%s,%lld,%lf,%.2f\n", HASHNAME, time_taken_us, time_taken_s, avg_time_per_iteration); \
+        fprintf(FILE_, "%s,%lld,%lf,%.2f\n", LABEL, time_taken_us, time_taken_s, avg_time_per_iteration); \
     } \
     } while (0)
 
