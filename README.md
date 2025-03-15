@@ -66,3 +66,12 @@
    cd hasha
    sudo make uninstall
    ```
+
+### **Using CMake**
+   - ### **Installing**
+   ```bash
+   git clone https://github.com/reslaid32/hasha.git
+   cd hasha
+   mkdir build && cd build
+   cmake ..; cmake --build .; sudo cmake --install . --prefix /usr/
+   ```

@@ -28,7 +28,6 @@ INSTALL_LIBHASHA = $(LIBDIR)/libhasha.so
 INSTALL_INCDIR = $(INCLUDEDIR)/hasha
 
 SRCS 	= $(wildcard $(SRC)/*.c)
-SRCSXX 	= $(wildcard $(SRC)/*.cc)
 
 OBJS = $(patsubst $(SRC)/%.c,$(OBJ)/%.c.o,$(SRCS))
 
