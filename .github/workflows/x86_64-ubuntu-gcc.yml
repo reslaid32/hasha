@@ -16,8 +16,8 @@ jobs:
 
     - name: Performing test
       run: |
-        sudo make all install checkall uninstall clean
+        sudo make all install checkall uninstall clean CC=gcc DEFS=-DHASHA_MAYBE_VECTORIZE
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean
+        sudo make all install bench uninstall clean CC=gcc DEFS=-DHASHA_MAYBE_VECTORIZE

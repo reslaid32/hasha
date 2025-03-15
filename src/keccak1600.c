@@ -120,8 +120,6 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
     HASHA_KECCAKF1600_IOTA_STEP(state, rc) \
   } while (0)
 
-#define HASHA_MAYBE_VECTORIZE
-
 #if defined(HASHA_MAYBE_VECTORIZE)
 #if defined(__clang__)
 #define HASHA_KECCAKF1600_IMPLID 5
