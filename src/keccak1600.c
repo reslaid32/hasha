@@ -228,3 +228,8 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state)
 {
   keccakf1600_imp(state);
 }
+
+HASHA_PUBLIC_FUNC int hasha_keccakf1600_implid()
+{
+  return HASHA_KECCAKF1600_IMPLID;
+}
