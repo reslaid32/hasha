@@ -1,6 +1,6 @@
 CC = gcc
 CXX = clang++
-CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize -O0
+CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize -O2
 CXXFLAGS = -Wall -Wextra -I./include -fPIC
 
 LDFLAGS = -shared
