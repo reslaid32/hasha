@@ -1,8 +1,8 @@
 #if !defined(LIBHASHA_CRC_H_LOADED)
 #define LIBHASHA_CRC_H_LOADED
 
-#include "internal/export.h"
 #include "internal/bits.h"
+#include "internal/export.h"
 #include "internal/std.h"
 
 #define CRC32_POLYNOMIAL 0xEDB88320
@@ -13,4 +13,4 @@ HASHA_PUBLIC_FUNC uint32_t crc32_oneshot(const uint8_t *data, size_t len);
 
 HASHA_EXTERN_C_END
 
-#endif // LIBHASHA_CRC_H_LOADED
+#endif  // LIBHASHA_CRC_H_LOADED

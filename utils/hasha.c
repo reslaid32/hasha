@@ -1,33 +1,36 @@
-#include "../include/hasha/internal/acel.h"
-#include "../include/hasha/internal/ver.h"
-
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-const char *stringize_acel_status(int acel) {
-  switch (acel) {
-  case 0:
-    return "Disabled";
-  case 1:
-    return "SIMD";
-  case 2:
-    return "Neon";
-  default:
-    return "?";
+#include "../include/hasha/internal/acel.h"
+#include "../include/hasha/internal/ver.h"
+
+const char *stringize_acel_status(int acel)
+{
+  switch (acel)
+  {
+    case 0:
+      return "Disabled";
+    case 1:
+      return "SIMD";
+    case 2:
+      return "Neon";
+    default:
+      return "?";
   }
 }
 
-int main(int argc, char *argv[]) {
-  if (argc != 2) {
-    goto usage;
-  }
+int main(int argc, char *argv[])
+{
+  if (argc != 2) { goto usage; }
 
   hashaver_t hashav = hashaver();
 
-  for (int i = 1; i < argc; i++) {
-    if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
+  for (int i = 1; i < argc; i++)
+  {
+    if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0)
+    {
       printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor,
              hashav.patch);
       return EXIT_SUCCESS;
@@ -38,7 +41,8 @@ int main(int argc, char *argv[]) {
             printf("libhasha hw accelerating: %s [%s (0x%0x)]\n", hashac ? "true" : "false", stringize_acel_status(hashac), hashac);
         }
 #endif
-    else {
+    else
+    {
       fprintf(stderr, "Unknown option: %s\n", argv[i]);
       goto usage;
     }
