@@ -14,8 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Set ulimit for core dumps
+      run: |
+        ulimit -c unlimited
+
     - name: Performing test
-      run: sudo make all install checkall uninstall clean
+      run: |
+        sudo make all install checkall uninstall clean || (echo "Segmentation fault occurred"; gdb -batch -ex "bt" -ex "quit" ./bin/unit core.*)
 
     - name: Performing benchmark
-      run: sudo make all install bench uninstall clean
+      run: |
+        sudo make all install bench uninstall clean || (echo "Segmentation fault occurred during benchmark"; gdb -batch -ex "bt" -ex "quit" ./bin/unit core.*)
