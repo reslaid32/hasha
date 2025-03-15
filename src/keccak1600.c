@@ -166,9 +166,11 @@ HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
 // Macro to emit a message.
 #define PRAGMA_MESSAGE(msg) DO_PRAGMA(message msg)
 
+#if defined(HASHA_EMIT_IMPLID)
 // Now print the message with your macro value.
 PRAGMA_MESSAGE(
     "[hasha] keccakf1600 ImplID: " STRINGIFY(HASHA_KECCAKF1600_IMPLID))
+#endif
 
 #if HASHA_KECCAKF1600_IMPLID == 0
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
