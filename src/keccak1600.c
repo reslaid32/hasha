@@ -118,6 +118,8 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
     HASHA_KECCAKF1600_IOTA_STEP(state, rc) \
   } while (0)
 
+#define HASHA_MAYBE_VECTORIZE
+
 #if defined(HASHA_MAYBE_VECTORIZE)
 #if defined(__clang__)
 #define HASHA_KECCAKF1600_IMPLID 5
@@ -158,7 +160,8 @@ HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
 }
 #elif HASHA_KECCAKF1600_IMPLID == 5
 
-typedef uint64_t hasha_vec200_u64 __attribute__((vector_size(200)));
+typedef uint64_t hasha_vec200_u64
+    __attribute__((vector_size(200), aligned(32)));
 
 HASHA_PRIVATE_FUNC void keccakf1600_vec_imp(hasha_vec200_u64 *state)
 {

@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/hasha/internal/acel.h"
 #include "../include/hasha/internal/ver.h"
 
 const char *stringize_acel_status(int acel)
