@@ -5,6 +5,8 @@
 
 #include <stdint.h>
 
+#include "../include/hasha/internal/debug.h"
+
 HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
     __attribute__((always_inline));
 HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
@@ -130,8 +132,7 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
 #define HASHA_KECCAKF1600_IMPLID 0
 #endif
 
-#if HASHA_KECCAKF1600_IMPLID == 0
-HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
+HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
 {
   HASHA_KECCAKF1600_ROUND(state, 0x0000000000000001ULL);
   HASHA_KECCAKF1600_ROUND(state, 0x0000000000008082ULL);
@@ -157,6 +158,12 @@ HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
   HASHA_KECCAKF1600_ROUND(state, 0x8000000000008080ULL);
   HASHA_KECCAKF1600_ROUND(state, 0x0000000080000001ULL);
   HASHA_KECCAKF1600_ROUND(state, 0x8000000080008008ULL);
+}
+
+#if HASHA_KECCAKF1600_IMPLID == 0
+HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
+{
+  keccakf1600_scalar_imp(state);
 }
 #elif HASHA_KECCAKF1600_IMPLID == 5
 
@@ -193,6 +200,14 @@ HASHA_PRIVATE_FUNC void keccakf1600_vec_imp(hasha_vec200_u64 *state)
 
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
 {
+  if (((uintptr_t)state & (32 - 1)) != 0)
+  {
+    HASHA_DEBUG(
+        "[alignerr] align is not 32\n           "
+        "using keccakf1600_scalar_imp instead "
+        "of keccakf1600_vec_imp\n");
+    return keccakf1600_scalar_imp(state);
+  }
   __builtin_assume(state != NULL);
   keccakf1600_vec_imp(
       (hasha_vec200_u64 *)__builtin_assume_aligned(state, 32));

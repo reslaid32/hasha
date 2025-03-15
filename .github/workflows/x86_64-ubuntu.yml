@@ -14,18 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Set ulimit for core dumps
-      run: |
-        ulimit -c unlimited
-
-    - name: Install necessary packages
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y gdb
-
     - name: Performing test
       run: |
-        sudo make all install checkall uninstall clean || (echo "Segmentation fault occurred"; gdb -batch -ex "bt" -ex "quit" ./bin/unit)
+        sudo make all install checkall uninstall clean
 
     - name: Performing benchmark
       run: |

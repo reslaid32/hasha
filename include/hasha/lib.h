@@ -7,6 +7,7 @@
 #include "./all.h"
 #include "./internal/acel.h"
 #include "./internal/bits.h"
+#include "./internal/debug.h"
 #include "./internal/export.h"
 #include "./internal/oneshot.h"
 #include "./internal/std.h"
