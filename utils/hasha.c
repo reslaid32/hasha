@@ -4,7 +4,9 @@
 #include <string.h>
 
 #include "../include/hasha/internal/ver.h"
+#include "../include/hasha/keccak1600.h"
 
+#if 0
 const char *stringize_acel_status(int acel)
 {
   switch (acel)
@@ -19,6 +21,8 @@ const char *stringize_acel_status(int acel)
       return "?";
   }
 }
+
+#endif
 
 int main(int argc, char *argv[])
 {
@@ -40,6 +44,11 @@ int main(int argc, char *argv[])
             printf("libhasha hw accelerating: %s [%s (0x%0x)]\n", hashac ? "true" : "false", stringize_acel_status(hashac), hashac);
         }
 #endif
+    else if (strcmp(argv[i], "--keccakf1600-implid") == 0)
+    {
+      printf("libhasha.keccakf1600.implid: %d\n",
+             hasha_keccakf1600_implid());
+    }
     else
     {
       fprintf(stderr, "Unknown option: %s\n", argv[i]);
@@ -50,6 +59,7 @@ int main(int argc, char *argv[])
   return EXIT_SUCCESS;
 
 usage:
-  fprintf(stderr, "Usage: %s [-v|--version]\n", argv[0]);
+  fprintf(stderr, "Usage: %s [-v|--version | --keccakf1600-implid]\n",
+          argv[0]);
   return EXIT_FAILURE;
 }
