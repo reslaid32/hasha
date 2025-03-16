@@ -121,7 +121,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 224-bit hash computation.
  */
-typedef struct
+typedef struct sha2_224_context
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -137,7 +137,7 @@ typedef struct
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 256-bit hash computation.
  */
-typedef struct
+typedef struct sha2_256_context
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -153,7 +153,7 @@ typedef struct
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 384-bit hash computation.
  */
-typedef struct
+typedef struct sha2_384_context
 {
   uint64_t state[8];     /**< Internal state (8 words). */
   uint64_t bit_count[2]; /**< Bit count representing the total input length
@@ -169,7 +169,7 @@ typedef struct
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-bit hash computation.
  */
-typedef struct
+typedef struct sha2_512_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -185,7 +185,7 @@ typedef struct
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-224-bit hash computation.
  */
-typedef struct
+typedef struct sha2_512_224_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
@@ -201,7 +201,7 @@ typedef struct
  * This structure holds the internal state, bit count, and buffer used
  * during the SHA-2 512-256-bit hash computation.
  */
-typedef struct
+typedef struct sha2_512_256_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t

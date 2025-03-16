@@ -89,7 +89,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, rate, capacity, and indexes
  * used during the SHA3 hashing process.
  */
-typedef struct
+typedef struct sha3_context
 {
   uint8_t state[200]; /**< State array used during the SHA3 computation. */
   size_t rate;        /**< Rate of the SHA3 algorithm. */

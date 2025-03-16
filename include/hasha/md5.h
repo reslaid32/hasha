@@ -44,7 +44,7 @@ HASHA_EXTERN_C_BEG
  * This structure holds the internal state, bit count, and buffer used
  * during the MD5 hash computation.
  */
-typedef struct
+typedef struct md5_context
 {
   uint32_t state[4]; /**< Current MD5 state (4 words). */
   uint64_t

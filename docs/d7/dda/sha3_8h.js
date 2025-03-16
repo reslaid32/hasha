@@ -14,6 +14,7 @@ var sha3_8h =
     [ "sha3_256_context", "d7/dda/sha3_8h.html#a87463c92795d6e900ce69a92a07da546", null ],
     [ "sha3_384_context", "d7/dda/sha3_8h.html#a54548bd91c166632bce66a2830743703", null ],
     [ "sha3_512_context", "d7/dda/sha3_8h.html#a6957e0db21b705871ce40d90cf0b9ea8", null ],
+    [ "sha3_context", "d7/dda/sha3_8h.html#a4c2f3e15b2b2dbb79630bc71335d2018", null ],
     [ "sha3_224_absorb", "d7/dda/sha3_8h.html#a5d042fbfc0e9188fc750377ebcfb1a26", null ],
     [ "sha3_224_finalize", "d7/dda/sha3_8h.html#acebcc15b25673c2b4a9e357631ca54c3", null ],
     [ "sha3_224_init", "d7/dda/sha3_8h.html#a2e8b8d870b34a36f372b6f1758feaf79", null ],

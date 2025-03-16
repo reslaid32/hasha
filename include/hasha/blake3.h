@@ -35,7 +35,7 @@ HASHA_EXTERN_C_BEG
  * It includes buffers for input data, the current hash state, and other
  * necessary variables for processing the data in chunks.
  */
-typedef struct
+typedef struct blake3_context
 {
   /**
    * @brief Input buffer for storing data being processed.

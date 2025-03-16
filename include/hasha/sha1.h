@@ -50,7 +50,7 @@ HASHA_EXTERN_C_BEG
  * the intermediate state variables, bit count, and buffer used to store
  * input data.
  */
-typedef struct
+typedef struct sha1_context
 {
   uint32_t state[5];  /**< The SHA-1 state variables (5 words). */
   uint64_t bit_count; /**< The number of processed bits. */

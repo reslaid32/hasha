@@ -104,6 +104,7 @@ $(function(){initNavTree('d0/d8f/blake3_8h.html','../../'); initResizable(true);
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">blake3.h File Reference</div></div>
 </div><!--header-->
@@ -133,6 +134,12 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <a href="../../d7/def/structblake3__context.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ae9df73ff48f4c7d427c32b9d1d907c52" id="r_ae9df73ff48f4c7d427c32b9d1d907c52"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct blake3_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9df73ff48f4c7d427c32b9d1d907c52">blake3_context</a></td></tr>
+<tr class="memdesc:ae9df73ff48f4c7d427c32b9d1d907c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <br /></td></tr>
+<tr class="separator:ae9df73ff48f4c7d427c32b9d1d907c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aedbdd17b7bbe8b873825c070bd8f908b" id="r_aedbdd17b7bbe8b873825c070bd8f908b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedbdd17b7bbe8b873825c070bd8f908b">blake3_init</a> (<a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *ctx)</td></tr>
@@ -156,7 +163,25 @@ Functions</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/BLAKE3-team/BLAKE3">https://github.com/BLAKE3-team/BLAKE3</a> for further details on the BLAKE3 algorithm. </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="ae9df73ff48f4c7d427c32b9d1d907c52" name="ae9df73ff48f4c7d427c32b9d1d907c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9df73ff48f4c7d427c32b9d1d907c52">&#9670;&#160;</a></span>blake3_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct blake3_context blake3_context</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>BLAKE3 hash state context. </p>
+<p>This structure holds the internal state of the BLAKE3 hashing algorithm. It includes buffers for input data, the current hash state, and other necessary variables for processing the data in chunks. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ae3e89c269e66d3dc6234842ba7f057fb" name="ae3e89c269e66d3dc6234842ba7f057fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3e89c269e66d3dc6234842ba7f057fb">&#9670;&#160;</a></span>blake3_final()</h2>
 
