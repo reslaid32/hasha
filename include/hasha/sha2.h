@@ -272,8 +272,8 @@ HASHA_PUBLIC_FUNC void sha2_224_final(sha2_224_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 224-bit digest (28 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_224_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_224_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Transforms the data in the SHA-2 256-bit context.
@@ -337,8 +337,8 @@ HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 256-bit digest (32 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_256_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_256_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Transforms the data in the SHA-2 384-bit context.
@@ -402,8 +402,8 @@ HASHA_PUBLIC_FUNC void sha2_384_final(sha2_384_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 384-bit digest (48 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_384_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_384_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Transforms the data in the SHA-2 512-bit context.
@@ -467,8 +467,8 @@ HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-bit digest (64 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Transforms the data in the SHA-2 512-224-bit context.
@@ -534,9 +534,8 @@ HASHA_PUBLIC_FUNC void sha2_512_224_final(sha2_512_224_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-224-bit digest (28 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_224_oneshot(const uint8_t *data,
-                                            size_t length,
-                                            uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_224_hash(const uint8_t *data,
+                                         size_t length, uint8_t *digest);
 
 /**
  * @brief Transforms the data in the SHA-2 512-256-bit context.
@@ -602,9 +601,8 @@ HASHA_PUBLIC_FUNC void sha2_512_256_final(sha2_512_256_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-256-bit digest (32 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_256_oneshot(const uint8_t *data,
-                                            size_t length,
-                                            uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_256_hash(const uint8_t *data,
+                                         size_t length, uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

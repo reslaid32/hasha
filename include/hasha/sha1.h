@@ -134,8 +134,8 @@ HASHA_PUBLIC_FUNC void sha1_final(sha1_context *ctx, uint8_t *digest);
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void sha1_oneshot(const uint8_t *data, size_t len,
-                                    uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha1_hash(const uint8_t *data, size_t len,
+                                 uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

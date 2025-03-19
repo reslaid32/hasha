@@ -37,89 +37,89 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
 {
   if (strcmp(algorithm, "crc32") == 0)
   {
-    uint32_t crc = crc32_oneshot(data, length);
+    uint32_t crc = crc32_hash(data, length);
     printf("%08x\n", crc);
     return;
   }
   else if (strcmp(algorithm, "md5") == 0)
   {
     *digest_size = MD5_DIGEST_SIZE;
-    md5_oneshot(data, length, digest);
+    md5_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha1") == 0)
   {
     *digest_size = SHA1_DIGEST_SIZE;
-    sha1_oneshot(data, length, digest);
+    sha1_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha224") == 0)
   {
     *digest_size = SHA2_224_DIGEST_SIZE;
-    sha2_224_oneshot(data, length, digest);
+    sha2_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha256") == 0)
   {
     *digest_size = SHA2_256_DIGEST_SIZE;
-    sha2_256_oneshot(data, length, digest);
+    sha2_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha384") == 0)
   {
     *digest_size = SHA2_384_DIGEST_SIZE;
-    sha2_384_oneshot(data, length, digest);
+    sha2_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512") == 0)
   {
     *digest_size = SHA2_512_DIGEST_SIZE;
-    sha2_512_oneshot(data, length, digest);
+    sha2_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_224") == 0)
   {
     *digest_size = SHA2_512_224_DIGEST_SIZE;
-    sha2_512_224_oneshot(data, length, digest);
+    sha2_512_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_256") == 0)
   {
     *digest_size = SHA2_512_256_DIGEST_SIZE;
-    sha2_512_256_oneshot(data, length, digest);
+    sha2_512_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_224") == 0)
   {
     *digest_size = SHA3_224_DIGEST_SIZE;
-    sha3_224_oneshot(data, length, digest);
+    sha3_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_256") == 0)
   {
     *digest_size = SHA3_256_DIGEST_SIZE;
-    sha3_256_oneshot(data, length, digest);
+    sha3_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_384") == 0)
   {
     *digest_size = SHA3_384_DIGEST_SIZE;
-    sha3_384_oneshot(data, length, digest);
+    sha3_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_512") == 0)
   {
     *digest_size = SHA3_512_DIGEST_SIZE;
-    sha3_512_oneshot(data, length, digest);
+    sha3_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak224") == 0)
   {
     *digest_size = KECCAK_224_DIGEST_SIZE;
-    keccak_224_oneshot(data, length, digest);
+    keccak_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak256") == 0)
   {
     *digest_size = KECCAK_256_DIGEST_SIZE;
-    keccak_256_oneshot(data, length, digest);
+    keccak_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak384") == 0)
   {
     *digest_size = KECCAK_384_DIGEST_SIZE;
-    keccak_384_oneshot(data, length, digest);
+    keccak_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak512") == 0)
   {
     *digest_size = KECCAK_512_DIGEST_SIZE;
-    keccak_512_oneshot(data, length, digest);
+    keccak_512_hash(data, length, digest);
   }
   else if (strncmp(algorithm, "blake3_", 7) == 0)
   {
@@ -127,7 +127,7 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
     char *end;
     long len     = strtol(len_str, &end, 10);
     *digest_size = HASHA_bB(len);
-    blake3_oneshot(data, length, digest, *digest_size);
+    blake3_hash(data, length, digest, *digest_size);
   }
   else
   {

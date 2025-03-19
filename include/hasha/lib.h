@@ -12,7 +12,7 @@
 #include "./internal/bits.h"
 #include "./internal/debug.h"
 #include "./internal/export.h"
-#include "./internal/oneshot.h"
+#include "./internal/hash.h"
 #include "./internal/std.h"
 #include "./internal/ver.h"
 

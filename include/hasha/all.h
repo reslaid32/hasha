@@ -5,7 +5,6 @@
 #include "blake3.h"
 #include "crc.h"
 #include "internal/bits.h"
-#include "internal/oneshot.h"
 #include "internal/ver.h"
 #include "keccak.h"
 #include "md5.h"

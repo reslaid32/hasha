@@ -182,47 +182,47 @@ int main(int argc, char *argv[])
   // If "all" was passed, run a fixed set of benchmarks
   if (strcmp(algos, "all") == 0)
   {
-    BENCHMARK(iterations, "CRC32", crc32_oneshot, result_file,
+    BENCHMARK(iterations, "CRC32", crc32_hash, result_file,
               (const uint8_t *)input, input_len);
-    BENCHMARK(iterations, "MD5", md5_oneshot, result_file,
+    BENCHMARK(iterations, "MD5", md5_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA1", sha1_oneshot, result_file,
+    BENCHMARK(iterations, "SHA1", sha1_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA224", sha2_224_oneshot, result_file,
+    BENCHMARK(iterations, "SHA224", sha2_224_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA256", sha2_256_oneshot, result_file,
+    BENCHMARK(iterations, "SHA256", sha2_256_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA384", sha2_384_oneshot, result_file,
+    BENCHMARK(iterations, "SHA384", sha2_384_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA512", sha2_512_oneshot, result_file,
+    BENCHMARK(iterations, "SHA512", sha2_512_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA512/224", sha2_512_224_oneshot, result_file,
+    BENCHMARK(iterations, "SHA512/224", sha2_512_224_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA512/256", sha2_512_256_oneshot, result_file,
+    BENCHMARK(iterations, "SHA512/256", sha2_512_256_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA3-224", sha3_224_oneshot, result_file,
+    BENCHMARK(iterations, "SHA3-224", sha3_224_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA3-256", sha3_256_oneshot, result_file,
+    BENCHMARK(iterations, "SHA3-256", sha3_256_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA3-384", sha3_384_oneshot, result_file,
+    BENCHMARK(iterations, "SHA3-384", sha3_384_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "SHA3-512", sha3_512_oneshot, result_file,
+    BENCHMARK(iterations, "SHA3-512", sha3_512_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "KECCAK-224", keccak_224_oneshot, result_file,
+    BENCHMARK(iterations, "KECCAK-224", keccak_224_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "KECCAK-256", keccak_256_oneshot, result_file,
+    BENCHMARK(iterations, "KECCAK-256", keccak_256_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "KECCAK-384", keccak_384_oneshot, result_file,
+    BENCHMARK(iterations, "KECCAK-384", keccak_384_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "KECCAK-512", keccak_512_oneshot, result_file,
+    BENCHMARK(iterations, "KECCAK-512", keccak_512_hash, result_file,
               (const uint8_t *)input, input_len, output);
-    BENCHMARK(iterations, "BLAKE3-224", blake3_oneshot, result_file,
+    BENCHMARK(iterations, "BLAKE3-224", blake3_hash, result_file,
               (const uint8_t *)input, input_len, output, 28);
-    BENCHMARK(iterations, "BLAKE3-256", blake3_oneshot, result_file,
+    BENCHMARK(iterations, "BLAKE3-256", blake3_hash, result_file,
               (const uint8_t *)input, input_len, output, 32);
-    BENCHMARK(iterations, "BLAKE3-384", blake3_oneshot, result_file,
+    BENCHMARK(iterations, "BLAKE3-384", blake3_hash, result_file,
               (const uint8_t *)input, input_len, output, 48);
-    BENCHMARK(iterations, "BLAKE3-512", blake3_oneshot, result_file,
+    BENCHMARK(iterations, "BLAKE3-512", blake3_hash, result_file,
               (const uint8_t *)input, input_len, output, 64);
   }
   else
@@ -236,48 +236,48 @@ int main(int argc, char *argv[])
       token = trim(token);
       if (strcmp(token, "crc32") == 0)
       {
-        BENCHMARK(iterations, "hasha CRC32", crc32_oneshot, result_file,
+        BENCHMARK(iterations, "hasha CRC32", crc32_hash, result_file,
                   (const uint8_t *)input, input_len);
       }
       else if (strcmp(token, "md5") == 0)
       {
-        BENCHMARK(iterations, "hasha MD5", md5_oneshot, result_file,
+        BENCHMARK(iterations, "hasha MD5", md5_hash, result_file,
                   (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha1") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA1", sha1_oneshot, result_file,
+        BENCHMARK(iterations, "hasha SHA1", sha1_hash, result_file,
                   (const uint8_t *)input, input_len, output);
       }
 
       else if (strcmp(token, "sha224") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA224", sha2_224_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA224", sha2_224_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha256") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA256", sha2_256_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA256", sha2_256_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha384") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA384", sha2_384_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA384", sha2_384_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha512") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA512", sha2_512_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA512", sha2_512_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha512_224") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA512/224", sha2_512_224_oneshot,
+        BENCHMARK(iterations, "hasha SHA512/224", sha2_512_224_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha512_256") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA512/256", sha2_512_256_oneshot,
+        BENCHMARK(iterations, "hasha SHA512/256", sha2_512_256_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
 
@@ -333,23 +333,23 @@ int main(int argc, char *argv[])
 
       else if (strcmp(token, "sha3_224") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA3-224", sha3_224_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA3-224", sha3_224_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha3_256") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA3-256", sha3_256_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA3-256", sha3_256_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha3_384") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA3-384", sha3_384_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA3-384", sha3_384_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "sha3_512") == 0)
       {
-        BENCHMARK(iterations, "hasha SHA3-512", sha3_512_oneshot,
-                  result_file, (const uint8_t *)input, input_len, output);
+        BENCHMARK(iterations, "hasha SHA3-512", sha3_512_hash, result_file,
+                  (const uint8_t *)input, input_len, output);
       }
 
 #if defined(INCLUDE_OPENSSL)
@@ -381,22 +381,22 @@ int main(int argc, char *argv[])
 
       else if (strcmp(token, "keccak224") == 0)
       {
-        BENCHMARK(iterations, "hasha KECCAK-224", keccak_224_oneshot,
+        BENCHMARK(iterations, "hasha KECCAK-224", keccak_224_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "keccak256") == 0)
       {
-        BENCHMARK(iterations, "hasha KECCAK-256", keccak_256_oneshot,
+        BENCHMARK(iterations, "hasha KECCAK-256", keccak_256_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "keccak384") == 0)
       {
-        BENCHMARK(iterations, "hasha KECCAK-384", keccak_384_oneshot,
+        BENCHMARK(iterations, "hasha KECCAK-384", keccak_384_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "keccak512") == 0)
       {
-        BENCHMARK(iterations, "hasha KECCAK-512", keccak_512_oneshot,
+        BENCHMARK(iterations, "hasha KECCAK-512", keccak_512_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
       else if (strcmp(token, "keccakf1600") == 0)
@@ -420,7 +420,7 @@ int main(int argc, char *argv[])
           char benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE3-%ld",
                    digest_bits);
-          BENCHMARK(iterations, benchname, blake3_oneshot, result_file,
+          BENCHMARK(iterations, benchname, blake3_hash, result_file,
                     (const uint8_t *)input, input_len, output,
                     digest_bytes);
         }

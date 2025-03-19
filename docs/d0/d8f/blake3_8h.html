@@ -151,9 +151,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae3e89c269e66d3dc6234842ba7f057fb" id="r_ae3e89c269e66d3dc6234842ba7f057fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3e89c269e66d3dc6234842ba7f057fb">blake3_final</a> (<a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *ctx, uint8_t *digest, size_t length)</td></tr>
 <tr class="memdesc:ae3e89c269e66d3dc6234842ba7f057fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the BLAKE3 hash and produces the final digest.  <br /></td></tr>
 <tr class="separator:ae3e89c269e66d3dc6234842ba7f057fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a600ec7983a441b2c57c2f18784107708" id="r_a600ec7983a441b2c57c2f18784107708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a600ec7983a441b2c57c2f18784107708">blake3_oneshot</a> (const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length)</td></tr>
-<tr class="memdesc:a600ec7983a441b2c57c2f18784107708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the BLAKE3 hash in a single operation.  <br /></td></tr>
-<tr class="separator:a600ec7983a441b2c57c2f18784107708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39cbe577834087491075773dfbc675ce" id="r_a39cbe577834087491075773dfbc675ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39cbe577834087491075773dfbc675ce">blake3_hash</a> (const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length)</td></tr>
+<tr class="memdesc:a39cbe577834087491075773dfbc675ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the BLAKE3 hash in a single operation.  <br /></td></tr>
+<tr class="separator:a39cbe577834087491075773dfbc675ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the BLAKE3 hashing algorithm. </p>
@@ -219,40 +219,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aedbdd17b7bbe8b873825c070bd8f908b" name="aedbdd17b7bbe8b873825c070bd8f908b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedbdd17b7bbe8b873825c070bd8f908b">&#9670;&#160;</a></span>blake3_init()</h2>
+<a id="a39cbe577834087491075773dfbc675ce" name="a39cbe577834087491075773dfbc675ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39cbe577834087491075773dfbc675ce">&#9670;&#160;</a></span>blake3_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_init </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initializes the BLAKE3 context for hashing. </p>
-<p>This function sets up the initial state of the BLAKE3 context by clearing the internal state and preparing it to receive input data.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>Pointer to a BLAKE3 context structure to be initialized. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a600ec7983a441b2c57c2f18784107708" name="a600ec7983a441b2c57c2f18784107708"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a600ec7983a441b2c57c2f18784107708">&#9670;&#160;</a></span>blake3_oneshot()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_oneshot </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_hash </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
         </tr>
@@ -282,6 +256,32 @@ Functions</h2></td></tr>
     <tr><td class="paramname">length</td><td>The length of the input data in bytes. </td></tr>
     <tr><td class="paramname">digest</td><td>Pointer to a buffer where the resulting digest will be stored. </td></tr>
     <tr><td class="paramname">digest_length</td><td>The length of the digest to be produced, in bytes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aedbdd17b7bbe8b873825c070bd8f908b" name="aedbdd17b7bbe8b873825c070bd8f908b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedbdd17b7bbe8b873825c070bd8f908b">&#9670;&#160;</a></span>blake3_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes the BLAKE3 context for hashing. </p>
+<p>This function sets up the initial state of the BLAKE3 context by clearing the internal state and preparing it to receive input data.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>Pointer to a BLAKE3 context structure to be initialized. </td></tr>
   </table>
   </dd>
 </dl>

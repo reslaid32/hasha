@@ -70,8 +70,9 @@ HASHA_PRIVATE_FUNC void blake3_compress(uint32_t *outbuf,
   BLAKE3_G(i, 7, v[3], v[4], v[9], v[14])
 
   BLAKE3_ROUND(0)
-  BLAKE3_ROUND(1) BLAKE3_ROUND(2) BLAKE3_ROUND(3) BLAKE3_ROUND(4)
-      BLAKE3_ROUND(5) BLAKE3_ROUND(6)
+  BLAKE3_ROUND(1)
+  BLAKE3_ROUND(2) BLAKE3_ROUND(3) BLAKE3_ROUND(4) BLAKE3_ROUND(5)
+      BLAKE3_ROUND(6)
 
 #undef BLAKE3_G
 #undef BLAKE3_ROUND
@@ -191,9 +192,8 @@ HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest,
   }
 }
 
-HASHA_PUBLIC_FUNC void blake3_oneshot(const uint8_t *data, size_t length,
-                                      uint8_t *digest,
-                                      size_t digest_length)
+HASHA_PUBLIC_FUNC void blake3_hash(const uint8_t *data, size_t length,
+                                   uint8_t *digest, size_t digest_length)
 {
   blake3_context ctx;
   blake3_init(&ctx);

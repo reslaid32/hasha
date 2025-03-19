@@ -157,12 +157,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0c73254b595eba7ec91b477ffc048ed" id="r_ab0c73254b595eba7ec91b477ffc048ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0c73254b595eba7ec91b477ffc048ed">md5_update</a> (<a class="el" href="../../d3/d65/structmd5__context.html">md5_context</a> *ctx, const uint8_t *data, size_t len)</td></tr>
 <tr class="memdesc:ab0c73254b595eba7ec91b477ffc048ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the MD5 context with new data.  <br /></td></tr>
 <tr class="separator:ab0c73254b595eba7ec91b477ffc048ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7f57f3b15c2b0aacf57bff414712e81" id="r_ac7f57f3b15c2b0aacf57bff414712e81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7f57f3b15c2b0aacf57bff414712e81">md5_finalize</a> (<a class="el" href="../../d3/d65/structmd5__context.html">md5_context</a> *ctx, uint8_t *digest)</td></tr>
-<tr class="memdesc:ac7f57f3b15c2b0aacf57bff414712e81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the MD5 computation and produces the hash digest.  <br /></td></tr>
-<tr class="separator:ac7f57f3b15c2b0aacf57bff414712e81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85ba948ffd4bded33f7e20a99cc15a86" id="r_a85ba948ffd4bded33f7e20a99cc15a86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85ba948ffd4bded33f7e20a99cc15a86">md5_oneshot</a> (const uint8_t *data, size_t len, uint8_t *digest)</td></tr>
-<tr class="memdesc:a85ba948ffd4bded33f7e20a99cc15a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the MD5 hash in a one-shot operation.  <br /></td></tr>
-<tr class="separator:a85ba948ffd4bded33f7e20a99cc15a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6958db7c4cb65edf552454a880f969b5" id="r_a6958db7c4cb65edf552454a880f969b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6958db7c4cb65edf552454a880f969b5">md5_final</a> (<a class="el" href="../../d3/d65/structmd5__context.html">md5_context</a> *ctx, uint8_t *digest)</td></tr>
+<tr class="memdesc:a6958db7c4cb65edf552454a880f969b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the MD5 computation and produces the hash digest.  <br /></td></tr>
+<tr class="separator:a6958db7c4cb65edf552454a880f969b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4f6653bc59a5c442f2b2081e7d0a8b" id="r_a4e4f6653bc59a5c442f2b2081e7d0a8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e4f6653bc59a5c442f2b2081e7d0a8b">md5_hash</a> (const uint8_t *data, size_t len, uint8_t *digest)</td></tr>
+<tr class="memdesc:a4e4f6653bc59a5c442f2b2081e7d0a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the MD5 hash in a one-shot operation.  <br /></td></tr>
+<tr class="separator:a4e4f6653bc59a5c442f2b2081e7d0a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the MD5 cryptographic hash function. </p>
@@ -224,14 +224,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ac7f57f3b15c2b0aacf57bff414712e81" name="ac7f57f3b15c2b0aacf57bff414712e81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7f57f3b15c2b0aacf57bff414712e81">&#9670;&#160;</a></span>md5_finalize()</h2>
+<a id="a6958db7c4cb65edf552454a880f969b5" name="a6958db7c4cb65edf552454a880f969b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6958db7c4cb65edf552454a880f969b5">&#9670;&#160;</a></span>md5_final()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void md5_finalize </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void md5_final </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d3/d65/structmd5__context.html">md5_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
@@ -244,10 +244,47 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finalizes the MD5 computation and produces the hash digest. </p>
-<p>This function finalizes the MD5 hash calculation and outputs the resulting digest into the provided buffer.</p>
+<p>This function finals the MD5 hash calculation and outputs the resulting digest into the provided buffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the MD5 context structure. </td></tr>
+    <tr><td class="paramname">digest</td><td>Pointer to the output buffer to store the final MD5 digest (16 bytes). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4e4f6653bc59a5c442f2b2081e7d0a8b" name="a4e4f6653bc59a5c442f2b2081e7d0a8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4f6653bc59a5c442f2b2081e7d0a8b">&#9670;&#160;</a></span>md5_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void md5_hash </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>digest</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the MD5 hash in a one-shot operation. </p>
+<p>This function computes the MD5 hash of the provided data in a single call. It initializes, updates, and finals the MD5 computation internally.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>Pointer to the input data to process. </td></tr>
+    <tr><td class="paramname">len</td><td>Length of the input data in bytes. </td></tr>
     <tr><td class="paramname">digest</td><td>Pointer to the output buffer to store the final MD5 digest (16 bytes). </td></tr>
   </table>
   </dd>
@@ -275,43 +312,6 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the MD5 context structure to initialize. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a85ba948ffd4bded33f7e20a99cc15a86" name="a85ba948ffd4bded33f7e20a99cc15a86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85ba948ffd4bded33f7e20a99cc15a86">&#9670;&#160;</a></span>md5_oneshot()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void md5_oneshot </td>
-          <td>(</td>
-          <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>digest</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Computes the MD5 hash in a one-shot operation. </p>
-<p>This function computes the MD5 hash of the provided data in a single call. It initializes, updates, and finalizes the MD5 computation internally.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>Pointer to the input data to process. </td></tr>
-    <tr><td class="paramname">len</td><td>Length of the input data in bytes. </td></tr>
-    <tr><td class="paramname">digest</td><td>Pointer to the output buffer to store the final MD5 digest (16 bytes). </td></tr>
   </table>
   </dd>
 </dl>

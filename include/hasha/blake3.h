@@ -142,9 +142,8 @@ HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest,
  * stored.
  * @param digest_length The length of the digest to be produced, in bytes.
  */
-HASHA_PUBLIC_FUNC void blake3_oneshot(const uint8_t *data, size_t length,
-                                      uint8_t *digest,
-                                      size_t digest_length);
+HASHA_PUBLIC_FUNC void blake3_hash(const uint8_t *data, size_t length,
+                                   uint8_t *digest, size_t digest_length);
 
 HASHA_EXTERN_C_END
 

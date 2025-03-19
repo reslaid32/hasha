@@ -158,8 +158,8 @@ HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA3-224
  * digest.
  */
-HASHA_PUBLIC_FUNC void sha3_224_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_224_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Initializes the SHA3-256 context.
@@ -218,8 +218,8 @@ HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA3-256
  * digest.
  */
-HASHA_PUBLIC_FUNC void sha3_256_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_256_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Initializes the SHA3-384 context.
@@ -278,8 +278,8 @@ HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA3-384
  * digest.
  */
-HASHA_PUBLIC_FUNC void sha3_384_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_384_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 /**
  * @brief Initializes the SHA3-512 context.
@@ -338,8 +338,8 @@ HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx,
  * @param digest Pointer to the output buffer to store the final SHA3-512
  * digest.
  */
-HASHA_PUBLIC_FUNC void sha3_512_oneshot(const uint8_t *data, size_t length,
-                                        uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha3_512_hash(const uint8_t *data, size_t length,
+                                     uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

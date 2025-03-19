@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['crc32_5foneshot_0',['crc32_oneshot',['../dc/de6/crc_8h.html#abe46fc92e3c972165533e8fa8afa738e',1,'crc.h']]]
+  ['crc32_5fhash_0',['crc32_hash',['../dc/de6/crc_8h.html#a41bb93de606175d6e2271711b7dd7c1f',1,'crc.h']]]
 ];

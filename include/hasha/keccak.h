@@ -218,8 +218,8 @@ HASHA_PUBLIC_FUNC void keccak_224_squeeze(keccak_224_context *ctx,
  * @param digest Pointer to the buffer where the resulting hash will be
  * stored.
  */
-HASHA_PUBLIC_FUNC void keccak_224_oneshot(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void keccak_224_hash(const uint8_t *data, size_t length,
+                                       uint8_t *digest);
 
 /**
  * @brief Initializes the Keccak-256 context.
@@ -277,8 +277,8 @@ HASHA_PUBLIC_FUNC void keccak_256_squeeze(keccak_256_context *ctx,
  * @param digest Pointer to the buffer where the resulting hash will be
  * stored.
  */
-HASHA_PUBLIC_FUNC void keccak_256_oneshot(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void keccak_256_hash(const uint8_t *data, size_t length,
+                                       uint8_t *digest);
 
 /**
  * @brief Initializes the Keccak-384 context.
@@ -319,8 +319,8 @@ HASHA_PUBLIC_FUNC void keccak_384_squeeze(keccak_384_context *ctx,
  * This function combines the initialization, absorption, finalization, and
  * squeezing steps into a single operation for convenience.
  */
-HASHA_PUBLIC_FUNC void keccak_384_oneshot(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void keccak_384_hash(const uint8_t *data, size_t length,
+                                       uint8_t *digest);
 
 /**
  * @brief Initializes the Keccak-512 context.
@@ -361,8 +361,8 @@ HASHA_PUBLIC_FUNC void keccak_512_squeeze(keccak_512_context *ctx,
  * This function combines the initialization, absorption, finalization, and
  * squeezing steps into a single operation for convenience.
  */
-HASHA_PUBLIC_FUNC void keccak_512_oneshot(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HASHA_PUBLIC_FUNC void keccak_512_hash(const uint8_t *data, size_t length,
+                                       uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

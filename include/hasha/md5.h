@@ -100,8 +100,8 @@ HASHA_PUBLIC_FUNC void md5_final(md5_context *ctx, uint8_t *digest);
  * @param digest Pointer to the output buffer to store the final MD5 digest
  * (16 bytes).
  */
-HASHA_PUBLIC_FUNC void md5_oneshot(const uint8_t *data, size_t len,
-                                   uint8_t *digest);
+HASHA_PUBLIC_FUNC void md5_hash(const uint8_t *data, size_t len,
+                                uint8_t *digest);
 
 HASHA_EXTERN_C_END
 
