@@ -187,12 +187,12 @@ HASHA_PUBLIC_FUNC void keccak_224_absorb(keccak_224_context *ctx,
 /**
  * @brief Finalizes the Keccak-224 context.
  *
- * This function finalizes the Keccak-224 context after all data has been
+ * This function finals the Keccak-224 context after all data has been
  * absorbed, preparing the context for squeezing the hash output.
  *
  * @param ctx Pointer to the Keccak-224 context.
  */
-HASHA_PUBLIC_FUNC void keccak_224_finalize(keccak_224_context *ctx);
+HASHA_PUBLIC_FUNC void keccak_224_final(keccak_224_context *ctx);
 
 /**
  * @brief Squeezes the hash output for Keccak-224.
@@ -246,12 +246,12 @@ HASHA_PUBLIC_FUNC void keccak_256_absorb(keccak_256_context *ctx,
 /**
  * @brief Finalizes the Keccak-256 context.
  *
- * This function finalizes the Keccak-256 context after all data has been
+ * This function finals the Keccak-256 context after all data has been
  * absorbed.
  *
  * @param ctx Pointer to the Keccak-256 context.
  */
-HASHA_PUBLIC_FUNC void keccak_256_finalize(keccak_256_context *ctx);
+HASHA_PUBLIC_FUNC void keccak_256_final(keccak_256_context *ctx);
 
 /**
  * @brief Squeezes the hash output for Keccak-256.
@@ -299,10 +299,10 @@ HASHA_PUBLIC_FUNC void keccak_384_absorb(keccak_384_context *ctx,
 /**
  * @brief Finalizes the Keccak-384 context.
  *
- * This function finalizes the Keccak-384 context after all data has been
+ * This function finals the Keccak-384 context after all data has been
  * absorbed.
  */
-HASHA_PUBLIC_FUNC void keccak_384_finalize(keccak_384_context *ctx);
+HASHA_PUBLIC_FUNC void keccak_384_final(keccak_384_context *ctx);
 
 /**
  * @brief Squeezes the hash output for Keccak-384.
@@ -341,10 +341,10 @@ HASHA_PUBLIC_FUNC void keccak_512_absorb(keccak_512_context *ctx,
 /**
  * @brief Finalizes the Keccak-512 context.
  *
- * This function finalizes the Keccak-512 context after all data has been
+ * This function finals the Keccak-512 context after all data has been
  * absorbed.
  */
-HASHA_PUBLIC_FUNC void keccak_512_finalize(keccak_512_context *ctx);
+HASHA_PUBLIC_FUNC void keccak_512_final(keccak_512_context *ctx);
 
 /**
  * @brief Squeezes the hash output for Keccak-512.

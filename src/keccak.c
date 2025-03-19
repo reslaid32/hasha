@@ -35,7 +35,7 @@ HASHA_PUBLIC_FUNC void keccak_224_absorb(keccak_224_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void keccak_224_finalize(keccak_224_context *ctx)
+HASHA_PUBLIC_FUNC void keccak_224_final(keccak_224_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x01;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -64,7 +64,7 @@ HASHA_PUBLIC_FUNC void keccak_224_oneshot(const uint8_t *data,
   keccak_224_context ctx;
   keccak_224_init(&ctx);
   keccak_224_absorb(&ctx, data, length);
-  keccak_224_finalize(&ctx);
+  keccak_224_final(&ctx);
   keccak_224_squeeze(&ctx, digest);
 }
 
@@ -101,7 +101,7 @@ HASHA_PUBLIC_FUNC void keccak_256_absorb(keccak_256_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void keccak_256_finalize(keccak_256_context *ctx)
+HASHA_PUBLIC_FUNC void keccak_256_final(keccak_256_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x01;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -130,7 +130,7 @@ HASHA_PUBLIC_FUNC void keccak_256_oneshot(const uint8_t *data,
   keccak_256_context ctx;
   keccak_256_init(&ctx);
   keccak_256_absorb(&ctx, data, length);
-  keccak_256_finalize(&ctx);
+  keccak_256_final(&ctx);
   keccak_256_squeeze(&ctx, digest);
 }
 
@@ -167,7 +167,7 @@ HASHA_PUBLIC_FUNC void keccak_384_absorb(keccak_384_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void keccak_384_finalize(keccak_384_context *ctx)
+HASHA_PUBLIC_FUNC void keccak_384_final(keccak_384_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x01;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -196,7 +196,7 @@ HASHA_PUBLIC_FUNC void keccak_384_oneshot(const uint8_t *data,
   keccak_384_context ctx;
   keccak_384_init(&ctx);
   keccak_384_absorb(&ctx, data, length);
-  keccak_384_finalize(&ctx);
+  keccak_384_final(&ctx);
   keccak_384_squeeze(&ctx, digest);
 }
 
@@ -233,7 +233,7 @@ HASHA_PUBLIC_FUNC void keccak_512_absorb(keccak_512_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void keccak_512_finalize(keccak_512_context *ctx)
+HASHA_PUBLIC_FUNC void keccak_512_final(keccak_512_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x01;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -262,6 +262,6 @@ HASHA_PUBLIC_FUNC void keccak_512_oneshot(const uint8_t *data,
   keccak_512_context ctx;
   keccak_512_init(&ctx);
   keccak_512_absorb(&ctx, data, length);
-  keccak_512_finalize(&ctx);
+  keccak_512_final(&ctx);
   keccak_512_squeeze(&ctx, digest);
 }

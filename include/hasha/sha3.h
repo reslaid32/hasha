@@ -127,11 +127,11 @@ HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx,
 /**
  * @brief Finalizes the SHA3-224 computation.
  *
- * This function finalizes the SHA3-224 hash calculation.
+ * This function finals the SHA3-224 hash calculation.
  *
  * @param ctx Pointer to the SHA3-224 context structure.
  */
-HASHA_PUBLIC_FUNC void sha3_224_finalize(sha3_224_context *ctx);
+HASHA_PUBLIC_FUNC void sha3_224_final(sha3_224_context *ctx);
 
 /**
  * @brief Produces the final SHA3-224 hash digest.
@@ -150,7 +150,7 @@ HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx,
  * @brief Computes the SHA3-224 hash in a one-shot operation.
  *
  * This function computes the SHA3-224 hash of the provided data in a
- * single call. It initializes, absorbs, finalizes, and squeezes the result
+ * single call. It initializes, absorbs, finals, and squeezes the result
  * internally.
  *
  * @param data Pointer to the input data to process.
@@ -187,11 +187,11 @@ HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx,
 /**
  * @brief Finalizes the SHA3-256 computation.
  *
- * This function finalizes the SHA3-256 hash calculation.
+ * This function finals the SHA3-256 hash calculation.
  *
  * @param ctx Pointer to the SHA3-256 context structure.
  */
-HASHA_PUBLIC_FUNC void sha3_256_finalize(sha3_256_context *ctx);
+HASHA_PUBLIC_FUNC void sha3_256_final(sha3_256_context *ctx);
 
 /**
  * @brief Produces the final SHA3-256 hash digest.
@@ -210,7 +210,7 @@ HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx,
  * @brief Computes the SHA3-256 hash in a one-shot operation.
  *
  * This function computes the SHA3-256 hash of the provided data in a
- * single call. It initializes, absorbs, finalizes, and squeezes the result
+ * single call. It initializes, absorbs, finals, and squeezes the result
  * internally.
  *
  * @param data Pointer to the input data to process.
@@ -247,11 +247,11 @@ HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx,
 /**
  * @brief Finalizes the SHA3-384 computation.
  *
- * This function finalizes the SHA3-384 hash calculation.
+ * This function finals the SHA3-384 hash calculation.
  *
  * @param ctx Pointer to the SHA3-384 context structure.
  */
-HASHA_PUBLIC_FUNC void sha3_384_finalize(sha3_384_context *ctx);
+HASHA_PUBLIC_FUNC void sha3_384_final(sha3_384_context *ctx);
 
 /**
  * @brief Produces the final SHA3-384 hash digest.
@@ -270,7 +270,7 @@ HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx,
  * @brief Computes the SHA3-384 hash in a one-shot operation.
  *
  * This function computes the SHA3-384 hash of the provided data in a
- * single call. It initializes, absorbs, finalizes, and squeezes the result
+ * single call. It initializes, absorbs, finals, and squeezes the result
  * internally.
  *
  * @param data Pointer to the input data to process.
@@ -307,11 +307,11 @@ HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx,
 /**
  * @brief Finalizes the SHA3-512 computation.
  *
- * This function finalizes the SHA3-512 hash calculation.
+ * This function finals the SHA3-512 hash calculation.
  *
  * @param ctx Pointer to the SHA3-512 context structure.
  */
-HASHA_PUBLIC_FUNC void sha3_512_finalize(sha3_512_context *ctx);
+HASHA_PUBLIC_FUNC void sha3_512_final(sha3_512_context *ctx);
 
 /**
  * @brief Produces the final SHA3-512 hash digest.
@@ -330,7 +330,7 @@ HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx,
  * @brief Computes the SHA3-512 hash in a one-shot operation.
  *
  * This function computes the SHA3-512 hash of the provided data in a
- * single call. It initializes, absorbs, finalizes, and squeezes the result
+ * single call. It initializes, absorbs, finals, and squeezes the result
  * internally.
  *
  * @param data Pointer to the input data to process.

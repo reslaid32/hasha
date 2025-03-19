@@ -105,7 +105,7 @@ HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data,
   memcpy(ctx->buffer, data, len);
 }
 
-HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest)
+HASHA_PUBLIC_FUNC void sha1_final(sha1_context *ctx, uint8_t *digest)
 {
   size_t buffer_index         = (ctx->bit_count / 8) % SHA1_BLOCK_SIZE;
   ctx->buffer[buffer_index++] = 0x80;
@@ -142,5 +142,5 @@ HASHA_PUBLIC_FUNC void sha1_oneshot(const uint8_t *data, size_t len,
   sha1_context ctx;
   sha1_init(&ctx);
   sha1_update(&ctx, data, len);
-  sha1_finalize(&ctx, digest);
+  sha1_final(&ctx, digest);
 }

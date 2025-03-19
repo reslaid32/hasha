@@ -115,7 +115,7 @@ HASHA_PUBLIC_FUNC void md5_update(md5_context *ctx, const uint8_t *data,
   memcpy(ctx->buffer, data, len);
 }
 
-HASHA_PUBLIC_FUNC void md5_finalize(md5_context *ctx, uint8_t *digest)
+HASHA_PUBLIC_FUNC void md5_final(md5_context *ctx, uint8_t *digest)
 {
   size_t buffer_index         = (ctx->bit_count / 8) % MD5_BLOCK_SIZE;
   ctx->buffer[buffer_index++] = 0x80;
@@ -147,5 +147,5 @@ HASHA_PUBLIC_FUNC void md5_oneshot(const uint8_t *data, size_t len,
   md5_context ctx;
   md5_init(&ctx);
   md5_update(&ctx, data, len);
-  md5_finalize(&ctx, digest);
+  md5_final(&ctx, digest);
 }

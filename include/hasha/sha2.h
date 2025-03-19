@@ -250,21 +250,21 @@ HASHA_PUBLIC_FUNC void sha2_224_update(sha2_224_context *ctx,
  * @brief Finalizes the SHA-2 224-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 224-bit hash calculation and outputs
+ * This function finals the SHA-2 224-bit hash calculation and outputs
  * the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 224-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 224-bit digest (28 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_224_finalize(sha2_224_context *ctx,
-                                         uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_224_final(sha2_224_context *ctx,
+                                      uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 224-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 224-bit hash of the provided data in a
- * single call. It initializes, updates, and finalizes the SHA-2 224-bit
+ * single call. It initializes, updates, and finals the SHA-2 224-bit
  * computation internally.
  *
  * @param data Pointer to the input data to process.
@@ -315,21 +315,21 @@ HASHA_PUBLIC_FUNC void sha2_256_update(sha2_256_context *ctx,
  * @brief Finalizes the SHA-2 256-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 256-bit hash calculation and outputs
+ * This function finals the SHA-2 256-bit hash calculation and outputs
  * the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 256-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 256-bit digest (32 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_256_finalize(sha2_256_context *ctx,
-                                         uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
+                                      uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 256-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 256-bit hash of the provided data in a
- * single call. It initializes, updates, and finalizes the SHA-2 256-bit
+ * single call. It initializes, updates, and finals the SHA-2 256-bit
  * computation internally.
  *
  * @param data Pointer to the input data to process.
@@ -380,21 +380,21 @@ HASHA_PUBLIC_FUNC void sha2_384_update(sha2_384_context *ctx,
  * @brief Finalizes the SHA-2 384-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 384-bit hash calculation and outputs
+ * This function finals the SHA-2 384-bit hash calculation and outputs
  * the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 384-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 384-bit digest (48 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_384_finalize(sha2_384_context *ctx,
-                                         uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_384_final(sha2_384_context *ctx,
+                                      uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 384-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 384-bit hash of the provided data in a
- * single call. It initializes, updates, and finalizes the SHA-2 384-bit
+ * single call. It initializes, updates, and finals the SHA-2 384-bit
  * computation internally.
  *
  * @param data Pointer to the input data to process.
@@ -445,21 +445,21 @@ HASHA_PUBLIC_FUNC void sha2_512_update(sha2_512_context *ctx,
  * @brief Finalizes the SHA-2 512-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 512-bit hash calculation and outputs
+ * This function finals the SHA-2 512-bit hash calculation and outputs
  * the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 512-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-bit digest (64 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_finalize(sha2_512_context *ctx,
-                                         uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
+                                      uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 512-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 512-bit hash of the provided data in a
- * single call. It initializes, updates, and finalizes the SHA-2 512-bit
+ * single call. It initializes, updates, and finals the SHA-2 512-bit
  * computation internally.
  *
  * @param data Pointer to the input data to process.
@@ -512,21 +512,21 @@ HASHA_PUBLIC_FUNC void sha2_512_224_update(sha2_512_224_context *ctx,
  * @brief Finalizes the SHA-2 512-224-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 512-224-bit hash calculation and
+ * This function finals the SHA-2 512-224-bit hash calculation and
  * outputs the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 512-224-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-224-bit digest (28 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_224_finalize(sha2_512_224_context *ctx,
-                                             uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_224_final(sha2_512_224_context *ctx,
+                                          uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 512-224-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 512-224-bit hash of the provided data
- * in a single call. It initializes, updates, and finalizes the SHA-2
+ * in a single call. It initializes, updates, and finals the SHA-2
  * 512-224-bit computation internally.
  *
  * @param data Pointer to the input data to process.
@@ -580,21 +580,21 @@ HASHA_PUBLIC_FUNC void sha2_512_256_update(sha2_512_256_context *ctx,
  * @brief Finalizes the SHA-2 512-256-bit computation and produces the hash
  * digest.
  *
- * This function finalizes the SHA-2 512-256-bit hash calculation and
+ * This function finals the SHA-2 512-256-bit hash calculation and
  * outputs the resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the SHA-2 512-256-bit context structure.
  * @param digest Pointer to the output buffer to store the final SHA-2
  * 512-256-bit digest (32 bytes).
  */
-HASHA_PUBLIC_FUNC void sha2_512_256_finalize(sha2_512_256_context *ctx,
-                                             uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha2_512_256_final(sha2_512_256_context *ctx,
+                                          uint8_t *digest);
 
 /**
  * @brief Computes the SHA-2 512-256-bit hash in a one-shot operation.
  *
  * This function computes the SHA-2 512-256-bit hash of the provided data
- * in a single call. It initializes, updates, and finalizes the SHA-2
+ * in a single call. It initializes, updates, and finals the SHA-2
  * 512-256-bit computation internally.
  *
  * @param data Pointer to the input data to process.

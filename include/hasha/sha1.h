@@ -111,7 +111,7 @@ HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data,
  * @brief Finalizes the SHA-1 context and produces the resulting hash
  * digest.
  *
- * This function finalizes the hash computation, pads the data if
+ * This function finals the hash computation, pads the data if
  * necessary, and produces the final 160-bit (20-byte) hash digest in the
  * provided output buffer.
  *
@@ -119,7 +119,7 @@ HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data,
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void sha1_final(sha1_context *ctx, uint8_t *digest);
 
 /**
  * @brief Computes the SHA-1 hash for the given input data in one-shot
@@ -127,7 +127,7 @@ HASHA_PUBLIC_FUNC void sha1_finalize(sha1_context *ctx, uint8_t *digest);
  *
  * This function computes the SHA-1 hash for the entire input data in a
  * single call, without requiring separate initialization, update, or
- * finalize steps.
+ * final steps.
  *
  * @param data Pointer to the input data.
  * @param len The length of the input data.

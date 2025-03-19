@@ -34,7 +34,7 @@ HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_224_finalize(sha3_224_context *ctx)
+HASHA_PUBLIC_FUNC void sha3_224_final(sha3_224_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -63,7 +63,7 @@ HASHA_PUBLIC_FUNC void sha3_224_oneshot(const uint8_t *data, size_t length,
   sha3_224_context ctx;
   sha3_224_init(&ctx);
   sha3_224_absorb(&ctx, data, length);
-  sha3_224_finalize(&ctx);
+  sha3_224_final(&ctx);
   sha3_224_squeeze(&ctx, digest);
 }
 
@@ -99,7 +99,7 @@ HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_finalize(sha3_256_context *ctx)
+HASHA_PUBLIC_FUNC void sha3_256_final(sha3_256_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -128,7 +128,7 @@ HASHA_PUBLIC_FUNC void sha3_256_oneshot(const uint8_t *data, size_t length,
   sha3_256_context ctx;
   sha3_256_init(&ctx);
   sha3_256_absorb(&ctx, data, length);
-  sha3_256_finalize(&ctx);
+  sha3_256_final(&ctx);
   sha3_256_squeeze(&ctx, digest);
 }
 
@@ -164,7 +164,7 @@ HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_finalize(sha3_384_context *ctx)
+HASHA_PUBLIC_FUNC void sha3_384_final(sha3_384_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -193,7 +193,7 @@ HASHA_PUBLIC_FUNC void sha3_384_oneshot(const uint8_t *data, size_t length,
   sha3_384_context ctx;
   sha3_384_init(&ctx);
   sha3_384_absorb(&ctx, data, length);
-  sha3_384_finalize(&ctx);
+  sha3_384_final(&ctx);
   sha3_384_squeeze(&ctx, digest);
 }
 
@@ -229,7 +229,7 @@ HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_finalize(sha3_512_context *ctx)
+HASHA_PUBLIC_FUNC void sha3_512_final(sha3_512_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -258,6 +258,6 @@ HASHA_PUBLIC_FUNC void sha3_512_oneshot(const uint8_t *data, size_t length,
   sha3_512_context ctx;
   sha3_512_init(&ctx);
   sha3_512_absorb(&ctx, data, length);
-  sha3_512_finalize(&ctx);
+  sha3_512_final(&ctx);
   sha3_512_squeeze(&ctx, digest);
 }

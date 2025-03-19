@@ -79,20 +79,20 @@ HASHA_PUBLIC_FUNC void md5_update(md5_context *ctx, const uint8_t *data,
 /**
  * @brief Finalizes the MD5 computation and produces the hash digest.
  *
- * This function finalizes the MD5 hash calculation and outputs the
+ * This function finals the MD5 hash calculation and outputs the
  * resulting digest into the provided buffer.
  *
  * @param ctx Pointer to the MD5 context structure.
  * @param digest Pointer to the output buffer to store the final MD5 digest
  * (16 bytes).
  */
-HASHA_PUBLIC_FUNC void md5_finalize(md5_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void md5_final(md5_context *ctx, uint8_t *digest);
 
 /**
  * @brief Computes the MD5 hash in a one-shot operation.
  *
  * This function computes the MD5 hash of the provided data in a single
- * call. It initializes, updates, and finalizes the MD5 computation
+ * call. It initializes, updates, and finals the MD5 computation
  * internally.
  *
  * @param data Pointer to the input data to process.
