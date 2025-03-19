@@ -18,11 +18,11 @@ typedef struct
  * @brief Retrieves the version information of the hash library.
  *
  * This function returns the version information for the hash library as a
- * `hashaver_t` structure, which contains the major, minor, and patch
+ * `ha_version_t` structure, which contains the major, minor, and patch
  * version components. This function is typically used to check the library
  * version programmatically.
  *
- * @return A `hashaver_t` structure containing the version:
+ * @return A `ha_version_t` structure containing the version:
  *         - `major`: The major version component of the library.
  *         - `minor`: The minor version component of the library.
  *         - `patch`: The patch version component of the library.
