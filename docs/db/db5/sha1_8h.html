@@ -131,8 +131,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">SHA-1 context structure used to store the internal state during hashing.  <a href="../../d9/dd4/structsha1__context.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -146,26 +145,26 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a61c71b7b01493502e59ab474f30f9509" id="r_a61c71b7b01493502e59ab474f30f9509"><td class="memItemLeft" align="right" valign="top">typedef struct sha1_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61c71b7b01493502e59ab474f30f9509">sha1_context</a></td></tr>
-<tr class="separator:a61c71b7b01493502e59ab474f30f9509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d7ef4621f4d37d53b12478c0db9a4c" id="r_af5d7ef4621f4d37d53b12478c0db9a4c"><td class="memItemLeft" align="right" valign="top">typedef struct ha_sha1_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5d7ef4621f4d37d53b12478c0db9a4c">ha_sha1_context</a></td></tr>
+<tr class="separator:af5d7ef4621f4d37d53b12478c0db9a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae9f6fa9c729d2138aa18949767837664" id="r_ae9f6fa9c729d2138aa18949767837664"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9f6fa9c729d2138aa18949767837664">sha1_transform</a> (<a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *ctx, const uint8_t *block)</td></tr>
-<tr class="memdesc:ae9f6fa9c729d2138aa18949767837664"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the SHA-1 transformation step on a 512-bit data block.  <br /></td></tr>
-<tr class="separator:ae9f6fa9c729d2138aa18949767837664"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8025a18ddf5d3d94397f23cb3cc96a82" id="r_a8025a18ddf5d3d94397f23cb3cc96a82"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8025a18ddf5d3d94397f23cb3cc96a82">sha1_init</a> (<a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *ctx)</td></tr>
-<tr class="memdesc:a8025a18ddf5d3d94397f23cb3cc96a82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the SHA-1 context for a new hash computation.  <br /></td></tr>
-<tr class="separator:a8025a18ddf5d3d94397f23cb3cc96a82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa08551fb31058f7739e0fdc07d73f5a4" id="r_aa08551fb31058f7739e0fdc07d73f5a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa08551fb31058f7739e0fdc07d73f5a4">sha1_update</a> (<a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *ctx, const uint8_t *data, size_t len)</td></tr>
-<tr class="memdesc:aa08551fb31058f7739e0fdc07d73f5a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the SHA-1 context with new data.  <br /></td></tr>
-<tr class="separator:aa08551fb31058f7739e0fdc07d73f5a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2164200b8d5f3284d6f00bfc798c97a0" id="r_a2164200b8d5f3284d6f00bfc798c97a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2164200b8d5f3284d6f00bfc798c97a0">sha1_final</a> (<a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *ctx, uint8_t *digest)</td></tr>
-<tr class="memdesc:a2164200b8d5f3284d6f00bfc798c97a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the SHA-1 context and produces the resulting hash digest.  <br /></td></tr>
-<tr class="separator:a2164200b8d5f3284d6f00bfc798c97a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea8fcae4e75b2efb7877a929bb479b16" id="r_aea8fcae4e75b2efb7877a929bb479b16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea8fcae4e75b2efb7877a929bb479b16">sha1_hash</a> (const uint8_t *data, size_t len, uint8_t *digest)</td></tr>
-<tr class="memdesc:aea8fcae4e75b2efb7877a929bb479b16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the SHA-1 hash for the given input data in one-shot mode.  <br /></td></tr>
-<tr class="separator:aea8fcae4e75b2efb7877a929bb479b16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc835139f2715dae447f90f5f2412130" id="r_afc835139f2715dae447f90f5f2412130"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc835139f2715dae447f90f5f2412130">ha_sha1_transform</a> (<a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *ctx, const uint8_t *block)</td></tr>
+<tr class="memdesc:afc835139f2715dae447f90f5f2412130"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the SHA-1 transformation step on a 512-bit data block.  <br /></td></tr>
+<tr class="separator:afc835139f2715dae447f90f5f2412130"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b9d0455285190605efb321a0b2dc49e" id="r_a8b9d0455285190605efb321a0b2dc49e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b9d0455285190605efb321a0b2dc49e">ha_sha1_init</a> (<a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *ctx)</td></tr>
+<tr class="memdesc:a8b9d0455285190605efb321a0b2dc49e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the SHA-1 context for a new hash computation.  <br /></td></tr>
+<tr class="separator:a8b9d0455285190605efb321a0b2dc49e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90efbd0648e853f868636e423b967c0c" id="r_a90efbd0648e853f868636e423b967c0c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90efbd0648e853f868636e423b967c0c">ha_sha1_update</a> (<a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *ctx, const uint8_t *data, size_t len)</td></tr>
+<tr class="memdesc:a90efbd0648e853f868636e423b967c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the SHA-1 context with new data.  <br /></td></tr>
+<tr class="separator:a90efbd0648e853f868636e423b967c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa718eb7cde7589d177818b352f6f97" id="r_a0aa718eb7cde7589d177818b352f6f97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0aa718eb7cde7589d177818b352f6f97">ha_sha1_final</a> (<a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *ctx, uint8_t *digest)</td></tr>
+<tr class="memdesc:a0aa718eb7cde7589d177818b352f6f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the SHA-1 context and produces the resulting hash digest.  <br /></td></tr>
+<tr class="separator:a0aa718eb7cde7589d177818b352f6f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b417f9970bffc29431c66ccccf4377" id="r_a24b417f9970bffc29431c66ccccf4377"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24b417f9970bffc29431c66ccccf4377">ha_sha1_hash</a> (const uint8_t *data, size_t len, uint8_t *digest)</td></tr>
+<tr class="memdesc:a24b417f9970bffc29431c66ccccf4377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the SHA-1 hash for the given input data in one-shot mode.  <br /></td></tr>
+<tr class="separator:a24b417f9970bffc29431c66ccccf4377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the SHA-1 cryptographic hash algorithm. </p>
@@ -213,14 +212,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a61c71b7b01493502e59ab474f30f9509" name="a61c71b7b01493502e59ab474f30f9509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61c71b7b01493502e59ab474f30f9509">&#9670;&#160;</a></span>sha1_context</h2>
+<a id="af5d7ef4621f4d37d53b12478c0db9a4c" name="af5d7ef4621f4d37d53b12478c0db9a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d7ef4621f4d37d53b12478c0db9a4c">&#9670;&#160;</a></span>ha_sha1_context</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct sha1_context sha1_context</td>
+          <td class="memname">typedef struct ha_sha1_context ha_sha1_context</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -228,16 +227,16 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2164200b8d5f3284d6f00bfc798c97a0" name="a2164200b8d5f3284d6f00bfc798c97a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2164200b8d5f3284d6f00bfc798c97a0">&#9670;&#160;</a></span>sha1_final()</h2>
+<a id="a0aa718eb7cde7589d177818b352f6f97" name="a0aa718eb7cde7589d177818b352f6f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa718eb7cde7589d177818b352f6f97">&#9670;&#160;</a></span>ha_sha1_final()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void sha1_final </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_sha1_final </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -259,14 +258,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aea8fcae4e75b2efb7877a929bb479b16" name="aea8fcae4e75b2efb7877a929bb479b16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea8fcae4e75b2efb7877a929bb479b16">&#9670;&#160;</a></span>sha1_hash()</h2>
+<a id="a24b417f9970bffc29431c66ccccf4377" name="a24b417f9970bffc29431c66ccccf4377"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24b417f9970bffc29431c66ccccf4377">&#9670;&#160;</a></span>ha_sha1_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void sha1_hash </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_sha1_hash </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
         </tr>
@@ -296,16 +295,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8025a18ddf5d3d94397f23cb3cc96a82" name="a8025a18ddf5d3d94397f23cb3cc96a82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8025a18ddf5d3d94397f23cb3cc96a82">&#9670;&#160;</a></span>sha1_init()</h2>
+<a id="a8b9d0455285190605efb321a0b2dc49e" name="a8b9d0455285190605efb321a0b2dc49e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b9d0455285190605efb321a0b2dc49e">&#9670;&#160;</a></span>ha_sha1_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void sha1_init </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_sha1_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -322,16 +321,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae9f6fa9c729d2138aa18949767837664" name="ae9f6fa9c729d2138aa18949767837664"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9f6fa9c729d2138aa18949767837664">&#9670;&#160;</a></span>sha1_transform()</h2>
+<a id="afc835139f2715dae447f90f5f2412130" name="afc835139f2715dae447f90f5f2412130"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc835139f2715dae447f90f5f2412130">&#9670;&#160;</a></span>ha_sha1_transform()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void sha1_transform </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_sha1_transform </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -353,16 +352,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa08551fb31058f7739e0fdc07d73f5a4" name="aa08551fb31058f7739e0fdc07d73f5a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa08551fb31058f7739e0fdc07d73f5a4">&#9670;&#160;</a></span>sha1_update()</h2>
+<a id="a90efbd0648e853f868636e423b967c0c" name="a90efbd0648e853f868636e423b967c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90efbd0648e853f868636e423b967c0c">&#9670;&#160;</a></span>ha_sha1_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void sha1_update </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_sha1_update </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/dd4/structsha1__context.html">sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d1/d52/structha__sha1__context.html">ha_sha1_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

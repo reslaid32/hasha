@@ -50,13 +50,13 @@ HASHA_EXTERN_C_BEG
  * the intermediate state variables, bit count, and buffer used to store
  * input data.
  */
-typedef struct sha1_context
+typedef struct ha_sha1_context
 {
   uint32_t state[5];  /**< The SHA-1 state variables (5 words). */
   uint64_t bit_count; /**< The number of processed bits. */
   uint8_t buffer[SHA1_BLOCK_SIZE]; /**< The buffer to hold the current
                                       input block. */
-} sha1_context;
+} ha_sha1_context;
 
 /**
  * @brief SHA-1 constant K values used in the transformation function.
@@ -79,8 +79,8 @@ static const uint32_t SHA1_H0[5] = {0x67452301, 0xEFCDAB89, 0x98BADCFE,
  * @param ctx Pointer to the SHA-1 context structure.
  * @param block Pointer to the 512-bit (64-byte) input data block.
  */
-HASHA_PUBLIC_FUNC void sha1_transform(sha1_context *ctx,
-                                      const uint8_t *block);
+HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
+                                         const uint8_t *block);
 
 /**
  * @brief Initializes the SHA-1 context for a new hash computation.
@@ -91,7 +91,7 @@ HASHA_PUBLIC_FUNC void sha1_transform(sha1_context *ctx,
  *
  * @param ctx Pointer to the SHA-1 context structure.
  */
-HASHA_PUBLIC_FUNC void sha1_init(sha1_context *ctx);
+HASHA_PUBLIC_FUNC void ha_sha1_init(ha_sha1_context *ctx);
 
 /**
  * @brief Updates the SHA-1 context with new data.
@@ -104,8 +104,8 @@ HASHA_PUBLIC_FUNC void sha1_init(sha1_context *ctx);
  * @param data Pointer to the input data.
  * @param len The length of the input data.
  */
-HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data,
-                                   size_t len);
+HASHA_PUBLIC_FUNC void ha_sha1_update(ha_sha1_context *ctx,
+                                      const uint8_t *data, size_t len);
 
 /**
  * @brief Finalizes the SHA-1 context and produces the resulting hash
@@ -119,7 +119,8 @@ HASHA_PUBLIC_FUNC void sha1_update(sha1_context *ctx, const uint8_t *data,
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void sha1_final(sha1_context *ctx, uint8_t *digest);
+HASHA_PUBLIC_FUNC void ha_sha1_final(ha_sha1_context *ctx,
+                                     uint8_t *digest);
 
 /**
  * @brief Computes the SHA-1 hash for the given input data in one-shot
@@ -134,8 +135,8 @@ HASHA_PUBLIC_FUNC void sha1_final(sha1_context *ctx, uint8_t *digest);
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void sha1_hash(const uint8_t *data, size_t len,
-                                 uint8_t *digest);
+HASHA_PUBLIC_FUNC void ha_sha1_hash(const uint8_t *data, size_t len,
+                                    uint8_t *digest);
 
 HASHA_EXTERN_C_END
 

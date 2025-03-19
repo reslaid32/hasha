@@ -2,6 +2,8 @@
  * @file hasha/all.h
  */
 
+#include "blake2b.h"
+#include "blake2s.h"
 #include "blake3.h"
 #include "crc.h"
 #include "internal/bits.h"

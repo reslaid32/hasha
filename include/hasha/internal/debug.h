@@ -12,4 +12,8 @@
 #define HASHA_DEBUG(...)
 #endif
 
+#if !defined(ha_dbg)
+#define ha_dbg HASHA_DEBUG
+#endif
+
 #endif /* HASHA_DEBUG_H_LOADED */

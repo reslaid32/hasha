@@ -130,30 +130,30 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <a href="../../d7/def/structblake3__context.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <a href="../../d6/d3a/structha__blake3__context.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae9df73ff48f4c7d427c32b9d1d907c52" id="r_ae9df73ff48f4c7d427c32b9d1d907c52"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct blake3_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae9df73ff48f4c7d427c32b9d1d907c52">blake3_context</a></td></tr>
-<tr class="memdesc:ae9df73ff48f4c7d427c32b9d1d907c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <br /></td></tr>
-<tr class="separator:ae9df73ff48f4c7d427c32b9d1d907c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f693b0ad64b3fcbedb70e74946c6566" id="r_a5f693b0ad64b3fcbedb70e74946c6566"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct ha_blake3_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f693b0ad64b3fcbedb70e74946c6566">ha_blake3_context</a></td></tr>
+<tr class="memdesc:a5f693b0ad64b3fcbedb70e74946c6566"><td class="mdescLeft">&#160;</td><td class="mdescRight">BLAKE3 hash state context.  <br /></td></tr>
+<tr class="separator:a5f693b0ad64b3fcbedb70e74946c6566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aedbdd17b7bbe8b873825c070bd8f908b" id="r_aedbdd17b7bbe8b873825c070bd8f908b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedbdd17b7bbe8b873825c070bd8f908b">blake3_init</a> (<a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *ctx)</td></tr>
-<tr class="memdesc:aedbdd17b7bbe8b873825c070bd8f908b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the BLAKE3 context for hashing.  <br /></td></tr>
-<tr class="separator:aedbdd17b7bbe8b873825c070bd8f908b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba8a2bf6076be570cd4a21030b88b3c7" id="r_aba8a2bf6076be570cd4a21030b88b3c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba8a2bf6076be570cd4a21030b88b3c7">blake3_update</a> (<a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *ctx, const uint8_t *data, size_t length)</td></tr>
-<tr class="memdesc:aba8a2bf6076be570cd4a21030b88b3c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the BLAKE3 hash with more input data.  <br /></td></tr>
-<tr class="separator:aba8a2bf6076be570cd4a21030b88b3c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3e89c269e66d3dc6234842ba7f057fb" id="r_ae3e89c269e66d3dc6234842ba7f057fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3e89c269e66d3dc6234842ba7f057fb">blake3_final</a> (<a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *ctx, uint8_t *digest, size_t length)</td></tr>
-<tr class="memdesc:ae3e89c269e66d3dc6234842ba7f057fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the BLAKE3 hash and produces the final digest.  <br /></td></tr>
-<tr class="separator:ae3e89c269e66d3dc6234842ba7f057fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39cbe577834087491075773dfbc675ce" id="r_a39cbe577834087491075773dfbc675ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39cbe577834087491075773dfbc675ce">blake3_hash</a> (const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length)</td></tr>
-<tr class="memdesc:a39cbe577834087491075773dfbc675ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the BLAKE3 hash in a single operation.  <br /></td></tr>
-<tr class="separator:a39cbe577834087491075773dfbc675ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a565177eeac9de52c013fc24d135fd8d1" id="r_a565177eeac9de52c013fc24d135fd8d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a565177eeac9de52c013fc24d135fd8d1">ha_blake3_init</a> (<a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *ctx)</td></tr>
+<tr class="memdesc:a565177eeac9de52c013fc24d135fd8d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the BLAKE3 context for hashing.  <br /></td></tr>
+<tr class="separator:a565177eeac9de52c013fc24d135fd8d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0f62a686eced7f4256089ea84ae6017" id="r_aa0f62a686eced7f4256089ea84ae6017"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0f62a686eced7f4256089ea84ae6017">ha_blake3_update</a> (<a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *ctx, const uint8_t *data, size_t length)</td></tr>
+<tr class="memdesc:aa0f62a686eced7f4256089ea84ae6017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the BLAKE3 hash with more input data.  <br /></td></tr>
+<tr class="separator:aa0f62a686eced7f4256089ea84ae6017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ecb4b2640bbf067d683c2a9fddc4ec2" id="r_a3ecb4b2640bbf067d683c2a9fddc4ec2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ecb4b2640bbf067d683c2a9fddc4ec2">ha_blake3_final</a> (<a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *ctx, uint8_t *digest, size_t length)</td></tr>
+<tr class="memdesc:a3ecb4b2640bbf067d683c2a9fddc4ec2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the BLAKE3 hash and produces the final digest.  <br /></td></tr>
+<tr class="separator:a3ecb4b2640bbf067d683c2a9fddc4ec2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e84041305d1e6140ada32680d90fc1" id="r_ab0e84041305d1e6140ada32680d90fc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0e84041305d1e6140ada32680d90fc1">ha_blake3_hash</a> (const uint8_t *data, size_t length, uint8_t *digest, size_t digest_length)</td></tr>
+<tr class="memdesc:ab0e84041305d1e6140ada32680d90fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the BLAKE3 hash in a single operation.  <br /></td></tr>
+<tr class="separator:ab0e84041305d1e6140ada32680d90fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for the BLAKE3 hashing algorithm. </p>
@@ -164,14 +164,14 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae9df73ff48f4c7d427c32b9d1d907c52" name="ae9df73ff48f4c7d427c32b9d1d907c52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9df73ff48f4c7d427c32b9d1d907c52">&#9670;&#160;</a></span>blake3_context</h2>
+<a id="a5f693b0ad64b3fcbedb70e74946c6566" name="a5f693b0ad64b3fcbedb70e74946c6566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f693b0ad64b3fcbedb70e74946c6566">&#9670;&#160;</a></span>ha_blake3_context</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct blake3_context blake3_context</td>
+          <td class="memname">typedef <a class="el" href="../../db/db5/export_8h.html#a7240c862b6ad64bdde0205d68f5da431">HASHA_EXTERN_C_BEG</a> struct ha_blake3_context ha_blake3_context</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -182,16 +182,16 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae3e89c269e66d3dc6234842ba7f057fb" name="ae3e89c269e66d3dc6234842ba7f057fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3e89c269e66d3dc6234842ba7f057fb">&#9670;&#160;</a></span>blake3_final()</h2>
+<a id="a3ecb4b2640bbf067d683c2a9fddc4ec2" name="a3ecb4b2640bbf067d683c2a9fddc4ec2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ecb4b2640bbf067d683c2a9fddc4ec2">&#9670;&#160;</a></span>ha_blake3_final()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_final </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_blake3_final </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -219,14 +219,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a39cbe577834087491075773dfbc675ce" name="a39cbe577834087491075773dfbc675ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39cbe577834087491075773dfbc675ce">&#9670;&#160;</a></span>blake3_hash()</h2>
+<a id="ab0e84041305d1e6140ada32680d90fc1" name="ab0e84041305d1e6140ada32680d90fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e84041305d1e6140ada32680d90fc1">&#9670;&#160;</a></span>ha_blake3_hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_hash </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_blake3_hash </td>
           <td>(</td>
           <td class="paramtype">const uint8_t *</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
         </tr>
@@ -262,16 +262,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aedbdd17b7bbe8b873825c070bd8f908b" name="aedbdd17b7bbe8b873825c070bd8f908b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aedbdd17b7bbe8b873825c070bd8f908b">&#9670;&#160;</a></span>blake3_init()</h2>
+<a id="a565177eeac9de52c013fc24d135fd8d1" name="a565177eeac9de52c013fc24d135fd8d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a565177eeac9de52c013fc24d135fd8d1">&#9670;&#160;</a></span>ha_blake3_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_init </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_blake3_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -288,16 +288,16 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aba8a2bf6076be570cd4a21030b88b3c7" name="aba8a2bf6076be570cd4a21030b88b3c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba8a2bf6076be570cd4a21030b88b3c7">&#9670;&#160;</a></span>blake3_update()</h2>
+<a id="aa0f62a686eced7f4256089ea84ae6017" name="aa0f62a686eced7f4256089ea84ae6017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0f62a686eced7f4256089ea84ae6017">&#9670;&#160;</a></span>ha_blake3_update()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void blake3_update </td>
+          <td class="memname"><a class="el" href="../../db/db5/export_8h.html#abcc0601ec5e808004caf35834c3cd50c">HASHA_PUBLIC_FUNC</a> void ha_blake3_update </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/def/structblake3__context.html">blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d6/d3a/structha__blake3__context.html">ha_blake3_context</a> *</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

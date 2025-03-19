@@ -22,45 +22,46 @@
 #define sigma0_64(x) (ROTR_64(x, 1) ^ ROTR_64(x, 8) ^ SHR(x, 7))
 #define sigma1_64(x) (ROTR_64(x, 19) ^ ROTR_64(x, 61) ^ SHR(x, 6))
 
-HASHA_PUBLIC_FUNC void sha2_224_transform(sha2_224_context *ctx,
-                                          const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_224_transform(ha_sha2_224_context *ctx,
+                                             const uint8_t *block)
 {
-  sha2_256_transform((sha2_256_context *)ctx, block);
+  ha_sha2_256_transform((ha_sha2_256_context *)ctx, block);
 }
 
-HASHA_PUBLIC_FUNC void sha2_224_init(sha2_224_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_224_init(ha_sha2_224_context *ctx)
 {
   memcpy(ctx->state, SHA2_224_H0, sizeof(SHA2_224_H0));
   ctx->bit_count = 0;
   memset(ctx->buffer, 0, SHA2_224_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_224_update(sha2_224_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha2_224_update(ha_sha2_224_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
-  sha2_256_update((sha2_256_context *)ctx, data, length);
+  ha_sha2_256_update((ha_sha2_256_context *)ctx, data, length);
 }
 
-HASHA_PUBLIC_FUNC void sha2_224_final(sha2_224_context *ctx,
-                                      uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_224_final(ha_sha2_224_context *ctx,
+                                         uint8_t *digest)
 {
   uint8_t full_digest[SHA2_256_DIGEST_SIZE];
-  sha2_256_final((sha2_256_context *)ctx, full_digest);
+  ha_sha2_256_final((ha_sha2_256_context *)ctx, full_digest);
 
   memcpy(digest, full_digest, SHA2_224_DIGEST_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_224_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_224_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha2_224_context ctx;
-  sha2_224_init(&ctx);
-  sha2_224_update(&ctx, data, length);
-  sha2_224_final(&ctx, digest);
+  ha_sha2_224_context ctx;
+  ha_sha2_224_init(&ctx);
+  ha_sha2_224_update(&ctx, data, length);
+  ha_sha2_224_final(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha2_256_transform(sha2_256_context *ctx,
-                                          const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_256_transform(ha_sha2_256_context *ctx,
+                                             const uint8_t *block)
 {
   uint32_t W[64];
   uint32_t a, b, c, d, e, f, g, h;
@@ -108,7 +109,7 @@ HASHA_PUBLIC_FUNC void sha2_256_transform(sha2_256_context *ctx,
   ctx->state[7] += h;
 }
 
-HASHA_PUBLIC_FUNC void sha2_256_init(sha2_256_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_256_init(ha_sha2_256_context *ctx)
 {
   // ctx->state[0] = 0x6a09e667;
   // ctx->state[1] = 0xbb67ae85;
@@ -123,8 +124,9 @@ HASHA_PUBLIC_FUNC void sha2_256_init(sha2_256_context *ctx)
   memset(ctx->buffer, 0, SHA2_256_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_256_update(sha2_256_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha2_256_update(ha_sha2_256_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
   size_t buffer_fill = ctx->bit_count / 8 % SHA2_256_BLOCK_SIZE;
   ctx->bit_count += (uint64_t)length * 8;
@@ -142,14 +144,14 @@ HASHA_PUBLIC_FUNC void sha2_256_update(sha2_256_context *ctx,
 
     if (buffer_fill == SHA2_256_BLOCK_SIZE)
     {
-      sha2_256_transform(ctx, ctx->buffer);
+      ha_sha2_256_transform(ctx, ctx->buffer);
       buffer_fill = 0;
     }
   }
 }
 
-HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
-                                      uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_256_final(ha_sha2_256_context *ctx,
+                                         uint8_t *digest)
 {
   size_t buffer_fill         = ctx->bit_count / 8 % SHA2_256_BLOCK_SIZE;
   ctx->buffer[buffer_fill++] = 0x80;
@@ -158,7 +160,7 @@ HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
   {
     memset(ctx->buffer + buffer_fill, 0,
            SHA2_256_BLOCK_SIZE - buffer_fill);
-    sha2_256_transform(ctx, ctx->buffer);
+    ha_sha2_256_transform(ctx, ctx->buffer);
     buffer_fill = 0;
   }
 
@@ -169,7 +171,7 @@ HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
     ctx->buffer[SHA2_256_BLOCK_SIZE - 1 - i] =
         (ctx->bit_count >> (8 * i)) & 0xff;
   }
-  sha2_256_transform(ctx, ctx->buffer);
+  ha_sha2_256_transform(ctx, ctx->buffer);
 
   for (int i = 0; i < 8; ++i)
   {
@@ -180,54 +182,55 @@ HASHA_PUBLIC_FUNC void sha2_256_final(sha2_256_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha2_256_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_256_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha2_256_context ctx;
-  sha2_256_init(&ctx);
-  sha2_256_update(&ctx, data, length);
-  sha2_256_final(&ctx, digest);
+  ha_sha2_256_context ctx;
+  ha_sha2_256_init(&ctx);
+  ha_sha2_256_update(&ctx, data, length);
+  ha_sha2_256_final(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha2_384_transform(sha2_384_context *ctx,
-                                          const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_384_transform(ha_sha2_384_context *ctx,
+                                             const uint8_t *block)
 {
-  sha2_512_transform((sha2_512_context *)ctx, block);
+  ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
 
-HASHA_PUBLIC_FUNC void sha2_384_init(sha2_384_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_384_init(ha_sha2_384_context *ctx)
 {
   memcpy(ctx->state, SHA2_384_H0, sizeof(SHA2_384_H0));
   ctx->bit_count[0] = ctx->bit_count[1] = 0;
   memset(ctx->buffer, 0, SHA2_384_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_384_update(sha2_384_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha2_384_update(ha_sha2_384_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
-  sha2_512_update((sha2_512_context *)ctx, data, length);
+  ha_sha2_512_update((ha_sha2_512_context *)ctx, data, length);
 }
 
-HASHA_PUBLIC_FUNC void sha2_384_final(sha2_384_context *ctx,
-                                      uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_384_final(ha_sha2_384_context *ctx,
+                                         uint8_t *digest)
 {
   uint8_t full_digest[SHA2_512_DIGEST_SIZE];
-  sha2_512_final((sha2_512_context *)ctx, full_digest);
+  ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);
 
   memcpy(digest, full_digest, SHA2_384_DIGEST_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_384_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_384_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha2_384_context ctx;
-  sha2_384_init(&ctx);
-  sha2_384_update(&ctx, data, length);
-  sha2_384_final(&ctx, digest);
+  ha_sha2_384_context ctx;
+  ha_sha2_384_init(&ctx);
+  ha_sha2_384_update(&ctx, data, length);
+  ha_sha2_384_final(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_transform(sha2_512_context *ctx,
-                                          const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_512_transform(ha_sha2_512_context *ctx,
+                                             const uint8_t *block)
 {
   uint64_t m[80];
   uint64_t a, b, c, d, e, f, g, h;
@@ -285,7 +288,7 @@ HASHA_PUBLIC_FUNC void sha2_512_transform(sha2_512_context *ctx,
   ctx->state[7] += h;
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_init(sha2_512_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_512_init(ha_sha2_512_context *ctx)
 {
   // ctx->state[0] = 0x6a09e667f3bcc908ULL;
   // ctx->state[1] = 0xbb67ae8584caa73bULL;
@@ -300,8 +303,8 @@ HASHA_PUBLIC_FUNC void sha2_512_init(sha2_512_context *ctx)
   memset(ctx->buffer, 0, SHA2_512_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_update(sha2_512_context *ctx,
-                                       const uint8_t *data, size_t len)
+HASHA_PUBLIC_FUNC void ha_sha2_512_update(ha_sha2_512_context *ctx,
+                                          const uint8_t *data, size_t len)
 {
   size_t buffer_fill = (ctx->bit_count / 8) % SHA2_512_BLOCK_SIZE;
   ctx->bit_count += (uint64_t)len * 8;
@@ -318,14 +321,14 @@ HASHA_PUBLIC_FUNC void sha2_512_update(sha2_512_context *ctx,
 
     if (buffer_fill == SHA2_512_BLOCK_SIZE)
     {
-      sha2_512_transform(ctx, ctx->buffer);
+      ha_sha2_512_transform(ctx, ctx->buffer);
       buffer_fill = 0;
     }
   }
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
-                                      uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_final(ha_sha2_512_context *ctx,
+                                         uint8_t *digest)
 {
   size_t buffer_fill         = (ctx->bit_count / 8) % SHA2_512_BLOCK_SIZE;
   ctx->buffer[buffer_fill++] = 0x80;
@@ -334,7 +337,7 @@ HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
   {
     memset(ctx->buffer + buffer_fill, 0,
            SHA2_512_BLOCK_SIZE - buffer_fill);
-    sha2_512_transform(ctx, ctx->buffer);
+    ha_sha2_512_transform(ctx, ctx->buffer);
     buffer_fill = 0;
   }
 
@@ -346,7 +349,7 @@ HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
         (ctx->bit_count >> (8 * i)) & 0xff;
   }
 
-  sha2_512_transform(ctx, ctx->buffer);
+  ha_sha2_512_transform(ctx, ctx->buffer);
 
   for (int i = 0; i < 8; ++i)
   {
@@ -361,87 +364,87 @@ HASHA_PUBLIC_FUNC void sha2_512_final(sha2_512_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha2_512_context ctx;
-  sha2_512_init(&ctx);
-  sha2_512_update(&ctx, data, length);
-  sha2_512_final(&ctx, digest);
+  ha_sha2_512_context ctx;
+  ha_sha2_512_init(&ctx);
+  ha_sha2_512_update(&ctx, data, length);
+  ha_sha2_512_final(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_224_transform(sha2_512_224_context *ctx,
-                                              const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_512_224_transform(
+    ha_sha2_512_224_context *ctx, const uint8_t *block)
 {
-  sha2_512_transform((sha2_512_context *)ctx, block);
+  ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_224_init(sha2_512_224_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_512_224_init(ha_sha2_512_224_context *ctx)
 {
   memcpy(ctx->state, SHA2_512_224_H0, sizeof(SHA2_512_224_H0));
   ctx->bit_count = 0;
   memset(ctx->buffer, 0, SHA2_512_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_224_update(sha2_512_224_context *ctx,
-                                           const uint8_t *data,
-                                           size_t length)
+HASHA_PUBLIC_FUNC void ha_sha2_512_224_update(ha_sha2_512_224_context *ctx,
+                                              const uint8_t *data,
+                                              size_t length)
 {
-  sha2_512_update((sha2_512_context *)ctx, data, length);
+  ha_sha2_512_update((ha_sha2_512_context *)ctx, data, length);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_224_final(sha2_512_224_context *ctx,
-                                          uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_224_final(ha_sha2_512_224_context *ctx,
+                                             uint8_t *digest)
 {
   uint8_t full_digest[SHA2_512_DIGEST_SIZE];
-  sha2_512_final((sha2_512_context *)ctx, full_digest);
+  ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);
 
   memcpy(digest, full_digest, SHA2_512_224_DIGEST_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_224_hash(const uint8_t *data,
-                                         size_t length, uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_224_hash(const uint8_t *data,
+                                            size_t length, uint8_t *digest)
 {
-  sha2_512_224_context ctx;
-  sha2_512_224_init(&ctx);
-  sha2_512_224_update(&ctx, data, length);
-  sha2_512_224_final(&ctx, digest);
+  ha_sha2_512_224_context ctx;
+  ha_sha2_512_224_init(&ctx);
+  ha_sha2_512_224_update(&ctx, data, length);
+  ha_sha2_512_224_final(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_256_transform(sha2_512_256_context *ctx,
-                                              const uint8_t *block)
+HASHA_PUBLIC_FUNC void ha_sha2_512_256_transform(
+    ha_sha2_512_256_context *ctx, const uint8_t *block)
 {
-  sha2_512_transform((sha2_512_context *)ctx, block);
+  ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_256_init(sha2_512_256_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha2_512_256_init(ha_sha2_512_256_context *ctx)
 {
   memcpy(ctx->state, SHA2_512_256_H0, sizeof(SHA2_512_256_H0));
   ctx->bit_count = 0;
   memset(ctx->buffer, 0, SHA2_512_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_256_update(sha2_512_256_context *ctx,
-                                           const uint8_t *data,
-                                           size_t length)
+HASHA_PUBLIC_FUNC void ha_sha2_512_256_update(ha_sha2_512_256_context *ctx,
+                                              const uint8_t *data,
+                                              size_t length)
 {
-  sha2_512_update((sha2_512_context *)ctx, data, length);
+  ha_sha2_512_update((ha_sha2_512_context *)ctx, data, length);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_256_final(sha2_512_256_context *ctx,
-                                          uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_256_final(ha_sha2_512_256_context *ctx,
+                                             uint8_t *digest)
 {
   uint8_t full_digest[SHA2_512_DIGEST_SIZE];
-  sha2_512_final((sha2_512_context *)ctx, full_digest);
+  ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);
 
   memcpy(digest, full_digest, SHA2_512_256_DIGEST_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void sha2_512_256_hash(const uint8_t *data,
-                                         size_t length, uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha2_512_256_hash(const uint8_t *data,
+                                            size_t length, uint8_t *digest)
 {
-  sha2_512_256_context ctx;
-  sha2_512_256_init(&ctx);
-  sha2_512_256_update(&ctx, data, length);
-  sha2_512_256_final(&ctx, digest);
+  ha_sha2_512_256_context ctx;
+  ha_sha2_512_256_init(&ctx);
+  ha_sha2_512_256_update(&ctx, data, length);
+  ha_sha2_512_256_final(&ctx, digest);
 }

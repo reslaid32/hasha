@@ -6,5 +6,5 @@ var acel_8h =
     [ "HASHA_ACCELERATION_SIMD", "da/d17/acel_8h.html#a3f84c015c01b9bc88986bc3e90f4abb5", null ],
     [ "HASHA_ACEL_STATUSES_DEFINED", "da/d17/acel_8h.html#a89c5f4d979965f83f48fc221eaf196af", null ],
     [ "HASHA_DISABLE_ACCELERATION", "da/d17/acel_8h.html#ab88a3d85c027379a9066cea031a54f57", null ],
-    [ "hashacel", "da/d17/acel_8h.html#a83ef55236abf9e29b94505563d5bdbbe", null ]
+    [ "ha_acel", "da/d17/acel_8h.html#a485bd9be3bc67bd0cb1724e9419eb202", null ]
 ];

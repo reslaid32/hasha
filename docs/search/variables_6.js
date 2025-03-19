@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rate_0',['rate',['../d4/d14/structkeccak__context.html#aae579caa707488a3657309c2f7196298',1,'keccak_context::rate'],['../d2/d14/structsha3__context.html#a02bbd9897f7a7be8840c5dc217f20e4c',1,'sha3_context::rate']]]
+  ['major_0',['major',['../d4/dcf/structha__version__t.html#af4000adf325c8b5aa98865789cd6b44f',1,'ha_version_t']]],
+  ['minor_1',['minor',['../d4/dcf/structha__version__t.html#afa8497cee93456e97d6a57c670862304',1,'ha_version_t']]]
 ];

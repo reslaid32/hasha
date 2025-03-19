@@ -102,9 +102,6 @@ $(function(){initNavTree('d4/d14/structkeccak__context.html','../../'); initResi
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="../../d7/da5/structkeccak__context-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">keccak_context Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -113,127 +110,10 @@ $(function(){initNavTree('d4/d14/structkeccak__context.html','../../'); initResi
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0657c52b76f80acf3b4fd6549f87180b" id="r_a0657c52b76f80acf3b4fd6549f87180b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0657c52b76f80acf3b4fd6549f87180b">state</a> [200]</td></tr>
-<tr class="memdesc:a0657c52b76f80acf3b4fd6549f87180b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Keccak state array.  <br /></td></tr>
-<tr class="separator:a0657c52b76f80acf3b4fd6549f87180b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae579caa707488a3657309c2f7196298" id="r_aae579caa707488a3657309c2f7196298"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae579caa707488a3657309c2f7196298">rate</a></td></tr>
-<tr class="memdesc:aae579caa707488a3657309c2f7196298"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rate (number of bits processed per round).  <br /></td></tr>
-<tr class="separator:aae579caa707488a3657309c2f7196298"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af575a096393c65a66185a458f0301d03" id="r_af575a096393c65a66185a458f0301d03"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af575a096393c65a66185a458f0301d03">capacity</a></td></tr>
-<tr class="memdesc:af575a096393c65a66185a458f0301d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">The capacity (remaining bits).  <br /></td></tr>
-<tr class="separator:af575a096393c65a66185a458f0301d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa566bb625f1e1d9c97da6d04924b66d5" id="r_aa566bb625f1e1d9c97da6d04924b66d5"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa566bb625f1e1d9c97da6d04924b66d5">absorb_index</a></td></tr>
-<tr class="memdesc:aa566bb625f1e1d9c97da6d04924b66d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current index for absorbing data.  <br /></td></tr>
-<tr class="separator:aa566bb625f1e1d9c97da6d04924b66d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae643b6e43fc8f82b5f13a1da3c082cb1" id="r_ae643b6e43fc8f82b5f13a1da3c082cb1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae643b6e43fc8f82b5f13a1da3c082cb1">squeeze_index</a></td></tr>
-<tr class="memdesc:ae643b6e43fc8f82b5f13a1da3c082cb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current index for squeezing data.  <br /></td></tr>
-<tr class="separator:ae643b6e43fc8f82b5f13a1da3c082cb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Keccak hash state context. </p>
 <p>This structure holds the internal state of the Keccak hash function. It includes the state array, rate, capacity, and indices for absorbing and squeezing data. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00117">117</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa566bb625f1e1d9c97da6d04924b66d5" name="aa566bb625f1e1d9c97da6d04924b66d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa566bb625f1e1d9c97da6d04924b66d5">&#9670;&#160;</a></span>absorb_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t keccak_context::absorb_index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The current index for absorbing data. </p>
-<p>This index keeps track of how much data has been absorbed in the current round. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00149">149</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-
-</div>
-</div>
-<a id="af575a096393c65a66185a458f0301d03" name="af575a096393c65a66185a458f0301d03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af575a096393c65a66185a458f0301d03">&#9670;&#160;</a></span>capacity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t keccak_context::capacity</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The capacity (remaining bits). </p>
-<p>This value holds the capacity of the Keccak function, which defines the number of bits used to absorb the input data. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00141">141</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-
-</div>
-</div>
-<a id="aae579caa707488a3657309c2f7196298" name="aae579caa707488a3657309c2f7196298"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae579caa707488a3657309c2f7196298">&#9670;&#160;</a></span>rate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t keccak_context::rate</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The rate (number of bits processed per round). </p>
-<p>This value indicates the rate of the Keccak hash function for the specific variant (e.g., 136 for Keccak-256). </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00133">133</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-
-</div>
-</div>
-<a id="ae643b6e43fc8f82b5f13a1da3c082cb1" name="ae643b6e43fc8f82b5f13a1da3c082cb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae643b6e43fc8f82b5f13a1da3c082cb1">&#9670;&#160;</a></span>squeeze_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t keccak_context::squeeze_index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The current index for squeezing data. </p>
-<p>This index keeps track of how much data has been squeezed and output in the current round. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00157">157</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-
-</div>
-</div>
-<a id="a0657c52b76f80acf3b4fd6549f87180b" name="a0657c52b76f80acf3b4fd6549f87180b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0657c52b76f80acf3b4fd6549f87180b">&#9670;&#160;</a></span>state</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t keccak_context::state[200]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The Keccak state array. </p>
-<p>This array holds the internal state of the Keccak hash function (200 bytes). </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d6/dd8/keccak_8h_source.html#l00125">125</a> of file <a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/hasha/<a class="el" href="../../d6/dd8/keccak_8h_source.html">keccak.h</a></li>
 </ul>
 </div><!-- contents -->

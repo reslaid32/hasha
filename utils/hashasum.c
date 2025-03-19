@@ -21,7 +21,10 @@ void print_usage(const char *execu)
   printf(
       "  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, keccak256, "
       "keccak384, keccak512\n");
-  printf("  blake3_<digestlen>\n");
+  printf(
+      "  blake2s_<digestlen(8...256)>"
+      "  blake2s_<digestlen(8...512)>"
+      "  blake3_<digestlen>\n");
   printf("\nData source options:\n");
   printf("  -s <string>        Hash a string provided as an argument\n");
   printf("  -f <file_path>     Hash the contents of a file\n");
@@ -37,97 +40,113 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
 {
   if (strcmp(algorithm, "crc32") == 0)
   {
-    uint32_t crc = crc32_hash(data, length);
+    uint32_t crc = ha_crc32_hash(data, length);
     printf("%08x\n", crc);
     return;
   }
   else if (strcmp(algorithm, "md5") == 0)
   {
     *digest_size = MD5_DIGEST_SIZE;
-    md5_hash(data, length, digest);
+    ha_md5_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha1") == 0)
   {
     *digest_size = SHA1_DIGEST_SIZE;
-    sha1_hash(data, length, digest);
+    ha_sha1_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha224") == 0)
   {
     *digest_size = SHA2_224_DIGEST_SIZE;
-    sha2_224_hash(data, length, digest);
+    ha_sha2_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha256") == 0)
   {
     *digest_size = SHA2_256_DIGEST_SIZE;
-    sha2_256_hash(data, length, digest);
+    ha_sha2_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha384") == 0)
   {
     *digest_size = SHA2_384_DIGEST_SIZE;
-    sha2_384_hash(data, length, digest);
+    ha_sha2_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512") == 0)
   {
     *digest_size = SHA2_512_DIGEST_SIZE;
-    sha2_512_hash(data, length, digest);
+    ha_sha2_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_224") == 0)
   {
     *digest_size = SHA2_512_224_DIGEST_SIZE;
-    sha2_512_224_hash(data, length, digest);
+    ha_sha2_512_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_256") == 0)
   {
     *digest_size = SHA2_512_256_DIGEST_SIZE;
-    sha2_512_256_hash(data, length, digest);
+    ha_sha2_512_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_224") == 0)
   {
     *digest_size = SHA3_224_DIGEST_SIZE;
-    sha3_224_hash(data, length, digest);
+    ha_sha3_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_256") == 0)
   {
     *digest_size = SHA3_256_DIGEST_SIZE;
-    sha3_256_hash(data, length, digest);
+    ha_sha3_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_384") == 0)
   {
     *digest_size = SHA3_384_DIGEST_SIZE;
-    sha3_384_hash(data, length, digest);
+    ha_sha3_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_512") == 0)
   {
     *digest_size = SHA3_512_DIGEST_SIZE;
-    sha3_512_hash(data, length, digest);
+    ha_sha3_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak224") == 0)
   {
     *digest_size = KECCAK_224_DIGEST_SIZE;
-    keccak_224_hash(data, length, digest);
+    ha_keccak_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak256") == 0)
   {
     *digest_size = KECCAK_256_DIGEST_SIZE;
-    keccak_256_hash(data, length, digest);
+    ha_keccak_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak384") == 0)
   {
     *digest_size = KECCAK_384_DIGEST_SIZE;
-    keccak_384_hash(data, length, digest);
+    ha_keccak_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak512") == 0)
   {
     *digest_size = KECCAK_512_DIGEST_SIZE;
-    keccak_512_hash(data, length, digest);
+    ha_keccak_512_hash(data, length, digest);
   }
-  else if (strncmp(algorithm, "blake3_", 7) == 0)
+  else if (strncmp(algorithm, "blake2b_", 7) == 0)
   {
     const char *len_str = algorithm + 7;
     char *end;
     long len     = strtol(len_str, &end, 10);
     *digest_size = HASHA_bB(len);
-    blake3_hash(data, length, digest, *digest_size);
+    ha_blake2b_hash(data, length, digest, *digest_size);
+  }
+  else if (strncmp(algorithm, "blake2s_", 7) == 0)
+  {
+    const char *len_str = algorithm + 8;
+    char *end;
+    long len     = strtol(len_str, &end, 10);
+    *digest_size = HASHA_bB(len);
+    ha_blake2s_hash(data, length, digest, *digest_size);
+  }
+  else if (strncmp(algorithm, "blake3_", 7) == 0)
+  {
+    const char *len_str = algorithm + 8;
+    char *end;
+    long len     = strtol(len_str, &end, 10);
+    *digest_size = HASHA_bB(len);
+    ha_blake3_hash(data, length, digest, *digest_size);
   }
   else
   {
@@ -161,7 +180,7 @@ int main(int argc, char *argv[])
 {
   if (argc < 3)
   {
-    hashaver_t hashav = hashaver();
+    ha_version_t hashav = ha_version();
     printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor,
            hashav.patch);
     print_usage(argv[0]);

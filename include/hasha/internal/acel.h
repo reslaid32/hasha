@@ -32,7 +32,7 @@
 HASHA_EXTERN_C_BEG
 
 HASHA_DEPRECATED("libhasha hw acceleration deprecated")
-HASHA_PUBLIC_FUNC int hashacel(void);
+HASHA_PUBLIC_FUNC int ha_acel(void);
 
 HASHA_EXTERN_C_END
 

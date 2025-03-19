@@ -35,7 +35,7 @@ HASHA_EXTERN_C_BEG
  * It includes buffers for input data, the current hash state, and other
  * necessary variables for processing the data in chunks.
  */
-typedef struct blake3_context
+typedef struct ha_blake3_context
 {
   /**
    * @brief Input buffer for storing data being processed.
@@ -87,7 +87,7 @@ typedef struct blake3_context
    * with each round consisting of 8 words (32 bytes).
    */
   uint32_t cv_buf[54 * 8];
-} blake3_context;
+} ha_blake3_context;
 
 /**
  * @brief Initializes the BLAKE3 context for hashing.
@@ -97,7 +97,7 @@ typedef struct blake3_context
  *
  * @param ctx Pointer to a BLAKE3 context structure to be initialized.
  */
-HASHA_PUBLIC_FUNC void blake3_init(blake3_context *ctx);
+HASHA_PUBLIC_FUNC void ha_blake3_init(ha_blake3_context *ctx);
 
 /**
  * @brief Updates the BLAKE3 hash with more input data.
@@ -110,8 +110,9 @@ HASHA_PUBLIC_FUNC void blake3_init(blake3_context *ctx);
  * @param data Pointer to the input data to be hashed.
  * @param length The length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void blake3_update(blake3_context *ctx,
-                                     const uint8_t *data, size_t length);
+HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
+                                        const uint8_t *data,
+                                        size_t length);
 
 /**
  * @brief Finalizes the BLAKE3 hash and produces the final digest.
@@ -125,8 +126,8 @@ HASHA_PUBLIC_FUNC void blake3_update(blake3_context *ctx,
  * stored.
  * @param length The length of the digest to be produced, in bytes.
  */
-HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest,
-                                    size_t length);
+HASHA_PUBLIC_FUNC void ha_blake3_final(ha_blake3_context *ctx,
+                                       uint8_t *digest, size_t length);
 
 /**
  * @brief Computes the BLAKE3 hash in a single operation.
@@ -142,8 +143,9 @@ HASHA_PUBLIC_FUNC void blake3_final(blake3_context *ctx, uint8_t *digest,
  * stored.
  * @param digest_length The length of the digest to be produced, in bytes.
  */
-HASHA_PUBLIC_FUNC void blake3_hash(const uint8_t *data, size_t length,
-                                   uint8_t *digest, size_t digest_length);
+HASHA_PUBLIC_FUNC void ha_blake3_hash(const uint8_t *data, size_t length,
+                                      uint8_t *digest,
+                                      size_t digest_length);
 
 HASHA_EXTERN_C_END
 

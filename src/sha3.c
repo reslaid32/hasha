@@ -2,7 +2,7 @@
 
 #include "../include/hasha/sha3.h"
 
-HASHA_PUBLIC_FUNC void sha3_224_init(sha3_224_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_224_init(ha_sha3_224_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));
   ctx->rate          = SHA3_224_RATE;
@@ -11,8 +11,9 @@ HASHA_PUBLIC_FUNC void sha3_224_init(sha3_224_context *ctx)
   ctx->squeeze_index = SHA3_224_RATE;
 }
 
-HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha3_224_absorb(ha_sha3_224_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
   size_t i = 0;
   while (i < length)
@@ -34,7 +35,7 @@ HASHA_PUBLIC_FUNC void sha3_224_absorb(sha3_224_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_224_final(sha3_224_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_224_final(ha_sha3_224_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -42,8 +43,8 @@ HASHA_PUBLIC_FUNC void sha3_224_final(sha3_224_context *ctx)
   ctx->squeeze_index = 0;
 }
 
-HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx,
-                                        uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_224_squeeze(ha_sha3_224_context *ctx,
+                                           uint8_t *digest)
 {
   size_t i = 0;
   while (i < SHA3_224_DIGEST_SIZE)
@@ -57,17 +58,17 @@ HASHA_PUBLIC_FUNC void sha3_224_squeeze(sha3_224_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_224_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_224_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha3_224_context ctx;
-  sha3_224_init(&ctx);
-  sha3_224_absorb(&ctx, data, length);
-  sha3_224_final(&ctx);
-  sha3_224_squeeze(&ctx, digest);
+  ha_sha3_224_context ctx;
+  ha_sha3_224_init(&ctx);
+  ha_sha3_224_absorb(&ctx, data, length);
+  ha_sha3_224_final(&ctx);
+  ha_sha3_224_squeeze(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_init(sha3_256_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_256_init(ha_sha3_256_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));
   ctx->rate          = SHA3_256_RATE;
@@ -76,8 +77,9 @@ HASHA_PUBLIC_FUNC void sha3_256_init(sha3_256_context *ctx)
   ctx->squeeze_index = SHA3_256_RATE;
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha3_256_absorb(ha_sha3_256_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
   size_t i = 0;
   while (i < length)
@@ -99,7 +101,7 @@ HASHA_PUBLIC_FUNC void sha3_256_absorb(sha3_256_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_final(sha3_256_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_256_final(ha_sha3_256_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -107,8 +109,8 @@ HASHA_PUBLIC_FUNC void sha3_256_final(sha3_256_context *ctx)
   ctx->squeeze_index = 0;
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx,
-                                        uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_256_squeeze(ha_sha3_256_context *ctx,
+                                           uint8_t *digest)
 {
   size_t i = 0;
   while (i < SHA3_256_DIGEST_SIZE)
@@ -122,17 +124,17 @@ HASHA_PUBLIC_FUNC void sha3_256_squeeze(sha3_256_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_256_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_256_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha3_256_context ctx;
-  sha3_256_init(&ctx);
-  sha3_256_absorb(&ctx, data, length);
-  sha3_256_final(&ctx);
-  sha3_256_squeeze(&ctx, digest);
+  ha_sha3_256_context ctx;
+  ha_sha3_256_init(&ctx);
+  ha_sha3_256_absorb(&ctx, data, length);
+  ha_sha3_256_final(&ctx);
+  ha_sha3_256_squeeze(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_init(sha3_384_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_384_init(ha_sha3_384_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));
   ctx->rate          = SHA3_384_RATE;
@@ -141,8 +143,9 @@ HASHA_PUBLIC_FUNC void sha3_384_init(sha3_384_context *ctx)
   ctx->squeeze_index = SHA3_384_RATE;
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha3_384_absorb(ha_sha3_384_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
   size_t i = 0;
   while (i < length)
@@ -164,7 +167,7 @@ HASHA_PUBLIC_FUNC void sha3_384_absorb(sha3_384_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_final(sha3_384_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_384_final(ha_sha3_384_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -172,8 +175,8 @@ HASHA_PUBLIC_FUNC void sha3_384_final(sha3_384_context *ctx)
   ctx->squeeze_index = 0;
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx,
-                                        uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_384_squeeze(ha_sha3_384_context *ctx,
+                                           uint8_t *digest)
 {
   size_t i = 0;
   while (i < SHA3_384_DIGEST_SIZE)
@@ -187,17 +190,17 @@ HASHA_PUBLIC_FUNC void sha3_384_squeeze(sha3_384_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_384_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_384_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha3_384_context ctx;
-  sha3_384_init(&ctx);
-  sha3_384_absorb(&ctx, data, length);
-  sha3_384_final(&ctx);
-  sha3_384_squeeze(&ctx, digest);
+  ha_sha3_384_context ctx;
+  ha_sha3_384_init(&ctx);
+  ha_sha3_384_absorb(&ctx, data, length);
+  ha_sha3_384_final(&ctx);
+  ha_sha3_384_squeeze(&ctx, digest);
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_init(sha3_512_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_512_init(ha_sha3_512_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));
   ctx->rate          = SHA3_512_RATE;
@@ -206,8 +209,9 @@ HASHA_PUBLIC_FUNC void sha3_512_init(sha3_512_context *ctx)
   ctx->squeeze_index = SHA3_512_RATE;
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx,
-                                       const uint8_t *data, size_t length)
+HASHA_PUBLIC_FUNC void ha_sha3_512_absorb(ha_sha3_512_context *ctx,
+                                          const uint8_t *data,
+                                          size_t length)
 {
   size_t i = 0;
   while (i < length)
@@ -229,7 +233,7 @@ HASHA_PUBLIC_FUNC void sha3_512_absorb(sha3_512_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_final(sha3_512_context *ctx)
+HASHA_PUBLIC_FUNC void ha_sha3_512_final(ha_sha3_512_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
@@ -237,8 +241,8 @@ HASHA_PUBLIC_FUNC void sha3_512_final(sha3_512_context *ctx)
   ctx->squeeze_index = 0;
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx,
-                                        uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_512_squeeze(ha_sha3_512_context *ctx,
+                                           uint8_t *digest)
 {
   size_t i = 0;
   while (i < SHA3_512_DIGEST_SIZE)
@@ -252,12 +256,12 @@ HASHA_PUBLIC_FUNC void sha3_512_squeeze(sha3_512_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void sha3_512_hash(const uint8_t *data, size_t length,
-                                     uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_sha3_512_hash(const uint8_t *data, size_t length,
+                                        uint8_t *digest)
 {
-  sha3_512_context ctx;
-  sha3_512_init(&ctx);
-  sha3_512_absorb(&ctx, data, length);
-  sha3_512_final(&ctx);
-  sha3_512_squeeze(&ctx, digest);
+  ha_sha3_512_context ctx;
+  ha_sha3_512_init(&ctx);
+  ha_sha3_512_absorb(&ctx, data, length);
+  ha_sha3_512_final(&ctx);
+  ha_sha3_512_squeeze(&ctx, digest);
 }

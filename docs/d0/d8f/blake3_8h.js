@@ -1,9 +1,9 @@
 var blake3_8h =
 [
-    [ "blake3_context", "d7/def/structblake3__context.html", "d7/def/structblake3__context" ],
-    [ "blake3_context", "d0/d8f/blake3_8h.html#ae9df73ff48f4c7d427c32b9d1d907c52", null ],
-    [ "blake3_final", "d0/d8f/blake3_8h.html#ae3e89c269e66d3dc6234842ba7f057fb", null ],
-    [ "blake3_hash", "d0/d8f/blake3_8h.html#a39cbe577834087491075773dfbc675ce", null ],
-    [ "blake3_init", "d0/d8f/blake3_8h.html#aedbdd17b7bbe8b873825c070bd8f908b", null ],
-    [ "blake3_update", "d0/d8f/blake3_8h.html#aba8a2bf6076be570cd4a21030b88b3c7", null ]
+    [ "ha_blake3_context", "d6/d3a/structha__blake3__context.html", "d6/d3a/structha__blake3__context" ],
+    [ "ha_blake3_context", "d0/d8f/blake3_8h.html#a5f693b0ad64b3fcbedb70e74946c6566", null ],
+    [ "ha_blake3_final", "d0/d8f/blake3_8h.html#a3ecb4b2640bbf067d683c2a9fddc4ec2", null ],
+    [ "ha_blake3_hash", "d0/d8f/blake3_8h.html#ab0e84041305d1e6140ada32680d90fc1", null ],
+    [ "ha_blake3_init", "d0/d8f/blake3_8h.html#a565177eeac9de52c013fc24d135fd8d1", null ],
+    [ "ha_blake3_update", "d0/d8f/blake3_8h.html#aa0f62a686eced7f4256089ea84ae6017", null ]
 ];

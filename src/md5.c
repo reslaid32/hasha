@@ -27,7 +27,8 @@ static const uint8_t MD5_SHIFT[64] = {
     4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
     6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21};
 
-static void md5_transform(md5_context *ctx, const uint8_t *block)
+HASHA_PRIVATE_FUNC void md5_transform(ha_md5_context *ctx,
+                                      const uint8_t *block)
 {
   uint32_t a, b, c, d, f, g, temp;
   uint32_t m[16];
@@ -79,7 +80,7 @@ static void md5_transform(md5_context *ctx, const uint8_t *block)
   ctx->state[3] += d;
 }
 
-HASHA_PUBLIC_FUNC void md5_init(md5_context *ctx)
+HASHA_PUBLIC_FUNC void ha_md5_init(ha_md5_context *ctx)
 {
   ctx->state[0]  = 0x67452301;
   ctx->state[1]  = 0xEFCDAB89;
@@ -89,8 +90,8 @@ HASHA_PUBLIC_FUNC void md5_init(md5_context *ctx)
   memset(ctx->buffer, 0, MD5_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void md5_update(md5_context *ctx, const uint8_t *data,
-                                  size_t len)
+HASHA_PUBLIC_FUNC void ha_md5_update(ha_md5_context *ctx,
+                                     const uint8_t *data, size_t len)
 {
   size_t buffer_space =
       MD5_BLOCK_SIZE - (ctx->bit_count / 8) % MD5_BLOCK_SIZE;
@@ -115,7 +116,7 @@ HASHA_PUBLIC_FUNC void md5_update(md5_context *ctx, const uint8_t *data,
   memcpy(ctx->buffer, data, len);
 }
 
-HASHA_PUBLIC_FUNC void md5_final(md5_context *ctx, uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_md5_final(ha_md5_context *ctx, uint8_t *digest)
 {
   size_t buffer_index         = (ctx->bit_count / 8) % MD5_BLOCK_SIZE;
   ctx->buffer[buffer_index++] = 0x80;
@@ -141,11 +142,11 @@ HASHA_PUBLIC_FUNC void md5_final(md5_context *ctx, uint8_t *digest)
   }
 }
 
-HASHA_PUBLIC_FUNC void md5_hash(const uint8_t *data, size_t len,
-                                uint8_t *digest)
+HASHA_PUBLIC_FUNC void ha_md5_hash(const uint8_t *data, size_t len,
+                                   uint8_t *digest)
 {
-  md5_context ctx;
-  md5_init(&ctx);
-  md5_update(&ctx, data, len);
-  md5_final(&ctx, digest);
+  ha_md5_context ctx;
+  ha_md5_init(&ctx);
+  ha_md5_update(&ctx, data, len);
+  ha_md5_final(&ctx, digest);
 }

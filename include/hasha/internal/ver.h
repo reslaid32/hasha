@@ -12,7 +12,7 @@ HASHA_EXTERN_C_BEG
 typedef struct
 {
   unsigned major, minor, patch;
-} hashaver_t;
+} ha_version_t;
 
 /**
  * @brief Retrieves the version information of the hash library.
@@ -27,7 +27,7 @@ typedef struct
  *         - `minor`: The minor version component of the library.
  *         - `patch`: The patch version component of the library.
  */
-HASHA_PUBLIC_FUNC hashaver_t hashaver(void);
+HASHA_PUBLIC_FUNC ha_version_t ha_version(void);
 
 HASHA_EXTERN_C_END
 

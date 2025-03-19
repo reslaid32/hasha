@@ -48,7 +48,7 @@ HASHA_EXTERN_C_BEG
  *
  * @return The computed CRC32 checksum.
  */
-HASHA_PUBLIC_FUNC uint32_t crc32_hash(const uint8_t *data, size_t len);
+HASHA_PUBLIC_FUNC uint32_t ha_crc32_hash(const uint8_t *data, size_t len);
 
 HASHA_EXTERN_C_END
 

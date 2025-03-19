@@ -1,12 +1,12 @@
 var sha1_8h =
 [
-    [ "sha1_context", "d9/dd4/structsha1__context.html", "d9/dd4/structsha1__context" ],
+    [ "ha_sha1_context", "d1/d52/structha__sha1__context.html", "d1/d52/structha__sha1__context" ],
     [ "SHA1_BLOCK_SIZE", "db/db5/sha1_8h.html#a4be887a15639aa78e6a129b9c8f4d2b9", null ],
     [ "SHA1_DIGEST_SIZE", "db/db5/sha1_8h.html#a3ba9296b223f1b3c710d6b812fd860e8", null ],
-    [ "sha1_context", "db/db5/sha1_8h.html#a61c71b7b01493502e59ab474f30f9509", null ],
-    [ "sha1_final", "db/db5/sha1_8h.html#a2164200b8d5f3284d6f00bfc798c97a0", null ],
-    [ "sha1_hash", "db/db5/sha1_8h.html#aea8fcae4e75b2efb7877a929bb479b16", null ],
-    [ "sha1_init", "db/db5/sha1_8h.html#a8025a18ddf5d3d94397f23cb3cc96a82", null ],
-    [ "sha1_transform", "db/db5/sha1_8h.html#ae9f6fa9c729d2138aa18949767837664", null ],
-    [ "sha1_update", "db/db5/sha1_8h.html#aa08551fb31058f7739e0fdc07d73f5a4", null ]
+    [ "ha_sha1_context", "db/db5/sha1_8h.html#af5d7ef4621f4d37d53b12478c0db9a4c", null ],
+    [ "ha_sha1_final", "db/db5/sha1_8h.html#a0aa718eb7cde7589d177818b352f6f97", null ],
+    [ "ha_sha1_hash", "db/db5/sha1_8h.html#a24b417f9970bffc29431c66ccccf4377", null ],
+    [ "ha_sha1_init", "db/db5/sha1_8h.html#a8b9d0455285190605efb321a0b2dc49e", null ],
+    [ "ha_sha1_transform", "db/db5/sha1_8h.html#afc835139f2715dae447f90f5f2412130", null ],
+    [ "ha_sha1_update", "db/db5/sha1_8h.html#a90efbd0648e853f868636e423b967c0c", null ]
 ];

@@ -117,7 +117,11 @@ $(function(){initNavTree('db/d16/debug_8h_source.html','../../'); initResizable(
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../db/d16/debug_8h.html#a11883cb7e72929293b1eaae7b532c929">   12</a></span><span class="preprocessor">#define HASHA_DEBUG(...)</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif </span><span class="comment">/* HASHA_DEBUG_H_LOADED */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#if !defined(ha_dbg)</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../db/d16/debug_8h.html#a5b34902236da2c9bc84b120ee29a5d37">   16</a></span><span class="preprocessor">#define ha_dbg HASHA_DEBUG</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif </span><span class="comment">/* HASHA_DEBUG_H_LOADED */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

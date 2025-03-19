@@ -15,4 +15,12 @@
 #define HASHA_Bb(n) n * 8
 #endif  // HASHA_Bb
 
+#if !defined(ha_bB)
+#define ha_bB(n) HASHA_bB(n)
+#endif
+
+#if !defined(ha_Bb)
+#define ha_Bb(n) HASHA_Bb(n)
+#endif
+
 #endif  // LIBHASHA_BITS_H_LOADED

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['absorb_5findex_0',['absorb_index',['../d4/d14/structkeccak__context.html#aa566bb625f1e1d9c97da6d04924b66d5',1,'keccak_context::absorb_index'],['../d2/d14/structsha3__context.html#a8ffd2247e554e7290f2f038d09b28d7f',1,'sha3_context::absorb_index']]],
+  ['absorb_5findex_0',['absorb_index',['../df/d3f/structha__keccak__context.html#ac3a122766ad25adf726b5543779a0f5d',1,'ha_keccak_context::absorb_index'],['../dc/d75/structha__sha3__context.html#a165be166c0d356bb308196bb3ec0f490',1,'ha_sha3_context::absorb_index']]],
   ['acel_2eh_1',['acel.h',['../da/d17/acel_8h.html',1,'']]],
   ['all_2eh_2',['all.h',['../da/d0d/all_8h.html',1,'']]]
 ];

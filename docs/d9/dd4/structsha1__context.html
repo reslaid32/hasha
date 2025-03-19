@@ -102,9 +102,6 @@ $(function(){initNavTree('d9/dd4/structsha1__context.html','../../'); initResiza
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="../../db/d5e/structsha1__context-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">sha1_context Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -113,74 +110,10 @@ $(function(){initNavTree('d9/dd4/structsha1__context.html','../../'); initResiza
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0c8a65bd0bc19179c9b3507387104949" id="r_a0c8a65bd0bc19179c9b3507387104949"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c8a65bd0bc19179c9b3507387104949">state</a> [5]</td></tr>
-<tr class="separator:a0c8a65bd0bc19179c9b3507387104949"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa508eb6ad17598ea211d724ab758838e" id="r_aa508eb6ad17598ea211d724ab758838e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa508eb6ad17598ea211d724ab758838e">bit_count</a></td></tr>
-<tr class="separator:aa508eb6ad17598ea211d724ab758838e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a517ae8622b2fd724a84273b38340c324" id="r_a517ae8622b2fd724a84273b38340c324"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a517ae8622b2fd724a84273b38340c324">buffer</a> [<a class="el" href="../../db/db5/sha1_8h.html#a4be887a15639aa78e6a129b9c8f4d2b9">SHA1_BLOCK_SIZE</a>]</td></tr>
-<tr class="separator:a517ae8622b2fd724a84273b38340c324"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>SHA-1 context structure used to store the internal state during hashing. </p>
 <p>This structure holds the state of the SHA-1 hash calculation, including the intermediate state variables, bit count, and buffer used to store input data. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/db5/sha1_8h_source.html#l00053">53</a> of file <a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa508eb6ad17598ea211d724ab758838e" name="aa508eb6ad17598ea211d724ab758838e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa508eb6ad17598ea211d724ab758838e">&#9670;&#160;</a></span>bit_count</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t sha1_context::bit_count</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The number of processed bits. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/db5/sha1_8h_source.html#l00056">56</a> of file <a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a>.</p>
-
-</div>
-</div>
-<a id="a517ae8622b2fd724a84273b38340c324" name="a517ae8622b2fd724a84273b38340c324"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a517ae8622b2fd724a84273b38340c324">&#9670;&#160;</a></span>buffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t sha1_context::buffer[<a class="el" href="../../db/db5/sha1_8h.html#a4be887a15639aa78e6a129b9c8f4d2b9">SHA1_BLOCK_SIZE</a>]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The buffer to hold the current input block. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/db5/sha1_8h_source.html#l00057">57</a> of file <a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a>.</p>
-
-</div>
-</div>
-<a id="a0c8a65bd0bc19179c9b3507387104949" name="a0c8a65bd0bc19179c9b3507387104949"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c8a65bd0bc19179c9b3507387104949">&#9670;&#160;</a></span>state</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t sha1_context::state[5]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>The SHA-1 state variables (5 words). </p>
-
-<p class="definition">Definition at line <a class="el" href="../../db/db5/sha1_8h_source.html#l00055">55</a> of file <a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/hasha/<a class="el" href="../../db/db5/sha1_8h_source.html">sha1.h</a></li>
 </ul>
 </div><!-- contents -->
