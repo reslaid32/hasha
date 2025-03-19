@@ -38,7 +38,7 @@
 HASHA_EXTERN_C_BEG
 
 /**
- * @struct md5_context
+ * @struct ha_md5_context
  * @brief Context structure for MD5 hashing.
  *
  * This structure holds the internal state, bit count, and buffer used

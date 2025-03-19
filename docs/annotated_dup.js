@@ -13,8 +13,5 @@ var annotated_dup =
     [ "ha_sha2_512_256_context", "d1/d01/structha__sha2__512__256__context.html", "d1/d01/structha__sha2__512__256__context" ],
     [ "ha_sha2_512_context", "df/dc5/structha__sha2__512__context.html", "df/dc5/structha__sha2__512__context" ],
     [ "ha_sha3_context", "dc/d75/structha__sha3__context.html", "dc/d75/structha__sha3__context" ],
-    [ "ha_version_t", "d4/dcf/structha__version__t.html", "d4/dcf/structha__version__t" ],
-    [ "keccak_context", "d4/d14/structkeccak__context.html", null ],
-    [ "md5_context", "d3/d65/structmd5__context.html", null ],
-    [ "sha1_context", "d9/dd4/structsha1__context.html", null ]
+    [ "ha_version_t", "d4/dcf/structha__version__t.html", "d4/dcf/structha__version__t" ]
 ];

@@ -107,7 +107,7 @@
 HASHA_EXTERN_C_BEG
 
 /**
- * @struct keccak_context
+ * @struct ha_keccak_context
  * @brief Keccak hash state context.
  *
  * This structure holds the internal state of the Keccak hash function. It

@@ -42,7 +42,7 @@
 HASHA_EXTERN_C_BEG
 
 /**
- * @struct sha1_context
+ * @struct ha_sha1_context
  * @brief SHA-1 context structure used to store the internal state during
  * hashing.
  *
