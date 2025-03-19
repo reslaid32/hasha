@@ -306,7 +306,7 @@ int main(int argc, char *argv[])
       else if (strncmp(token, "blake2s_", 7) == 0)
       {
         char *endptr;
-        long digest_bits = strtol(token + 7, &endptr, 10);
+        long digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
           fprintf(stderr, "Invalid BLAKE2S digest length in token '%s'\n",
@@ -327,7 +327,7 @@ int main(int argc, char *argv[])
       else if (strncmp(token, "blake2b_", 7) == 0)
       {
         char *endptr;
-        long digest_bits = strtol(token + 7, &endptr, 10);
+        long digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
           fprintf(stderr, "Invalid BLAKE2B digest length in token '%s'\n",
