@@ -2,6 +2,12 @@
 
 ## **libhasha is a standalone lightweight hashing library supporting multiple hashing algorithms written in C**
 
+# Benchmark
+   <div style="display: flex; gap: 10px;">
+      <img src="./assets/bench/i5.7400-clang-2.0.4.png" alt="1M iters" width="400">
+   </div>
+
+<!---
 # Benchmarks (2.0.0)
  - All
    <div style="display: flex; gap: 10px;">
@@ -22,6 +28,7 @@
       <img src="./assets/sha3_256.png" alt="SHA3-256 Benchmark" width="400">
       <img src="./assets/sha3_512.png" alt="SHA3-512 Benchmark" width="400">
    </div>
+-->
 
 ### Supported Algorithms
 
