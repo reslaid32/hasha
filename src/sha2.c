@@ -2,6 +2,8 @@
 
 #include "../include/hasha/sha2.h"
 
+#include "../include/hasha/sha2_k.h"
+
 #define SHR(x, n) ((x) >> (n))
 
 #define ROTR(x, n) (((x) >> (n)) | ((x) << (32 - (n))))

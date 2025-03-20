@@ -8,6 +8,7 @@
 #include <time.h>
 
 #include "../include/hasha/all.h"
+#include "../include/hasha/keccak1600.h"
 
 // #define INCLUDE_OPENSSL
 

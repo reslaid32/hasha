@@ -33,12 +33,12 @@ HASHA_PRIVATE_FUNC void ha_blake2b_compress(ha_blake2b_context *ctx,
     v[i + 8] = blake2b_iv[i];
   }
 
-  v[12] ^= __le32(ctx->t[0]);
-  v[13] ^= __le32(ctx->t[1]);
-  v[14] ^= __le32(ctx->f[0]);
-  v[15] ^= __le32(ctx->f[1]);
+  v[12] ^= (ctx->t[0]);
+  v[13] ^= (ctx->t[1]);
+  v[14] ^= (ctx->f[0]);
+  v[15] ^= (ctx->f[1]);
 
-  for (i = 0; i < 16; i++) m[i] = __le64(((uint64_t *)block)[i]);
+  for (i = 0; i < 16; i++) m[i] = (((uint64_t *)block)[i]);
 
   for (i = 0; i < 12; i++)
   {

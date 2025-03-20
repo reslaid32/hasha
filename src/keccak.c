@@ -2,6 +2,8 @@
 
 #include "../include/hasha/keccak.h"
 
+#include "../include/hasha/keccak1600.h"
+
 HASHA_PUBLIC_FUNC void ha_keccak_224_init(ha_keccak_224_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));

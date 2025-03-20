@@ -2,6 +2,8 @@
 
 #include "../include/hasha/sha3.h"
 
+#include "../include/hasha/keccak1600.h"
+
 HASHA_PUBLIC_FUNC void ha_sha3_224_init(ha_sha3_224_context *ctx)
 {
   memset(ctx->state, 0, sizeof(ctx->state));
