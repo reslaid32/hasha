@@ -1,4 +1,4 @@
-name: [   BIG-ENDIAN] [   ARM] On Ubuntu [ GCC]
+name: "[   BIG-ENDIAN] [   ARM] On Ubuntu [ GCC]"
 
 on:
   push:
