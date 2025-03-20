@@ -11,9 +11,7 @@
 #if !defined(LIBHASHA_BLAKE2S_H_LOADED)
 #define LIBHASHA_BLAKE2S_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 #define BLAKE2S_BLOCK_SIZE 64
 #define BLAKE2S_DIGEST_SIZE HASHA_bB(256)

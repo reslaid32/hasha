@@ -33,9 +33,7 @@
 
 #include <stdlib.h>
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 HASHA_EXTERN_C_BEG
 

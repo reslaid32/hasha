@@ -22,9 +22,7 @@
 #if !defined(LIBHASHA_BLAKE3_H_LOADED)
 #define LIBHASHA_BLAKE3_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 HASHA_EXTERN_C_BEG
 

@@ -13,9 +13,7 @@
 #if !defined(LIBHASHA_SHA2_K_H_LOADED)
 #define LIBHASHA_SHA2_K_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 static const uint32_t SHA2_256_K[64] = {
     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,

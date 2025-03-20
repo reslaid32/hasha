@@ -78,12 +78,4 @@
 // #define HASHA_VER hashaver()
 // #endif // HASHA_VER
 
-#if !defined(HASHA_CONSTRUCTOR)
-#define HASHA_CONSTRUCTOR __attribute__((constructor))
-#endif /* HASHA_CONSTRUCTOR */
-
-#if !defined(HASHA_DESTRUCTOR)
-#define HASHA_DESTRUCTOR __attribute__((destructor))
-#endif /* HASHA_DESTRUCTOR */
-
 #endif  // HASHA_EXPORT_H_LOADED

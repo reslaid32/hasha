@@ -23,10 +23,8 @@
 #if !defined(LIBHASHA_SHA2_H_LOADED)
 #define LIBHASHA_SHA2_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
-#include "sha2_k.h"
+#include "internal/internal.h"
+/* #include "sha2_k.h" */ /* not used in header */
 
 /**
  * @def SHA2_224_BLOCK_SIZE

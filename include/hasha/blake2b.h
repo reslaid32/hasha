@@ -12,9 +12,7 @@
 #if !defined(LIBHASHA_BLAKE2B_H_LOADED)
 #define LIBHASHA_BLAKE2B_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 /** @def BLAKE2B_BLOCK_SIZE
  *  @brief The size of a BLAKE2B block in bytes.

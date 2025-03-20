@@ -1,6 +1,12 @@
 CC = gcc
 CXX = clang++
-CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize -O2
+
+LIB_OPT_LEVEL=-O3
+UTL_OPT_LEVEL=-O0
+
+CFLAGS = -Wall -Wextra -I./include -fPIC -funroll-loops -ftree-vectorize
+LIB_CFLAGS = $(CFLAGS) $(LIB_OPT_LEVEL)
+UTL_CFLAGS = $(CFLAGS) $(UTL_OPT_LEVEL)
 CXXFLAGS = -Wall -Wextra -I./include -fPIC
 
 LDFLAGS = -shared
@@ -61,12 +67,12 @@ $(TARGET_LIBHASHA): $(OBJS)
 
 $(OBJ)/%.c.o: $(SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@
+	$(CC) $(LIB_CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@
 
 # Tests
 $(OBJ)/%.c.o: $(TEST_SRC)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
+	$(CC) $(LIB_CFLAGS) $(MARCH) $(DEFS) -I$(INC) -c $< -o $@ -g
 
 # $(OBJ)/%.cc.o: $(TEST_SRC)/%.cc
 # 	mkdir -p $(OBJ)
@@ -86,7 +92,7 @@ utilsall: utils # utilspp
 
 $(UTILS_BIN)/%: $(UTILS_SRC)/%.c $(TARGET_LIBHASHA)
 	mkdir -p $(UTILS_BIN)
-	$(CC) $(CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(LIB) -lhasha $(UTILS_l) -g
+	$(CC) $(UTL_CFLAGS) $(MARCH) $(DEFS) -I$(INC) -o $@ $< -L$(LIB) -lhasha $(UTILS_l) -g
 
 # $(UTILS_BIN)/%: $(UTILS_SRC)/%.cc $(TARGET_LIBHASHA)
 # 	mkdir -p $(UTILS_BIN)

@@ -1,4 +1,4 @@
-name: (x86_64) On Ubuntu [ GCC]
+name: [LITTLE-ENDIAN] [x86_64] On Ubuntu [ GCC]
 
 on:
   push:

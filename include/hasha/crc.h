@@ -17,9 +17,7 @@
 #if !defined(LIBHASHA_CRC_H_LOADED)
 #define LIBHASHA_CRC_H_LOADED
 
-#include "internal/bits.h"
-#include "internal/export.h"
-#include "internal/std.h"
+#include "internal/internal.h"
 
 /**
  * @def CRC32_POLYNOMIAL
