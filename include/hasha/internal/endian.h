@@ -3,6 +3,9 @@
 #ifndef HASHA_INTERNAL_ENDIAN_H
 #define HASHA_INTERNAL_ENDIAN_H
 
+/* needs endian */
+#include <endian.h>
+
 /* needs builtin */
 #include "./builtin.h"
 

@@ -5,8 +5,6 @@
 
 #include <stdint.h>
 
-#include "../include/hasha/internal/debug.h"
-
 HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
     __attribute__((always_inline));
 HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)

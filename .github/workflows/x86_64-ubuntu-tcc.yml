@@ -1,0 +1,28 @@
+name: "[LITTLE-ENDIAN] [x86_64] On Ubuntu [ TCC]"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install TCC
+      run: |
+        sudo apt update
+        sudo apt install -y tcc
+
+    - name: Performing test
+      run: |
+        sudo make -f "Makefile.old" all install checkall uninstall clean CC=tcc
+
+    - name: Performing benchmark
+      run: |
+        sudo make -f "Makefile.old" all install bench uninstall clean CC=tcc
