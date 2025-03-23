@@ -1,5 +1,5 @@
 ﻿CC=cc
-LD=ld
+LD=$(CC)
 
 OPT=-O3 -march=native
 UTL_OPT=-O2
@@ -10,9 +10,7 @@ UTL_CFALGS=$(BASE_CFLAGS) $(UTL_OPT)
 
 LDFLAGS=-shared -lc
 
-CRTPATH=/usr/lib
-CRT=$(CRTPATH)/crt1.o $(CRTPATH)/crti.o $(CRTPATH)/crtn.o
-
+CRT=
 UTL_LDFLAGS=$(CRT) -lc
 
 LIBNAME=hasha
