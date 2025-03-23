@@ -4,7 +4,9 @@
 #define HASHA_INTERNAL_ENDIAN_H
 
 /* needs endian */
+#if !defined(_WIN32)
 #include <endian.h>
+#endif
 
 /* needs builtin */
 #include "./builtin.h"
