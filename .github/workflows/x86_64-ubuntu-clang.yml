@@ -16,7 +16,7 @@ jobs:
 
     - name: Performing test
       run: |
-        sudo make all install checkall uninstall clean CC=clang
+        sudo make all install check uninstall clean CC=clang
 
     - name: Performing benchmark
       run: |
