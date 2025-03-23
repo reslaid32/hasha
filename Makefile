@@ -1,7 +1,7 @@
 ﻿CC=cc
 LD=ld
 
-OPT=-O3
+OPT=-O3 -march=native
 UTL_OPT=-O2
 
 BASE_CFLAGS=-fPIC

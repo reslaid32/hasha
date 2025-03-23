@@ -21,8 +21,8 @@ jobs:
 
     - name: Performing test
       run: |
-        sudo make -f "Makefile.old" all install checkall uninstall clean CC=tcc
+        sudo make all install checkall uninstall clean CC=tcc
 
     - name: Performing benchmark
       run: |
-        sudo make -f "Makefile.old" all install bench uninstall clean CC=tcc
+        sudo make all install bench uninstall clean CC=tcc
