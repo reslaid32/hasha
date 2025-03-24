@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['capacity_0',['capacity',['../df/d3f/structha__keccak__context.html#a223c00ee3b9f82ce4e6f3157838231ce',1,'ha_keccak_context::capacity'],['../dc/d75/structha__sha3__context.html#a2758b80618f307191a35607a52a741b8',1,'ha_sha3_context::capacity']]],
-  ['chunk_1',['chunk',['../d6/d3a/structha__blake3__context.html#a4b1df1f7ebd0a745c6af305890454959',1,'ha_blake3_context']]],
-  ['crc_2eh_2',['crc.h',['../dc/de6/crc_8h.html',1,'']]],
-  ['crc32_5fpolynomial_3',['CRC32_POLYNOMIAL',['../dc/de6/crc_8h.html#a32104fd66e8bf60867719c6b6c877b4b',1,'crc.h']]],
-  ['cv_4',['cv',['../d6/d3a/structha__blake3__context.html#af79e1cd3243c3e4c8da9eed6a10bcbe6',1,'ha_blake3_context']]],
-  ['cv_5fbuf_5',['cv_buf',['../d6/d3a/structha__blake3__context.html#a603072b0f155207600de245f9a223a6b',1,'ha_blake3_context']]]
+  ['bit_5fcount_0',['bit_count',['../d7/d73/structha__md5__context.html#a1700193b95894ddd610bf3cc53b8083f',1,'ha_md5_context::bit_count'],['../d1/d52/structha__sha1__context.html#aad08037317ed40d0a4b31b4b31004ce1',1,'ha_sha1_context::bit_count'],['../db/dc6/structha__sha2__224__context.html#a388561bcadde67c72fc2b66aecb81e6e',1,'ha_sha2_224_context::bit_count'],['../d2/de8/structha__sha2__256__context.html#ac1a0ae5ad5a621b341f5bb615f883a8a',1,'ha_sha2_256_context::bit_count'],['../de/d70/structha__sha2__384__context.html#a02d6b9c45ded24fee9443dafba04f239',1,'ha_sha2_384_context::bit_count'],['../df/dc5/structha__sha2__512__context.html#a3892323706c5ec6fddbd44c1897fb777',1,'ha_sha2_512_context::bit_count'],['../d1/d56/structha__sha2__512__224__context.html#ae491691079c7a7baa9cdabb3621c3bcf',1,'ha_sha2_512_224_context::bit_count'],['../d1/d01/structha__sha2__512__256__context.html#ab01235800c06d275e4af9f3b8df28400',1,'ha_sha2_512_256_context::bit_count']]],
+  ['bits_2eh_1',['bits.h',['../df/db9/bits_8h.html',1,'']]],
+  ['blake2_2eh_2',['blake2.h',['../dd/d41/blake2_8h.html',1,'']]],
+  ['blake2b_2eh_3',['blake2b.h',['../d2/d28/blake2b_8h.html',1,'']]],
+  ['blake2b_5fblock_5fsize_4',['BLAKE2B_BLOCK_SIZE',['../d2/d28/blake2b_8h.html#a960749592b995c06830eec139808c77b',1,'blake2b.h']]],
+  ['blake2b_5fdigest_5fsize_5',['BLAKE2B_DIGEST_SIZE',['../d2/d28/blake2b_8h.html#acb8392f2917a8abae0d047edee9ddf8d',1,'blake2b.h']]],
+  ['blake2s_2eh_6',['blake2s.h',['../df/dfa/blake2s_8h.html',1,'']]],
+  ['blake2s_5fblock_5fsize_7',['BLAKE2S_BLOCK_SIZE',['../df/dfa/blake2s_8h.html#addd115d604d1e081bf2f1cff8bcade1a',1,'blake2s.h']]],
+  ['blake2s_5fdigest_5fsize_8',['BLAKE2S_DIGEST_SIZE',['../df/dfa/blake2s_8h.html#a61ba2c7e7c628c2cb99c2b3a36c92ea7',1,'blake2s.h']]],
+  ['blake3_2eh_9',['blake3.h',['../d0/d8f/blake3_8h.html',1,'']]],
+  ['block_10',['block',['../d6/d3a/structha__blake3__context.html#ae366ec94893f89be5d8af3f1c79d9dfb',1,'ha_blake3_context']]],
+  ['buf_11',['buf',['../dc/d9c/structha__blake2b__context.html#a3e2bf2c819b8528b0a1eb9a0dae3c01e',1,'ha_blake2b_context::buf'],['../d6/d30/structha__blake2s__context.html#ac88c6f3a435bac0cbb71b17e4cf2ec9a',1,'ha_blake2s_context::buf']]],
+  ['buffer_12',['buffer',['../d7/d73/structha__md5__context.html#a17c2a16431664e1bba001cdd74762836',1,'ha_md5_context::buffer'],['../d1/d52/structha__sha1__context.html#ae9efc2abc4fe8fe0b9e9ab34093396dc',1,'ha_sha1_context::buffer'],['../db/dc6/structha__sha2__224__context.html#a8eb12052f9faffdfc4950e484f0bd18b',1,'ha_sha2_224_context::buffer'],['../d2/de8/structha__sha2__256__context.html#abeac6037b5036a4ae5daa8992f1b43ae',1,'ha_sha2_256_context::buffer'],['../de/d70/structha__sha2__384__context.html#af6493f344657d42cb0a2d1b8f6273c30',1,'ha_sha2_384_context::buffer'],['../df/dc5/structha__sha2__512__context.html#a11dddf2863d9e840959223263107df85',1,'ha_sha2_512_context::buffer'],['../d1/d56/structha__sha2__512__224__context.html#abcf0f40c169aae01b7c5d56361cf447f',1,'ha_sha2_512_224_context::buffer'],['../d1/d01/structha__sha2__512__256__context.html#a359dd271a2cec298049633bceef20458',1,'ha_sha2_512_256_context::buffer']]],
+  ['buflen_13',['buflen',['../dc/d9c/structha__blake2b__context.html#a37eaab7776d3da5700fb1472dbd05495',1,'ha_blake2b_context::buflen'],['../d6/d30/structha__blake2s__context.html#a3cd3bf304e88a29f783b6f73c3111f2b',1,'ha_blake2s_context::buflen']]],
+  ['builtin_2eh_14',['builtin.h',['../d6/dcd/builtin_8h.html',1,'']]],
+  ['bytes_15',['bytes',['../d6/d3a/structha__blake3__context.html#a02f2cbaab8eb3932f793a7173554de9b',1,'ha_blake3_context']]]
 ];

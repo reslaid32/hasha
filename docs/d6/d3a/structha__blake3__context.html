@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.0.4</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.0.6</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>BLAKE3 hash state context. </p>
 <p>This structure holds the internal state of the BLAKE3 hashing algorithm. It includes buffers for input data, the current hash state, and other necessary variables for processing the data in chunks. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00038">38</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00036">36</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ae366ec94893f89be5d8af3f1c79d9dfb" name="ae366ec94893f89be5d8af3f1c79d9dfb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae366ec94893f89be5d8af3f1c79d9dfb">&#9670;&#160;</a></span>block</h2>
@@ -156,7 +156,7 @@ Public Attributes</h2></td></tr>
 <p>The block counter for the current chunk. </p>
 <p>This counter tracks the number of blocks that have been processed within the current chunk of data being hashed. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00063">63</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00061">61</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
@@ -175,7 +175,7 @@ Public Attributes</h2></td></tr>
 <p>The number of bytes processed so far. </p>
 <p>This counter keeps track of the total number of bytes processed by the hash function so far, including those passed in previous <code>blake3_update</code> calls. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00055">55</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00053">53</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +194,7 @@ Public Attributes</h2></td></tr>
 <p>The chunk counter for tracking progress. </p>
 <p>This variable tracks the number of chunks that have been processed during the hashing process. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00071">71</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00069">69</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ Public Attributes</h2></td></tr>
 <p>Pointer to the current hash state. </p>
 <p>This is a pointer to the current state of the hash, which is updated during each step of the hashing process. It is a pointer to an array of 32-bit words. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00080">80</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00078">78</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +232,7 @@ Public Attributes</h2></td></tr>
 <p>Buffer for the hash state (54 * 8 words). </p>
 <p>This buffer stores the intermediate hash states during the hashing process. It is large enough to hold multiple rounds of hashing state, with each round consisting of 8 words (32 bytes). </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00089">89</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00087">87</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
@@ -251,7 +251,7 @@ Public Attributes</h2></td></tr>
 <p>Input buffer for storing data being processed. </p>
 <p>This buffer temporarily holds up to 64 bytes of input data being processed at a time during the hash update operation. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00046">46</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8f/blake3_8h_source.html#l00044">44</a> of file <a class="el" href="../../d0/d8f/blake3_8h_source.html">blake3.h</a>.</p>
 
 </div>
 </div>
