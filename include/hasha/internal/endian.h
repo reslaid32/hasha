@@ -3,9 +3,13 @@
 #ifndef HASHA_INTERNAL_ENDIAN_H
 #define HASHA_INTERNAL_ENDIAN_H
 
-/* needs endian */
-#if !defined(_WIN32)
+#if !defined(__BYTE_ORDER__)
+#if __has_include(<endian.h>)
+/* needs endian.h */
 #include <endian.h>
+#else
+#error "Header <endian.h> is not avaible"
+#endif
 #endif
 
 /* needs builtin */

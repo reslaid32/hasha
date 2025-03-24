@@ -1,5 +1,5 @@
 /**
- * @file hasha/lib.h
+ * @file hasha/hasha.h
  */
 
 #if !defined(HASHA_LOADED)

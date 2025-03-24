@@ -118,8 +118,8 @@ uninstall-execs:
 
 	@echo "$(LIBNAME) utils uninstalled"
 
-check: $(TEST_EXEC)
-	$(TEST_EXEC)
+check: $(TST_EXEC)
+	$(TST_EXEC)
 
 bench: $(UTL_BIN)/hashabench
 	@echo "Running benchmark..."

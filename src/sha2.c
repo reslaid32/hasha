@@ -4,26 +4,6 @@
 
 #include "../include/hasha/sha2_k.h"
 
-#define SHR(x, n) ((x) >> (n))
-
-#define ROTR(x, n) (((x) >> (n)) | ((x) << (32 - (n))))
-#define ROTR_64(x, n) (((x) >> (n)) | ((x) << (64 - (n))))
-
-#define CH(x, y, z) (((x) & (y)) ^ (~(x) & (z)))
-#define MAJ(x, y, z) (((x) & (y)) ^ ((x) & (z)) ^ ((y) & (z)))
-
-#define SIGMA0(x) (ROTR((x), 2) ^ ROTR((x), 13) ^ ROTR((x), 22))
-#define SIGMA0_64(x) (ROTR_64(x, 28) ^ ROTR_64(x, 34) ^ ROTR_64(x, 39))
-
-#define SIGMA1(x) (ROTR((x), 6) ^ ROTR((x), 11) ^ ROTR((x), 25))
-#define SIGMA1_64(x) (ROTR_64(x, 14) ^ ROTR_64(x, 18) ^ ROTR_64(x, 41))
-
-#define sigma0(x) (ROTR((x), 7) ^ ROTR((x), 18) ^ ((x) >> 3))
-#define sigma1(x) (ROTR((x), 17) ^ ROTR((x), 19) ^ ((x) >> 10))
-
-#define sigma0_64(x) (ROTR_64(x, 1) ^ ROTR_64(x, 8) ^ SHR(x, 7))
-#define sigma1_64(x) (ROTR_64(x, 19) ^ ROTR_64(x, 61) ^ SHR(x, 6))
-
 HASHA_PUBLIC_FUNC void ha_sha2_224_transform(ha_sha2_224_context *ctx,
                                              const uint8_t *block)
 {
@@ -75,7 +55,8 @@ HASHA_PUBLIC_FUNC void ha_sha2_256_transform(ha_sha2_256_context *ctx,
   }
   for (int t = 16; t < 64; ++t)
   {
-    W[t] = sigma1(W[t - 2]) + W[t - 7] + sigma0(W[t - 15]) + W[t - 16];
+    W[t] = ha_primitive_sigma1_32(W[t - 2]) + W[t - 7] +
+           ha_primitive_sigma0_32(W[t - 15]) + W[t - 16];
   }
 
   a = ctx->state[0];
@@ -89,8 +70,9 @@ HASHA_PUBLIC_FUNC void ha_sha2_256_transform(ha_sha2_256_context *ctx,
 
   for (int t = 0; t < 64; ++t)
   {
-    uint32_t T1 = h + SIGMA1(e) + CH(e, f, g) + SHA2_256_K[t] + W[t];
-    uint32_t T2 = SIGMA0(a) + MAJ(a, b, c);
+    uint32_t T1 = h + ha_primitive_Sigma1_32(e) +
+                  ha_primitive_ch(e, f, g) + SHA2_256_K[t] + W[t];
+    uint32_t T2 = ha_primitive_Sigma0_32(a) + ha_primitive_maj(a, b, c);
     h           = g;
     g           = f;
     f           = e;
@@ -252,8 +234,8 @@ HASHA_PUBLIC_FUNC void ha_sha2_512_transform(ha_sha2_512_context *ctx,
 
   for (int i = 16; i < 80; ++i)
   {
-    m[i] =
-        sigma1_64(m[i - 2]) + m[i - 7] + sigma0_64(m[i - 15]) + m[i - 16];
+    m[i] = ha_primitive_sigma1_64(m[i - 2]) + m[i - 7] +
+           ha_primitive_sigma0_64(m[i - 15]) + m[i - 16];
   }
 
   a = ctx->state[0];
@@ -267,8 +249,9 @@ HASHA_PUBLIC_FUNC void ha_sha2_512_transform(ha_sha2_512_context *ctx,
 
   for (int i = 0; i < 80; ++i)
   {
-    T1 = h + SIGMA1_64(e) + CH(e, f, g) + SHA2_512_K[i] + m[i];
-    T2 = SIGMA0_64(a) + MAJ(a, b, c);
+    T1 = h + ha_primitive_Sigma1_64(e) + ha_primitive_ch(e, f, g) +
+         SHA2_512_K[i] + m[i];
+    T2 = ha_primitive_Sigma0_64(a) + ha_primitive_maj(a, b, c);
 
     h = g;
     g = f;

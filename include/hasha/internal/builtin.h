@@ -30,6 +30,7 @@
 /* Expect and assume implementations */
 #define __builtin_expect(expr, value) (expr)
 #define __builtin_assume(expr) ((void)0)
+#define __builtin_assume_assigned(var) ((void)(var))
 
 /* Population count */
 HASHA_PUBLIC_HO_FUNC int __builtin_popcount(unsigned int x)

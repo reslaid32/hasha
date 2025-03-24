@@ -3,15 +3,6 @@
 
 #include "../include/hasha/keccak1600.h"
 
-#include <stdint.h>
-
-HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
-    __attribute__((always_inline));
-HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
-{
-  return (x << r) | (x >> (64 - r));
-}
-
 #define HASHA_KECCAKF1600_THETA_STEP(state)                              \
   /* Theta step */                                                       \
   uint64_t C0 = state[0] ^ state[5] ^ state[10] ^ state[15] ^ state[20]; \
@@ -19,11 +10,11 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
   uint64_t C2 = state[2] ^ state[7] ^ state[12] ^ state[17] ^ state[22]; \
   uint64_t C3 = state[3] ^ state[8] ^ state[13] ^ state[18] ^ state[23]; \
   uint64_t C4 = state[4] ^ state[9] ^ state[14] ^ state[19] ^ state[24]; \
-  uint64_t D0 = rol64(C1, 1) ^ C4;                                       \
-  uint64_t D1 = rol64(C2, 1) ^ C0;                                       \
-  uint64_t D2 = rol64(C3, 1) ^ C1;                                       \
-  uint64_t D3 = rol64(C4, 1) ^ C2;                                       \
-  uint64_t D4 = rol64(C0, 1) ^ C3;                                       \
+  uint64_t D0 = ha_primitive_rotl64(C1, 1) ^ C4;                         \
+  uint64_t D1 = ha_primitive_rotl64(C2, 1) ^ C0;                         \
+  uint64_t D2 = ha_primitive_rotl64(C3, 1) ^ C1;                         \
+  uint64_t D3 = ha_primitive_rotl64(C4, 1) ^ C2;                         \
+  uint64_t D4 = ha_primitive_rotl64(C0, 1) ^ C3;                         \
   state[0] ^= D0;                                                        \
   state[1] ^= D1;                                                        \
   state[2] ^= D2;                                                        \
@@ -50,33 +41,33 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
   state[23] ^= D3;                                                       \
   state[24] ^= D4;
 
-#define HASHA_KECCAKF1600_RHO_PI_STEP(state) \
-  /* Rho and Pi steps */                     \
-  uint64_t B0  = state[0];                   \
-  uint64_t B1  = rol64(state[6], 44);        \
-  uint64_t B2  = rol64(state[12], 43);       \
-  uint64_t B3  = rol64(state[18], 21);       \
-  uint64_t B4  = rol64(state[24], 14);       \
-  uint64_t B5  = rol64(state[3], 28);        \
-  uint64_t B6  = rol64(state[9], 20);        \
-  uint64_t B7  = rol64(state[10], 3);        \
-  uint64_t B8  = rol64(state[16], 45);       \
-  uint64_t B9  = rol64(state[22], 61);       \
-  uint64_t B10 = rol64(state[1], 1);         \
-  uint64_t B11 = rol64(state[7], 6);         \
-  uint64_t B12 = rol64(state[13], 25);       \
-  uint64_t B13 = rol64(state[19], 8);        \
-  uint64_t B14 = rol64(state[20], 18);       \
-  uint64_t B15 = rol64(state[4], 27);        \
-  uint64_t B16 = rol64(state[5], 36);        \
-  uint64_t B17 = rol64(state[11], 10);       \
-  uint64_t B18 = rol64(state[17], 15);       \
-  uint64_t B19 = rol64(state[23], 56);       \
-  uint64_t B20 = rol64(state[2], 62);        \
-  uint64_t B21 = rol64(state[8], 55);        \
-  uint64_t B22 = rol64(state[14], 39);       \
-  uint64_t B23 = rol64(state[15], 41);       \
-  uint64_t B24 = rol64(state[21], 2);
+#define HASHA_KECCAKF1600_RHO_PI_STEP(state)         \
+  /* Rho and Pi steps */                             \
+  uint64_t B0  = state[0];                           \
+  uint64_t B1  = ha_primitive_rotl64(state[6], 44);  \
+  uint64_t B2  = ha_primitive_rotl64(state[12], 43); \
+  uint64_t B3  = ha_primitive_rotl64(state[18], 21); \
+  uint64_t B4  = ha_primitive_rotl64(state[24], 14); \
+  uint64_t B5  = ha_primitive_rotl64(state[3], 28);  \
+  uint64_t B6  = ha_primitive_rotl64(state[9], 20);  \
+  uint64_t B7  = ha_primitive_rotl64(state[10], 3);  \
+  uint64_t B8  = ha_primitive_rotl64(state[16], 45); \
+  uint64_t B9  = ha_primitive_rotl64(state[22], 61); \
+  uint64_t B10 = ha_primitive_rotl64(state[1], 1);   \
+  uint64_t B11 = ha_primitive_rotl64(state[7], 6);   \
+  uint64_t B12 = ha_primitive_rotl64(state[13], 25); \
+  uint64_t B13 = ha_primitive_rotl64(state[19], 8);  \
+  uint64_t B14 = ha_primitive_rotl64(state[20], 18); \
+  uint64_t B15 = ha_primitive_rotl64(state[4], 27);  \
+  uint64_t B16 = ha_primitive_rotl64(state[5], 36);  \
+  uint64_t B17 = ha_primitive_rotl64(state[11], 10); \
+  uint64_t B18 = ha_primitive_rotl64(state[17], 15); \
+  uint64_t B19 = ha_primitive_rotl64(state[23], 56); \
+  uint64_t B20 = ha_primitive_rotl64(state[2], 62);  \
+  uint64_t B21 = ha_primitive_rotl64(state[8], 55);  \
+  uint64_t B22 = ha_primitive_rotl64(state[14], 39); \
+  uint64_t B23 = ha_primitive_rotl64(state[15], 41); \
+  uint64_t B24 = ha_primitive_rotl64(state[21], 2);
 
 #define HASHA_KECCAKF1600_CHI_STEP(state) \
   /* Chi step */                          \
@@ -118,6 +109,7 @@ HASHA_PRIVATE_FUNC uint64_t rol64(uint64_t x, unsigned r)
     HASHA_KECCAKF1600_IOTA_STEP(state, rc) \
   } while (0)
 
+#define HASHA_MAYBE_VECTORIZE
 #if defined(HASHA_MAYBE_VECTORIZE)
 #if defined(__clang__)
 #define HASHA_KECCAKF1600_IMPLID 5
@@ -155,20 +147,6 @@ HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
   HASHA_KECCAKF1600_ROUND(state, 0x0000000080000001ULL);
   HASHA_KECCAKF1600_ROUND(state, 0x8000000080008008ULL);
 }
-
-#define STRINGIFY2(x) #x
-#define STRINGIFY(x) STRINGIFY2(x)
-
-#define DO_PRAGMA(x) _Pragma(#x)
-
-// Macro to emit a message.
-#define PRAGMA_MESSAGE(msg) DO_PRAGMA(message msg)
-
-#if defined(HASHA_EMIT_IMPLID)
-// Now print the message with your macro value.
-PRAGMA_MESSAGE(
-    "[hasha] keccakf1600 ImplID: " STRINGIFY(HASHA_KECCAKF1600_IMPLID))
-#endif
 
 #if HASHA_KECCAKF1600_IMPLID == 0
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
@@ -210,9 +188,9 @@ HASHA_PRIVATE_FUNC void keccakf1600_vec_imp(hasha_vec200_u64 *state)
 
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
 {
-  if (((uintptr_t)state & (32 - 1)) != 0)
+  if (ha_alignis((uintptr_t)state, 32) != ha_alignis_yes)
   {
-    HASHA_DEBUG(
+    ha_dbg(
         "[libhasha.keccakf1600] align is not 32"
         "using keccakf1600_scalar_imp instead "
         "of keccakf1600_vec_imp\n");

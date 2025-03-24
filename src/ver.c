@@ -7,6 +7,6 @@ HASHA_PUBLIC_FUNC ha_version_t ha_version(void)
   ha_version_t hashav;
   hashav.major = 2;
   hashav.minor = 0;
-  hashav.patch = 4;
+  hashav.patch = 5;
   return hashav;
 }

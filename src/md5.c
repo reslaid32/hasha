@@ -2,12 +2,6 @@
 
 #include "../include/hasha/md5.h"
 
-#define MD5_ROTATE_LEFT(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
-#define MD5_F(x, y, z) (((x) & (y)) | (~(x) & (z)))
-#define MD5_G(x, y, z) (((x) & (z)) | ((y) & ~(z)))
-#define MD5_H(x, y, z) ((x) ^ (y) ^ (z))
-#define MD5_I(x, y, z) ((y) ^ ((x) | ~(z)))
-
 static const uint32_t MD5_T[64] = {
     0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf, 0x4787c62a,
     0xa8304613, 0xfd469501, 0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -48,30 +42,30 @@ HASHA_PRIVATE_FUNC void md5_transform(ha_md5_context *ctx,
   {
     if (i < 16)
     {
-      f = MD5_F(b, c, d);
+      f = ha_primitive_md5_f(b, c, d);
       g = i;
     }
     else if (i < 32)
     {
-      f = MD5_G(b, c, d);
+      f = ha_primitive_md5_g(b, c, d);
       g = (5 * i + 1) % 16;
     }
     else if (i < 48)
     {
-      f = MD5_H(b, c, d);
+      f = ha_primitive_md5_h(b, c, d);
       g = (3 * i + 5) % 16;
     }
     else
     {
-      f = MD5_I(b, c, d);
+      f = ha_primitive_md5_i(b, c, d);
       g = (7 * i) % 16;
     }
 
     temp = d;
     d    = c;
     c    = b;
-    b    = b + MD5_ROTATE_LEFT((a + f + MD5_T[i] + m[g]), MD5_SHIFT[i]);
-    a    = temp;
+    b = b + ha_primitive_rotl32((a + f + MD5_T[i] + m[g]), MD5_SHIFT[i]);
+    a = temp;
   }
 
   ctx->state[0] += a;

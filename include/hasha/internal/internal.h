@@ -1,8 +1,11 @@
 /* #include "acel.h" */
-#include "bits.h"
-#include "builtin.h" /* includes export.h */
-#include "debug.h"
-#include "endian.h" /* includes builtin */
-#include "export.h"
+#include "./bits.h"
+#include "./builtin.h" /* includes export.h */
+#include "./debug.h"
+/* #include "endian.h" includes builtin, dont using now */
+#include "./export.h"
 /* #include "ver.h" */
-#include "std.h" /* includes used in libhasha libc headers */
+#include "./align.h"
+#include "./primitive.h" /* primitive operations used in libhasha source */
+#include "./std.h"       /* includes used in libhasha libc headers */
+#include "./types.h"     /* added ha_inbuf_t / ha_outbuf_t alliases */

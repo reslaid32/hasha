@@ -31,8 +31,6 @@
 #if !defined(LIBHASHA_KECCAK1600_H_LOADED)
 #define LIBHASHA_KECCAK1600_H_LOADED
 
-#include <stdlib.h>
-
 #include "internal/internal.h"
 
 HASHA_EXTERN_C_BEG

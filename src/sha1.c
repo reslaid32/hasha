@@ -2,8 +2,6 @@
 
 #include "../include/hasha/sha1.h"
 
-#define SHA1_ROTL(a, b) (((a) << (b)) | ((a) >> (32 - (b))))
-
 HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
                                          const uint8_t *block)
 {
@@ -18,7 +16,8 @@ HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
 
   for (int i = 16; i < 80; i++)
   {
-    w[i] = SHA1_ROTL(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
+    w[i] = ha_primitive_rotl32(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16],
+                               1);
   }
 
   a = ctx->state[0];
@@ -52,10 +51,10 @@ HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
       k = SHA1_K[3];
     }
 
-    uint32_t temp = SHA1_ROTL(a, 5) + f + e + k + w[i];
+    uint32_t temp = ha_primitive_rotl32(a, 5) + f + e + k + w[i];
     e             = d;
     d             = c;
-    c             = SHA1_ROTL(b, 30);
+    c             = ha_primitive_rotl32(b, 30);
     b             = a;
     a             = temp;
   }
