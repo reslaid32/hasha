@@ -1,7 +1,7 @@
 
 #define HASHA_LIBRARY_BUILD
 
-#include "../include/hasha/keccak1600.h"
+#include "../include/hasha/keccakf1600.h"
 
 #define HASHA_KECCAKF1600_THETA_STEP(state)                              \
   /* Theta step */                                                       \
