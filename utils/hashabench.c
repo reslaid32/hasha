@@ -7,8 +7,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "../include/hasha/all.h"
-#include "../include/hasha/keccak1600.h"
+#include "../include/hasha/hasha.h"
 
 // #define INCLUDE_OPENSSL
 
@@ -300,7 +299,7 @@ int main(int argc, char *argv[])
       else if (strcmp(token, "keccakf1600") == 0)
       {
         uint64_t state[200] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
-        BENCHMARK(iterations, "KECCAKF-1600", keccakf1600, result_file,
+        BENCHMARK(iterations, "KECCAKF-1600", ha_keccakf1600, result_file,
                   state);
       }
 

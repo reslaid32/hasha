@@ -202,12 +202,12 @@ HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
 }
 #endif
 
-HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state)
+HASHA_PUBLIC_FUNC void ha_keccakf1600(uint64_t *state)
 {
   keccakf1600_imp(state);
 }
 
-HASHA_PUBLIC_FUNC int hasha_keccakf1600_implid()
+HASHA_PUBLIC_FUNC int ha_keccakf1600_implid()
 {
   return HASHA_KECCAKF1600_IMPLID;
 }

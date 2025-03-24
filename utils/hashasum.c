@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/hasha/all.h"
+#include "../include/hasha/hasha.h"
 
 void print_digest(const uint8_t *digest, size_t size)
 {

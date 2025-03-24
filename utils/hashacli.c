@@ -5,8 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/hasha/internal/ver.h"
-#include "../include/hasha/keccak1600.h"
+#include "../include/hasha/hasha.h"
 
 #if 0
 const char *stringize_acel_status(int acel)
@@ -48,8 +47,7 @@ int main(int argc, char *argv[])
 #endif
     else if (strcmp(argv[i], "--keccakf1600-implid") == 0)
     {
-      printf("libhasha.keccakf1600.implid: %d\n",
-             hasha_keccakf1600_implid());
+      printf("keccakf1600 implid: 0x%.5x\n", ha_keccakf1600_implid());
     }
     else
     {

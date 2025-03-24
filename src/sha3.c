@@ -2,7 +2,7 @@
 
 #include "../include/hasha/sha3.h"
 
-#include "../include/hasha/keccak1600.h"
+#include "../include/hasha/keccakf1600.h"
 
 HASHA_PUBLIC_FUNC void ha_sha3_224_init(ha_sha3_224_context *ctx)
 {
@@ -31,7 +31,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_224_absorb(ha_sha3_224_context *ctx,
 
     if (ctx->absorb_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->absorb_index = 0;
     }
   }
@@ -41,7 +41,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_224_final(ha_sha3_224_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
-  keccakf1600((uint64_t *)ctx->state);
+  ha_keccakf1600((uint64_t *)ctx->state);
   ctx->squeeze_index = 0;
 }
 
@@ -53,7 +53,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_224_squeeze(ha_sha3_224_context *ctx,
   {
     if (ctx->squeeze_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->squeeze_index = 0;
     }
     digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -97,7 +97,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_256_absorb(ha_sha3_256_context *ctx,
 
     if (ctx->absorb_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->absorb_index = 0;
     }
   }
@@ -107,7 +107,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_256_final(ha_sha3_256_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
-  keccakf1600((uint64_t *)ctx->state);
+  ha_keccakf1600((uint64_t *)ctx->state);
   ctx->squeeze_index = 0;
 }
 
@@ -119,7 +119,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_256_squeeze(ha_sha3_256_context *ctx,
   {
     if (ctx->squeeze_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->squeeze_index = 0;
     }
     digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -163,7 +163,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_384_absorb(ha_sha3_384_context *ctx,
 
     if (ctx->absorb_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->absorb_index = 0;
     }
   }
@@ -173,7 +173,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_384_final(ha_sha3_384_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
-  keccakf1600((uint64_t *)ctx->state);
+  ha_keccakf1600((uint64_t *)ctx->state);
   ctx->squeeze_index = 0;
 }
 
@@ -185,7 +185,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_384_squeeze(ha_sha3_384_context *ctx,
   {
     if (ctx->squeeze_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->squeeze_index = 0;
     }
     digest[i++] = ctx->state[ctx->squeeze_index++];
@@ -229,7 +229,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_512_absorb(ha_sha3_512_context *ctx,
 
     if (ctx->absorb_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->absorb_index = 0;
     }
   }
@@ -239,7 +239,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_512_final(ha_sha3_512_context *ctx)
 {
   ctx->state[ctx->absorb_index] ^= 0x06;  // Padding
   ctx->state[ctx->rate - 1] ^= 0x80;
-  keccakf1600((uint64_t *)ctx->state);
+  ha_keccakf1600((uint64_t *)ctx->state);
   ctx->squeeze_index = 0;
 }
 
@@ -251,7 +251,7 @@ HASHA_PUBLIC_FUNC void ha_sha3_512_squeeze(ha_sha3_512_context *ctx,
   {
     if (ctx->squeeze_index == ctx->rate)
     {
-      keccakf1600((uint64_t *)ctx->state);
+      ha_keccakf1600((uint64_t *)ctx->state);
       ctx->squeeze_index = 0;
     }
     digest[i++] = ctx->state[ctx->squeeze_index++];

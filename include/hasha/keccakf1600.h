@@ -47,7 +47,7 @@ HASHA_EXTERN_C_BEG
  * @param state Pointer to the 1600-bit (200-byte) state array. The state
  * is updated in-place as a result of the permutation.
  */
-HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
+HASHA_PUBLIC_FUNC void ha_keccakf1600(uint64_t *state);
 
 /**
  * @brief Returns the implementation ID of the Keccak-f[1600] function.
@@ -61,7 +61,7 @@ HASHA_PUBLIC_FUNC void keccakf1600(uint64_t *state);
  *         This ID can be used for debugging, performance tracking, or
  * identifying specific optimizations used in the implementation.
  */
-HASHA_PUBLIC_FUNC int hasha_keccakf1600_implid();
+HASHA_PUBLIC_FUNC int ha_keccakf1600_implid();
 
 HASHA_EXTERN_C_END
 
