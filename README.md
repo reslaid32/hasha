@@ -42,7 +42,7 @@
 | **SHA3**      | `sha3_224`, `sha3_256`, `sha3_384`, `sha3_512`|
 | **Keccak**    | `keccak224`, `keccak256`, `keccak384`,        |
 |               | `keccak512`                                   |
-| **Blake**     | `blake3`                                      |
+| **Blake**     | `blake2s`, `blake2b`, `blake3`                |
 
 # Building
    - ### **Build**
