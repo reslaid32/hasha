@@ -35,10 +35,9 @@ typedef FILE *ha_stream_t;
     ha_ctx(hash) ctx;                                                    \
     ha_init(hash, &ctx);                                                 \
     size_t bytes;                                                        \
-    HA_OMP(parallel)                                                     \
     while ((bytes = fread((buffer), (size), (chunksize), (stream))) > 0) \
     {                                                                    \
-      HA_OMP(task) ha_update(hash, &ctx, buffer, bytes);                 \
+      ha_update(hash, &ctx, buffer, bytes);                              \
     }                                                                    \
     ha_final(hash, &ctx, digest, ##__VA_ARGS__);                         \
   } while (0)
