@@ -5,6 +5,10 @@
 #if !defined(HASHA_DEBUG_H_LOADED)
 #define HASHA_DEBUG_H_LOADED
 
+#if defined(_HADBG)
+#define HASHA_DEBUGGING
+#endif
+
 #if defined(HASHA_DEBUGGING)
 #include <stdio.h>
 #define HASHA_DEBUG(...) fprintf(stderr, __VA_ARGS__)

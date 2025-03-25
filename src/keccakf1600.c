@@ -109,10 +109,11 @@
     HASHA_KECCAKF1600_IOTA_STEP(state, rc) \
   } while (0)
 
-#define HASHA_MAYBE_VECTORIZE
+#if 0
 #if defined(HASHA_MAYBE_VECTORIZE)
 #if defined(__clang__)
 #define HASHA_KECCAKF1600_IMPLID 5
+#endif
 #endif
 #endif
 
@@ -153,7 +154,8 @@ HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
 {
   keccakf1600_scalar_imp(state);
 }
-#elif HASHA_KECCAKF1600_IMPLID == 5
+
+#elif 0 && HASHA_KECCAKF1600_IMPLID == 5
 
 typedef uint64_t hasha_vec200_u64
     __attribute__((vector_size(200), aligned(32)));
@@ -188,17 +190,19 @@ HASHA_PRIVATE_FUNC void keccakf1600_vec_imp(hasha_vec200_u64 *state)
 
 HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
 {
+  __builtin_assume(state != NULL);
   if (ha_alignis((uintptr_t)state, 32) != ha_alignis_yes)
   {
     ha_dbg(
-        "[libhasha.keccakf1600] align is not 32"
+        "[hasha.keccakf1600] align is not 32 "
         "using keccakf1600_scalar_imp instead "
         "of keccakf1600_vec_imp\n");
     return keccakf1600_scalar_imp(state);
   }
-  __builtin_assume(state != NULL);
-  keccakf1600_vec_imp(
-      (hasha_vec200_u64 *)__builtin_assume_aligned(state, 32));
+  ha_dbg(
+      "[hasha.keccakf1600] align is 32 "
+      "using keccakf1600_vec_imp\n");
+  keccakf1600_vec_imp((hasha_vec200_u64 *)state);
 }
 #endif
 

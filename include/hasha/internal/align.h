@@ -10,6 +10,10 @@
 /* yes, up aligned by n bytes */
 #define ha_alignis_yes 0
 
+#if defined(__GNUC__) || defined(__clang__) || defined(__TINYC__)
+#define ha_aligned(N) __attribute__((aligned(N)))
+#endif
+
 #endif /* ha_align_defined */
 
 #endif /* __HASHA_INTERNAL_ALIGN_H */
