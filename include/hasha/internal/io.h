@@ -18,13 +18,17 @@ typedef FILE *ha_stream_t;
   for (int i = 0; i < digestlen; ++i) fprintf(stream, "%.2x", digest[i])
 #endif /* ha_print_digest */
 
+#if !defined(ha_print_newl)
+#define ha_print_newl(stream) fprintf(stream, "\n")
+#endif /* ha_print_newl */
+
 #if !defined(ha_buffer_digest)
 #define ha_buffer_digest(hash, buf, len, digest, ...) \
   do {                                                \
     ha_ctx(hash) ctx;                                 \
-    ha_init(hash, ctx);                               \
-    ha_update(hash, ctx, buf, len);                   \
-    ha_final(hash, ctx, digest, ##__VA_ARGS__);       \
+    ha_init(hash, &ctx);                              \
+    ha_update(hash, &ctx, buf, len);                  \
+    ha_final(hash, &ctx, digest, ##__VA_ARGS__);      \
   } while (0)
 #endif /* ha_buffer_digest */
 
