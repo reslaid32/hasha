@@ -20,8 +20,8 @@
  * SHA-1.
  */
 
-#if !defined(LIBHASHA_SHA1_H_LOADED)
-#define LIBHASHA_SHA1_H_LOADED
+#if !defined(__HASHA_SHA1_H)
+#define __HASHA_SHA1_H
 
 #include "internal/internal.h"
 
@@ -138,4 +138,4 @@ HASHA_PUBLIC_FUNC void ha_sha1_hash(const uint8_t *data, size_t len,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_SHA1_H_LOADED
+#endif  // __HASHA_SHA1_H

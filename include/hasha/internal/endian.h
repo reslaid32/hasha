@@ -1,7 +1,7 @@
 /** @file hasha/internal/endian.h */
 
-#ifndef HASHA_INTERNAL_ENDIAN_H
-#define HASHA_INTERNAL_ENDIAN_H
+#ifndef __HASHA_INTERNAL_ENDIAN_H
+#define __HASHA_INTERNAL_ENDIAN_H
 
 #if !defined(__BYTE_ORDER__)
 #if __has_include(<endian.h>)
@@ -44,4 +44,4 @@
 
 #endif /* hi_orders_defined */
 
-#endif /* HASHA_INTERNAL_ENDIAN_H */
+#endif /* __HASHA_INTERNAL_ENDIAN_H */

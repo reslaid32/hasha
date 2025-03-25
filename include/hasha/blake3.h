@@ -19,8 +19,8 @@
  * BLAKE3 algorithm.
  */
 
-#if !defined(LIBHASHA_BLAKE3_H_LOADED)
-#define LIBHASHA_BLAKE3_H_LOADED
+#if !defined(__HASHA_BLAKE3_H)
+#define __HASHA_BLAKE3_H
 
 #include "internal/internal.h"
 
@@ -147,4 +147,4 @@ HASHA_PUBLIC_FUNC void ha_blake3_hash(const uint8_t *data, size_t length,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_BLAKE3_H_LOADED
+#endif  // __HASHA_BLAKE3_H

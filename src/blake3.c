@@ -74,12 +74,13 @@ HASHA_PRIVATE_FUNC void blake3_compress(uint32_t *outbuf,
   BLAKE3_ROUND(2)
   BLAKE3_ROUND(3)
   BLAKE3_ROUND(4)
-  BLAKE3_ROUND(5) BLAKE3_ROUND(6)
+  BLAKE3_ROUND(5)
+  BLAKE3_ROUND(6)
 
 #undef BLAKE3_G
 #undef BLAKE3_ROUND
 
-      if (d & BLAKE3_FLAG_ROOT)
+  if (d & BLAKE3_FLAG_ROOT)
   {
     for (i = 8; i < 16; ++i) outbuf[i] = v[i] ^ h[i - 8];
   }
@@ -154,6 +155,7 @@ HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
     blake3_block(ctx, ctx->input);
   }
 
+  HA_OMP_PARALLEL_FOR
   for (; length > 64; pos += 64, length -= 64) blake3_block(ctx, pos);
   ctx->bytes = length;
   memcpy(ctx->input, pos, length);

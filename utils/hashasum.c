@@ -126,7 +126,7 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
   }
   else if (strncmp(algorithm, "blake2b_", 7) == 0)
   {
-    const char *len_str = algorithm + 7;
+    const char *len_str = algorithm + 8;
     char *end;
     long len     = strtol(len_str, &end, 10);
     *digest_size = HASHA_bB(len);
@@ -142,7 +142,7 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
   }
   else if (strncmp(algorithm, "blake3_", 7) == 0)
   {
-    const char *len_str = algorithm + 8;
+    const char *len_str = algorithm + 7;
     char *end;
     long len     = strtol(len_str, &end, 10);
     *digest_size = HASHA_bB(len);

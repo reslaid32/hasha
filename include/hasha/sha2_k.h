@@ -10,8 +10,8 @@
  * square roots of prime numbers, as specified in the FIPS 180-4 standard.
  */
 
-#if !defined(LIBHASHA_SHA2_K_H_LOADED)
-#define LIBHASHA_SHA2_K_H_LOADED
+#if !defined(__HASHA_SHA2_K_H)
+#define __HASHA_SHA2_K_H
 
 #include "internal/internal.h"
 
@@ -85,4 +85,4 @@ static const uint64_t SHA2_512_256_H0[8] = {
     0x963877195940eabd, 0x96283ee2a88effe3, 0xbe5e1e2553863992,
     0x2b0199fc2c85b8aa, 0x0eb72ddc81c52ca2};
 
-#endif  // LIBHASHA_SHA2_K_H_LOADED
+#endif  // __HASHA_SHA2_K_H

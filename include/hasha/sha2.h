@@ -20,8 +20,8 @@
  * further details on SHA-2.
  */
 
-#if !defined(LIBHASHA_SHA2_H_LOADED)
-#define LIBHASHA_SHA2_H_LOADED
+#if !defined(__HASHA_SHA2_H)
+#define __HASHA_SHA2_H
 
 #include "internal/internal.h"
 /* #include "sha2_k.h" */ /* not used in header */
@@ -610,4 +610,4 @@ HASHA_PUBLIC_FUNC void ha_sha2_512_256_hash(const uint8_t *data,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_SHA2_H_LOADED
+#endif  // __HASHA_SHA2_H

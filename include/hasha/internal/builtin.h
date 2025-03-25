@@ -1,7 +1,7 @@
 /** @file hasha/internal/builtin.h */
 
-#ifndef HASHA_INTERNAL_BUILTIN_H
-#define HASHA_INTERNAL_BUILTIN_H
+#ifndef __HASHA_INTERNAL_BUILTIN_H
+#define __HASHA_INTERNAL_BUILTIN_H
 
 /* needs HASHA_PUBLIC_HO_FUNC */
 #include "./export.h"
@@ -92,4 +92,4 @@ HASHA_PUBLIC_HO_FUNC int __builtin_clzll(unsigned long long x)
 
 #endif /* !HIB_AVAILABLE */
 
-#endif /* HASHA_INTERNAL_BUILTIN_H */
+#endif /* __HASHA_INTERNAL_BUILTIN_H */

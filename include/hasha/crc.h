@@ -14,8 +14,8 @@
  * @see https://en.wikipedia.org/wiki/Cyclic_redundancy_check
  */
 
-#if !defined(LIBHASHA_CRC_H_LOADED)
-#define LIBHASHA_CRC_H_LOADED
+#if !defined(__HASHA_CRC_H)
+#define __HASHA_CRC_H
 
 #include "internal/internal.h"
 
@@ -50,4 +50,4 @@ HASHA_PUBLIC_FUNC uint32_t ha_crc32_hash(const uint8_t *data, size_t len);
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_CRC_H_LOADED
+#endif  // __HASHA_CRC_H

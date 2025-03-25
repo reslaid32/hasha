@@ -22,8 +22,8 @@
  * further details on the SHA3 standard.
  */
 
-#if !defined(LIBHASHA_SHA3_H_LOADED)
-#define LIBHASHA_SHA3_H_LOADED
+#if !defined(__HASHA_SHA3_H)
+#define __HASHA_SHA3_H
 
 #include "internal/internal.h"
 /* #include "keccak1600.h" */ /* not used in header */
@@ -345,4 +345,4 @@ HASHA_PUBLIC_FUNC void ha_sha3_512_hash(const uint8_t *data, size_t length,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_SHA3_H_LOADED
+#endif  // __HASHA_SHA3_H

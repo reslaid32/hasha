@@ -28,8 +28,8 @@
  * @note This implementation follows the FIPS 202 specification for SHA-3.
  */
 
-#if !defined(LIBHASHA_KECCAK1600_H_LOADED)
-#define LIBHASHA_KECCAK1600_H_LOADED
+#if !defined(__HASHA_KECCAKF1600_H)
+#define __HASHA_KECCAKF1600_H
 
 #include "internal/internal.h"
 
@@ -65,4 +65,4 @@ HASHA_PUBLIC_FUNC int ha_keccakf1600_implid();
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_KECCAK1600_H_LOADED
+#endif  // __HASHA_KECCAKF1600_H

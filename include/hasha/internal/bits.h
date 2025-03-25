@@ -2,8 +2,8 @@
  * @file hasha/internal/bits.h
  */
 
-#if !defined(LIBHASHA_BITS_H_LOADED)
-#define LIBHASHA_BITS_H_LOADED
+#if !defined(__HASHA_INTERNAL_BITS_H)
+#define __HASHA_INTERNAL_BITS_H
 
 #if !defined(HASHA_bB)
 /* bits to Bytes (bB) */
@@ -23,4 +23,4 @@
 #define ha_Bb(n) HASHA_Bb(n)
 #endif
 
-#endif  // LIBHASHA_BITS_H_LOADED
+#endif  // __HASHA_INTERNAL_BITS_H

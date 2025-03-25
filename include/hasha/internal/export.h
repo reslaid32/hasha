@@ -2,8 +2,8 @@
  * @file hasha/internal/export.h
  */
 
-#if !defined(HASHA_EXPORT_H_LOADED)
-#define HASHA_EXPORT_H_LOADED
+#if !defined(__HASHA_INTERNAL_EXPORT_H)
+#define __HASHA_INTERNAL_EXPORT_H
 
 #include "./debug.h"
 
@@ -78,4 +78,4 @@
 // #define HASHA_VER hashaver()
 // #endif // HASHA_VER
 
-#endif  // HASHA_EXPORT_H_LOADED
+#endif  // __HASHA_INTERNAL_EXPORT_H

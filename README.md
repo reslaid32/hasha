@@ -2,12 +2,14 @@
 
 ## **libhasha is a standalone lightweight hashing library supporting multiple hashing algorithms written in C**
 
+### **The project is written just for the sake of practicing, no more**
+
+<!---
 # Benchmark
    <div style="display: flex; gap: 10px;">
       <img src="./assets/bench/i5.7400-clang-2.0.4.png" alt="1M iters" width="400">
    </div>
 
-<!---
 # Benchmarks (2.0.0)
  - All
    <div style="display: flex; gap: 10px;">

@@ -2,8 +2,8 @@
  * @file hasha/internal/acel.h
  */
 
-#if !defined(HASHA_ACEL_H_LOADED)
-#define HASHA_ACEL_H_LOADED
+#if !defined(__HASHA_INTERNAL_ACEL_H)
+#define __HASHA_INTERNAL_ACEL_H
 
 #include "export.h"
 
@@ -36,4 +36,4 @@ HASHA_PUBLIC_FUNC int ha_acel(void);
 
 HASHA_EXTERN_C_END
 
-#endif  // HASHA_ACEL_H_LOADED
+#endif  // __HASHA_INTERNAL_ACEL_H

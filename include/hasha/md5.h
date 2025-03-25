@@ -16,8 +16,8 @@
  * algorithm.
  */
 
-#if !defined(LIBHASHA_MD5_H_LOADED)
-#define LIBHASHA_MD5_H_LOADED
+#if !defined(__HASHA_MD5_H)
+#define __HASHA_MD5_H
 
 #include "internal/internal.h"
 
@@ -103,4 +103,4 @@ HASHA_PUBLIC_FUNC void ha_md5_hash(const uint8_t *data, size_t len,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_MD5_H_LOADED
+#endif  // __HASHA_MD5_H

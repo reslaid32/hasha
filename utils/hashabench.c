@@ -38,10 +38,12 @@ HASHA_PRIVATE_FUNC void print_usage(const char *prog_name)
   printf("Usage: %s [OPTIONS]\n", prog_name);
   printf("\nSupported algorithms:\n");
   printf(
-      "  crc32, md5, sha1, sha224, sha256, sha384, sha512, sha512_224, "
+      "  crc32, md5, sha1, sha224, sha256, sha384, sha512, "
+      "sha512_224, "
       "sha512_256,\n");
   printf(
-      "  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, keccak256, "
+      "  sha3_224, sha3_256, sha3_384, sha3_512, keccak224, "
+      "keccak256, "
       "keccak384, keccak512\n");
   printf(
       "  blake2s_<digestlen(8...256)>"
@@ -52,7 +54,9 @@ HASHA_PRIVATE_FUNC void print_usage(const char *prog_name)
       "  -t, --iters NUM      Number of iterations for benchmarking "
       "(default: 1000000)\n");
   printf(
-      "  -i, --input STRING   Input string to hash (default: 'hello')\n");
+      "  -i, --input STRING   Input string to hash (default: "
+      "'hello')\n");
+  printf("  -f, --file PATH      Input file path to hash\n");
   printf(
       "  -a, --algos STRING   Space- (or comma-) separated list of "
       "algorithms to benchmark (default: all)\n");
@@ -71,23 +75,61 @@ HASHA_PRIVATE_FUNC char *trim(char *str)
   return str;
 }
 
+// Helper: get file size
+HASHA_PRIVATE_FUNC size_t get_file_sz(FILE *file)
+{
+  fseek(file, 0, SEEK_END);
+  long file_size = ftell(file);
+  fseek(file, 0, SEEK_SET);
+  return file_size;
+}
+
+// Helper: read file content
+HASHA_PRIVATE_FUNC void file_bufread(char *content, size_t sz,
+                                     size_t bufsz, FILE *file)
+{
+  size_t to_read = bufsz, total_read = 0, bytes_read = 0;
+  /* fully read */
+  if (bufsz == 0)
+  {
+    bytes_read = fread(content, 1, sz, file);
+    return;
+  }
+
+  while (total_read < sz)
+  {
+    if (total_read + to_read > sz) to_read = sz - total_read;
+    bytes_read = fread(content + total_read, 1, to_read, file);
+    if (bytes_read == 0)
+    {
+      break;  // End-of-file or read error.
+    }
+    total_read += bytes_read;
+  }
+
+  if (total_read < sz + 1)
+    content[sz] = '\0';  // Null-terminate the string
+}
+
 int main(int argc, char *argv[])
 {
-  int iterations        = 1000000;  // Default iterations
+  int iterations        = 1;        // Default iterations
   const char *input     = "hello";  // Default input string
   const char *algos     = "all";    // Default: run all algorithms
+  const char *file_path = NULL;     // Default: (null)
   const char *save_file = NULL;     // Default: (null)
 
   static struct option long_options[] = {
       {"iters", required_argument, 0, 't'},
       {"input", required_argument, 0, 'i'},
+      {"file", required_argument, 0, 'f'},
       {"algos", required_argument, 0, 'a'},
       {"svres", required_argument, 0, 'r'},
       {"help", no_argument, 0, 'h'},
       {0, 0, 0, 0}};
 
   int opt, option_index = 0;
-  while ((opt = getopt_long(argc, argv, "t:i:a:h:r:", long_options,
+  while ((opt = getopt_long(argc, argv, "t:i:a:h:r:f:", long_options,
                             &option_index)) != -1)
   {
     switch (opt)
@@ -103,6 +145,9 @@ int main(int argc, char *argv[])
       case 'i':
         input = optarg;
         break;
+      case 'f':
+        file_path = optarg;
+        break;
       case 'a':
         algos = optarg;
         break;
@@ -114,6 +159,32 @@ int main(int argc, char *argv[])
         print_usage(argv[0]);
         return 0;
     }
+  }
+
+  FILE *file;
+  size_t file_size = 0;
+  int file_opened  = 0;
+
+  if (file_path)
+  {
+    file = fopen(file_path, "rb");
+    if (!file)
+    {
+      fprintf(stderr, "Could not open file: %s\n", file_path);
+      return 1;
+    }
+    file_opened = 1;
+    file_size   = get_file_sz(file);
+    input       = malloc(file_size + 1);
+    if (!input)
+    {
+      fprintf(stderr, "Memory allocation error\n");
+      fclose(file);
+      return 1;
+    }
+
+    file_bufread((char *)input, file_size, 8192, file);
+    fclose(file);
   }
 
   FILE *result_file = NULL;
@@ -133,8 +204,9 @@ int main(int argc, char *argv[])
 
   size_t input_len = strlen(input);
   printf(
-      "Running benchmarks with input: '%s' (%zu bytes), iterations: %d\n",
-      input, input_len, iterations);
+      "Running benchmarks with input size %zu bytes, iterations: "
+      "%d\n",
+      input_len, iterations);
   printf("Selected algorithms: %s\n\n", algos);
 
   uint8_t output[512];
@@ -201,8 +273,8 @@ int main(int argc, char *argv[])
   }
   else
   {
-    // Tokenize the provided algorithm string (using both space and comma
-    // as delimiters)
+    // Tokenize the provided algorithm string (using both space and
+    // comma as delimiters)
     char *algos_copy = strdup(algos);
     char *token      = strtok(algos_copy, " ,");
     while (token)
@@ -372,6 +444,7 @@ int main(int argc, char *argv[])
   }
 
   if (result_file) { fclose(result_file); }
+  if (file_opened) { free((void *)input); }
 
   printf("\nBenchmark Complete!\n");
   return 0;

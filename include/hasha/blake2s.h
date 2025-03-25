@@ -8,8 +8,8 @@
  * computing the hash in a one-shot operation.
  */
 
-#if !defined(LIBHASHA_BLAKE2S_H_LOADED)
-#define LIBHASHA_BLAKE2S_H_LOADED
+#if !defined(__HASHA_BLAKE2S_H)
+#define __HASHA_BLAKE2S_H
 
 #include "internal/internal.h"
 
@@ -38,10 +38,8 @@ typedef struct ha_blake2s_context
  * @brief Initializes the BLAKE2s hashing context.
  *
  * @param ctx Pointer to the BLAKE2s context.
- * @param outlen Desired length of the hash output in bytes (1–32).
  */
-HASHA_PUBLIC_FUNC void ha_blake2s_init(ha_blake2s_context *ctx,
-                                       size_t outlen);
+HASHA_PUBLIC_FUNC void ha_blake2s_init(ha_blake2s_context *ctx);
 
 /**
  * @brief Updates the BLAKE2s hash with input data.
@@ -65,9 +63,10 @@ HASHA_PUBLIC_FUNC void ha_blake2s_update(ha_blake2s_context *ctx,
  * @param ctx Pointer to the BLAKE2s context.
  * @param digest Pointer to the output buffer (must be at least `outlen`
  * bytes).
+ * @param digestlen Desired length of the hash output in bytes (1–32).
  */
 HASHA_PUBLIC_FUNC void ha_blake2s_final(ha_blake2s_context *ctx,
-                                        uint8_t *digest);
+                                        uint8_t *digest, size_t digestlen);
 
 /**
  * @brief Computes the BLAKE2s hash of the input data.
@@ -86,4 +85,4 @@ HASHA_PUBLIC_FUNC void ha_blake2s_hash(const uint8_t *data, size_t len,
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_BLAKE2S_H_LOADED
+#endif  // __HASHA_BLAKE2S_H

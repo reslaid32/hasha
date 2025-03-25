@@ -2,8 +2,8 @@
  * @file hasha/internal/ver.h
  */
 
-#if !defined(LIBHASHA_VER_H_LOADED)
-#define LIBHASHA_VER_H_LOADED
+#if !defined(__HASHA_INTERNAL_VER_H)
+#define __HASHA_INTERNAL_VER_H
 
 #include "export.h"
 
@@ -31,4 +31,4 @@ HASHA_PUBLIC_FUNC ha_version_t ha_version(void);
 
 HASHA_EXTERN_C_END
 
-#endif  // LIBHASHA_VER_H_LOADED
+#endif  // __HASHA_INTERNAL_VER_H

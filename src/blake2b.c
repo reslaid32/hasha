@@ -69,13 +69,10 @@ HASHA_PRIVATE_FUNC void ha_blake2b_compress(ha_blake2b_context *ctx,
   for (i = 0; i < 8; i++) ctx->h[i] ^= v[i] ^ v[i + 8];
 }
 
-HASHA_PUBLIC_FUNC void ha_blake2b_init(ha_blake2b_context *ctx,
-                                       size_t outlen)
+HASHA_PUBLIC_FUNC void ha_blake2b_init(ha_blake2b_context *ctx)
 {
   memset(ctx, 0, sizeof(*ctx));
   memcpy(ctx->h, blake2b_iv, sizeof(ctx->h));
-  ctx->h[0] ^= (uint64_t)outlen | (1ULL << 16) | (1ULL << 24);
-  ctx->outlen = outlen;
 }
 
 HASHA_PUBLIC_FUNC void ha_blake2b_update(ha_blake2b_context *ctx,
@@ -100,8 +97,11 @@ HASHA_PUBLIC_FUNC void ha_blake2b_update(ha_blake2b_context *ctx,
 }
 
 HASHA_PUBLIC_FUNC void ha_blake2b_final(ha_blake2b_context *ctx,
-                                        uint8_t *digest)
+                                        uint8_t *digest, size_t digestlen)
 {
+  ctx->h[0] ^= (uint64_t)digestlen | (1ULL << 16) | (1ULL << 24);
+  ctx->outlen = digestlen;
+
   ctx->t[0] += ctx->buflen;
   ctx->f[0] = ~0ULL;
   memset(ctx->buf + ctx->buflen, 0, 128 - ctx->buflen);
@@ -114,7 +114,7 @@ HASHA_PUBLIC_FUNC void ha_blake2b_hash(const uint8_t *data, size_t len,
                                        uint8_t *digest, size_t digestlen)
 {
   ha_blake2b_context ctx;
-  ha_blake2b_init(&ctx, digestlen);
+  ha_blake2b_init(&ctx);
   ha_blake2b_update(&ctx, data, len);
-  ha_blake2b_final(&ctx, digest);
+  ha_blake2b_final(&ctx, digest, digestlen);
 }
