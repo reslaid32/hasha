@@ -9,9 +9,17 @@
 #endif
 
 #include "./opt.h"
-#include "./types.h" /* need ha hasher construction */
 
-typedef FILE *ha_stream_t;
+#if !defined(ha_hashmacro_defined)
+#define ha_hashmacro_defined 1
+#define ha_ctx(hash) ha_##hash##_context
+#define ha_init(hash, ctx) ha_##hash##_init(ctx)
+#define ha_update(hash, ctx, buf, buflen) \
+  ha_##hash##_update(ctx, buf, buflen)
+#define ha_final(hash, ctx, ...) ha_##hash##_final(ctx, ##__VA_ARGS__)
+#define ha_hash(hash, buf, buflen, digest, ...) \
+  ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__) l
+#endif /* ha_hashmacro_defined */
 
 #if !defined(ha_print_digest)
 #define ha_print_digest(stream, digest, digestlen) \
@@ -46,21 +54,5 @@ typedef FILE *ha_stream_t;
     ha_final(hash, &ctx, digest, ##__VA_ARGS__);                         \
   } while (0)
 #endif /* ha_stream_digest */
-
-#if !defined(ha_stream_digest_sha3)
-#define ha_stream_digest_sha3(hash, stream, size, chunksize, buffer,     \
-                              digest, ...)                               \
-  do {                                                                   \
-    ha_ctx(hash) ctx;                                                    \
-    ha_init(hash, &ctx);                                                 \
-    size_t bytes;                                                        \
-    while ((bytes = fread((buffer), (size), (chunksize), (stream))) > 0) \
-    {                                                                    \
-      ha_absorb(hash, &ctx, buffer, bytes);                              \
-    }                                                                    \
-    ha_final(hash, &ctx);                                                \
-    ha_squeeze(hash, &ctx, digest, ##__VA_ARGS__);                       \
-  } while (0)
-#endif /* ha_stream_digest_sha3 */
 
 #endif /* __HASHA_INTERNAL_IO_H */
