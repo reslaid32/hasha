@@ -1,9 +1,9 @@
-#define HASHA_LIBRARY_BUILD
+#define HA_BUILD
 
 #include "../include/hasha/sha1.h"
 
-HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
-                                         const uint8_t *block)
+HA_PUBFUN void ha_sha1_transform(ha_sha1_context *ctx,
+                                 const uint8_t *block)
 {
   uint32_t w[80];
   uint32_t a, b, c, d, e;
@@ -66,7 +66,7 @@ HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
   ctx->state[4] += e;
 }
 
-HASHA_PUBLIC_FUNC void ha_sha1_init(ha_sha1_context *ctx)
+HA_PUBFUN void ha_sha1_init(ha_sha1_context *ctx)
 {
   // ctx->state[0] = 0x67452301;
   // ctx->state[1] = 0xEFCDAB89;
@@ -75,55 +75,56 @@ HASHA_PUBLIC_FUNC void ha_sha1_init(ha_sha1_context *ctx)
   // ctx->state[4] = 0xC3D2E1F0;
   memcpy(ctx->state, SHA1_H0, sizeof(SHA1_H0));
   ctx->bit_count = 0;
-  memset(ctx->buffer, 0, SHA1_BLOCK_SIZE);
+  memset(ctx->buffer, 0, HA_SHA1_BLOCK_SIZE);
 }
 
-HASHA_PUBLIC_FUNC void ha_sha1_update(ha_sha1_context *ctx,
-                                      const uint8_t *data, size_t len)
+HA_PUBFUN void ha_sha1_update(ha_sha1_context *ctx, ha_inbuf_t data,
+                              size_t len)
 {
   size_t buffer_space =
-      SHA1_BLOCK_SIZE - (ctx->bit_count / 8) % SHA1_BLOCK_SIZE;
+      HA_SHA1_BLOCK_SIZE - (ctx->bit_count / 8) % HA_SHA1_BLOCK_SIZE;
   ctx->bit_count += len * 8;
 
   if (len >= buffer_space)
   {
-    memcpy(ctx->buffer + (SHA1_BLOCK_SIZE - buffer_space), data,
+    memcpy(ctx->buffer + (HA_SHA1_BLOCK_SIZE - buffer_space), data,
            buffer_space);
     ha_sha1_transform(ctx, ctx->buffer);
     data += buffer_space;
     len -= buffer_space;
 
-    while (len >= SHA1_BLOCK_SIZE)
+    while (len >= HA_SHA1_BLOCK_SIZE)
     {
       ha_sha1_transform(ctx, data);
-      data += SHA1_BLOCK_SIZE;
-      len -= SHA1_BLOCK_SIZE;
+      data += HA_SHA1_BLOCK_SIZE;
+      len -= HA_SHA1_BLOCK_SIZE;
     }
   }
 
   memcpy(ctx->buffer, data, len);
 }
 
-HASHA_PUBLIC_FUNC void ha_sha1_final(ha_sha1_context *ctx, uint8_t *digest)
+HA_PUBFUN void ha_sha1_final(ha_sha1_context *ctx, ha_digest_t digest)
 {
-  size_t buffer_index         = (ctx->bit_count / 8) % SHA1_BLOCK_SIZE;
+  size_t buffer_index         = (ctx->bit_count / 8) % HA_SHA1_BLOCK_SIZE;
   ctx->buffer[buffer_index++] = 0x80;
 
-  if (buffer_index > SHA1_BLOCK_SIZE - 8)
+  if (buffer_index > HA_SHA1_BLOCK_SIZE - 8)
   {
-    memset(ctx->buffer + buffer_index, 0, SHA1_BLOCK_SIZE - buffer_index);
+    memset(ctx->buffer + buffer_index, 0,
+           HA_SHA1_BLOCK_SIZE - buffer_index);
     ha_sha1_transform(ctx, ctx->buffer);
     buffer_index = 0;
   }
 
   memset(ctx->buffer + buffer_index, 0,
-         SHA1_BLOCK_SIZE - buffer_index - 8);
+         HA_SHA1_BLOCK_SIZE - buffer_index - 8);
   uint64_t bit_count_be =
       (ctx->bit_count << 56) |
       ((ctx->bit_count & 0x0000FF0000000000ULL) >> 8) |
       ((ctx->bit_count & 0x00FF000000000000ULL) >> 16) |
       ((ctx->bit_count & 0xFF00000000000000ULL) >> 24);
-  memcpy(ctx->buffer + SHA1_BLOCK_SIZE - 8, &bit_count_be, 8);
+  memcpy(ctx->buffer + HA_SHA1_BLOCK_SIZE - 8, &bit_count_be, 8);
   ha_sha1_transform(ctx, ctx->buffer);
 
   for (int i = 0; i < 5; i++)
@@ -135,8 +136,8 @@ HASHA_PUBLIC_FUNC void ha_sha1_final(ha_sha1_context *ctx, uint8_t *digest)
   }
 }
 
-HASHA_PUBLIC_FUNC void ha_sha1_hash(const uint8_t *data, size_t len,
-                                    uint8_t *digest)
+HA_PUBFUN void ha_sha1_hash(ha_inbuf_t data, size_t len,
+                            ha_digest_t digest)
 {
   ha_sha1_context ctx;
   ha_sha1_init(&ctx);

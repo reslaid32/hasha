@@ -8,6 +8,22 @@
 #include <time.h>
 
 #include "../include/hasha/hasha.h"
+#include "../include/hasha/internal/error.h"
+
+static char *ha_bench_error_strings[] = {
+#define UNSUPPORTED_ERR 0
+    "unsupported %s",
+#define INVALID_ERR 1
+    "invalid %s",
+#define UNEXPECTED_ERR 2
+    "unexpected %s",
+#define MISSING_ERR 3
+    "missing %s",
+#define BASIC_ERROR 4
+    "error %s",
+#define ARG_ERROR 5
+    "argument error: %s",
+};
 
 // #define INCLUDE_OPENSSL
 
@@ -33,7 +49,7 @@
   } while (0)
 
 // Function to display help/usage information
-HASHA_PRIVATE_FUNC void print_usage(const char *prog_name)
+HA_PRVFUN void print_usage(const char *prog_name)
 {
   printf("Usage: %s [OPTIONS]\n", prog_name);
   printf("\nSupported algorithms:\n");
@@ -65,7 +81,7 @@ HASHA_PRIVATE_FUNC void print_usage(const char *prog_name)
 }
 
 // Helper: trim leading and trailing whitespace
-HASHA_PRIVATE_FUNC char *trim(char *str)
+HA_PRVFUN char *trim(char *str)
 {
   while (isspace((unsigned char)*str)) str++;
   if (*str == 0) return str;
@@ -76,7 +92,7 @@ HASHA_PRIVATE_FUNC char *trim(char *str)
 }
 
 // Helper: get file size
-HASHA_PRIVATE_FUNC size_t get_file_sz(FILE *file)
+HA_PRVFUN size_t get_file_sz(FILE *file)
 {
   fseek(file, 0, SEEK_END);
   long file_size = ftell(file);
@@ -85,8 +101,8 @@ HASHA_PRIVATE_FUNC size_t get_file_sz(FILE *file)
 }
 
 // Helper: read file content
-HASHA_PRIVATE_FUNC void file_bufread(char *content, size_t sz,
-                                     size_t bufsz, FILE *file)
+HA_PRVFUN void file_bufread(char *content, size_t sz, size_t bufsz,
+                            FILE *file)
 {
   size_t to_read = bufsz, total_read = 0, bytes_read = 0;
   /* fully read */
@@ -138,7 +154,9 @@ int main(int argc, char *argv[])
         iterations = atoi(optarg);
         if (iterations <= 0)
         {
-          fprintf(stderr, "Invalid number of iterations: %s\n", optarg);
+          ha_throw_error(ha_curpos, ha_bench_error_strings[ARG_ERROR],
+                         ha_bench_error_strings[INVALID_ERR],
+                         "number of iterations: %d", iterations);
           return 1;
         }
         break;
@@ -170,7 +188,9 @@ int main(int argc, char *argv[])
     file = fopen(file_path, "rb");
     if (!file)
     {
-      fprintf(stderr, "Could not open file: %s\n", file_path);
+      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+                     "opening file");
+      perror("fopen()");
       return 1;
     }
     file_opened = 1;
@@ -178,7 +198,9 @@ int main(int argc, char *argv[])
     input       = malloc(file_size + 1);
     if (!input)
     {
-      fprintf(stderr, "Memory allocation error\n");
+      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+                     "memory allocating");
+      perror("malloc()");
       fclose(file);
       return 1;
     }
@@ -193,8 +215,9 @@ int main(int argc, char *argv[])
     result_file = fopen(save_file, "w");
     if (!result_file)
     {
-      fprintf(stderr, "Could not open file for saving results: %s\n",
-              save_file);
+      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+                     "opening file");
+      perror("fopen()");
       return 1;
     }
     fprintf(result_file,
@@ -249,27 +272,27 @@ int main(int argc, char *argv[])
     BENCHMARK(iterations, "KECCAK-512", ha_keccak_512_hash, result_file,
               (const uint8_t *)input, input_len, output);
     BENCHMARK(iterations, "BLAKE2S-128", ha_blake2s_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(128));
+              (const uint8_t *)input, input_len, output, ha_bB(128));
     BENCHMARK(iterations, "BLAKE2S-160", ha_blake2s_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(160));
+              (const uint8_t *)input, input_len, output, ha_bB(160));
     BENCHMARK(iterations, "BLAKE2S-256", ha_blake2s_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(256));
+              (const uint8_t *)input, input_len, output, ha_bB(256));
     BENCHMARK(iterations, "BLAKE2B-128", ha_blake2b_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(128));
+              (const uint8_t *)input, input_len, output, ha_bB(128));
     BENCHMARK(iterations, "BLAKE2B-160", ha_blake2b_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(160));
+              (const uint8_t *)input, input_len, output, ha_bB(160));
     BENCHMARK(iterations, "BLAKE2B-256", ha_blake2b_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(256));
+              (const uint8_t *)input, input_len, output, ha_bB(256));
     BENCHMARK(iterations, "BLAKE2B-512", ha_blake2b_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(512));
+              (const uint8_t *)input, input_len, output, ha_bB(512));
     BENCHMARK(iterations, "BLAKE3-224", ha_blake3_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(224));
+              (const uint8_t *)input, input_len, output, ha_bB(224));
     BENCHMARK(iterations, "BLAKE3-256", ha_blake3_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(256));
+              (const uint8_t *)input, input_len, output, ha_bB(256));
     BENCHMARK(iterations, "BLAKE3-384", ha_blake3_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(384));
+              (const uint8_t *)input, input_len, output, ha_bB(384));
     BENCHMARK(iterations, "BLAKE3-512", ha_blake3_hash, result_file,
-              (const uint8_t *)input, input_len, output, HASHA_bB(512));
+              (const uint8_t *)input, input_len, output, ha_bB(512));
   }
   else
   {
@@ -381,12 +404,12 @@ int main(int argc, char *argv[])
         long digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          fprintf(stderr, "Invalid BLAKE2S digest length in token '%s'\n",
-                  token);
+          ha_throw_error(ha_curpos, ha_bench_error_strings[INVALID_ERR],
+                         "blake2s digest length in token '%s'", token);
         }
         else
         {
-          size_t digest_bytes = HASHA_bB(digest_bits);
+          size_t digest_bytes = ha_bB(digest_bits);
           char benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE2S-%ld",
                    digest_bits);
@@ -402,12 +425,12 @@ int main(int argc, char *argv[])
         long digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          fprintf(stderr, "Invalid BLAKE2B digest length in token '%s'\n",
-                  token);
+          ha_throw_error(ha_curpos, ha_bench_error_strings[INVALID_ERR],
+                         "blake2b digest length in token '%s'", token);
         }
         else
         {
-          size_t digest_bytes = HASHA_bB(digest_bits);
+          size_t digest_bytes = ha_bB(digest_bits);
           char benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE2B-%ld",
                    digest_bits);
@@ -423,12 +446,12 @@ int main(int argc, char *argv[])
         long digest_bits = strtol(token + 7, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          fprintf(stderr, "Invalid BLAKE3 digest length in token '%s'\n",
-                  token);
+          ha_throw_error(ha_curpos, ha_bench_error_strings[INVALID_ERR],
+                         "blake3 digest length in token '%s'", token);
         }
         else
         {
-          size_t digest_bytes = HASHA_bB(digest_bits);
+          size_t digest_bytes = ha_bB(digest_bits);
           char benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE3-%ld",
                    digest_bits);
@@ -437,7 +460,11 @@ int main(int argc, char *argv[])
                     digest_bytes);
         }
       }
-      else { fprintf(stderr, "Unsupported algorithm: %s\n", token); }
+      else
+      {
+        ha_throw_error(ha_curpos, ha_bench_error_strings[UNSUPPORTED_ERR],
+                       "alogrithm '%s'", token);
+      }
       token = strtok(NULL, " ,");
     }
     free(algos_copy);

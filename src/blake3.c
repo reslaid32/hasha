@@ -1,4 +1,4 @@
-#define HASHA_LIBRARY_BUILD
+#define HA_BUILD
 
 #include "../include/hasha/blake3.h"
 
@@ -22,10 +22,10 @@ static const uint8_t BLAKE3_PERMUTION[7][16] = {
     {11, 15, 5, 0, 1, 9, 8, 6, 14, 10, 2, 12, 3, 4, 7, 13},
 };
 
-HASHA_PRIVATE_FUNC void blake3_compress(uint32_t *outbuf,
-                                        const uint32_t m[static 16],
-                                        const uint32_t h[static 8],
-                                        uint64_t t, uint32_t b, uint32_t d)
+HA_PRVFUN void blake3_compress(uint32_t *outbuf,
+                               const uint32_t m[static 16],
+                               const uint32_t h[static 8], uint64_t t,
+                               uint32_t b, uint32_t d)
 {
   uint32_t v[16] = {h[0],
                     h[1],
@@ -87,8 +87,8 @@ HASHA_PRIVATE_FUNC void blake3_compress(uint32_t *outbuf,
   for (i = 0; i < 8; ++i) outbuf[i] = v[i] ^ v[i + 8];
 }
 
-HASHA_PRIVATE_FUNC void blake3_load(uint32_t d[static 16],
-                                    const uint8_t s[static 64])
+HA_PRVFUN void blake3_load(uint32_t d[static 16],
+                           const uint8_t s[static 64])
 {
   uint32_t *end;
 
@@ -99,8 +99,8 @@ HASHA_PRIVATE_FUNC void blake3_load(uint32_t d[static 16],
   }
 }
 
-HASHA_PRIVATE_FUNC void blake3_block(ha_blake3_context *ctx,
-                                     const unsigned char *buf)
+HA_PRVFUN void blake3_block(ha_blake3_context *ctx,
+                            const unsigned char *buf)
 {
   uint32_t m[16], flags, *cv = ctx->cv;
   uint64_t t;
@@ -131,15 +131,15 @@ HASHA_PRIVATE_FUNC void blake3_block(ha_blake3_context *ctx,
   ctx->cv = cv;
 }
 
-HASHA_PUBLIC_FUNC void ha_blake3_init(ha_blake3_context *ctx)
+HA_PUBFUN void ha_blake3_init(ha_blake3_context *ctx)
 {
   ctx->bytes = ctx->block = ctx->chunk = 0;
   ctx->cv                              = ctx->cv_buf;
   memcpy(ctx->cv, BLAKE3_IV, sizeof(BLAKE3_IV));
 }
 
-HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
-                                        const uint8_t *data, size_t length)
+HA_PUBFUN void ha_blake3_update(ha_blake3_context *ctx, ha_inbuf_t data,
+                                size_t length)
 {
   const uint8_t *pos = data;
   size_t n;
@@ -155,14 +155,13 @@ HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
     blake3_block(ctx, ctx->input);
   }
 
-  HA_OMP_PARALLEL_FOR
   for (; length > 64; pos += 64, length -= 64) blake3_block(ctx, pos);
   ctx->bytes = length;
   memcpy(ctx->input, pos, length);
 }
 
-HASHA_PUBLIC_FUNC void ha_blake3_final(ha_blake3_context *ctx,
-                                       uint8_t *digest, size_t length)
+HA_PUBFUN void ha_blake3_final(ha_blake3_context *ctx, ha_digest_t digest,
+                               size_t length)
 {
   uint32_t f, b, x = 0, *in, *cv, m[16], root[16];
   size_t i;
@@ -196,9 +195,8 @@ HASHA_PUBLIC_FUNC void ha_blake3_final(ha_blake3_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void ha_blake3_hash(const uint8_t *data, size_t length,
-                                      uint8_t *digest,
-                                      size_t digest_length)
+HA_PUBFUN void ha_blake3_hash(ha_inbuf_t data, size_t length,
+                              ha_digest_t digest, size_t digest_length)
 {
   ha_blake3_context ctx;
   ha_blake3_init(&ctx);

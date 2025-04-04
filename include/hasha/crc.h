@@ -29,7 +29,7 @@
  */
 #define CRC32_POLYNOMIAL 0xEDB88320
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @brief Computes the CRC32 checksum in a single operation.
@@ -46,8 +46,8 @@ HASHA_EXTERN_C_BEG
  *
  * @return The computed CRC32 checksum.
  */
-HASHA_PUBLIC_FUNC uint32_t ha_crc32_hash(const uint8_t *data, size_t len);
+HA_PUBFUN uint32_t ha_crc32_hash(ha_inbuf_t data, size_t len);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_CRC_H

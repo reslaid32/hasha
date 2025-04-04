@@ -1,5 +1,5 @@
 
-#define HASHA_LIBRARY_BUILD
+#define HA_BUILD
 
 #include "../include/hasha/blake2s.h"
 
@@ -19,8 +19,8 @@ static const uint8_t blake2s_sigma[10][16] = {
     {6, 15, 14, 9, 11, 3, 0, 8, 12, 2, 13, 7, 1, 4, 10, 5},
     {10, 2, 8, 4, 7, 6, 1, 5, 15, 11, 9, 14, 3, 12, 13, 0}};
 
-HASHA_PRIVATE_FUNC void ha_blake2s_compress(ha_blake2s_context *ctx,
-                                            const uint8_t block[64])
+HA_PRVFUN void ha_blake2s_compress(ha_blake2s_context *ctx,
+                                   const uint8_t block[64])
 {
   uint32_t v[16], m[16];
   int i;
@@ -67,14 +67,14 @@ HASHA_PRIVATE_FUNC void ha_blake2s_compress(ha_blake2s_context *ctx,
   for (i = 0; i < 8; i++) ctx->h[i] ^= v[i] ^ v[i + 8];
 }
 
-HASHA_PUBLIC_FUNC void ha_blake2s_init(ha_blake2s_context *ctx)
+HA_PUBFUN void ha_blake2s_init(ha_blake2s_context *ctx)
 {
   memset(ctx, 0, sizeof(*ctx));
   memcpy(ctx->h, blake2s_iv, sizeof(ctx->h));
 }
 
-HASHA_PUBLIC_FUNC void ha_blake2s_update(ha_blake2s_context *ctx,
-                                         const uint8_t *data, size_t len)
+HA_PUBFUN void ha_blake2s_update(ha_blake2s_context *ctx, ha_inbuf_t data,
+                                 size_t len)
 {
   while (len > 0)
   {
@@ -94,8 +94,8 @@ HASHA_PUBLIC_FUNC void ha_blake2s_update(ha_blake2s_context *ctx,
   }
 }
 
-HASHA_PUBLIC_FUNC void ha_blake2s_final(ha_blake2s_context *ctx,
-                                        uint8_t *digest, size_t digestlen)
+HA_PUBFUN void ha_blake2s_final(ha_blake2s_context *ctx,
+                                ha_digest_t digest, size_t digestlen)
 {
   ctx->h[0] ^= (uint32_t)digestlen | (1U << 16) | (1U << 24);
   ctx->outlen = digestlen;
@@ -108,8 +108,8 @@ HASHA_PUBLIC_FUNC void ha_blake2s_final(ha_blake2s_context *ctx,
   memcpy(digest, ctx->h, ctx->outlen);
 }
 
-HASHA_PUBLIC_FUNC void ha_blake2s_hash(const uint8_t *data, size_t len,
-                                       uint8_t *digest, size_t digestlen)
+HA_PUBFUN void ha_blake2s_hash(ha_inbuf_t data, size_t len,
+                               ha_digest_t digest, size_t digestlen)
 {
   ha_blake2s_context ctx;
   ha_blake2s_init(&ctx);

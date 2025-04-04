@@ -1,29 +1,16 @@
 /* hashacli.c (hasha.c -> hashacli.c) */
 
 #include <assert.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "../include/hasha/hasha.h"
+#include "../include/hasha/internal/error.h"
 
-#if 0
-const char *stringize_acel_status(int acel)
-{
-  switch (acel)
-  {
-    case 0:
-      return "Disabled";
-    case 1:
-      return "SIMD";
-    case 2:
-      return "Neon";
-    default:
-      return "?";
-  }
-}
-
-#endif
+static char *ha_cli_error_strings[] = {
+#define UNKNOWN_OPT 0
+    "argument option named %s",
+};
 
 int main(int argc, char *argv[])
 {
@@ -35,23 +22,19 @@ int main(int argc, char *argv[])
   {
     if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0)
     {
-      printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor,
-             hashav.patch);
+      ha_throw(1, ha_curpos, "info", "libhasha version: %u.%u.%u",
+               hashav.major, hashav.minor, hashav.patch);
       return EXIT_SUCCESS;
     }
-#if 0
-        else if (strcmp(argv[i], "-a") == 0 || strcmp(argv[i], "--accelerating") == 0) {
-            int hashac = hashacel();
-            printf("libhasha hw accelerating: %s [%s (0x%0x)]\n", hashac ? "true" : "false", stringize_acel_status(hashac), hashac);
-        }
-#endif
     else if (strcmp(argv[i], "--keccakf1600-implid") == 0)
     {
-      printf("keccakf1600 implid: 0x%.5x\n", ha_keccakf1600_implid());
+      ha_throw(1, ha_curpos, "info", "keccakf1600 implid: 0x%.5x",
+               ha_keccakf1600_implid());
+      return EXIT_SUCCESS;
     }
     else
     {
-      fprintf(stderr, "Unknown option: %s\n", argv[i]);
+      ha_throw_warn(ha_curpos, ha_cli_error_strings[UNKNOWN_OPT], argv[i]);
       goto usage;
     }
   }
@@ -59,7 +42,7 @@ int main(int argc, char *argv[])
   return EXIT_SUCCESS;
 
 usage:
-  fprintf(stderr, "Usage: %s [-v|--version | --keccakf1600-implid]\n",
-          argv[0]);
+  ha_throw(1, ha_curpos, "usage", "%s [-v|--version|--keccakf1600-implid]",
+           argv[0]);
   return EXIT_FAILURE;
 }

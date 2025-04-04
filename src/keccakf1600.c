@@ -1,5 +1,5 @@
 
-#define HASHA_LIBRARY_BUILD
+#define HA_BUILD
 
 #include "../include/hasha/keccakf1600.h"
 
@@ -109,19 +109,11 @@
     HASHA_KECCAKF1600_IOTA_STEP(state, rc) \
   } while (0)
 
-#if 0
-#if defined(HASHA_MAYBE_VECTORIZE)
-#if defined(__clang__)
-#define HASHA_KECCAKF1600_IMPLID 5
-#endif
-#endif
-#endif
-
 #if !defined(HASHA_KECCAKF1600_IMPLID)
 #define HASHA_KECCAKF1600_IMPLID 0
 #endif
 
-HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
+HA_PRVFUN void keccakf1600_scalar_imp(uint64_t *restrict state)
 {
   HASHA_KECCAKF1600_ROUND(state, 0x0000000000000001ULL);
   HASHA_KECCAKF1600_ROUND(state, 0x0000000000008082ULL);
@@ -150,68 +142,12 @@ HASHA_PRIVATE_FUNC void keccakf1600_scalar_imp(uint64_t *restrict state)
 }
 
 #if HASHA_KECCAKF1600_IMPLID == 0
-HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *restrict state)
+HA_PRVFUN void keccakf1600_imp(uint64_t *restrict state)
 {
   keccakf1600_scalar_imp(state);
 }
-
-#elif 0 && HASHA_KECCAKF1600_IMPLID == 5
-
-typedef uint64_t hasha_vec200_u64
-    __attribute__((vector_size(200), aligned(32)));
-
-HASHA_PRIVATE_FUNC void keccakf1600_vec_imp(hasha_vec200_u64 *state)
-{
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000000000001ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000000008082ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x800000000000808aULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000080008000ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x000000000000808bULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000080000001ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000080008081ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000008009ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x000000000000008aULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000000000088ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000080008009ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x000000008000000aULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x000000008000808bULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x800000000000008bULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000008089ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000008003ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000008002ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000000080ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x000000000000800aULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x800000008000000aULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000080008081ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000000008080ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x0000000080000001ULL);
-  HASHA_KECCAKF1600_ROUND((*state), 0x8000000080008008ULL);
-}
-
-HASHA_PRIVATE_FUNC void keccakf1600_imp(uint64_t *state)
-{
-  __builtin_assume(state != NULL);
-  if (ha_alignis((uintptr_t)state, 32) != ha_alignis_yes)
-  {
-    ha_dbg(
-        "[hasha.keccakf1600] align is not 32 "
-        "using keccakf1600_scalar_imp instead "
-        "of keccakf1600_vec_imp\n");
-    return keccakf1600_scalar_imp(state);
-  }
-  ha_dbg(
-      "[hasha.keccakf1600] align is 32 "
-      "using keccakf1600_vec_imp\n");
-  keccakf1600_vec_imp((hasha_vec200_u64 *)state);
-}
 #endif
 
-HASHA_PUBLIC_FUNC void ha_keccakf1600(uint64_t *state)
-{
-  keccakf1600_imp(state);
-}
+HA_PUBFUN void ha_keccakf1600(uint64_t *state) { keccakf1600_imp(state); }
 
-HASHA_PUBLIC_FUNC int ha_keccakf1600_implid()
-{
-  return HASHA_KECCAKF1600_IMPLID;
-}
+HA_PUBFUN int ha_keccakf1600_implid() { return HASHA_KECCAKF1600_IMPLID; }

@@ -5,9 +5,9 @@
 #if !defined(__HASHA_INTERNAL_VER_H)
 #define __HASHA_INTERNAL_VER_H
 
-#include "export.h"
+#include "internal.h"
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 typedef struct
 {
@@ -27,8 +27,8 @@ typedef struct
  *         - `minor`: The minor version component of the library.
  *         - `patch`: The patch version component of the library.
  */
-HASHA_PUBLIC_FUNC ha_version_t ha_version(void);
+HA_PUBFUN ha_version_t ha_version(void);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_INTERNAL_VER_H

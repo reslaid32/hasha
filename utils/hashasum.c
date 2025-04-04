@@ -4,8 +4,24 @@
 #include <string.h>
 
 #include "../include/hasha/hasha.h"
+#include "../include/hasha/internal/error.h"
 
-void print_digest(const uint8_t *digest, size_t size)
+static char *ha_sum_error_strings[] = {
+#define HASH_MATCH_NO 0
+    "hash does not match",
+#define HASH_MATCH_YES 1
+    "hash matches",
+#define UNEXPECTED_ERR 2
+    "unexpected %s",
+#define MISSING_ERR 3
+    "missing %s",
+#define BASIC_ERROR 4
+    "error %s",
+#define UNSUPPORTED_ERR 5
+    "unsupported %s",
+};
+
+void print_digest(const ha_digest_t digest, size_t size)
 {
   for (size_t i = 0; i < size; ++i) { printf("%02x", digest[i]); }
   printf("\n");
@@ -35,8 +51,8 @@ void print_usage(const char *execu)
       "hash\n");
 }
 
-void hash_data(const char *algorithm, const uint8_t *data, size_t length,
-               uint8_t *digest, size_t *digest_size)
+void hash_data(const char *algorithm, ha_inbuf_t data, size_t length,
+               ha_digest_t digest, size_t *digest_size)
 {
   if (strcmp(algorithm, "crc32") == 0)
   {
@@ -46,82 +62,82 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
   }
   else if (strcmp(algorithm, "md5") == 0)
   {
-    *digest_size = MD5_DIGEST_SIZE;
+    *digest_size = HA_MD5_DIGEST_SIZE;
     ha_md5_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha1") == 0)
   {
-    *digest_size = SHA1_DIGEST_SIZE;
+    *digest_size = HA_SHA1_DIGEST_SIZE;
     ha_sha1_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha224") == 0)
   {
-    *digest_size = SHA2_224_DIGEST_SIZE;
+    *digest_size = HA_SHA2_224_DIGEST_SIZE;
     ha_sha2_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha256") == 0)
   {
-    *digest_size = SHA2_256_DIGEST_SIZE;
+    *digest_size = HA_SHA2_256_DIGEST_SIZE;
     ha_sha2_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha384") == 0)
   {
-    *digest_size = SHA2_384_DIGEST_SIZE;
+    *digest_size = HA_SHA2_384_DIGEST_SIZE;
     ha_sha2_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512") == 0)
   {
-    *digest_size = SHA2_512_DIGEST_SIZE;
+    *digest_size = HA_SHA2_512_DIGEST_SIZE;
     ha_sha2_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_224") == 0)
   {
-    *digest_size = SHA2_512_224_DIGEST_SIZE;
+    *digest_size = HA_SHA2_512_224_DIGEST_SIZE;
     ha_sha2_512_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha512_256") == 0)
   {
-    *digest_size = SHA2_512_256_DIGEST_SIZE;
+    *digest_size = HA_SHA2_512_256_DIGEST_SIZE;
     ha_sha2_512_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_224") == 0)
   {
-    *digest_size = SHA3_224_DIGEST_SIZE;
+    *digest_size = HA_SHA3_224_DIGEST_SIZE;
     ha_sha3_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_256") == 0)
   {
-    *digest_size = SHA3_256_DIGEST_SIZE;
+    *digest_size = HA_SHA3_256_DIGEST_SIZE;
     ha_sha3_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_384") == 0)
   {
-    *digest_size = SHA3_384_DIGEST_SIZE;
+    *digest_size = HA_SHA3_384_DIGEST_SIZE;
     ha_sha3_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "sha3_512") == 0)
   {
-    *digest_size = SHA3_512_DIGEST_SIZE;
+    *digest_size = HA_SHA3_512_DIGEST_SIZE;
     ha_sha3_512_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak224") == 0)
   {
-    *digest_size = KECCAK_224_DIGEST_SIZE;
+    *digest_size = HA_KECCAK_224_DIGEST_SIZE;
     ha_keccak_224_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak256") == 0)
   {
-    *digest_size = KECCAK_256_DIGEST_SIZE;
+    *digest_size = HA_KECCAK_256_DIGEST_SIZE;
     ha_keccak_256_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak384") == 0)
   {
-    *digest_size = KECCAK_384_DIGEST_SIZE;
+    *digest_size = HA_KECCAK_384_DIGEST_SIZE;
     ha_keccak_384_hash(data, length, digest);
   }
   else if (strcmp(algorithm, "keccak512") == 0)
   {
-    *digest_size = KECCAK_512_DIGEST_SIZE;
+    *digest_size = HA_KECCAK_512_DIGEST_SIZE;
     ha_keccak_512_hash(data, length, digest);
   }
   else if (strncmp(algorithm, "blake2b_", 7) == 0)
@@ -129,7 +145,7 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
     const char *len_str = algorithm + 8;
     char *end;
     long len     = strtol(len_str, &end, 10);
-    *digest_size = HASHA_bB(len);
+    *digest_size = ha_bB(len);
     ha_blake2b_hash(data, length, digest, *digest_size);
   }
   else if (strncmp(algorithm, "blake2s_", 7) == 0)
@@ -137,7 +153,7 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
     const char *len_str = algorithm + 8;
     char *end;
     long len     = strtol(len_str, &end, 10);
-    *digest_size = HASHA_bB(len);
+    *digest_size = ha_bB(len);
     ha_blake2s_hash(data, length, digest, *digest_size);
   }
   else if (strncmp(algorithm, "blake3_", 7) == 0)
@@ -145,12 +161,13 @@ void hash_data(const char *algorithm, const uint8_t *data, size_t length,
     const char *len_str = algorithm + 7;
     char *end;
     long len     = strtol(len_str, &end, 10);
-    *digest_size = HASHA_bB(len);
+    *digest_size = ha_bB(len);
     ha_blake3_hash(data, length, digest, *digest_size);
   }
   else
   {
-    fprintf(stderr, "Error: Unsupported algorithm '%s'\n", algorithm);
+    ha_throw_error(ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
+                   "algorithm '%s'", algorithm);
     exit(EXIT_FAILURE);
   }
 }
@@ -164,16 +181,13 @@ int verify_hash(const uint8_t *calculated_digest, size_t digest_size,
     sprintf(&calculated_hash[2 * i], "%02x", calculated_digest[i]);
   }
 
+  int hashmatch = HASH_MATCH_NO;
   if (strcmp(calculated_hash, expected_hash) == 0)
-  {
-    printf("Verification successful: Hash matches.\n");
-    return 1;
-  }
-  else
-  {
-    printf("Verification failed: Hash does not match.\n");
-    return 0;
-  }
+    hashmatch = HASH_MATCH_YES;
+
+  ha_throw(1, ha_curpos, "info", "verification: %s",
+           ha_sum_error_strings[hashmatch]);
+  return hashmatch;
 }
 
 int main(int argc, char *argv[])
@@ -181,8 +195,8 @@ int main(int argc, char *argv[])
   if (argc < 3)
   {
     ha_version_t hashav = ha_version();
-    printf("libhasha version: %u.%u.%u\n", hashav.major, hashav.minor,
-           hashav.patch);
+    ha_throw(1, ha_curpos, "info", "libhasha version: %u.%u.%u",
+             hashav.major, hashav.minor, hashav.patch);
     print_usage(argv[0]);
     return EXIT_FAILURE;
   }
@@ -205,7 +219,8 @@ int main(int argc, char *argv[])
   {
     if (argc < 4)
     {
-      fprintf(stderr, "Error: Missing string data\n");
+      ha_throw_error(ha_curpos, ha_sum_error_strings[MISSING_ERR],
+                     "string");
       return EXIT_FAILURE;
     }
     data   = (uint8_t *)argv[3];
@@ -215,13 +230,15 @@ int main(int argc, char *argv[])
   {
     if (argc < 4)
     {
-      fprintf(stderr, "Error: Missing file path\n");
+      ha_throw_error(ha_curpos, ha_sum_error_strings[MISSING_ERR], "file");
       return EXIT_FAILURE;
     }
     FILE *file = fopen(argv[3], "rb");
     if (!file)
     {
-      perror("Error opening file");
+      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+                     "opening file");
+      perror("fopen()");
       return EXIT_FAILURE;
     }
 
@@ -234,7 +251,9 @@ int main(int argc, char *argv[])
     data = (uint8_t *)malloc(length);
     if (!data)
     {
-      perror("Error allocating memory");
+      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+                     "memory allocating");
+      perror("malloc()");
       fclose(file);
       return EXIT_FAILURE;
     }
@@ -250,7 +269,9 @@ int main(int argc, char *argv[])
     data            = (uint8_t *)malloc(capacity);
     if (!data)
     {
-      perror("Error allocating memory");
+      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+                     "memory allocating");
+      perror("malloc()");
       return EXIT_FAILURE;
     }
     length = 0;
@@ -263,7 +284,9 @@ int main(int argc, char *argv[])
         data = (uint8_t *)realloc(data, capacity);
         if (!data)
         {
-          perror("Error reallocating memory");
+          ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+                         "memory reallocating");
+          perror("realloc()");
           return EXIT_FAILURE;
         }
       }
@@ -273,7 +296,8 @@ int main(int argc, char *argv[])
   }
   else
   {
-    fprintf(stderr, "Error: Unsupported data source '%s'\n", data_source);
+    ha_throw_error(ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
+                   "data source '%s'", data_source);
     return EXIT_FAILURE;
   }
 

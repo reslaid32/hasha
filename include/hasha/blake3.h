@@ -24,7 +24,7 @@
 
 #include "internal/internal.h"
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @brief BLAKE3 hash state context.
@@ -95,7 +95,7 @@ typedef struct ha_blake3_context
  *
  * @param ctx Pointer to a BLAKE3 context structure to be initialized.
  */
-HASHA_PUBLIC_FUNC void ha_blake3_init(ha_blake3_context *ctx);
+HA_PUBFUN void ha_blake3_init(ha_blake3_context *ctx);
 
 /**
  * @brief Updates the BLAKE3 hash with more input data.
@@ -108,9 +108,8 @@ HASHA_PUBLIC_FUNC void ha_blake3_init(ha_blake3_context *ctx);
  * @param data Pointer to the input data to be hashed.
  * @param length The length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
-                                        const uint8_t *data,
-                                        size_t length);
+HA_PUBFUN void ha_blake3_update(ha_blake3_context *ctx, ha_inbuf_t data,
+                                size_t length);
 
 /**
  * @brief Finalizes the BLAKE3 hash and produces the final digest.
@@ -124,8 +123,8 @@ HASHA_PUBLIC_FUNC void ha_blake3_update(ha_blake3_context *ctx,
  * stored.
  * @param length The length of the digest to be produced, in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_blake3_final(ha_blake3_context *ctx,
-                                       uint8_t *digest, size_t length);
+HA_PUBFUN void ha_blake3_final(ha_blake3_context *ctx, ha_digest_t digest,
+                               size_t length);
 
 /**
  * @brief Computes the BLAKE3 hash in a single operation.
@@ -141,10 +140,9 @@ HASHA_PUBLIC_FUNC void ha_blake3_final(ha_blake3_context *ctx,
  * stored.
  * @param digest_length The length of the digest to be produced, in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_blake3_hash(const uint8_t *data, size_t length,
-                                      uint8_t *digest,
-                                      size_t digest_length);
+HA_PUBFUN void ha_blake3_hash(ha_inbuf_t data, size_t length,
+                              ha_digest_t digest, size_t digest_length);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_BLAKE3_H

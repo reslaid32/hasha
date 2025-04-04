@@ -37,16 +37,16 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-224, which is 144 bytes.
  */
-#define KECCAK_224_RATE 144
+#define HA_KECCAK_224_RATE 144
 
 /**
  * @def KECCAK_224_DIGEST_SIZE
  * @brief The digest size for the Keccak-224 hash function.
  *
  * This defines the size of the output hash for Keccak-224, which is 224
- * bits. This value is automatically calculated using the `HASHA_bB` macro.
+ * bits. This value is automatically calculated using the `ha_bB` macro.
  */
-#define KECCAK_224_DIGEST_SIZE HASHA_bB(224)
+#define HA_KECCAK_224_DIGEST_SIZE ha_bB(224)
 
 /**
  * @def KECCAK_256_RATE
@@ -55,16 +55,16 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-256, which is 136 bytes.
  */
-#define KECCAK_256_RATE 136
+#define HA_KECCAK_256_RATE 136
 
 /**
  * @def KECCAK_256_DIGEST_SIZE
  * @brief The digest size for the Keccak-256 hash function.
  *
  * This defines the size of the output hash for Keccak-256, which is 256
- * bits. This value is automatically calculated using the `HASHA_bB` macro.
+ * bits. This value is automatically calculated using the `ha_bB` macro.
  */
-#define KECCAK_256_DIGEST_SIZE HASHA_bB(256)
+#define HA_KECCAK_256_DIGEST_SIZE ha_bB(256)
 
 /**
  * @def KECCAK_384_RATE
@@ -73,16 +73,16 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-384, which is 104 bytes.
  */
-#define KECCAK_384_RATE 104
+#define HA_KECCAK_384_RATE 104
 
 /**
  * @def KECCAK_384_DIGEST_SIZE
  * @brief The digest size for the Keccak-384 hash function.
  *
  * This defines the size of the output hash for Keccak-384, which is 384
- * bits. This value is automatically calculated using the `HASHA_bB` macro.
+ * bits. This value is automatically calculated using the `ha_bB` macro.
  */
-#define KECCAK_384_DIGEST_SIZE HASHA_bB(384)
+#define HA_KECCAK_384_DIGEST_SIZE ha_bB(384)
 
 /**
  * @def KECCAK_512_RATE
@@ -91,18 +91,18 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-512, which is 72 bytes.
  */
-#define KECCAK_512_RATE 72
+#define HA_KECCAK_512_RATE 72
 
 /**
  * @def KECCAK_512_DIGEST_SIZE
  * @brief The digest size for the Keccak-512 hash function.
  *
  * This defines the size of the output hash for Keccak-512, which is 512
- * bits. This value is automatically calculated using the `HASHA_bB` macro.
+ * bits. This value is automatically calculated using the `ha_bB` macro.
  */
-#define KECCAK_512_DIGEST_SIZE HASHA_bB(512)
+#define HA_KECCAK_512_DIGEST_SIZE ha_bB(512)
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @struct ha_keccak_context
@@ -166,7 +166,7 @@ typedef ha_keccak_context ha_keccak_224_context, ha_keccak_256_context,
  *
  * @param ctx Pointer to the Keccak-224 context to be initialized.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_224_init(ha_keccak_224_context *ctx);
+HA_PUBFUN void ha_keccak_224_init(ha_keccak_224_context *ctx);
 
 /**
  * @brief Absorbs input data for Keccak-224.
@@ -178,9 +178,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_224_init(ha_keccak_224_context *ctx);
  * @param data Pointer to the input data to be absorbed.
  * @param length The length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_224_update(ha_keccak_224_context *ctx,
-                                            const uint8_t *data,
-                                            size_t length);
+HA_PUBFUN void ha_keccak_224_update(ha_keccak_224_context *ctx,
+                                    ha_inbuf_t data, size_t length);
 
 /**
  * @brief Finalizes the Keccak-224 context.
@@ -190,8 +189,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_224_update(ha_keccak_224_context *ctx,
  *
  * @param ctx Pointer to the Keccak-224 context.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_224_final(ha_keccak_224_context *ctx,
-                                           uint8_t *digest);
+HA_PUBFUN void ha_keccak_224_final(ha_keccak_224_context *ctx,
+                                   ha_digest_t digest);
 
 /**
  * @brief Computes the Keccak-224 hash in a single operation.
@@ -204,8 +203,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_224_final(ha_keccak_224_context *ctx,
  * @param digest Pointer to the buffer where the resulting hash will be
  * stored.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_224_hash(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HA_PUBFUN void ha_keccak_224_hash(ha_inbuf_t data, size_t length,
+                                  ha_digest_t digest);
 
 /**
  * @brief Initializes the Keccak-256 context.
@@ -214,7 +213,7 @@ HASHA_PUBLIC_FUNC void ha_keccak_224_hash(const uint8_t *data,
  *
  * @param ctx Pointer to the Keccak-256 context to be initialized.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_256_init(ha_keccak_256_context *ctx);
+HA_PUBFUN void ha_keccak_256_init(ha_keccak_256_context *ctx);
 
 /**
  * @brief Absorbs input data for Keccak-256.
@@ -225,9 +224,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_256_init(ha_keccak_256_context *ctx);
  * @param data Pointer to the input data to be absorbed.
  * @param length The length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_256_update(ha_keccak_256_context *ctx,
-                                            const uint8_t *data,
-                                            size_t length);
+HA_PUBFUN void ha_keccak_256_update(ha_keccak_256_context *ctx,
+                                    ha_inbuf_t data, size_t length);
 
 /**
  * @brief Finalizes the Keccak-256 context.
@@ -237,7 +235,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_256_update(ha_keccak_256_context *ctx,
  *
  * @param ctx Pointer to the Keccak-256 context.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_256_final(ha_keccak_256_context *ctx);
+HA_PUBFUN void ha_keccak_256_final(ha_keccak_256_context *ctx,
+                                   ha_digest_t digest);
 
 /**
  * @brief Computes the Keccak-256 hash in a single operation.
@@ -250,24 +249,23 @@ HASHA_PUBLIC_FUNC void ha_keccak_256_final(ha_keccak_256_context *ctx);
  * @param digest Pointer to the buffer where the resulting hash will be
  * stored.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_256_hash(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HA_PUBFUN void ha_keccak_256_hash(ha_inbuf_t data, size_t length,
+                                  ha_digest_t digest);
 
 /**
  * @brief Initializes the Keccak-384 context.
  *
  * This function initializes the context for the Keccak-384 hash function.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_384_init(ha_keccak_384_context *ctx);
+HA_PUBFUN void ha_keccak_384_init(ha_keccak_384_context *ctx);
 
 /**
  * @brief Absorbs input data for Keccak-384.
  *
  * This function absorbs the input data into the Keccak-384 context.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_384_update(ha_keccak_384_context *ctx,
-                                            const uint8_t *data,
-                                            size_t length);
+HA_PUBFUN void ha_keccak_384_update(ha_keccak_384_context *ctx,
+                                    ha_inbuf_t data, size_t length);
 
 /**
  * @brief Finalizes the Keccak-384 context.
@@ -275,8 +273,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_384_update(ha_keccak_384_context *ctx,
  * This function finals the Keccak-384 context after all data has been
  * absorbed.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_384_final(ha_keccak_384_context *ctx,
-                                           uint8_t *digest);
+HA_PUBFUN void ha_keccak_384_final(ha_keccak_384_context *ctx,
+                                   ha_digest_t digest);
 
 /**
  * @brief Computes the Keccak-384 hash in a single operation.
@@ -284,24 +282,23 @@ HASHA_PUBLIC_FUNC void ha_keccak_384_final(ha_keccak_384_context *ctx,
  * This function combines the initialization, absorption, finalization, and
  * squeezing steps into a single operation for convenience.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_384_hash(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HA_PUBFUN void ha_keccak_384_hash(ha_inbuf_t data, size_t length,
+                                  ha_digest_t digest);
 
 /**
  * @brief Initializes the Keccak-512 context.
  *
  * This function initializes the context for the Keccak-512 hash function.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_512_init(ha_keccak_512_context *ctx);
+HA_PUBFUN void ha_keccak_512_init(ha_keccak_512_context *ctx);
 
 /**
  * @brief Absorbs input data for Keccak-512.
  *
  * This function absorbs the input data into the Keccak-512 context.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_512_update(ha_keccak_512_context *ctx,
-                                            const uint8_t *data,
-                                            size_t length);
+HA_PUBFUN void ha_keccak_512_update(ha_keccak_512_context *ctx,
+                                    ha_inbuf_t data, size_t length);
 
 /**
  * @brief Finalizes the Keccak-512 context.
@@ -309,7 +306,8 @@ HASHA_PUBLIC_FUNC void ha_keccak_512_update(ha_keccak_512_context *ctx,
  * This function finals the Keccak-512 context after all data has been
  * absorbed.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_512_final(ha_keccak_512_context *ctx);
+HA_PUBFUN void ha_keccak_512_final(ha_keccak_512_context *ctx,
+                                   ha_digest_t digest);
 
 /**
  * @brief Computes the Keccak-512 hash in a single operation.
@@ -317,9 +315,9 @@ HASHA_PUBLIC_FUNC void ha_keccak_512_final(ha_keccak_512_context *ctx);
  * This function combines the initialization, absorption, finalization, and
  * squeezing steps into a single operation for convenience.
  */
-HASHA_PUBLIC_FUNC void ha_keccak_512_hash(const uint8_t *data,
-                                          size_t length, uint8_t *digest);
+HA_PUBFUN void ha_keccak_512_hash(ha_inbuf_t data, size_t length,
+                                  ha_digest_t digest);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_KECCAK_H

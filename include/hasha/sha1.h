@@ -29,15 +29,15 @@
  * @def SHA1_BLOCK_SIZE
  * @brief The block size used in SHA-1 (in bytes).
  */
-#define SHA1_BLOCK_SIZE 64
+#define HA_SHA1_BLOCK_SIZE 64
 
 /**
  * @def SHA1_DIGEST_SIZE
  * @brief The size of the SHA-1 hash output (in bytes).
  */
-#define SHA1_DIGEST_SIZE HASHA_bB(160)
+#define HA_SHA1_DIGEST_SIZE ha_bB(160)
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @struct ha_sha1_context
@@ -52,7 +52,7 @@ typedef struct ha_sha1_context
 {
   uint32_t state[5];  /**< The SHA-1 state variables (5 words). */
   uint64_t bit_count; /**< The number of processed bits. */
-  uint8_t buffer[SHA1_BLOCK_SIZE]; /**< The buffer to hold the current
+  uint8_t buffer[HA_SHA1_BLOCK_SIZE]; /**< The buffer to hold the current
                                       input block. */
 } ha_sha1_context;
 
@@ -77,8 +77,8 @@ static const uint32_t SHA1_H0[5] = {0x67452301, 0xEFCDAB89, 0x98BADCFE,
  * @param ctx Pointer to the SHA-1 context structure.
  * @param block Pointer to the 512-bit (64-byte) input data block.
  */
-HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
-                                         const uint8_t *block);
+HA_PUBFUN void ha_sha1_transform(ha_sha1_context *ctx,
+                                 const uint8_t *block);
 
 /**
  * @brief Initializes the SHA-1 context for a new hash computation.
@@ -89,7 +89,7 @@ HASHA_PUBLIC_FUNC void ha_sha1_transform(ha_sha1_context *ctx,
  *
  * @param ctx Pointer to the SHA-1 context structure.
  */
-HASHA_PUBLIC_FUNC void ha_sha1_init(ha_sha1_context *ctx);
+HA_PUBFUN void ha_sha1_init(ha_sha1_context *ctx);
 
 /**
  * @brief Updates the SHA-1 context with new data.
@@ -102,8 +102,8 @@ HASHA_PUBLIC_FUNC void ha_sha1_init(ha_sha1_context *ctx);
  * @param data Pointer to the input data.
  * @param len The length of the input data.
  */
-HASHA_PUBLIC_FUNC void ha_sha1_update(ha_sha1_context *ctx,
-                                      const uint8_t *data, size_t len);
+HA_PUBFUN void ha_sha1_update(ha_sha1_context *ctx, ha_inbuf_t data,
+                              size_t len);
 
 /**
  * @brief Finalizes the SHA-1 context and produces the resulting hash
@@ -117,8 +117,7 @@ HASHA_PUBLIC_FUNC void ha_sha1_update(ha_sha1_context *ctx,
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void ha_sha1_final(ha_sha1_context *ctx,
-                                     uint8_t *digest);
+HA_PUBFUN void ha_sha1_final(ha_sha1_context *ctx, ha_digest_t digest);
 
 /**
  * @brief Computes the SHA-1 hash for the given input data in one-shot
@@ -133,9 +132,9 @@ HASHA_PUBLIC_FUNC void ha_sha1_final(ha_sha1_context *ctx,
  * @param digest Pointer to the output buffer where the 160-bit hash digest
  * will be stored.
  */
-HASHA_PUBLIC_FUNC void ha_sha1_hash(const uint8_t *data, size_t len,
-                                    uint8_t *digest);
+HA_PUBFUN void ha_sha1_hash(ha_inbuf_t data, size_t len,
+                            ha_digest_t digest);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_SHA1_H

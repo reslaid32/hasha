@@ -25,15 +25,15 @@
  * @def MD5_BLOCK_SIZE
  * @brief Block size (in bytes) for the MD5 algorithm.
  */
-#define MD5_BLOCK_SIZE 64
+#define HA_MD5_BLOCK_SIZE 64
 
 /**
  * @def MD5_DIGEST_SIZE
  * @brief Digest size (in bytes) for the MD5 algorithm (128 bits).
  */
-#define MD5_DIGEST_SIZE HASHA_bB(128)
+#define HA_MD5_DIGEST_SIZE ha_bB(128)
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @struct ha_md5_context
@@ -47,7 +47,7 @@ typedef struct ha_md5_context
   uint32_t state[4]; /**< Current MD5 state (4 words). */
   uint64_t
       bit_count; /**< Bit count representing the total input length. */
-  uint8_t buffer[MD5_BLOCK_SIZE]; /**< Buffer used for processing input
+  uint8_t buffer[HA_MD5_BLOCK_SIZE]; /**< Buffer used for processing input
                                      data in 512-bit blocks. */
 } ha_md5_context;
 
@@ -59,7 +59,7 @@ typedef struct ha_md5_context
  *
  * @param ctx Pointer to the MD5 context structure to initialize.
  */
-HASHA_PUBLIC_FUNC void ha_md5_init(ha_md5_context *ctx);
+HA_PUBFUN void ha_md5_init(ha_md5_context *ctx);
 
 /**
  * @brief Updates the MD5 context with new data.
@@ -71,8 +71,8 @@ HASHA_PUBLIC_FUNC void ha_md5_init(ha_md5_context *ctx);
  * @param data Pointer to the input data to process.
  * @param len Length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_md5_update(ha_md5_context *ctx,
-                                     const uint8_t *data, size_t len);
+HA_PUBFUN void ha_md5_update(ha_md5_context *ctx, ha_inbuf_t data,
+                             size_t len);
 
 /**
  * @brief Finalizes the MD5 computation and produces the hash digest.
@@ -84,7 +84,7 @@ HASHA_PUBLIC_FUNC void ha_md5_update(ha_md5_context *ctx,
  * @param digest Pointer to the output buffer to store the final MD5 digest
  * (16 bytes).
  */
-HASHA_PUBLIC_FUNC void ha_md5_final(ha_md5_context *ctx, uint8_t *digest);
+HA_PUBFUN void ha_md5_final(ha_md5_context *ctx, ha_digest_t digest);
 
 /**
  * @brief Computes the MD5 hash in a one-shot operation.
@@ -98,9 +98,9 @@ HASHA_PUBLIC_FUNC void ha_md5_final(ha_md5_context *ctx, uint8_t *digest);
  * @param digest Pointer to the output buffer to store the final MD5 digest
  * (16 bytes).
  */
-HASHA_PUBLIC_FUNC void ha_md5_hash(const uint8_t *data, size_t len,
-                                   uint8_t *digest);
+HA_PUBFUN void ha_md5_hash(ha_inbuf_t data, size_t len,
+                           ha_digest_t digest);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_MD5_H

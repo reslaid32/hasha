@@ -14,17 +14,17 @@
 
 #include "internal/internal.h"
 
-/** @def BLAKE2B_BLOCK_SIZE
+/** @def HA_BLAKE2B_BLOCK_SIZE
  *  @brief The size of a BLAKE2B block in bytes.
  */
-#define BLAKE2B_BLOCK_SIZE 128
+#define HA_BLAKE2B_BLOCK_SIZE 128
 
-/** @def BLAKE2B_DIGEST_SIZE
+/** @def HA_BLAKE2B_DIGEST_SIZE
  *  @brief The default output digest size for BLAKE2B (512 bits).
  */
-#define BLAKE2B_DIGEST_SIZE HASHA_bB(512)
+#define HA_BLAKE2B_DIGEST_SIZE ha_bB(512)
 
-HASHA_EXTERN_C_BEG
+HA_EXTERN_C_BEG
 
 /**
  * @struct ha_blake2b_context
@@ -34,10 +34,10 @@ HASHA_EXTERN_C_BEG
  */
 typedef struct ha_blake2b_context
 {
-  uint64_t h[8];                   /**< Internal hash state. */
-  uint64_t t[2];                   /**< Message counter. */
-  uint64_t f[2];                   /**< Finalization flags. */
-  uint8_t buf[BLAKE2B_BLOCK_SIZE]; /**< Data buffer. */
+  uint64_t h[8];                      /**< Internal hash state. */
+  uint64_t t[2];                      /**< Message counter. */
+  uint64_t f[2];                      /**< Finalization flags. */
+  uint8_t buf[HA_BLAKE2B_BLOCK_SIZE]; /**< Data buffer. */
   size_t buflen; /**< Number of bytes currently in the buffer. */
   size_t outlen; /**< Length of the hash output. */
 } ha_blake2b_context;
@@ -47,7 +47,7 @@ typedef struct ha_blake2b_context
  *
  * @param ctx Pointer to the BLAKE2B context to initialize.
  */
-HASHA_PUBLIC_FUNC void ha_blake2b_init(ha_blake2b_context *ctx);
+HA_PUBFUN void ha_blake2b_init(ha_blake2b_context *ctx);
 
 /**
  * @brief Updates the BLAKE2B hash state with input data.
@@ -56,8 +56,8 @@ HASHA_PUBLIC_FUNC void ha_blake2b_init(ha_blake2b_context *ctx);
  * @param data Pointer to the input data.
  * @param len Length of the input data in bytes.
  */
-HASHA_PUBLIC_FUNC void ha_blake2b_update(ha_blake2b_context *ctx,
-                                         const uint8_t *data, size_t len);
+HA_PUBFUN void ha_blake2b_update(ha_blake2b_context *ctx, ha_inbuf_t data,
+                                 size_t len);
 
 /**
  * @brief Finalizes the BLAKE2B hash and produces the digest.
@@ -67,8 +67,8 @@ HASHA_PUBLIC_FUNC void ha_blake2b_update(ha_blake2b_context *ctx,
  * stored.
  * @param digestlen Desired length of the output hash (1 to 64 bytes).
  */
-HASHA_PUBLIC_FUNC void ha_blake2b_final(ha_blake2b_context *ctx,
-                                        uint8_t *digest, size_t digestlen);
+HA_PUBFUN void ha_blake2b_final(ha_blake2b_context *ctx,
+                                ha_digest_t digest, size_t digestlen);
 
 /**
  * @brief Computes the BLAKE2B hash in a one-shot operation.
@@ -83,9 +83,9 @@ HASHA_PUBLIC_FUNC void ha_blake2b_final(ha_blake2b_context *ctx,
  * stored.
  * @param digestlen Desired length of the output hash (1 to 64 bytes).
  */
-HASHA_PUBLIC_FUNC void ha_blake2b_hash(const uint8_t *data, size_t len,
-                                       uint8_t *digest, size_t digestlen);
+HA_PUBFUN void ha_blake2b_hash(ha_inbuf_t data, size_t len,
+                               ha_digest_t digest, size_t digestlen);
 
-HASHA_EXTERN_C_END
+HA_EXTERN_C_END
 
 #endif  // __HASHA_BLAKE2B_H
