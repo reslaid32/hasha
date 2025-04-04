@@ -221,7 +221,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
       hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha1);
 
       hasher->final_fn.generic =
-          (ha_evp_generic_final_fn)ha_final_fun(md5);
+          (ha_evp_generic_final_fn)ha_final_fun(sha1);
       hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
 
       hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(sha1);
