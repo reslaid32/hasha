@@ -1,4 +1,6 @@
 #include "./all.h"
+#include "./evp.h"
 #include "./internal/internal.h"
 #include "./internal/ver.h"
+#include "./io.h"
 #include "./keccakf1600.h"
