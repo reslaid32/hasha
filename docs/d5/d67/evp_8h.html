@@ -176,16 +176,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac608f7910d65f10d79cccc08abfca2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitializes the EVP hasher with a new algorithm and digest length.  <br /></td></tr>
 <tr class="separator:ac608f7910d65f10d79cccc08abfca2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a153dd81f39ee95b3549ffdf56e489bac" id="r_a153dd81f39ee95b3549ffdf56e489bac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a> (struct ha_evp_hasher *hasher)</td></tr>
-<tr class="memdesc:a153dd81f39ee95b3549ffdf56e489bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the EVP hasher.  <br /></td></tr>
+<tr class="memdesc:a153dd81f39ee95b3549ffdf56e489bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the EVP hash. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#gab0bf4aacaf14b7da40204da16494b9ce" title="Initializes the hash context for a specific algorithm.">ha_init(hash, ctx)</a> )  <br /></td></tr>
 <tr class="separator:a153dd81f39ee95b3549ffdf56e489bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac40d0a936413bb45e2662f0e625ad3cb" id="r_ac40d0a936413bb45e2662f0e625ad3cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac40d0a936413bb45e2662f0e625ad3cb">ha_evp_update</a> (struct ha_evp_hasher *hasher, <a class="el" href="../../d9/d49/types_8h.html#af0ecc7c4ddc68214febd7f70aae5002f">ha_inbuf_t</a> buf, size_t len)</td></tr>
-<tr class="memdesc:ac40d0a936413bb45e2662f0e625ad3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the EVP hasher with input data.  <br /></td></tr>
+<tr class="memdesc:ac40d0a936413bb45e2662f0e625ad3cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the EVP hash with input data. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#ga009cb9da0c89c0a9c24e1a789a6d599a" title="Updates the hash context with more data.">ha_update(hash, ctx, buf, len)</a> )  <br /></td></tr>
 <tr class="separator:ac40d0a936413bb45e2662f0e625ad3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb750b91d4a8e7ac2c1f04cd88b7b59c" id="r_aeb750b91d4a8e7ac2c1f04cd88b7b59c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb750b91d4a8e7ac2c1f04cd88b7b59c">ha_evp_final</a> (struct ha_evp_hasher *hasher, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest)</td></tr>
-<tr class="memdesc:aeb750b91d4a8e7ac2c1f04cd88b7b59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the EVP hash and produces the output digest.  <br /></td></tr>
+<tr class="memdesc:aeb750b91d4a8e7ac2c1f04cd88b7b59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finalizes the EVP hash and produces the output digest. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#gaec79d6adcf60d1429b4ad71734e16c86" title="Finalizes the hash context and produces the hash.">ha_final(hash, ctx, digest, opt digestlen)</a> )  <br /></td></tr>
 <tr class="separator:aeb750b91d4a8e7ac2c1f04cd88b7b59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9876640ac5ede047078fd40983c5a8ae" id="r_a9876640ac5ede047078fd40983c5a8ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9876640ac5ede047078fd40983c5a8ae">ha_evp_hash</a> (struct ha_evp_hasher *hasher, <a class="el" href="../../d9/d49/types_8h.html#af0ecc7c4ddc68214febd7f70aae5002f">ha_inbuf_t</a> buf, size_t len, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest)</td></tr>
-<tr class="memdesc:a9876640ac5ede047078fd40983c5a8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the EVP hash in a single operation.  <br /></td></tr>
+<tr class="memdesc:a9876640ac5ede047078fd40983c5a8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the EVP hash in a single operation. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#ga3b968c67668c1e9cc5ac858e03a9a71e" title="Computes the hash in a single operation.">ha_hash(hash, buf, len, digest, opt digestlen)</a> )  <br /></td></tr>
 <tr class="separator:a9876640ac5ede047078fd40983c5a8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -276,7 +276,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finalizes the EVP hash and produces the output digest. </p>
+<p>Finalizes the EVP hash and produces the output digest. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#gaec79d6adcf60d1429b4ad71734e16c86" title="Finalizes the hash context and produces the hash.">ha_final(hash, ctx, digest, opt digestlen)</a> ) </p>
 <p>This function completes the hashing process and stores the resulting digest in the specified buffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -317,7 +317,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Computes the EVP hash in a single operation. </p>
+<p>Computes the EVP hash in a single operation. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#ga3b968c67668c1e9cc5ac858e03a9a71e" title="Computes the hash in a single operation.">ha_hash(hash, buf, len, digest, opt digestlen)</a> ) </p>
 <p>This function combines initialization, updating, and finalization steps into a single call.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -493,7 +493,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes the EVP hasher. </p>
+<p>Initializes the EVP hash. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#gab0bf4aacaf14b7da40204da16494b9ce" title="Initializes the hash context for a specific algorithm.">ha_init(hash, ctx)</a> ) </p>
 <p>This function prepares the EVP hasher for data hashing.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -528,7 +528,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the EVP hasher with input data. </p>
+<p>Updates the EVP hash with input data. ( like <a class="el" href="../../db/d98/group__HashFunctionMacros.html#ga009cb9da0c89c0a9c24e1a789a6d599a" title="Updates the hash context with more data.">ha_update(hash, ctx, buf, len)</a> ) </p>
 <p>This function adds data to the ongoing hash computation.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
