@@ -200,7 +200,8 @@ HA_PUBFUN void ha_evp_hasher_reinit(struct ha_evp_hasher *hasher,
                                     size_t digestlen);
 
 /**
- * @brief Initializes the EVP hasher.
+ * @brief Initializes the EVP hash.
+ * ( like ha_init(hash, ctx) )
  *
  * This function prepares the EVP hasher for data hashing.
  *
@@ -209,7 +210,8 @@ HA_PUBFUN void ha_evp_hasher_reinit(struct ha_evp_hasher *hasher,
 HA_PUBFUN void ha_evp_init(struct ha_evp_hasher *hasher);
 
 /**
- * @brief Updates the EVP hasher with input data.
+ * @brief Updates the EVP hash with input data.
+ * ( like ha_update(hash, ctx, buf, len) )
  *
  * This function adds data to the ongoing hash computation.
  *
@@ -222,6 +224,7 @@ HA_PUBFUN void ha_evp_update(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
 
 /**
  * @brief Finalizes the EVP hash and produces the output digest.
+ * ( like ha_final(hash, ctx, digest, opt digestlen) )
  *
  * This function completes the hashing process and stores the resulting
  * digest in the specified buffer.
@@ -235,6 +238,7 @@ HA_PUBFUN void ha_evp_final(struct ha_evp_hasher *hasher,
 
 /**
  * @brief Computes the EVP hash in a single operation.
+ * ( like ha_hash(hash, buf, len, digest, opt digestlen) )
  *
  * This function combines initialization, updating, and finalization
  * steps into a single call.
