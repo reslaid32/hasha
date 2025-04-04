@@ -9,7 +9,7 @@
 
 static char *ha_cli_error_strings[] = {
 #define UNKNOWN_OPT 0
-    "argument option named %s",
+    "unknown option named %s",
 };
 
 int main(int argc, char *argv[])
