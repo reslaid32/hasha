@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.5</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.6</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -163,6 +163,16 @@ Macros</h2></td></tr>
 <tr class="separator:a6704f33f7c38499187f22782727858d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fd9577ce629735c37a2baf73d58ab1f" id="r_a4fd9577ce629735c37a2baf73d58ab1f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fd9577ce629735c37a2baf73d58ab1f">ha_primitive_sigma1_64</a>(x)</td></tr>
 <tr class="separator:a4fd9577ce629735c37a2baf73d58ab1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae843e77786ed3d7a064186c4a1ff553f" id="r_ae843e77786ed3d7a064186c4a1ff553f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae843e77786ed3d7a064186c4a1ff553f">ha_primitive_blake32_g</a>(sigmatb,  r,  i,  a,  b,  c,  d)</td></tr>
+<tr class="separator:ae843e77786ed3d7a064186c4a1ff553f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c0fd32dd0c6fd1fab2b86fab6a6f20" id="r_ae1c0fd32dd0c6fd1fab2b86fab6a6f20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1c0fd32dd0c6fd1fab2b86fab6a6f20">ha_primitive_blake64_g</a>(sigmatb,  r,  i,  a,  b,  c,  d)</td></tr>
+<tr class="separator:ae1c0fd32dd0c6fd1fab2b86fab6a6f20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61c3fa6a2899b1504fb6cb960b764cc5" id="r_a61c3fa6a2899b1504fb6cb960b764cc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61c3fa6a2899b1504fb6cb960b764cc5">ha_primitive_blake_round</a>(sigmatb,  g,  i)</td></tr>
+<tr class="separator:a61c3fa6a2899b1504fb6cb960b764cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2551ea261205afa1ae4d149a3cacdd24" id="r_a2551ea261205afa1ae4d149a3cacdd24"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2551ea261205afa1ae4d149a3cacdd24">ha_primitive_blake32_round</a>(sigmatb,  i)</td></tr>
+<tr class="separator:a2551ea261205afa1ae4d149a3cacdd24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a501abff6d7ce115feb2df9a25cf088d8" id="r_a501abff6d7ce115feb2df9a25cf088d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a501abff6d7ce115feb2df9a25cf088d8">ha_primitive_blake64_round</a>(sigmatb,  i)</td></tr>
+<tr class="separator:a501abff6d7ce115feb2df9a25cf088d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aeadffb2644be146f14f5659e16517172" name="aeadffb2644be146f14f5659e16517172"></a>
@@ -266,6 +276,252 @@ Macros</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00010">10</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   10</span><span class="preprocessor">#define ha_primitive_base_rotr(bits, x, n) \</span></div>
 <div class="line"><span class="lineno">   11</span><span class="preprocessor">  ha_primitive_base_rot(&gt;&gt;, &lt;&lt;, bits, x, n)</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae843e77786ed3d7a064186c4a1ff553f" name="ae843e77786ed3d7a064186c4a1ff553f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae843e77786ed3d7a064186c4a1ff553f">&#9670;&#160;</a></span>ha_primitive_blake32_g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_primitive_blake32_g</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sigmatb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  a += b + m[sigmatb[r][2 * i + 0]];                      \</div>
+<div class="line">  d ^= a;                                                 \</div>
+<div class="line">  d = (d &gt;&gt; 16) | (d &lt;&lt; 16);                              \</div>
+<div class="line">  c += d;                                                 \</div>
+<div class="line">  b ^= c;                                                 \</div>
+<div class="line">  b = (b &gt;&gt; 12) | (b &lt;&lt; 20);                              \</div>
+<div class="line">  a += b + m[sigmatb[r][2 * i + 1]];                      \</div>
+<div class="line">  d ^= a;                                                 \</div>
+<div class="line">  d = (d &gt;&gt; 8) | (d &lt;&lt; 24);                               \</div>
+<div class="line">  c += d;                                                 \</div>
+<div class="line">  b ^= c;                                                 \</div>
+<div class="line">  b = (b &gt;&gt; 7) | (b &lt;&lt; 25);</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00062">62</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span><span class="preprocessor">#define ha_primitive_blake32_g(sigmatb, r, i, a, b, c, d) \</span></div>
+<div class="line"><span class="lineno">   63</span><span class="preprocessor">  a += b + m[sigmatb[r][2 * i + 0]];                      \</span></div>
+<div class="line"><span class="lineno">   64</span><span class="preprocessor">  d ^= a;                                                 \</span></div>
+<div class="line"><span class="lineno">   65</span><span class="preprocessor">  d = (d &gt;&gt; 16) | (d &lt;&lt; 16);                              \</span></div>
+<div class="line"><span class="lineno">   66</span><span class="preprocessor">  c += d;                                                 \</span></div>
+<div class="line"><span class="lineno">   67</span><span class="preprocessor">  b ^= c;                                                 \</span></div>
+<div class="line"><span class="lineno">   68</span><span class="preprocessor">  b = (b &gt;&gt; 12) | (b &lt;&lt; 20);                              \</span></div>
+<div class="line"><span class="lineno">   69</span><span class="preprocessor">  a += b + m[sigmatb[r][2 * i + 1]];                      \</span></div>
+<div class="line"><span class="lineno">   70</span><span class="preprocessor">  d ^= a;                                                 \</span></div>
+<div class="line"><span class="lineno">   71</span><span class="preprocessor">  d = (d &gt;&gt; 8) | (d &lt;&lt; 24);                               \</span></div>
+<div class="line"><span class="lineno">   72</span><span class="preprocessor">  c += d;                                                 \</span></div>
+<div class="line"><span class="lineno">   73</span><span class="preprocessor">  b ^= c;                                                 \</span></div>
+<div class="line"><span class="lineno">   74</span><span class="preprocessor">  b = (b &gt;&gt; 7) | (b &lt;&lt; 25);</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2551ea261205afa1ae4d149a3cacdd24" name="a2551ea261205afa1ae4d149a3cacdd24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2551ea261205afa1ae4d149a3cacdd24">&#9670;&#160;</a></span>ha_primitive_blake32_round</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_primitive_blake32_round</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sigmatb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_define" href="#a61c3fa6a2899b1504fb6cb960b764cc5">ha_primitive_blake_round</a>(sigmatb, <a class="code hl_define" href="#ae843e77786ed3d7a064186c4a1ff553f">ha_primitive_blake32_g</a>, i)</div>
+<div class="ttc" id="aprimitive_8h_html_a61c3fa6a2899b1504fb6cb960b764cc5"><div class="ttname"><a href="#a61c3fa6a2899b1504fb6cb960b764cc5">ha_primitive_blake_round</a></div><div class="ttdeci">#define ha_primitive_blake_round(sigmatb, g, i)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00090">primitive.h:90</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_ae843e77786ed3d7a064186c4a1ff553f"><div class="ttname"><a href="#ae843e77786ed3d7a064186c4a1ff553f">ha_primitive_blake32_g</a></div><div class="ttdeci">#define ha_primitive_blake32_g(sigmatb, r, i, a, b, c, d)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00062">primitive.h:62</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00100">100</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  100</span><span class="preprocessor">#define ha_primitive_blake32_round(sigmatb, i) \</span></div>
+<div class="line"><span class="lineno">  101</span><span class="preprocessor">  ha_primitive_blake_round(sigmatb, ha_primitive_blake32_g, i)</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae1c0fd32dd0c6fd1fab2b86fab6a6f20" name="ae1c0fd32dd0c6fd1fab2b86fab6a6f20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c0fd32dd0c6fd1fab2b86fab6a6f20">&#9670;&#160;</a></span>ha_primitive_blake64_g</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_primitive_blake64_g</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sigmatb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>d</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  a += b + m[sigmatb[r][2 * i + 0]];                      \</div>
+<div class="line">  d ^= a;                                                 \</div>
+<div class="line">  d = (d &gt;&gt; 32) | (d &lt;&lt; 32);                              \</div>
+<div class="line">  c += d;                                                 \</div>
+<div class="line">  b ^= c;                                                 \</div>
+<div class="line">  b = (b &gt;&gt; 24) | (b &lt;&lt; 40);                              \</div>
+<div class="line">  a += b + m[sigmatb[r][2 * i + 1]];                      \</div>
+<div class="line">  d ^= a;                                                 \</div>
+<div class="line">  d = (d &gt;&gt; 16) | (d &lt;&lt; 48);                              \</div>
+<div class="line">  c += d;                                                 \</div>
+<div class="line">  b ^= c;                                                 \</div>
+<div class="line">  b = (b &gt;&gt; 63) | (b &lt;&lt; 1);</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00076">76</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   76</span><span class="preprocessor">#define ha_primitive_blake64_g(sigmatb, r, i, a, b, c, d) \</span></div>
+<div class="line"><span class="lineno">   77</span><span class="preprocessor">  a += b + m[sigmatb[r][2 * i + 0]];                      \</span></div>
+<div class="line"><span class="lineno">   78</span><span class="preprocessor">  d ^= a;                                                 \</span></div>
+<div class="line"><span class="lineno">   79</span><span class="preprocessor">  d = (d &gt;&gt; 32) | (d &lt;&lt; 32);                              \</span></div>
+<div class="line"><span class="lineno">   80</span><span class="preprocessor">  c += d;                                                 \</span></div>
+<div class="line"><span class="lineno">   81</span><span class="preprocessor">  b ^= c;                                                 \</span></div>
+<div class="line"><span class="lineno">   82</span><span class="preprocessor">  b = (b &gt;&gt; 24) | (b &lt;&lt; 40);                              \</span></div>
+<div class="line"><span class="lineno">   83</span><span class="preprocessor">  a += b + m[sigmatb[r][2 * i + 1]];                      \</span></div>
+<div class="line"><span class="lineno">   84</span><span class="preprocessor">  d ^= a;                                                 \</span></div>
+<div class="line"><span class="lineno">   85</span><span class="preprocessor">  d = (d &gt;&gt; 16) | (d &lt;&lt; 48);                              \</span></div>
+<div class="line"><span class="lineno">   86</span><span class="preprocessor">  c += d;                                                 \</span></div>
+<div class="line"><span class="lineno">   87</span><span class="preprocessor">  b ^= c;                                                 \</span></div>
+<div class="line"><span class="lineno">   88</span><span class="preprocessor">  b = (b &gt;&gt; 63) | (b &lt;&lt; 1);</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a501abff6d7ce115feb2df9a25cf088d8" name="a501abff6d7ce115feb2df9a25cf088d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a501abff6d7ce115feb2df9a25cf088d8">&#9670;&#160;</a></span>ha_primitive_blake64_round</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_primitive_blake64_round</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sigmatb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_define" href="#a61c3fa6a2899b1504fb6cb960b764cc5">ha_primitive_blake_round</a>(sigmatb, <a class="code hl_define" href="#ae1c0fd32dd0c6fd1fab2b86fab6a6f20">ha_primitive_blake64_g</a>, i)</div>
+<div class="ttc" id="aprimitive_8h_html_ae1c0fd32dd0c6fd1fab2b86fab6a6f20"><div class="ttname"><a href="#ae1c0fd32dd0c6fd1fab2b86fab6a6f20">ha_primitive_blake64_g</a></div><div class="ttdeci">#define ha_primitive_blake64_g(sigmatb, r, i, a, b, c, d)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00076">primitive.h:76</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00103">103</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  103</span><span class="preprocessor">#define ha_primitive_blake64_round(sigmatb, i) \</span></div>
+<div class="line"><span class="lineno">  104</span><span class="preprocessor">  ha_primitive_blake_round(sigmatb, ha_primitive_blake64_g, i)</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a61c3fa6a2899b1504fb6cb960b764cc5" name="a61c3fa6a2899b1504fb6cb960b764cc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61c3fa6a2899b1504fb6cb960b764cc5">&#9670;&#160;</a></span>ha_primitive_blake_round</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_primitive_blake_round</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>sigmatb</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>g</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">  g(sigmatb, i, 0, v[0], v[4], v[8], v[12]);    \</div>
+<div class="line">  g(sigmatb, i, 1, v[1], v[5], v[9], v[13]);    \</div>
+<div class="line">  g(sigmatb, i, 2, v[2], v[6], v[10], v[14]);   \</div>
+<div class="line">  g(sigmatb, i, 3, v[3], v[7], v[11], v[15]);   \</div>
+<div class="line">  g(sigmatb, i, 4, v[0], v[5], v[10], v[15]);   \</div>
+<div class="line">  g(sigmatb, i, 5, v[1], v[6], v[11], v[12]);   \</div>
+<div class="line">  g(sigmatb, i, 6, v[2], v[7], v[8], v[13]);    \</div>
+<div class="line">  g(sigmatb, i, 7, v[3], v[4], v[9], v[14]);</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00090">90</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   90</span><span class="preprocessor">#define ha_primitive_blake_round(sigmatb, g, i) \</span></div>
+<div class="line"><span class="lineno">   91</span><span class="preprocessor">  g(sigmatb, i, 0, v[0], v[4], v[8], v[12]);    \</span></div>
+<div class="line"><span class="lineno">   92</span><span class="preprocessor">  g(sigmatb, i, 1, v[1], v[5], v[9], v[13]);    \</span></div>
+<div class="line"><span class="lineno">   93</span><span class="preprocessor">  g(sigmatb, i, 2, v[2], v[6], v[10], v[14]);   \</span></div>
+<div class="line"><span class="lineno">   94</span><span class="preprocessor">  g(sigmatb, i, 3, v[3], v[7], v[11], v[15]);   \</span></div>
+<div class="line"><span class="lineno">   95</span><span class="preprocessor">  g(sigmatb, i, 4, v[0], v[5], v[10], v[15]);   \</span></div>
+<div class="line"><span class="lineno">   96</span><span class="preprocessor">  g(sigmatb, i, 5, v[1], v[6], v[11], v[12]);   \</span></div>
+<div class="line"><span class="lineno">   97</span><span class="preprocessor">  g(sigmatb, i, 6, v[2], v[7], v[8], v[13]);    \</span></div>
+<div class="line"><span class="lineno">   98</span><span class="preprocessor">  g(sigmatb, i, 7, v[3], v[4], v[9], v[14]);</span></div>
 </div><!-- fragment -->
 </div>
 </div>

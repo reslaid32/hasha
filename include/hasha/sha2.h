@@ -27,84 +27,84 @@
 /* #include "sha2_k.h" */ /* not used in header */
 
 /**
- * @def SHA2_224_BLOCK_SIZE
+ * @def HA_SHA2_224_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 224-bit algorithm (64
  * bytes).
  */
 #define HA_SHA2_224_BLOCK_SIZE 64
 
 /**
- * @def SHA2_224_DIGEST_SIZE
+ * @def HA_SHA2_224_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 224-bit algorithm (28
  * bytes).
  */
 #define HA_SHA2_224_DIGEST_SIZE ha_bB(224)
 
 /**
- * @def SHA2_256_BLOCK_SIZE
+ * @def HA_SHA2_256_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 256-bit algorithm (64
  * bytes).
  */
 #define HA_SHA2_256_BLOCK_SIZE 64
 
 /**
- * @def SHA2_256_DIGEST_SIZE
+ * @def HA_SHA2_256_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 256-bit algorithm (32
  * bytes).
  */
 #define HA_SHA2_256_DIGEST_SIZE ha_bB(256)
 
 /**
- * @def SHA2_384_BLOCK_SIZE
+ * @def HA_SHA2_384_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 384-bit algorithm (128
  * bytes).
  */
 #define HA_SHA2_384_BLOCK_SIZE 128
 
 /**
- * @def SHA2_384_DIGEST_SIZE
+ * @def HA_SHA2_384_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 384-bit algorithm (48
  * bytes).
  */
 #define HA_SHA2_384_DIGEST_SIZE ha_bB(384)
 
 /**
- * @def SHA2_512_BLOCK_SIZE
+ * @def HA_SHA2_512_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 512-bit algorithm (128
  * bytes).
  */
 #define HA_SHA2_512_BLOCK_SIZE 128
 
 /**
- * @def SHA2_512_DIGEST_SIZE
+ * @def HA_SHA2_512_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 512-bit algorithm (64
  * bytes).
  */
 #define HA_SHA2_512_DIGEST_SIZE ha_bB(512)
 
 /**
- * @def SHA2_512_224_BLOCK_SIZE
+ * @def HA_SHA2_512_224_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 512-224 algorithm (128
  * bytes).
  */
 #define HA_SHA2_512_224_BLOCK_SIZE 128
 
 /**
- * @def SHA2_512_224_DIGEST_SIZE
+ * @def HA_SHA2_512_224_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 512-224 algorithm (28
  * bytes).
  */
 #define HA_SHA2_512_224_DIGEST_SIZE ha_bB(224)
 
 /**
- * @def SHA2_512_256_BLOCK_SIZE
+ * @def HA_SHA2_512_256_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 512-256 algorithm (128
  * bytes).
  */
 #define HA_SHA2_512_256_BLOCK_SIZE 128
 
 /**
- * @def SHA2_512_256_DIGEST_SIZE
+ * @def HA_SHA2_512_256_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 512-256 algorithm (32
  * bytes).
  */

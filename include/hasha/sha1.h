@@ -26,13 +26,13 @@
 #include "internal/internal.h"
 
 /**
- * @def SHA1_BLOCK_SIZE
+ * @def HA_SHA1_BLOCK_SIZE
  * @brief The block size used in SHA-1 (in bytes).
  */
 #define HA_SHA1_BLOCK_SIZE 64
 
 /**
- * @def SHA1_DIGEST_SIZE
+ * @def HA_SHA1_DIGEST_SIZE
  * @brief The size of the SHA-1 hash output (in bytes).
  */
 #define HA_SHA1_DIGEST_SIZE ha_bB(160)

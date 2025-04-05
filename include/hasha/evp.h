@@ -20,12 +20,6 @@
 #include "internal/hadefs.h"
 
 /**
- * @defgroup HashFunctionMacros Hashing Function Macros
- * @brief Convenience macros to simplify hashing API usage
- * @{
- */
-
-/**
  * @brief Context type for a specific hash algorithm.
  */
 #define ha_ctx(hash) ha_##hash##_context
@@ -61,14 +55,7 @@
 #define ha_hash(hash, buf, buflen, digest, ...) \
   ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__)
 
-/** @} */
-
 #ifdef HA_ADA
-/**
- * @defgroup AdaHashMacros ADA-style single-pass and stream hashing
- * @{
- */
-
 /**
  * @brief Hashes data in a single operation using ADA-style syntax.
  */
@@ -103,8 +90,6 @@
 #define ha_buffer_digest(...) ha_ada_hash(__VA_ARGS__)
 #define ha_stream_digest(...) ha_ada_stream_hash(__VA_ARGS__)
 #endif
-
-/** @} */
 #endif
 
 /**

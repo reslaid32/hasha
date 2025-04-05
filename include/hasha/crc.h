@@ -20,7 +20,7 @@
 #include "internal/internal.h"
 
 /**
- * @def CRC32_POLYNOMIAL
+ * @def HA_CRC32_POLYNOMIAL
  * @brief The CRC32 polynomial used in the hashing algorithm.
  *
  * This macro defines the polynomial used in the CRC32 calculation. The

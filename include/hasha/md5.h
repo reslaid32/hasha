@@ -22,13 +22,13 @@
 #include "internal/internal.h"
 
 /**
- * @def MD5_BLOCK_SIZE
+ * @def HA_MD5_BLOCK_SIZE
  * @brief Block size (in bytes) for the MD5 algorithm.
  */
 #define HA_MD5_BLOCK_SIZE 64
 
 /**
- * @def MD5_DIGEST_SIZE
+ * @def HA_MD5_DIGEST_SIZE
  * @brief Digest size (in bytes) for the MD5 algorithm (128 bits).
  */
 #define HA_MD5_DIGEST_SIZE ha_bB(128)
