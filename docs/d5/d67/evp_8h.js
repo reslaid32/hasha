@@ -16,11 +16,15 @@ var evp_8h =
     [ "ha_evp_final", "d5/d67/evp_8h.html#aeb750b91d4a8e7ac2c1f04cd88b7b59c", null ],
     [ "ha_evp_hash", "d5/d67/evp_8h.html#a9876640ac5ede047078fd40983c5a8ae", null ],
     [ "ha_evp_hasher_cleanup", "d5/d67/evp_8h.html#a32f1fe380d63d223916dc884d53705d2", null ],
+    [ "ha_evp_hasher_ctxsize", "d5/d67/evp_8h.html#a203bc910eb146d7d3be92bddd7115824", null ],
     [ "ha_evp_hasher_delete", "d5/d67/evp_8h.html#a3f2a413b286984b1d52a098523ebaf45", null ],
+    [ "ha_evp_hasher_digestlen", "d5/d67/evp_8h.html#aed15b98c0066a4071d826fdd0de2d533", null ],
+    [ "ha_evp_hasher_hashty", "d5/d67/evp_8h.html#a15c36ff672b4ef5a49feae5015975930", null ],
     [ "ha_evp_hasher_init", "d5/d67/evp_8h.html#a7bffd26c85868859925758acb47aece6", null ],
-    [ "ha_evp_hasher_new", "d5/d67/evp_8h.html#af2e3d8254530d722c987fb69abfb3ee1", null ],
+    [ "ha_evp_hasher_new", "d5/d67/evp_8h.html#aba178e33f54c7beffcf87f2a41325820", null ],
     [ "ha_evp_hasher_reinit", "d5/d67/evp_8h.html#ac608f7910d65f10d79cccc08abfca2e8", null ],
+    [ "ha_evp_hashty_tostr", "d5/d67/evp_8h.html#a52c7042efd2b9c549e1820a973959e2b", null ],
     [ "ha_evp_init", "d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac", null ],
     [ "ha_evp_update", "d5/d67/evp_8h.html#ac40d0a936413bb45e2662f0e625ad3cb", null ],
-    [ "ha_evp_hasher_size", "d5/d67/evp_8h.html#a5319561e3bba1ab98d240d230de3f738", null ]
+    [ "g_ha_evp_hasher_size", "d5/d67/evp_8h.html#a42b13955506edcf93a54775d13d5be6c", null ]
 ];

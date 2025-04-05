@@ -85,13 +85,16 @@ static const char *g_ha_evp_hashty_strings[8] = {
 HA_PUBFUN
 const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty)
 {
-  if (hashty > (sizeof(g_ha_evp_hashty_strings) /
-                sizeof(g_ha_evp_hashty_strings[0])))
+  size_t hashty_n =
+      sizeof(g_ha_evp_hashty_strings) / sizeof(g_ha_evp_hashty_strings[0]);
+
+  if (hashty >= hashty_n)
   {
     ha_throw_warn(ha_curpos, g_ha_evp_error_strings[ARG_ERROR], 0,
                   "hashty", g_ha_evp_error_strings[OUT_OF_BOUNDS_ERROR]);
     return "unknown";
   }
+
   return g_ha_evp_hashty_strings[hashty];
 }
 
