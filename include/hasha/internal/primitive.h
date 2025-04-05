@@ -3,9 +3,6 @@
 #ifndef __HASHA_INTERNAL_PRIMITIVE_H
 #define __HASHA_INTERNAL_PRIMITIVE_H
 
-#ifndef ha_primitives_defined
-#define ha_primitives_defined 1
-
 #define ha_primitive_base_rot(fst, scd, bits, x, n) \
   (((x)fst(n)) | ((x)scd(bits - (n))))
 #define ha_primitive_base_rotl(bits, x, n) \
@@ -61,7 +58,5 @@
 #define ha_primitive_sigma1_64(x)                            \
   (ha_primitive_rotr64(x, 19) ^ ha_primitive_rotr64(x, 61) ^ \
    ha_primitive_shr(x, 6))
-
-#endif /* ha_primitives_defined */
 
 #endif /* __HASHA_INTERNAL_PRIMITIVE_H */

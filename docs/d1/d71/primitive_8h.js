@@ -22,6 +22,5 @@ var primitive_8h =
     [ "ha_primitive_Sigma1_32", "d1/d71/primitive_8h.html#aa6ceb16eb488db0a81aa82644da1a669", null ],
     [ "ha_primitive_sigma1_32", "d1/d71/primitive_8h.html#a6704f33f7c38499187f22782727858d2", null ],
     [ "ha_primitive_Sigma1_64", "d1/d71/primitive_8h.html#ac436f8e91b426e2c471b449b4b1ca4d4", null ],
-    [ "ha_primitive_sigma1_64", "d1/d71/primitive_8h.html#a4fd9577ce629735c37a2baf73d58ab1f", null ],
-    [ "ha_primitives_defined", "d1/d71/primitive_8h.html#add8188364dea4480bd7d9c3dbe8678ac", null ]
+    [ "ha_primitive_sigma1_64", "d1/d71/primitive_8h.html#a4fd9577ce629735c37a2baf73d58ab1f", null ]
 ];

@@ -31,7 +31,7 @@
 /* #include "keccak1600.h" */ /* not used in header */
 
 /**
- * @def KECCAK_224_RATE
+ * @def HA_KECCAK_224_RATE
  * @brief The rate of the Keccak-224 hash function.
  *
  * This defines the rate (number of bits processed per round) for
@@ -40,7 +40,7 @@
 #define HA_KECCAK_224_RATE 144
 
 /**
- * @def KECCAK_224_DIGEST_SIZE
+ * @def HA_KECCAK_224_DIGEST_SIZE
  * @brief The digest size for the Keccak-224 hash function.
  *
  * This defines the size of the output hash for Keccak-224, which is 224
@@ -49,7 +49,7 @@
 #define HA_KECCAK_224_DIGEST_SIZE ha_bB(224)
 
 /**
- * @def KECCAK_256_RATE
+ * @def HA_KECCAK_256_RATE
  * @brief The rate of the Keccak-256 hash function.
  *
  * This defines the rate (number of bits processed per round) for
@@ -58,7 +58,7 @@
 #define HA_KECCAK_256_RATE 136
 
 /**
- * @def KECCAK_256_DIGEST_SIZE
+ * @def HA_KECCAK_256_DIGEST_SIZE
  * @brief The digest size for the Keccak-256 hash function.
  *
  * This defines the size of the output hash for Keccak-256, which is 256
@@ -67,7 +67,7 @@
 #define HA_KECCAK_256_DIGEST_SIZE ha_bB(256)
 
 /**
- * @def KECCAK_384_RATE
+ * @def HA_KECCAK_384_RATE
  * @brief The rate of the Keccak-384 hash function.
  *
  * This defines the rate (number of bits processed per round) for
@@ -76,7 +76,7 @@
 #define HA_KECCAK_384_RATE 104
 
 /**
- * @def KECCAK_384_DIGEST_SIZE
+ * @def HA_KECCAK_384_DIGEST_SIZE
  * @brief The digest size for the Keccak-384 hash function.
  *
  * This defines the size of the output hash for Keccak-384, which is 384
@@ -85,7 +85,7 @@
 #define HA_KECCAK_384_DIGEST_SIZE ha_bB(384)
 
 /**
- * @def KECCAK_512_RATE
+ * @def HA_KECCAK_512_RATE
  * @brief The rate of the Keccak-512 hash function.
  *
  * This defines the rate (number of bits processed per round) for
@@ -94,13 +94,20 @@
 #define HA_KECCAK_512_RATE 72
 
 /**
- * @def KECCAK_512_DIGEST_SIZE
+ * @def HA_KECCAK_512_DIGEST_SIZE
  * @brief The digest size for the Keccak-512 hash function.
  *
  * This defines the size of the output hash for Keccak-512, which is 512
  * bits. This value is automatically calculated using the `ha_bB` macro.
  */
 #define HA_KECCAK_512_DIGEST_SIZE ha_bB(512)
+
+/** Keccak Padding Byte */
+enum ha_pb ha_enum_base(uint8_t)
+{
+  HA_PB_KECCAK = 0x01,
+  HA_PB_SHA3   = 0x06,
+};
 
 HA_EXTERN_C_BEG
 
@@ -154,6 +161,64 @@ typedef struct ha_keccak_context
    */
   size_t squeeze_index;
 } ha_keccak_context;
+
+/**
+ * @brief Initializes the Keccak-Based context.
+ *
+ * This function initializes the Keccak-Based context to start a new hash
+ * computation.
+ *
+ * @param ctx Pointer to the Keccak-Based context structure to initialize.
+ * @param rate The rate of the Keccak-Based algorithm (in bytes)
+ */
+HA_PUBFUN void ha_keccak_init(ha_keccak_context *ctx, size_t rate);
+
+/**
+ * @brief Absorbs data into the Keccak-Based context.
+ *
+ * This function processes the provided data and updates the Keccak-Based
+ * context state.
+ *
+ * @param ctx Pointer to the Keccak-Based context structure.
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @note The data is absorbed into the context in blocks of size defined by
+ *       the rate.
+ */
+HA_PUBFUN void ha_keccak_update(ha_keccak_context *ctx, ha_inbuf_t buf,
+                                size_t len);
+
+/**
+ * @brief Finalizes the Keccak-Based computation.
+ *
+ * This function finals the Keccak-Based hash calculation.
+ *
+ * @param ctx Pointer to the Keccak-Based context structure.
+ * @param digest Pointer to the output buffer where the final hash will be
+ * stored.
+ * @param digestlen The length of the final hash (in bytes).
+ * @note The digest length must match the expected size
+ */
+HA_PUBFUN void ha_keccak_final(ha_keccak_context *ctx, enum ha_pb padbyte,
+                               ha_digest_t digest, size_t digestlen);
+
+/**
+ * @brief Computes the Keccak-Based hash in a one-shot operation.
+ *
+ * This function computes the SHA3 hash of the provided data in a
+ * single call. It initializes, absorbs, finals, and squeezes the result
+ * internally.
+ *
+ * @param rate The rate of the Keccak-Based algorithm (in bytes)
+ * @param padbyte The padding byte of the Keccak-Based algorithm
+ * @param data Pointer to the input data to process.
+ * @param length Length of the input data in bytes.
+ * @param digest Pointer to the output buffer to store the final
+ * Keccak-Based digest.
+ */
+HA_PUBFUN void ha_keccak_hash(size_t rate, enum ha_pb padbyte,
+                              ha_inbuf_t buf, size_t len,
+                              ha_digest_t digest, size_t digestlen);
 
 typedef ha_keccak_context ha_keccak_224_context, ha_keccak_256_context,
     ha_keccak_384_context, ha_keccak_512_context;

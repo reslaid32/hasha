@@ -22,6 +22,7 @@
  * further details on the SHA3 standard.
  */
 
+#include <hasha/keccak.h>
 #if !defined(__HASHA_SHA3_H)
 #define __HASHA_SHA3_H
 
@@ -85,14 +86,7 @@ HA_EXTERN_C_BEG
  * This structure holds the internal state, rate, capacity, and indexes
  * used during the SHA3 hashing process.
  */
-typedef struct ha_sha3_context
-{
-  uint8_t state[200]; /**< State array used during the SHA3 computation. */
-  size_t rate;        /**< Rate of the SHA3 algorithm. */
-  size_t capacity;    /**< Capacity of the SHA3 algorithm. */
-  size_t absorb_index;  /**< Index for the absorb phase. */
-  size_t squeeze_index; /**< Index for the squeeze phase. */
-} ha_sha3_context;
+typedef struct ha_keccak_context ha_sha3_context;
 
 typedef ha_sha3_context ha_sha3_224_context, ha_sha3_256_context,
     ha_sha3_384_context, ha_sha3_512_context;
@@ -126,6 +120,8 @@ HA_PUBFUN void ha_sha3_224_update(ha_sha3_224_context *ctx,
  * This function finals the SHA3-224 hash calculation.
  *
  * @param ctx Pointer to the SHA3-224 context structure.
+ * @param digest Pointer to the output buffer where the final hash will be
+ * stored.
  */
 HA_PUBFUN void ha_sha3_224_final(ha_sha3_224_context *ctx,
                                  ha_digest_t digest);
@@ -174,6 +170,8 @@ HA_PUBFUN void ha_sha3_256_update(ha_sha3_256_context *ctx,
  * This function finals the SHA3-256 hash calculation.
  *
  * @param ctx Pointer to the SHA3-256 context structure.
+ * @param digest Pointer to the output buffer where the final hash will be
+ * stored.
  */
 HA_PUBFUN void ha_sha3_256_final(ha_sha3_256_context *ctx,
                                  ha_digest_t digest);
@@ -221,6 +219,8 @@ HA_PUBFUN void ha_sha3_384_update(ha_sha3_384_context *ctx,
  * This function finals the SHA3-384 hash calculation.
  *
  * @param ctx Pointer to the SHA3-384 context structure.
+ * @param digest Pointer to the output buffer where the final hash will be
+ * stored.
  */
 HA_PUBFUN void ha_sha3_384_final(ha_sha3_384_context *ctx,
                                  ha_digest_t digest);
@@ -269,6 +269,8 @@ HA_PUBFUN void ha_sha3_512_update(ha_sha3_512_context *ctx,
  * This function finals the SHA3-512 hash calculation.
  *
  * @param ctx Pointer to the SHA3-512 context structure.
+ * @param digest Pointer to the output buffer where the final hash will be
+ * stored.
  */
 HA_PUBFUN void ha_sha3_512_final(ha_sha3_512_context *ctx,
                                  ha_digest_t digest);

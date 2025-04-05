@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.4</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.5</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -103,7 +103,6 @@ $(function(){initNavTree('d7/dda/sha3_8h.html','../../'); initResizable(true); }
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -113,7 +112,8 @@ $(function(){initNavTree('d7/dda/sha3_8h.html','../../'); initResizable(true); }
 
 <p>Header file for SHA3 cryptographic hash functions.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">internal/internal.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d8/de7/include_2hasha_2keccak_8h_source.html">hasha/keccak.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">internal/internal.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for sha3.h:</div>
 <div class="dyncontent">
@@ -127,12 +127,6 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="../../d7/dda/sha3_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d75/structha__sha3__context.html">ha_sha3_context</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The context structure used by all SHA3 variants.  <a href="../../dc/d75/structha__sha3__context.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:af3ea6f1b6bb65dc3fa6c9d5363eb6289" id="r_af3ea6f1b6bb65dc3fa6c9d5363eb6289"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3ea6f1b6bb65dc3fa6c9d5363eb6289">HA_SHA3_224_RATE</a>&#160;&#160;&#160;144</td></tr>
@@ -154,8 +148,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae863561dba1603eaf835fce5ea6aa134" id="r_ae863561dba1603eaf835fce5ea6aa134"><td class="memItemLeft" align="right" valign="top">typedef struct ha_sha3_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae863561dba1603eaf835fce5ea6aa134">ha_sha3_context</a></td></tr>
-<tr class="separator:ae863561dba1603eaf835fce5ea6aa134"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a705f4e9a9124ed7ce894506f5d8af539" id="r_a705f4e9a9124ed7ce894506f5d8af539"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="../../df/d3f/structha__keccak__context.html">ha_keccak_context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705f4e9a9124ed7ce894506f5d8af539">ha_sha3_context</a></td></tr>
+<tr class="separator:a705f4e9a9124ed7ce894506f5d8af539"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38180559c8c50d38d712116187b5f169" id="r_a38180559c8c50d38d712116187b5f169"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dc/d75/structha__sha3__context.html">ha_sha3_context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38180559c8c50d38d712116187b5f169">ha_sha3_224_context</a></td></tr>
 <tr class="separator:a38180559c8c50d38d712116187b5f169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7970649789ee23c21a05c54792e37239" id="r_a7970649789ee23c21a05c54792e37239"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../dc/d75/structha__sha3__context.html">ha_sha3_context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7970649789ee23c21a05c54792e37239">ha_sha3_256_context</a></td></tr>
@@ -237,7 +231,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00041">41</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00042">42</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -253,7 +247,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00035">35</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00036">36</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +263,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00053">53</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00054">54</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -285,7 +279,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00047">47</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00048">48</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -301,7 +295,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00065">65</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00066">66</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +311,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00059">59</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00060">60</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -333,7 +327,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00077">77</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00078">78</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -349,7 +343,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00071">71</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00072">72</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -366,7 +360,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00097">97</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00091">91</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -382,7 +376,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00097">97</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00091">91</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -398,7 +392,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00098">98</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00092">92</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -414,21 +408,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00098">98</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00092">92</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
-<a id="ae863561dba1603eaf835fce5ea6aa134" name="ae863561dba1603eaf835fce5ea6aa134"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae863561dba1603eaf835fce5ea6aa134">&#9670;&#160;</a></span>ha_sha3_context</h2>
+<a id="a705f4e9a9124ed7ce894506f5d8af539" name="a705f4e9a9124ed7ce894506f5d8af539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a705f4e9a9124ed7ce894506f5d8af539">&#9670;&#160;</a></span>ha_sha3_context</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef struct ha_sha3_context ha_sha3_context</td>
+          <td class="memname">typedef struct <a class="el" href="../../df/d3f/structha__keccak__context.html">ha_keccak_context</a> ha_sha3_context</td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00089">89</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
 
 </div>
 </div>
@@ -457,6 +453,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the SHA3-224 context structure. </td></tr>
+    <tr><td class="paramname">digest</td><td>Pointer to the output buffer where the final hash will be stored. </td></tr>
   </table>
   </dd>
 </dl>
@@ -587,6 +584,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the SHA3-256 context structure. </td></tr>
+    <tr><td class="paramname">digest</td><td>Pointer to the output buffer where the final hash will be stored. </td></tr>
   </table>
   </dd>
 </dl>
@@ -717,6 +715,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the SHA3-384 context structure. </td></tr>
+    <tr><td class="paramname">digest</td><td>Pointer to the output buffer where the final hash will be stored. </td></tr>
   </table>
   </dd>
 </dl>
@@ -847,6 +846,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>Pointer to the SHA3-512 context structure. </td></tr>
+    <tr><td class="paramname">digest</td><td>Pointer to the output buffer where the final hash will be stored. </td></tr>
   </table>
   </dd>
 </dl>

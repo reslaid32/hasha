@@ -1,6 +1,5 @@
 var sha3_8h =
 [
-    [ "ha_sha3_context", "dc/d75/structha__sha3__context.html", "dc/d75/structha__sha3__context" ],
     [ "HA_SHA3_224_DIGEST_SIZE", "d7/dda/sha3_8h.html#a121b4d697867750b4b5fd59416cc5ad0", null ],
     [ "HA_SHA3_224_RATE", "d7/dda/sha3_8h.html#af3ea6f1b6bb65dc3fa6c9d5363eb6289", null ],
     [ "HA_SHA3_256_DIGEST_SIZE", "d7/dda/sha3_8h.html#a4ed8106eb98cfc3795b73bd076febd4f", null ],
@@ -13,7 +12,7 @@ var sha3_8h =
     [ "ha_sha3_256_context", "d7/dda/sha3_8h.html#a7970649789ee23c21a05c54792e37239", null ],
     [ "ha_sha3_384_context", "d7/dda/sha3_8h.html#a19191ca3dc0ab6abbe2a5601fb89acb1", null ],
     [ "ha_sha3_512_context", "d7/dda/sha3_8h.html#a71e21709fd8b92e82138dd33502c963e", null ],
-    [ "ha_sha3_context", "d7/dda/sha3_8h.html#ae863561dba1603eaf835fce5ea6aa134", null ],
+    [ "ha_sha3_context", "d7/dda/sha3_8h.html#a705f4e9a9124ed7ce894506f5d8af539", null ],
     [ "ha_sha3_224_final", "d7/dda/sha3_8h.html#a71715342d9108892cb7168e00ad84e5d", null ],
     [ "ha_sha3_224_hash", "d7/dda/sha3_8h.html#a1e493d54aef04f6a3ee3eda755898b0a", null ],
     [ "ha_sha3_224_init", "d7/dda/sha3_8h.html#a9124ccbd98b5e392fa3ae9b71fd19bf5", null ],

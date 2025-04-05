@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.4</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.5</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -102,9 +102,6 @@ $(function(){initNavTree('dc/d75/structha__sha3__context.html','../../'); initRe
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="../../d5/dfe/structha__sha3__context-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ha_sha3_context Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -113,112 +110,10 @@ $(function(){initNavTree('dc/d75/structha__sha3__context.html','../../'); initRe
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aaf953fd93df6364a43a0cac63cf52632" id="r_aaf953fd93df6364a43a0cac63cf52632"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf953fd93df6364a43a0cac63cf52632">state</a> [200]</td></tr>
-<tr class="separator:aaf953fd93df6364a43a0cac63cf52632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda532aa66ee0cd464a052c2d1277838" id="r_acda532aa66ee0cd464a052c2d1277838"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acda532aa66ee0cd464a052c2d1277838">rate</a></td></tr>
-<tr class="separator:acda532aa66ee0cd464a052c2d1277838"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2758b80618f307191a35607a52a741b8" id="r_a2758b80618f307191a35607a52a741b8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2758b80618f307191a35607a52a741b8">capacity</a></td></tr>
-<tr class="separator:a2758b80618f307191a35607a52a741b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a165be166c0d356bb308196bb3ec0f490" id="r_a165be166c0d356bb308196bb3ec0f490"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a165be166c0d356bb308196bb3ec0f490">absorb_index</a></td></tr>
-<tr class="separator:a165be166c0d356bb308196bb3ec0f490"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7405b457c28039226105c5cd100d63b" id="r_ad7405b457c28039226105c5cd100d63b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7405b457c28039226105c5cd100d63b">squeeze_index</a></td></tr>
-<tr class="separator:ad7405b457c28039226105c5cd100d63b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The context structure used by all SHA3 variants. </p>
 <p>This structure holds the internal state, rate, capacity, and indexes used during the SHA3 hashing process. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00088">88</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a165be166c0d356bb308196bb3ec0f490" name="a165be166c0d356bb308196bb3ec0f490"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a165be166c0d356bb308196bb3ec0f490">&#9670;&#160;</a></span>absorb_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ha_sha3_context::absorb_index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Index for the absorb phase. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00093">93</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-
-</div>
-</div>
-<a id="a2758b80618f307191a35607a52a741b8" name="a2758b80618f307191a35607a52a741b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2758b80618f307191a35607a52a741b8">&#9670;&#160;</a></span>capacity</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ha_sha3_context::capacity</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Capacity of the SHA3 algorithm. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00092">92</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-
-</div>
-</div>
-<a id="acda532aa66ee0cd464a052c2d1277838" name="acda532aa66ee0cd464a052c2d1277838"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acda532aa66ee0cd464a052c2d1277838">&#9670;&#160;</a></span>rate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ha_sha3_context::rate</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Rate of the SHA3 algorithm. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00091">91</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-
-</div>
-</div>
-<a id="ad7405b457c28039226105c5cd100d63b" name="ad7405b457c28039226105c5cd100d63b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7405b457c28039226105c5cd100d63b">&#9670;&#160;</a></span>squeeze_index</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t ha_sha3_context::squeeze_index</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Index for the squeeze phase. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00094">94</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-
-</div>
-</div>
-<a id="aaf953fd93df6364a43a0cac63cf52632" name="aaf953fd93df6364a43a0cac63cf52632"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf953fd93df6364a43a0cac63cf52632">&#9670;&#160;</a></span>state</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t ha_sha3_context::state[200]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>State array used during the SHA3 computation. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d7/dda/sha3_8h_source.html#l00090">90</a> of file <a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/hasha/<a class="el" href="../../d7/dda/sha3_8h_source.html">sha3.h</a></li>
 </ul>
 </div><!-- contents -->

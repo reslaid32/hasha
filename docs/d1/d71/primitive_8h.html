@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.4</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.5</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -117,8 +117,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:add8188364dea4480bd7d9c3dbe8678ac" id="r_add8188364dea4480bd7d9c3dbe8678ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add8188364dea4480bd7d9c3dbe8678ac">ha_primitives_defined</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:add8188364dea4480bd7d9c3dbe8678ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeadffb2644be146f14f5659e16517172" id="r_aeadffb2644be146f14f5659e16517172"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeadffb2644be146f14f5659e16517172">ha_primitive_base_rot</a>(fst,  scd,  bits,  x,  n)</td></tr>
 <tr class="separator:aeadffb2644be146f14f5659e16517172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae844b71e316e79e3f72383518e6eaf4b" id="r_ae844b71e316e79e3f72383518e6eaf4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae844b71e316e79e3f72383518e6eaf4b">ha_primitive_base_rotl</a>(bits,  x,  n)</td></tr>
@@ -202,9 +200,9 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  (((x)fst(n)) | ((x)scd(bits - (n))))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00009">9</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span><span class="preprocessor">#define ha_primitive_base_rot(fst, scd, bits, x, n) \</span></div>
-<div class="line"><span class="lineno">   10</span><span class="preprocessor">  (((x)fst(n)) | ((x)scd(bits - (n))))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00006">6</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    6</span><span class="preprocessor">#define ha_primitive_base_rot(fst, scd, bits, x, n) \</span></div>
+<div class="line"><span class="lineno">    7</span><span class="preprocessor">  (((x)fst(n)) | ((x)scd(bits - (n))))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -232,11 +230,11 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_define" href="#aeadffb2644be146f14f5659e16517172">ha_primitive_base_rot</a>(&lt;&lt;, &gt;&gt;, bits, x, n)</div>
-<div class="ttc" id="aprimitive_8h_html_aeadffb2644be146f14f5659e16517172"><div class="ttname"><a href="#aeadffb2644be146f14f5659e16517172">ha_primitive_base_rot</a></div><div class="ttdeci">#define ha_primitive_base_rot(fst, scd, bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00009">primitive.h:9</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_aeadffb2644be146f14f5659e16517172"><div class="ttname"><a href="#aeadffb2644be146f14f5659e16517172">ha_primitive_base_rot</a></div><div class="ttdeci">#define ha_primitive_base_rot(fst, scd, bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00006">primitive.h:6</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00011">11</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span><span class="preprocessor">#define ha_primitive_base_rotl(bits, x, n) \</span></div>
-<div class="line"><span class="lineno">   12</span><span class="preprocessor">  ha_primitive_base_rot(&lt;&lt;, &gt;&gt;, bits, x, n)</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00008">8</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span><span class="preprocessor">#define ha_primitive_base_rotl(bits, x, n) \</span></div>
+<div class="line"><span class="lineno">    9</span><span class="preprocessor">  ha_primitive_base_rot(&lt;&lt;, &gt;&gt;, bits, x, n)</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -265,9 +263,9 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  <a class="code hl_define" href="#aeadffb2644be146f14f5659e16517172">ha_primitive_base_rot</a>(&gt;&gt;, &lt;&lt;, bits, x, n)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00013">13</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   13</span><span class="preprocessor">#define ha_primitive_base_rotr(bits, x, n) \</span></div>
-<div class="line"><span class="lineno">   14</span><span class="preprocessor">  ha_primitive_base_rot(&gt;&gt;, &lt;&lt;, bits, x, n)</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00010">10</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span><span class="preprocessor">#define ha_primitive_base_rotr(bits, x, n) \</span></div>
+<div class="line"><span class="lineno">   11</span><span class="preprocessor">  ha_primitive_base_rot(&gt;&gt;, &lt;&lt;, bits, x, n)</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -296,7 +294,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(((x) &amp; (y)) ^ (~(x) &amp; (z)))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00025">25</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00022">22</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -325,7 +323,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(((x) &amp; (y)) ^ ((x) &amp; (z)) ^ ((y) &amp; (z)))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00026">26</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00023">23</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -354,7 +352,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(((x) &amp; (y)) | (~(x) &amp; (z)))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00029">29</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00026">26</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -383,7 +381,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">(((x) &amp; (z)) | ((y) &amp; ~(z)))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00030">30</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00027">27</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +410,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((x) ^ (y) ^ (z))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00031">31</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00028">28</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -441,7 +439,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((y) ^ ((x) | ~(z)))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00032">32</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00029">29</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -464,9 +462,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ae844b71e316e79e3f72383518e6eaf4b">ha_primitive_base_rotl</a>(32, x, n)</div>
-<div class="ttc" id="aprimitive_8h_html_ae844b71e316e79e3f72383518e6eaf4b"><div class="ttname"><a href="#ae844b71e316e79e3f72383518e6eaf4b">ha_primitive_base_rotl</a></div><div class="ttdeci">#define ha_primitive_base_rotl(bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00011">primitive.h:11</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_ae844b71e316e79e3f72383518e6eaf4b"><div class="ttname"><a href="#ae844b71e316e79e3f72383518e6eaf4b">ha_primitive_base_rotl</a></div><div class="ttdeci">#define ha_primitive_base_rotl(bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00008">primitive.h:8</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00016">16</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00013">13</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +488,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#ae844b71e316e79e3f72383518e6eaf4b">ha_primitive_base_rotl</a>(64, x, n)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00017">17</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00014">14</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -513,9 +511,9 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a1bb851271b663f6ef8ac80ddfa1c94ea">ha_primitive_base_rotr</a>(32, x, n)</div>
-<div class="ttc" id="aprimitive_8h_html_a1bb851271b663f6ef8ac80ddfa1c94ea"><div class="ttname"><a href="#a1bb851271b663f6ef8ac80ddfa1c94ea">ha_primitive_base_rotr</a></div><div class="ttdeci">#define ha_primitive_base_rotr(bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00013">primitive.h:13</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_a1bb851271b663f6ef8ac80ddfa1c94ea"><div class="ttname"><a href="#a1bb851271b663f6ef8ac80ddfa1c94ea">ha_primitive_base_rotr</a></div><div class="ttdeci">#define ha_primitive_base_rotr(bits, x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00010">primitive.h:10</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00019">19</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00016">16</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -539,7 +537,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a1bb851271b663f6ef8ac80ddfa1c94ea">ha_primitive_base_rotr</a>(64, x, n)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00020">20</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00017">17</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -563,7 +561,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((x) &lt;&lt; (n))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00023">23</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00020">20</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -587,7 +585,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((x) &gt;&gt; (n))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00022">22</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00019">19</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
 
 </div>
 </div>
@@ -607,12 +605,12 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 2) ^ <a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 13) ^ \</div>
 <div class="line">   ha_primitive_rotr32((x), 22))</div>
-<div class="ttc" id="aprimitive_8h_html_ad65a87f5c2df2003054720c4094469c5"><div class="ttname"><a href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a></div><div class="ttdeci">#define ha_primitive_rotr32(x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00019">primitive.h:19</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_ad65a87f5c2df2003054720c4094469c5"><div class="ttname"><a href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a></div><div class="ttdeci">#define ha_primitive_rotr32(x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00016">primitive.h:16</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00036">36</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span><span class="preprocessor">#define ha_primitive_Sigma0_32(x)                               \</span></div>
-<div class="line"><span class="lineno">   37</span><span class="preprocessor">  (ha_primitive_rotr32((x), 2) ^ ha_primitive_rotr32((x), 13) ^ \</span></div>
-<div class="line"><span class="lineno">   38</span><span class="preprocessor">   ha_primitive_rotr32((x), 22))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00033">33</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span><span class="preprocessor">#define ha_primitive_Sigma0_32(x)                               \</span></div>
+<div class="line"><span class="lineno">   34</span><span class="preprocessor">  (ha_primitive_rotr32((x), 2) ^ ha_primitive_rotr32((x), 13) ^ \</span></div>
+<div class="line"><span class="lineno">   35</span><span class="preprocessor">   ha_primitive_rotr32((x), 22))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -633,10 +631,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 7) ^ <a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 18) ^ \</div>
 <div class="line">   ha_primitive_shr(x, 3))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00051">51</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   51</span><span class="preprocessor">#define ha_primitive_sigma0_32(x)                               \</span></div>
-<div class="line"><span class="lineno">   52</span><span class="preprocessor">  (ha_primitive_rotr32((x), 7) ^ ha_primitive_rotr32((x), 18) ^ \</span></div>
-<div class="line"><span class="lineno">   53</span><span class="preprocessor">   ha_primitive_shr(x, 3))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00048">48</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span><span class="preprocessor">#define ha_primitive_sigma0_32(x)                               \</span></div>
+<div class="line"><span class="lineno">   49</span><span class="preprocessor">  (ha_primitive_rotr32((x), 7) ^ ha_primitive_rotr32((x), 18) ^ \</span></div>
+<div class="line"><span class="lineno">   50</span><span class="preprocessor">   ha_primitive_shr(x, 3))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -656,12 +654,12 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 28) ^ <a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 34) ^ \</div>
 <div class="line">   ha_primitive_rotr64(x, 39))</div>
-<div class="ttc" id="aprimitive_8h_html_a13c0bf5346f70267b84e55de86b03824"><div class="ttname"><a href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a></div><div class="ttdeci">#define ha_primitive_rotr64(x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00020">primitive.h:20</a></div></div>
+<div class="ttc" id="aprimitive_8h_html_a13c0bf5346f70267b84e55de86b03824"><div class="ttname"><a href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a></div><div class="ttdeci">#define ha_primitive_rotr64(x, n)</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d71/primitive_8h_source.html#l00017">primitive.h:17</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00039">39</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span><span class="preprocessor">#define ha_primitive_Sigma0_64(x)                            \</span></div>
-<div class="line"><span class="lineno">   40</span><span class="preprocessor">  (ha_primitive_rotr64(x, 28) ^ ha_primitive_rotr64(x, 34) ^ \</span></div>
-<div class="line"><span class="lineno">   41</span><span class="preprocessor">   ha_primitive_rotr64(x, 39))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00036">36</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   36</span><span class="preprocessor">#define ha_primitive_Sigma0_64(x)                            \</span></div>
+<div class="line"><span class="lineno">   37</span><span class="preprocessor">  (ha_primitive_rotr64(x, 28) ^ ha_primitive_rotr64(x, 34) ^ \</span></div>
+<div class="line"><span class="lineno">   38</span><span class="preprocessor">   ha_primitive_rotr64(x, 39))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -682,10 +680,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 1) ^ <a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 8) ^ \</div>
 <div class="line">   ha_primitive_shr(x, 7))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00054">54</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   54</span><span class="preprocessor">#define ha_primitive_sigma0_64(x)                          \</span></div>
-<div class="line"><span class="lineno">   55</span><span class="preprocessor">  (ha_primitive_rotr64(x, 1) ^ ha_primitive_rotr64(x, 8) ^ \</span></div>
-<div class="line"><span class="lineno">   56</span><span class="preprocessor">   ha_primitive_shr(x, 7))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00051">51</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span><span class="preprocessor">#define ha_primitive_sigma0_64(x)                          \</span></div>
+<div class="line"><span class="lineno">   52</span><span class="preprocessor">  (ha_primitive_rotr64(x, 1) ^ ha_primitive_rotr64(x, 8) ^ \</span></div>
+<div class="line"><span class="lineno">   53</span><span class="preprocessor">   ha_primitive_shr(x, 7))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -706,10 +704,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 6) ^ <a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 11) ^ \</div>
 <div class="line">   ha_primitive_rotr32((x), 25))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00043">43</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   43</span><span class="preprocessor">#define ha_primitive_Sigma1_32(x)                               \</span></div>
-<div class="line"><span class="lineno">   44</span><span class="preprocessor">  (ha_primitive_rotr32((x), 6) ^ ha_primitive_rotr32((x), 11) ^ \</span></div>
-<div class="line"><span class="lineno">   45</span><span class="preprocessor">   ha_primitive_rotr32((x), 25))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00040">40</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span><span class="preprocessor">#define ha_primitive_Sigma1_32(x)                               \</span></div>
+<div class="line"><span class="lineno">   41</span><span class="preprocessor">  (ha_primitive_rotr32((x), 6) ^ ha_primitive_rotr32((x), 11) ^ \</span></div>
+<div class="line"><span class="lineno">   42</span><span class="preprocessor">   ha_primitive_rotr32((x), 25))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -730,10 +728,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 17) ^ <a class="code hl_define" href="#ad65a87f5c2df2003054720c4094469c5">ha_primitive_rotr32</a>((x), 19) ^ \</div>
 <div class="line">   ((x) &gt;&gt; 10))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00058">58</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   58</span><span class="preprocessor">#define ha_primitive_sigma1_32(x)                                \</span></div>
-<div class="line"><span class="lineno">   59</span><span class="preprocessor">  (ha_primitive_rotr32((x), 17) ^ ha_primitive_rotr32((x), 19) ^ \</span></div>
-<div class="line"><span class="lineno">   60</span><span class="preprocessor">   ((x) &gt;&gt; 10))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00055">55</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span><span class="preprocessor">#define ha_primitive_sigma1_32(x)                                \</span></div>
+<div class="line"><span class="lineno">   56</span><span class="preprocessor">  (ha_primitive_rotr32((x), 17) ^ ha_primitive_rotr32((x), 19) ^ \</span></div>
+<div class="line"><span class="lineno">   57</span><span class="preprocessor">   ((x) &gt;&gt; 10))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -754,10 +752,10 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 14) ^ <a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 18) ^ \</div>
 <div class="line">   ha_primitive_rotr64(x, 41))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00046">46</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   46</span><span class="preprocessor">#define ha_primitive_Sigma1_64(x)                            \</span></div>
-<div class="line"><span class="lineno">   47</span><span class="preprocessor">  (ha_primitive_rotr64(x, 14) ^ ha_primitive_rotr64(x, 18) ^ \</span></div>
-<div class="line"><span class="lineno">   48</span><span class="preprocessor">   ha_primitive_rotr64(x, 41))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00043">43</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   43</span><span class="preprocessor">#define ha_primitive_Sigma1_64(x)                            \</span></div>
+<div class="line"><span class="lineno">   44</span><span class="preprocessor">  (ha_primitive_rotr64(x, 14) ^ ha_primitive_rotr64(x, 18) ^ \</span></div>
+<div class="line"><span class="lineno">   45</span><span class="preprocessor">   ha_primitive_rotr64(x, 41))</span></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -778,27 +776,11 @@ Macros</h2></td></tr>
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 19) ^ <a class="code hl_define" href="#a13c0bf5346f70267b84e55de86b03824">ha_primitive_rotr64</a>(x, 61) ^ \</div>
 <div class="line">   ha_primitive_shr(x, 6))</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00061">61</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   61</span><span class="preprocessor">#define ha_primitive_sigma1_64(x)                            \</span></div>
-<div class="line"><span class="lineno">   62</span><span class="preprocessor">  (ha_primitive_rotr64(x, 19) ^ ha_primitive_rotr64(x, 61) ^ \</span></div>
-<div class="line"><span class="lineno">   63</span><span class="preprocessor">   ha_primitive_shr(x, 6))</span></div>
+<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00058">58</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span><span class="preprocessor">#define ha_primitive_sigma1_64(x)                            \</span></div>
+<div class="line"><span class="lineno">   59</span><span class="preprocessor">  (ha_primitive_rotr64(x, 19) ^ ha_primitive_rotr64(x, 61) ^ \</span></div>
+<div class="line"><span class="lineno">   60</span><span class="preprocessor">   ha_primitive_shr(x, 6))</span></div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="add8188364dea4480bd7d9c3dbe8678ac" name="add8188364dea4480bd7d9c3dbe8678ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add8188364dea4480bd7d9c3dbe8678ac">&#9670;&#160;</a></span>ha_primitives_defined</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define ha_primitives_defined&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="../../d1/d71/primitive_8h_source.html#l00007">7</a> of file <a class="el" href="../../d1/d71/primitive_8h_source.html">primitive.h</a>.</p>
-
 </div>
 </div>
 </div><!-- contents -->
