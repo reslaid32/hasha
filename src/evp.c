@@ -1,15 +1,15 @@
+#include <hasha/internal/hadefs.h>
 #define HA_BUILD
-
-#include "../include/hasha/evp.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include "../include/hasha/all.h"
+#include "../include/hasha/evp.h"
 #include "../include/hasha/internal/error.h"
 
-static char *ha_evp_error_strings[] = {
-#define ARGUMENT_ERROR 0
+static char *g_ha_evp_error_strings[] = {
+#define ARG_VALUE_ERROR 0
     "argument named %s is %s",
 #define UNEXPECTED_ERROR 1
     "unexpected %s",
@@ -19,6 +19,10 @@ static char *ha_evp_error_strings[] = {
     "%s is (null)",
 #define UNEXPECTED_FUN_MOD_ERROR 4
     "unexpected .%s function modifier",
+#define OUT_OF_BOUNDS_ERROR 5
+    "out of bounds",
+#define ARG_ERROR 6
+    "argument %d (%s) %s",
 };
 
 typedef void (*ha_evp_generic_init_fn)(void *);
@@ -72,7 +76,38 @@ struct ha_evp_hasher
   } hash_fn;
   enum ha_evp_hasher_fun_mod hash_fn_mod;
 };
-const size_t ha_evp_hasher_size = sizeof(struct ha_evp_hasher);
+const size_t g_ha_evp_hasher_size = sizeof(struct ha_evp_hasher);
+
+HA_PUBFUN
+const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty)
+{
+  if (hashty > (sizeof(g_ha_evp_hashty_strings) /
+                sizeof(g_ha_evp_hashty_strings[0])))
+  {
+    ha_throw_warn(ha_curpos, g_ha_evp_error_strings[ARG_ERROR], 0,
+                  "hashty", g_ha_evp_error_strings[OUT_OF_BOUNDS_ERROR]);
+    return "unknown";
+  }
+  return g_ha_evp_hashty_strings[hashty];
+}
+
+HA_PUBFUN
+size_t ha_evp_hasher_ctxsize(struct ha_evp_hasher *hasher)
+{
+  return hasher->ctx_size;
+}
+
+HA_PUBFUN
+enum ha_evp_hashty ha_evp_hasher_hashty(struct ha_evp_hasher *hasher)
+{
+  return hasher->hashty;
+}
+
+HA_PUBFUN
+size_t ha_evp_hasher_digestlen(struct ha_evp_hasher *hasher)
+{
+  return hasher->digestlen;
+}
 
 HA_PRVFUN
 void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
@@ -209,7 +244,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
         }
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[UNEXPECTED_ERROR],
+                                g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
@@ -365,7 +400,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
 #endif
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[UNEXPECTED_ERROR],
+                                g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
@@ -446,14 +481,14 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
         }
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[UNEXPECTED_ERROR],
+                                g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
     }
     default:
       return ha_throw_error(ha_curpos,
-                            ha_evp_error_strings[UNEXPECTED_ERROR],
+                            g_ha_evp_error_strings[UNEXPECTED_ERROR],
                             "digest length");
   }
 }
@@ -481,7 +516,7 @@ void ha_evp_free_context(struct ha_evp_hasher *hasher)
 HA_PUBFUN
 struct ha_evp_hasher *ha_evp_hasher_new()
 {
-  return malloc(ha_evp_hasher_size);
+  return malloc(g_ha_evp_hasher_size);
 }
 
 HA_PUBFUN
@@ -496,7 +531,7 @@ void ha_evp_hasher_init(struct ha_evp_hasher *hasher,
   hasher->ctx_allocated = false;
   ha_evp_setup_hasher(hasher);
   ha_assert(ha_evp_allocate_context(hasher), "%s",
-            ha_evp_error_strings[BAD_ALLOC_ERROR],
+            g_ha_evp_error_strings[BAD_ALLOC_ERROR],
             "malloc() returns (null)");
 }
 
@@ -504,7 +539,8 @@ HA_PUBFUN
 void ha_evp_hasher_cleanup(struct ha_evp_hasher *hasher)
 {
   if (!(hasher))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
   ha_evp_free_context(hasher);
 }
@@ -521,7 +557,8 @@ HA_PUBFUN
 void ha_evp_init(struct ha_evp_hasher *hasher)
 {
   if (!(hasher))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
 
   switch (hasher->init_fn_mod)
@@ -530,9 +567,9 @@ void ha_evp_init(struct ha_evp_hasher *hasher)
       hasher->init_fn.generic(hasher->ctx);
       break;
     default:
-      return ha_throw_error(ha_curpos,
-                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
-                            "init");
+      return ha_throw_error(
+          ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+          "init");
   }
 }
 
@@ -541,16 +578,18 @@ void ha_evp_update(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
                    size_t len)
 {
   if (!(hasher))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error(ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                           "hasher->ctx");
 
   if (!(buf))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
-                          "buf", "(null)");
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR], "buf",
+                          "(null)");
 
   hasher->update_fn(hasher->ctx, buf, len);
 }
@@ -559,15 +598,17 @@ HA_PUBFUN
 void ha_evp_final(struct ha_evp_hasher *hasher, ha_digest_t digest)
 {
   if (!(hasher))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error(ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                           "hasher->ctx");
 
   if (!(digest))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "digest", "(null)");
 
   switch (hasher->final_fn_mod)
@@ -579,9 +620,9 @@ void ha_evp_final(struct ha_evp_hasher *hasher, ha_digest_t digest)
       hasher->final_fn.flexible(hasher->ctx, digest, hasher->digestlen);
       break;
     default:
-      return ha_throw_error(ha_curpos,
-                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
-                            "final");
+      return ha_throw_error(
+          ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+          "final");
   }
 }
 
@@ -590,15 +631,17 @@ void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
                  ha_digest_t digest)
 {
   if (!(hasher))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error(ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                           "hasher->ctx");
 
   if (!(digest))
-    return ha_throw_error(ha_curpos, ha_evp_error_strings[ARGUMENT_ERROR],
+    return ha_throw_error(ha_curpos,
+                          g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "digest", "(null)");
 
   switch (hasher->hash_fn_mod)
@@ -610,9 +653,9 @@ void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
       hasher->hash_fn.flexible(buf, len, digest, hasher->digestlen);
       break;
     default:
-      return ha_throw_error(ha_curpos,
-                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
-                            "hash");
+      return ha_throw_error(
+          ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+          "hash");
   }
 }
 

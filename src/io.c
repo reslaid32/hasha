@@ -6,7 +6,7 @@
 #include "../include/hasha/internal/internal.h"
 #include "../include/hasha/internal/types.h"
 
-static char *ha_io_error_strings[] = {
+static char *g_ha_io_error_strings[] = {
 #define ARGUMENT_ERROR 0
     "argument named %s is %s",
 };
@@ -16,7 +16,7 @@ size_t ha_fputhash(FILE *stream, ha_digest_t digest, size_t digestlen)
 {
   if (!stream)
   {
-    ha_throw_error(ha_curpos, ha_io_error_strings[ARGUMENT_ERROR],
+    ha_throw_error(ha_curpos, g_ha_io_error_strings[ARGUMENT_ERROR],
                    "*stream", "(null)");
     return 0;
   }

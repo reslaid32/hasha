@@ -127,10 +127,14 @@ enum ha_evp_hashty ha_enum_base(uint8_t)
   HA_EVPTY_SHA3     /**< SHA-3 (standardized version) */
 };
 
+const char *g_ha_evp_hashty_strings[8] = {"blake2b", "blake2s", "blake3",
+                                          "keccak",  "md5",     "sha1",
+                                          "sha2",    "sha3"};
+
 /**
  * @brief Size of the EVP hasher structure.
  */
-extern const size_t ha_evp_hasher_size;
+extern const size_t g_ha_evp_hasher_size;
 
 /**
  * @brief Opaque structure for the EVP hasher state.
@@ -139,12 +143,36 @@ typedef struct ha_evp_hasher ha_evp_hasher_t, *ha_evp_phasher_t;
 
 HA_EXTERN_C_BEG
 
+/** @brief Returns g_ha_evp_hashty_strings[hashty] (with error handling) */
+HA_PUBFUN
+const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty);
+
 /**
- * @brief Creates a new EVP hasher.
+ * @brief Getter for ha_evp_hasher ctx_size field
+ * @return Returns ha_evp_hasher->ctx_size
+ */
+HA_PUBFUN
+size_t ha_evp_hasher_ctxsize(struct ha_evp_hasher *hasher);
+
+/**
+ * @brief Getter for ha_evp_hasher ctx_hashty field
+ * @return Returns ha_evp_hasher->hashty
+ */
+HA_PUBFUN
+enum ha_evp_hashty ha_evp_hasher_hashty(struct ha_evp_hasher *hasher);
+
+/**
+ * @brief Getter for ha_evp_hasher ctx_digestlen field
+ * @return Returns ha_evp_hasher->digestlen
+ */
+HA_PUBFUN
+size_t ha_evp_hasher_digestlen(struct ha_evp_hasher *hasher);
+
+/**
+ * @brief Creates a new EVP hasher. ( malloc(g_ha_evp_hasher_size) )
  *
- * This function allocates and initializes a new EVP hasher for a specific
- * hash algorithm. The user must call `ha_evp_hasher_delete()` to free
- * the allocated memory.
+ * This function allocates. The user must call `ha_evp_hasher_delete()`
+ * to free the allocated memory.
  *
  * @return Pointer to the new EVP hasher, or NULL on failure.
  */
