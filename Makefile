@@ -1,12 +1,20 @@
-﻿CC=cc
+﻿include Makefile.config
+
+CC=cc
 LD=$(CC)
 
-OPT=-O3 -march=native
+OPT=-O$(OPT_LEVEL) $(ARCH_FLAGS)
 UTL_OPT=-O2
 
 BASE_CFLAGS=-fPIC
 CFLAGS=$(BASE_CFLAGS) $(OPT)
 UTL_CFALGS=$(BASE_CFLAGS) $(UTL_OPT)
+
+ifeq ($(DEBUG), 1)
+CFLAGS += -g
+endif
+
+CFLAGS+=$(EXTRA_CFLAGS)
 
 LDFLAGS=-shared -lc
 
