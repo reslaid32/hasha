@@ -1,11 +1,12 @@
-#include <hasha/internal/hadefs.h>
+
 #define HA_BUILD
+
+#include "../include/hasha/evp.h"
 
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include "../include/hasha/all.h"
-#include "../include/hasha/evp.h"
 #include "../include/hasha/internal/error.h"
 
 static char *g_ha_evp_error_strings[] = {
