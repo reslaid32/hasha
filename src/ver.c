@@ -2,14 +2,14 @@
 
 #include "../include/hasha/internal/ver.h"
 
-#define mkver(ver, maj, min, pat) \
-  ver.major = maj;                \
-  ver.minor = min;                \
+#define ha_mkver(ver, maj, min, pat) \
+  ver.major = maj;                   \
+  ver.minor = min;                   \
   ver.patch = pat
 
 HA_PUBFUN ha_version_t ha_version(void)
 {
   ha_version_t hashav;
-  mkver(hashav, 2, 1, 6);
+  ha_mkver(hashav, 2, 1, 6);
   return hashav;
 }
