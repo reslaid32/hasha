@@ -127,10 +127,6 @@ enum ha_evp_hashty ha_enum_base(uint8_t)
   HA_EVPTY_SHA3     /**< SHA-3 (standardized version) */
 };
 
-const char *g_ha_evp_hashty_strings[8] = {"blake2b", "blake2s", "blake3",
-                                          "keccak",  "md5",     "sha1",
-                                          "sha2",    "sha3"};
-
 /**
  * @brief Size of the EVP hasher structure.
  */

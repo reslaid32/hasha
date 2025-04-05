@@ -78,6 +78,10 @@ struct ha_evp_hasher
 };
 const size_t g_ha_evp_hasher_size = sizeof(struct ha_evp_hasher);
 
+static const char *g_ha_evp_hashty_strings[8] = {
+    "blake2b", "blake2s", "blake3", "keccak",
+    "md5",     "sha1",    "sha2",   "sha3"};
+
 HA_PUBFUN
 const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty)
 {
