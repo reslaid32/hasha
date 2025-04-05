@@ -38,31 +38,16 @@ HA_PRVFUN void ha_blake2s_compress(ha_blake2s_context *ctx,
 
   for (i = 0; i < 16; i++) m[i] = ((uint32_t *)block)[i];
 
-  for (i = 0; i < 10; i++)
-  {
-#define G(r, i, a, b, c, d)                \
-  a += b + m[blake2s_sigma[r][2 * i + 0]]; \
-  d ^= a;                                  \
-  d = (d >> 16) | (d << 16);               \
-  c += d;                                  \
-  b ^= c;                                  \
-  b = (b >> 12) | (b << 20);               \
-  a += b + m[blake2s_sigma[r][2 * i + 1]]; \
-  d ^= a;                                  \
-  d = (d >> 8) | (d << 24);                \
-  c += d;                                  \
-  b ^= c;                                  \
-  b = (b >> 7) | (b << 25);
-
-    G(i, 0, v[0], v[4], v[8], v[12]);
-    G(i, 1, v[1], v[5], v[9], v[13]);
-    G(i, 2, v[2], v[6], v[10], v[14]);
-    G(i, 3, v[3], v[7], v[11], v[15]);
-    G(i, 4, v[0], v[5], v[10], v[15]);
-    G(i, 5, v[1], v[6], v[11], v[12]);
-    G(i, 6, v[2], v[7], v[8], v[13]);
-    G(i, 7, v[3], v[4], v[9], v[14]);
-  }
+  ha_primitive_blake32_round(blake2s_sigma, 0);
+  ha_primitive_blake32_round(blake2s_sigma, 1);
+  ha_primitive_blake32_round(blake2s_sigma, 2);
+  ha_primitive_blake32_round(blake2s_sigma, 3);
+  ha_primitive_blake32_round(blake2s_sigma, 4);
+  ha_primitive_blake32_round(blake2s_sigma, 5);
+  ha_primitive_blake32_round(blake2s_sigma, 6);
+  ha_primitive_blake32_round(blake2s_sigma, 7);
+  ha_primitive_blake32_round(blake2s_sigma, 8);
+  ha_primitive_blake32_round(blake2s_sigma, 9);
 
   for (i = 0; i < 8; i++) ctx->h[i] ^= v[i] ^ v[i + 8];
 }

@@ -10,6 +10,6 @@
 HA_PUBFUN ha_version_t ha_version(void)
 {
   ha_version_t hashav;
-  mkver(hashav, 2, 1, 5);
+  mkver(hashav, 2, 1, 6);
   return hashav;
 }

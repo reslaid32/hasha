@@ -7,12 +7,12 @@
 #define BLAKE3_FLAG_PARENT (1u << 2)
 #define BLAKE3_FLAG_ROOT (1u << 3)
 
-static const uint32_t BLAKE3_IV[8] = {
+static const uint32_t blake3_iv[8] = {
     0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
     0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
 };
 
-static const uint8_t BLAKE3_PERMUTION[7][16] = {
+static const uint8_t blake3_sigma[7][16] = {
     {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
     {2, 6, 3, 10, 7, 0, 4, 13, 1, 11, 12, 5, 9, 14, 15, 8},
     {3, 4, 10, 12, 13, 2, 7, 14, 6, 5, 9, 0, 11, 15, 8, 1},
@@ -35,50 +35,23 @@ HA_PRVFUN void blake3_compress(uint32_t *outbuf,
                     h[5],
                     h[6],
                     h[7],
-                    BLAKE3_IV[0],
-                    BLAKE3_IV[1],
-                    BLAKE3_IV[2],
-                    BLAKE3_IV[3],
+                    blake3_iv[0],
+                    blake3_iv[1],
+                    blake3_iv[2],
+                    blake3_iv[3],
                     t,
                     t >> 32,
                     b,
                     d};
   uint32_t i;
 
-#define BLAKE3_G(i, j, a, b, c, d)               \
-  a = a + b + m[BLAKE3_PERMUTION[i][j * 2]];     \
-  d = d ^ a;                                     \
-  d = d >> 16 | d << 16;                         \
-  c = c + d;                                     \
-  b = b ^ c;                                     \
-  b = b >> 12 | b << 20;                         \
-  a = a + b + m[BLAKE3_PERMUTION[i][j * 2 + 1]]; \
-  d = d ^ a;                                     \
-  d = d >> 8 | d << 24;                          \
-  c = c + d;                                     \
-  b = b ^ c;                                     \
-  b = b >> 7 | b << 25;
-
-#define BLAKE3_ROUND(i)                    \
-  BLAKE3_G(i, 0, v[0], v[4], v[8], v[12])  \
-  BLAKE3_G(i, 1, v[1], v[5], v[9], v[13])  \
-  BLAKE3_G(i, 2, v[2], v[6], v[10], v[14]) \
-  BLAKE3_G(i, 3, v[3], v[7], v[11], v[15]) \
-  BLAKE3_G(i, 4, v[0], v[5], v[10], v[15]) \
-  BLAKE3_G(i, 5, v[1], v[6], v[11], v[12]) \
-  BLAKE3_G(i, 6, v[2], v[7], v[8], v[13])  \
-  BLAKE3_G(i, 7, v[3], v[4], v[9], v[14])
-
-  BLAKE3_ROUND(0)
-  BLAKE3_ROUND(1)
-  BLAKE3_ROUND(2)
-  BLAKE3_ROUND(3)
-  BLAKE3_ROUND(4)
-  BLAKE3_ROUND(5)
-  BLAKE3_ROUND(6)
-
-#undef BLAKE3_G
-#undef BLAKE3_ROUND
+  ha_primitive_blake32_round(blake3_sigma, 0);
+  ha_primitive_blake32_round(blake3_sigma, 1);
+  ha_primitive_blake32_round(blake3_sigma, 2);
+  ha_primitive_blake32_round(blake3_sigma, 3);
+  ha_primitive_blake32_round(blake3_sigma, 4);
+  ha_primitive_blake32_round(blake3_sigma, 5);
+  ha_primitive_blake32_round(blake3_sigma, 6);
 
   if (d & BLAKE3_FLAG_ROOT)
   {
@@ -123,10 +96,10 @@ HA_PRVFUN void blake3_block(ha_blake3_context *ctx,
     for (t = ++ctx->chunk; (t & 1) == 0; t >>= 1)
     {
       cv -= 8;
-      blake3_compress(cv, cv, BLAKE3_IV, 0, 64, BLAKE3_FLAG_PARENT);
+      blake3_compress(cv, cv, blake3_iv, 0, 64, BLAKE3_FLAG_PARENT);
     }
     cv += 8;
-    memcpy(cv, BLAKE3_IV, sizeof(BLAKE3_IV));
+    memcpy(cv, blake3_iv, sizeof(blake3_iv));
   }
   ctx->cv = cv;
 }
@@ -135,7 +108,7 @@ HA_PUBFUN void ha_blake3_init(ha_blake3_context *ctx)
 {
   ctx->bytes = ctx->block = ctx->chunk = 0;
   ctx->cv                              = ctx->cv_buf;
-  memcpy(ctx->cv, BLAKE3_IV, sizeof(BLAKE3_IV));
+  memcpy(ctx->cv, blake3_iv, sizeof(blake3_iv));
 }
 
 HA_PUBFUN void ha_blake3_update(ha_blake3_context *ctx, ha_inbuf_t data,
@@ -181,10 +154,10 @@ HA_PUBFUN void ha_blake3_final(ha_blake3_context *ctx, ha_digest_t digest,
     blake3_compress(cv, m, cv, ctx->chunk, ctx->bytes, f);
     f = BLAKE3_FLAG_PARENT;
     while ((cv -= 8) != ctx->cv_buf)
-      blake3_compress(cv, cv, BLAKE3_IV, 0, 64, f);
+      blake3_compress(cv, cv, blake3_iv, 0, 64, f);
     b  = 64;
     in = cv;
-    cv = (uint32_t *)BLAKE3_IV;
+    cv = (uint32_t *)blake3_iv;
   }
   f |= BLAKE3_FLAG_ROOT;
   for (i = 0; i < length; ++i, ++digest, x >>= 8)

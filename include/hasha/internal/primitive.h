@@ -59,4 +59,48 @@
   (ha_primitive_rotr64(x, 19) ^ ha_primitive_rotr64(x, 61) ^ \
    ha_primitive_shr(x, 6))
 
+#define ha_primitive_blake32_g(sigmatb, r, i, a, b, c, d) \
+  a += b + m[sigmatb[r][2 * i + 0]];                      \
+  d ^= a;                                                 \
+  d = (d >> 16) | (d << 16);                              \
+  c += d;                                                 \
+  b ^= c;                                                 \
+  b = (b >> 12) | (b << 20);                              \
+  a += b + m[sigmatb[r][2 * i + 1]];                      \
+  d ^= a;                                                 \
+  d = (d >> 8) | (d << 24);                               \
+  c += d;                                                 \
+  b ^= c;                                                 \
+  b = (b >> 7) | (b << 25);
+
+#define ha_primitive_blake64_g(sigmatb, r, i, a, b, c, d) \
+  a += b + m[sigmatb[r][2 * i + 0]];                      \
+  d ^= a;                                                 \
+  d = (d >> 32) | (d << 32);                              \
+  c += d;                                                 \
+  b ^= c;                                                 \
+  b = (b >> 24) | (b << 40);                              \
+  a += b + m[sigmatb[r][2 * i + 1]];                      \
+  d ^= a;                                                 \
+  d = (d >> 16) | (d << 48);                              \
+  c += d;                                                 \
+  b ^= c;                                                 \
+  b = (b >> 63) | (b << 1);
+
+#define ha_primitive_blake_round(sigmatb, g, i) \
+  g(sigmatb, i, 0, v[0], v[4], v[8], v[12]);    \
+  g(sigmatb, i, 1, v[1], v[5], v[9], v[13]);    \
+  g(sigmatb, i, 2, v[2], v[6], v[10], v[14]);   \
+  g(sigmatb, i, 3, v[3], v[7], v[11], v[15]);   \
+  g(sigmatb, i, 4, v[0], v[5], v[10], v[15]);   \
+  g(sigmatb, i, 5, v[1], v[6], v[11], v[12]);   \
+  g(sigmatb, i, 6, v[2], v[7], v[8], v[13]);    \
+  g(sigmatb, i, 7, v[3], v[4], v[9], v[14]);
+
+#define ha_primitive_blake32_round(sigmatb, i) \
+  ha_primitive_blake_round(sigmatb, ha_primitive_blake32_g, i)
+
+#define ha_primitive_blake64_round(sigmatb, i) \
+  ha_primitive_blake_round(sigmatb, ha_primitive_blake64_g, i)
+
 #endif /* __HASHA_INTERNAL_PRIMITIVE_H */
