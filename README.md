@@ -82,5 +82,5 @@
    git clone https://github.com/reslaid32/hasha.git
    cd hasha
    mkdir build && cd build
-   cmake ..; cmake --build .; sudo cmake --install . --prefix /usr/
+   cmake .. && cmake --build . && sudo cmake --install . --prefix /usr/
    ```
