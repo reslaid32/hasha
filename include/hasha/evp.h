@@ -237,7 +237,7 @@ HA_PUBFUN void ha_evp_final(struct ha_evp_hasher *hasher,
                             ha_digest_t digest);
 
 /**
- * @brief Computes the EVP hash in a single operation.
+ * @brief Computes the EVP hash in a single (hash) operation.
  * ( like ha_hash(hash, buf, len, digest, opt digestlen) )
  *
  * This function combines initialization, updating, and finalization
@@ -251,6 +251,23 @@ HA_PUBFUN void ha_evp_final(struct ha_evp_hasher *hasher,
  */
 HA_PUBFUN void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
                            size_t len, ha_digest_t digest);
+
+/**
+ * @brief Computes the EVP hash in a init, update, final operation.
+ * ( like ha_ada_hash(hash, buf, len, digest, opt digestlen) )
+ *
+ * This function combines initialization, updating, and finalization
+ * steps into a single call.
+ *
+ * @param hasher Pointer to the EVP hasher.
+ * @param buf Pointer to the input data buffer.
+ * @param len Length of the input data in bytes.
+ * @param digest Pointer to the buffer where the resulting digest will be
+ * stored.
+ */
+HA_PUBFUN
+void ha_evp_digest(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
+                   size_t len, ha_digest_t digest);
 
 HA_EXTERN_C_END
 

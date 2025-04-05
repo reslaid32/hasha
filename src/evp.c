@@ -11,12 +11,14 @@
 static char *ha_evp_error_strings[] = {
 #define ARGUMENT_ERROR 0
     "argument named %s is %s",
-#define EXPECT_ERROR 1
+#define UNEXPECTED_ERROR 1
     "unexpected %s",
 #define BAD_ALLOC_ERROR 2
     "bad alloc %s",
 #define IS_NULL_ERROR 3
     "%s is (null)",
+#define UNEXPECTED_FUN_MOD_ERROR 4
+    "unexpected .%s function modifier",
 };
 
 typedef void (*ha_evp_generic_init_fn)(void *);
@@ -207,7 +209,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
         }
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[EXPECT_ERROR],
+                                ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
@@ -363,7 +365,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
 #endif
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[EXPECT_ERROR],
+                                ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
@@ -444,13 +446,14 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
         }
         default:
           return ha_throw_error(ha_curpos,
-                                ha_evp_error_strings[EXPECT_ERROR],
+                                ha_evp_error_strings[UNEXPECTED_ERROR],
                                 "digest length");
       }
       break;
     }
     default:
-      return ha_throw_error(ha_curpos, ha_evp_error_strings[EXPECT_ERROR],
+      return ha_throw_error(ha_curpos,
+                            ha_evp_error_strings[UNEXPECTED_ERROR],
                             "digest length");
   }
 }
@@ -528,7 +531,8 @@ void ha_evp_init(struct ha_evp_hasher *hasher)
       break;
     default:
       return ha_throw_error(ha_curpos,
-                            "Unexpected .init function modifier");
+                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+                            "init");
   }
 }
 
@@ -576,7 +580,8 @@ void ha_evp_final(struct ha_evp_hasher *hasher, ha_digest_t digest)
       break;
     default:
       return ha_throw_error(ha_curpos,
-                            "Unexpected .final function modifier");
+                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+                            "final");
   }
 }
 
@@ -606,6 +611,16 @@ void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
       break;
     default:
       return ha_throw_error(ha_curpos,
-                            "Unexpected .final function modifier");
+                            ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+                            "hash");
   }
+}
+
+HA_PUBFUN
+void ha_evp_digest(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
+                   size_t len, ha_digest_t digest)
+{
+  ha_evp_init(hasher);
+  ha_evp_update(hasher, buf, len);
+  ha_evp_final(hasher, digest);
 }
