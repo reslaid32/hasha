@@ -135,7 +135,7 @@ extern const size_t ha_evp_hasher_size;
 /**
  * @brief Opaque structure for the EVP hasher state.
  */
-typedef struct ha_evp_hasher ha_evp_hasher_t;
+typedef struct ha_evp_hasher ha_evp_hasher_t, *ha_evp_phasher_t;
 
 HA_EXTERN_C_BEG
 
