@@ -22,7 +22,6 @@
  * further details on the SHA3 standard.
  */
 
-#include <hasha/keccak.h>
 #if !defined(__HASHA_SHA3_H)
 #define __HASHA_SHA3_H
 
