@@ -1,12 +1,11 @@
 
 #define HA_BUILD
 
-#include "../include/hasha/evp.h"
-
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include "../include/hasha/all.h"
+#include "../include/hasha/evp.h"
 #include "../include/hasha/internal/error.h"
 
 static char *g_ha_evp_error_strings[] = {
@@ -28,6 +27,7 @@ static char *g_ha_evp_error_strings[] = {
 
 typedef void (*ha_evp_generic_init_fn)(void *);
 typedef void (*ha_evp_keyed_init_fn)(void *, ha_inbuf_t, size_t);
+typedef void (*ha_evp_keccak_init_fn)(void *, size_t);
 
 typedef void (*ha_evp_update_fn)(void *, ha_inbuf_t, size_t);
 
@@ -37,18 +37,25 @@ typedef void (*ha_evp_flexible_final_fn)(void *, ha_digest_t, size_t);
 typedef void (*ha_evp_generic_hash_fn)(ha_inbuf_t, size_t, ha_digest_t);
 typedef void (*ha_evp_flexible_hash_fn)(ha_inbuf_t, size_t, ha_digest_t,
                                         size_t);
+typedef void (*ha_evp_keccak_hash_fn)(size_t, enum ha_pb, ha_inbuf_t,
+                                      size_t, ha_digest_t, size_t);
 
 enum ha_evp_hasher_fun_mod ha_enum_base(uint8_t)
 {
-  HA_EVPHR_MOD_KEYED    = 0, /* 0-1 for init */
-  HA_EVPHR_MOD_GENERIC  = 1,
-  HA_EVPHR_MOD_FLEXIBLE = 2, /* 1-2 for final */
+  /* unused */
+  HA_EVPHR_MOD_KEYED    = 0, /* 0-2 for init */
+  HA_EVPHR_MOD_KECCAK   = 1,
+  HA_EVPHR_MOD_GENERIC  = 2,
+  HA_EVPHR_MOD_FLEXIBLE = 3, /* 2-3 for final */
 };
 
 struct ha_evp_hasher
 {
   enum ha_evp_hashty hashty;
   size_t digestlen;
+  uint16_t krate; /* keccak rate, may be unused */
+  enum ha_pb kpb; /* keccak pad byte, may be unused */
+  bool kustom;    /* keccak custom */
 
   void *ctx;
   size_t ctx_size;
@@ -58,6 +65,7 @@ struct ha_evp_hasher
   {
     ha_evp_generic_init_fn generic;
     ha_evp_keyed_init_fn keyed;
+    ha_evp_keccak_init_fn keccak;
   } init_fn;
   enum ha_evp_hasher_fun_mod init_fn_mod;
 
@@ -74,6 +82,7 @@ struct ha_evp_hasher
   {
     ha_evp_generic_hash_fn generic;
     ha_evp_flexible_hash_fn flexible;
+    ha_evp_keccak_hash_fn keccak;
   } hash_fn;
   enum ha_evp_hasher_fun_mod hash_fn_mod;
 };
@@ -97,6 +106,31 @@ const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty)
   }
 
   return g_ha_evp_hashty_strings[hashty];
+}
+
+HA_PUBFUN
+void ha_evp_hasher_set_keccak_custom(struct ha_evp_hasher *hasher,
+                                     bool custom)
+{
+  hasher->kustom = custom;
+}
+
+HA_PUBFUN bool ha_evp_hasher_keccak_custom(struct ha_evp_hasher *hasher)
+{
+  return hasher->kustom;
+}
+
+HA_PUBFUN
+void ha_evp_hasher_set_keccak_rate(struct ha_evp_hasher *hasher,
+                                   uint16_t rate)
+{
+  hasher->krate = rate;
+}
+
+HA_PUBFUN
+size_t ha_evp_hasher_keccak_rate(struct ha_evp_hasher *hasher)
+{
+  return hasher->krate;
 }
 
 HA_PUBFUN
@@ -179,6 +213,25 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
     case HA_EVPTY_KECCAK:
     {
       hasher->ctx_size = sizeof(ha_ctx(keccak));
+
+      if (hasher->kustom)
+      {
+        hasher->kpb = HA_PB_KECCAK;
+        hasher->init_fn.keccak =
+            (ha_evp_keccak_init_fn)ha_init_fun(keccak);
+        hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
+
+        hasher->update_fn = (ha_evp_update_fn)ha_update_fun(keccak);
+
+        hasher->final_fn.flexible =
+            (ha_evp_flexible_final_fn)ha_final_fun(keccak);
+        hasher->final_fn_mod = HA_EVPHR_MOD_FLEXIBLE;
+
+        hasher->hash_fn.keccak =
+            (ha_evp_keccak_hash_fn)ha_hash_fun(keccak);
+        hasher->hash_fn_mod = HA_EVPHR_MOD_KECCAK;
+        break;
+      }
 
       switch (hasher->digestlen)
       {
@@ -417,6 +470,25 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
     {
       hasher->ctx_size = sizeof(ha_ctx(sha3));
 
+      if (hasher->kustom)
+      {
+        hasher->kpb = HA_PB_SHA3;
+        hasher->init_fn.keccak =
+            (ha_evp_keccak_init_fn)ha_init_fun(keccak);
+        hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
+
+        hasher->update_fn = (ha_evp_update_fn)ha_update_fun(keccak);
+
+        hasher->final_fn.flexible =
+            (ha_evp_flexible_final_fn)ha_final_fun(keccak);
+        hasher->final_fn_mod = HA_EVPHR_MOD_FLEXIBLE;
+
+        hasher->hash_fn.keccak =
+            (ha_evp_keccak_hash_fn)ha_hash_fun(keccak);
+        hasher->hash_fn_mod = HA_EVPHR_MOD_KECCAK;
+        break;
+      }
+
       switch (hasher->digestlen)
       {
         case 28:
@@ -574,6 +646,9 @@ void ha_evp_init(struct ha_evp_hasher *hasher)
     case HA_EVPHR_MOD_GENERIC:
       hasher->init_fn.generic(hasher->ctx);
       break;
+    case HA_EVPHR_MOD_KECCAK:
+      hasher->init_fn.keccak(hasher->ctx, hasher->krate);
+      break;
     default:
       return ha_throw_error(
           ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
@@ -659,6 +734,10 @@ void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
       break;
     case HA_EVPHR_MOD_FLEXIBLE:
       hasher->hash_fn.flexible(buf, len, digest, hasher->digestlen);
+      break;
+    case HA_EVPHR_MOD_KECCAK:
+      hasher->hash_fn.keccak(hasher->krate, hasher->kpb, buf, len, digest,
+                             hasher->digestlen);
       break;
     default:
       return ha_throw_error(

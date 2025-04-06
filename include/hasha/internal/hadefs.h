@@ -171,4 +171,10 @@ HA_HDR_PUBFUN int __builtin_clzll(unsigned long long x)
 #define ha_enum_base(T)
 #endif
 
+#if !defined(__cplusplus)
+#define ha_register register
+#else
+#define ha_register
+#endif
+
 #endif

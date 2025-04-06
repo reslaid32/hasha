@@ -16,8 +16,8 @@
 #ifndef __HASHA_EVP_H
 #define __HASHA_EVP_H
 
+#include "./internal/hadefs.h"
 #include "./internal/internal.h"
-#include "internal/hadefs.h"
 
 /**
  * @brief Context type for a specific hash algorithm.
@@ -127,6 +127,33 @@ HA_EXTERN_C_BEG
 /** @brief Returns g_ha_evp_hashty_strings[hashty] (with error handling) */
 HA_PUBFUN
 const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty);
+
+/* Used before initialization (ha_evp_setup_hasher) of hasher */
+
+/**
+ * @brief Setter for ha_evp_hasher krate field
+ */
+HA_PUBFUN
+void ha_evp_hasher_set_keccak_rate(struct ha_evp_hasher *hasher,
+                                   uint16_t rate);
+/**
+ * @brief Getter for ha_evp_hasher krate field
+ */
+HA_PUBFUN
+size_t ha_evp_hasher_keccak_rate(struct ha_evp_hasher *hasher);
+
+/**
+ * @brief Setter for ha_evp_hasher kustom field
+ */
+HA_PUBFUN
+void ha_evp_hasher_set_keccak_custom(struct ha_evp_hasher *hasher,
+                                     bool custom);
+
+/**
+ * @brief Getter for ha_evp_hasher kustom field
+ */
+HA_PUBFUN
+bool ha_evp_hasher_keccak_custom(struct ha_evp_hasher *hasher);
 
 /**
  * @brief Getter for ha_evp_hasher ctx_size field

@@ -42,7 +42,7 @@ HA_PRVFUN
 void ha_imp_keccak_final(ha_keccak_context *ctx, uint8_t padbyte,
                          ha_digest_t digest, size_t digestlen)
 {
-  ctx->state[ctx->absorb_index] ^= padbyte;  // Padding
+  ctx->state[ctx->absorb_index] ^= padbyte;
   ctx->state[ctx->rate - 1] ^= 0x80;
   ha_keccakf1600((uint64_t *)ctx->state);
   ctx->squeeze_index = 0;
