@@ -8,7 +8,7 @@
 
 struct ha_opts
 {
-  int noabort;
+  int noabort, debug;
 };
 
 struct ha_opts g_ha_opts = {0};
@@ -32,6 +32,11 @@ int ha_setopt(int opt, ...)
         case HA_OPTID_NOABORT:
         {
           g_ha_opts.noabort = (v != 0);
+          break;
+        }
+        case HA_OPTID_DEBUG:
+        {
+          g_ha_opts.debug = (v != 0);
           break;
         }
         default:
@@ -59,6 +64,11 @@ int ha_getopt(int opt, void *out)
         case HA_OPTID_NOABORT:
         {
           *(int *)out = g_ha_opts.noabort;
+          break;
+        }
+        case HA_OPTID_DEBUG:
+        {
+          *(int *)out = g_ha_opts.debug;
           break;
         }
       }

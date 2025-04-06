@@ -1,11 +1,12 @@
 
 #define HA_BUILD
 
+#include "../include/hasha/evp.h"
+
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include "../include/hasha/all.h"
-#include "../include/hasha/evp.h"
 #include "../include/hasha/internal/error.h"
 
 static char *g_ha_evp_error_strings[] = {
@@ -156,6 +157,122 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
 {
   switch (hasher->hashty)
   {
+    case HA_EVPTY_SHA1:
+    {
+      hasher->ctx_size        = sizeof(ha_ctx(sha1));
+      hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(sha1);
+      hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
+
+      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha1);
+
+      hasher->final_fn.generic =
+          (ha_evp_generic_final_fn)ha_final_fun(sha1);
+      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+      hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(sha1);
+      hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
+      break;
+    }
+    case HA_EVPTY_MD5:
+    {
+      hasher->ctx_size        = sizeof(ha_ctx(md5));
+      hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(md5);
+      hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
+
+      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(md5);
+
+      hasher->final_fn.generic =
+          (ha_evp_generic_final_fn)ha_final_fun(md5);
+      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+      hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(md5);
+      hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
+      break;
+    }
+
+    case HA_EVPTY_SHA2:
+    {
+      switch (hasher->digestlen)
+      {
+        case 28:
+        {
+          hasher->ctx_size = sizeof(ha_ctx(sha2_224));
+          hasher->init_fn.generic =
+              (ha_evp_generic_init_fn)ha_init_fun(sha2_224);
+          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_224);
+
+          hasher->final_fn.generic =
+              (ha_evp_generic_final_fn)ha_final_fun(sha2_224);
+          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->hash_fn.generic =
+              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_224);
+          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
+          break;
+        }
+        case 32:
+        {
+          hasher->ctx_size = sizeof(ha_ctx(sha2_256));
+          hasher->init_fn.generic =
+              (ha_evp_generic_init_fn)ha_init_fun(sha2_256);
+          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_256);
+
+          hasher->final_fn.generic =
+              (ha_evp_generic_final_fn)ha_final_fun(sha2_256);
+          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->hash_fn.generic =
+              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_256);
+          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
+          break;
+        }
+        case 48:
+        {
+          hasher->ctx_size = sizeof(ha_ctx(sha2_384));
+          hasher->init_fn.generic =
+              (ha_evp_generic_init_fn)ha_init_fun(sha2_384);
+          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_384);
+
+          hasher->final_fn.generic =
+              (ha_evp_generic_final_fn)ha_final_fun(sha2_384);
+          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->hash_fn.generic =
+              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_384);
+          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
+          break;
+        }
+        case 64:
+        {
+          hasher->ctx_size = sizeof(ha_ctx(sha2_512));
+          hasher->init_fn.generic =
+              (ha_evp_generic_init_fn)ha_init_fun(sha2_512);
+          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_512);
+
+          hasher->final_fn.generic =
+              (ha_evp_generic_final_fn)ha_final_fun(sha2_512);
+          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+
+          hasher->hash_fn.generic =
+              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_512);
+          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
+          break;
+        }
+        default:
+          return ha_throw_error(ha_curpos,
+                                g_ha_evp_error_strings[UNEXPECTED_ERROR],
+                                "digest length");
+      }
+      break;
+    }
     case HA_EVPTY_BLAKE2B:
     {
       hasher->ctx_size = sizeof(ha_ctx(blake2b));
@@ -303,162 +420,6 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
           hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
           break;
         }
-        default:
-          return ha_throw_error(ha_curpos,
-                                g_ha_evp_error_strings[UNEXPECTED_ERROR],
-                                "digest length");
-      }
-      break;
-    }
-    case HA_EVPTY_SHA1:
-    {
-      hasher->ctx_size        = sizeof(ha_ctx(sha1));
-      hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(sha1);
-      hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
-
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha1);
-
-      hasher->final_fn.generic =
-          (ha_evp_generic_final_fn)ha_final_fun(sha1);
-      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-      hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(sha1);
-      hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
-      break;
-    }
-    case HA_EVPTY_MD5:
-    {
-      hasher->ctx_size        = sizeof(ha_ctx(md5));
-      hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(md5);
-      hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
-
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(md5);
-
-      hasher->final_fn.generic =
-          (ha_evp_generic_final_fn)ha_final_fun(md5);
-      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-      hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(md5);
-      hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
-      break;
-    }
-    case HA_EVPTY_SHA2:
-    {
-      switch (hasher->digestlen)
-      {
-        case 28:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_224));
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_224);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_224);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_224);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_224);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-        case 32:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_256));
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_256);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_256);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_256);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_256);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-        case 48:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_384));
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_384);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_384);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_384);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_384);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-        case 64:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_512));
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_512);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_512);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_512);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_512);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-#if 0
-        case 92:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_512_224));
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_512_224);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn =
-              (ha_evp_update_fn)ha_update_fun(sha2_512_224);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_512_224);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_512_224);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-        case 96:
-        {
-          hasher->ctx_size = sizeof(ha_ctx(sha2_512_256));
-
-          hasher->init_fn.generic =
-              (ha_evp_generic_init_fn)ha_init_fun(sha2_512_256);
-          hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->update_fn =
-              (ha_evp_update_fn)ha_update_fun(sha2_512_256);
-
-          hasher->final_fn.generic =
-              (ha_evp_generic_final_fn)ha_final_fun(sha2_512_256);
-          hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
-
-          hasher->hash_fn.generic =
-              (ha_evp_generic_hash_fn)ha_hash_fun(sha2_512_256);
-          hasher->hash_fn_mod = HA_EVPHR_MOD_GENERIC;
-          break;
-        }
-#endif
         default:
           return ha_throw_error(ha_curpos,
                                 g_ha_evp_error_strings[UNEXPECTED_ERROR],
@@ -640,6 +601,8 @@ void ha_evp_init(struct ha_evp_hasher *hasher)
     return ha_throw_error(ha_curpos,
                           g_ha_evp_error_strings[ARG_VALUE_ERROR],
                           "*hasher", "(null)");
+
+  memset(hasher->ctx, 0, hasher->ctx_size);
 
   switch (hasher->init_fn_mod)
   {

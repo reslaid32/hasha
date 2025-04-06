@@ -9,6 +9,10 @@ void ha_throw(int noabort, const char *func, size_t line, char *level,
               char *fmt, ...);
 
 HA_PUBFUN
+void ha_throwd(int debug, int noabort, const char *func, size_t line,
+               char *level, char *fmt, ...);
+
+HA_PUBFUN
 void ha_throw_fatal(const char *func, size_t line, char *fmt, ...);
 
 HA_PUBFUN
@@ -16,6 +20,13 @@ void ha_throw_error(const char *func, size_t line, char *fmt, ...);
 
 HA_PUBFUN
 void ha_throw_warn(const char *func, size_t line, char *fmt, ...);
+
+#if defined(NDEBUG)
+#define ha_throw_debug(...)
+#else
+HA_PUBFUN
+void ha_throw_debug(const char *func, size_t line, char *fmt, ...);
+#endif
 
 #define ha_curpos __func__, __LINE__
 #define ha_assert(cond, message, ...)                                 \

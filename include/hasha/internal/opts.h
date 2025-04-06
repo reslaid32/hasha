@@ -7,8 +7,10 @@
 #define HA_OPT_TYPE_BOOL 0x01000000
 
 #define HA_OPTID_NOABORT 1
+#define HA_OPTID_DEBUG 2
 
 #define HA_OPT_NOABORT (HA_OPT_TYPE_BOOL | HA_OPTID_NOABORT)
+#define HA_OPT_DEBUG (HA_OPT_TYPE_BOOL | HA_OPTID_DEBUG)
 
 HA_PUBFUN
 int ha_setopt(int opt, ...);
