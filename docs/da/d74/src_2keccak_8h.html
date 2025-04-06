@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.6</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -160,7 +160,7 @@ Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="../../da/d74/src_2keccak_8h_source.html#l00042">42</a> of file <a class="el" href="../../da/d74/src_2keccak_8h_source.html">keccak.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
-<div class="line"><span class="lineno">   45</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ac3a122766ad25adf726b5543779a0f5d">absorb_index</a>] ^= padbyte;  <span class="comment">// Padding</span></div>
+<div class="line"><span class="lineno">   45</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ac3a122766ad25adf726b5543779a0f5d">absorb_index</a>] ^= padbyte;</div>
 <div class="line"><span class="lineno">   46</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#a33232585d869f0647f692a504cbc747e">rate</a> - 1] ^= 0x80;</div>
 <div class="line"><span class="lineno">   47</span>  <a class="code hl_function" href="../../d8/d46/keccakf1600_8h.html#a851b5463a57c0640dcbf748471ffef4e">ha_keccakf1600</a>((uint64_t *)ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>);</div>
 <div class="line"><span class="lineno">   48</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#a06cc03977419f4a1dcf0a68cb51bc077">squeeze_index</a> = 0;</div>

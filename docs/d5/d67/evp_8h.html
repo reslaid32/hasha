@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.6</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -113,8 +113,8 @@ $(function(){initNavTree('d5/d67/evp_8h.html','../../'); initResizable(true); })
 
 <p>Header file for the EVP Hasher abstraction.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">./internal/internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d5/d5e/hadefs_8h_source.html">internal/hadefs.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d5/d5e/hadefs_8h_source.html">./internal/hadefs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">./internal/internal.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for evp.h:</div>
 <div class="dyncontent">
@@ -170,6 +170,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a52c7042efd2b9c549e1820a973959e2b" id="r_a52c7042efd2b9c549e1820a973959e2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a> <a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52c7042efd2b9c549e1820a973959e2b">ha_evp_hashty_tostr</a> (enum ha_evp_hashty hashty)</td></tr>
 <tr class="memdesc:a52c7042efd2b9c549e1820a973959e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns g_ha_evp_hashty_strings[hashty] (with error handling)  <br /></td></tr>
 <tr class="separator:a52c7042efd2b9c549e1820a973959e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcbb567bbe64968ac4e8d221687b784" id="r_a5fcbb567bbe64968ac4e8d221687b784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fcbb567bbe64968ac4e8d221687b784">ha_evp_hasher_set_keccak_rate</a> (struct ha_evp_hasher *hasher, uint16_t rate)</td></tr>
+<tr class="memdesc:a5fcbb567bbe64968ac4e8d221687b784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for ha_evp_hasher krate field.  <br /></td></tr>
+<tr class="separator:a5fcbb567bbe64968ac4e8d221687b784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b97058f73cfa94aee4faaeb3b1b60a" id="r_a42b97058f73cfa94aee4faaeb3b1b60a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42b97058f73cfa94aee4faaeb3b1b60a">ha_evp_hasher_keccak_rate</a> (struct ha_evp_hasher *hasher)</td></tr>
+<tr class="memdesc:a42b97058f73cfa94aee4faaeb3b1b60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for ha_evp_hasher krate field.  <br /></td></tr>
+<tr class="separator:a42b97058f73cfa94aee4faaeb3b1b60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a319065f5126a540526ced2d10d6efb64" id="r_a319065f5126a540526ced2d10d6efb64"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a319065f5126a540526ced2d10d6efb64">ha_evp_hasher_set_keccak_custom</a> (struct ha_evp_hasher *hasher, bool custom)</td></tr>
+<tr class="memdesc:a319065f5126a540526ced2d10d6efb64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for ha_evp_hasher kustom field.  <br /></td></tr>
+<tr class="separator:a319065f5126a540526ced2d10d6efb64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86c7961b9ee2a87cb0f7d3bf531f42a6" id="r_a86c7961b9ee2a87cb0f7d3bf531f42a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86c7961b9ee2a87cb0f7d3bf531f42a6">ha_evp_hasher_keccak_custom</a> (struct ha_evp_hasher *hasher)</td></tr>
+<tr class="memdesc:a86c7961b9ee2a87cb0f7d3bf531f42a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for ha_evp_hasher kustom field.  <br /></td></tr>
+<tr class="separator:a86c7961b9ee2a87cb0f7d3bf531f42a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203bc910eb146d7d3be92bddd7115824" id="r_a203bc910eb146d7d3be92bddd7115824"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a203bc910eb146d7d3be92bddd7115824">ha_evp_hasher_ctxsize</a> (struct ha_evp_hasher *hasher)</td></tr>
 <tr class="memdesc:a203bc910eb146d7d3be92bddd7115824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for ha_evp_hasher ctx_size field.  <br /></td></tr>
 <tr class="separator:a203bc910eb146d7d3be92bddd7115824"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -804,6 +816,44 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a86c7961b9ee2a87cb0f7d3bf531f42a6" name="a86c7961b9ee2a87cb0f7d3bf531f42a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86c7961b9ee2a87cb0f7d3bf531f42a6">&#9670;&#160;</a></span>ha_evp_hasher_keccak_custom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> bool ha_evp_hasher_keccak_custom </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for ha_evp_hasher kustom field. </p>
+
+</div>
+</div>
+<a id="a42b97058f73cfa94aee4faaeb3b1b60a" name="a42b97058f73cfa94aee4faaeb3b1b60a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b97058f73cfa94aee4faaeb3b1b60a">&#9670;&#160;</a></span>ha_evp_hasher_keccak_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t ha_evp_hasher_keccak_rate </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Getter for ha_evp_hasher krate field. </p>
+
+</div>
+</div>
 <a id="aba178e33f54c7beffcf87f2a41325820" name="aba178e33f54c7beffcf87f2a41325820"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba178e33f54c7beffcf87f2a41325820">&#9670;&#160;</a></span>ha_evp_hasher_new()</h2>
 
@@ -859,6 +909,52 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a319065f5126a540526ced2d10d6efb64" name="a319065f5126a540526ced2d10d6efb64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a319065f5126a540526ced2d10d6efb64">&#9670;&#160;</a></span>ha_evp_hasher_set_keccak_custom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void ha_evp_hasher_set_keccak_custom </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>custom</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter for ha_evp_hasher kustom field. </p>
+
+</div>
+</div>
+<a id="a5fcbb567bbe64968ac4e8d221687b784" name="a5fcbb567bbe64968ac4e8d221687b784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fcbb567bbe64968ac4e8d221687b784">&#9670;&#160;</a></span>ha_evp_hasher_set_keccak_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void ha_evp_hasher_set_keccak_rate </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>rate</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter for ha_evp_hasher krate field. </p>
 
 </div>
 </div>

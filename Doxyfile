@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------------
 
 PROJECT_NAME           = "libhasha"
-PROJECT_NUMBER         = "2.1.6"
+PROJECT_NUMBER         = "2.1.7"
 OUTPUT_DIRECTORY       = docs
 CREATE_SUBDIRS         = YES
 OUTPUT_LANGUAGE        = English

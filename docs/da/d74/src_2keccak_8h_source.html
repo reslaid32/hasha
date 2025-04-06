@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.6</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -154,7 +154,7 @@ $(function(){initNavTree('da/d74/src_2keccak_8h_source.html','../../'); initResi
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../da/d74/src_2keccak_8h.html#a98d51b9fd2b18a0cf2996ee3fedb90ab">   42</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d74/src_2keccak_8h.html#a98d51b9fd2b18a0cf2996ee3fedb90ab">ha_imp_keccak_final</a>(<a class="code hl_struct" href="../../df/d3f/structha__keccak__context.html">ha_keccak_context</a> *ctx, uint8_t padbyte,</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                         <a class="code hl_typedef" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest, <span class="keywordtype">size_t</span> digestlen)</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ac3a122766ad25adf726b5543779a0f5d">absorb_index</a>] ^= padbyte;  <span class="comment">// Padding</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ac3a122766ad25adf726b5543779a0f5d">absorb_index</a>] ^= padbyte;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>[ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#a33232585d869f0647f692a504cbc747e">rate</a> - 1] ^= 0x80;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_function" href="../../d8/d46/keccakf1600_8h.html#a851b5463a57c0640dcbf748471ffef4e">ha_keccakf1600</a>((uint64_t *)ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#ad24d25b39884ebc1147e265eefa372ef">state</a>);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  ctx-&gt;<a class="code hl_variable" href="../../df/d3f/structha__keccak__context.html#a06cc03977419f4a1dcf0a68cb51bc077">squeeze_index</a> = 0;</div>

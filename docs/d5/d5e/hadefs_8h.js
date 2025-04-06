@@ -25,6 +25,7 @@ var hadefs_8h =
     [ "ha_in_range", "d5/d5e/hadefs_8h.html#a0a762576c6a4c59d6d4b0dcbd8e6c1cc", null ],
     [ "HA_PRVFUN", "d5/d5e/hadefs_8h.html#a6cbe846f2556a930fe7708c2f3f0d910", null ],
     [ "HA_PUBFUN", "d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8", null ],
+    [ "ha_register", "d5/d5e/hadefs_8h.html#ac326d0cff634aa40b3a54dec2daebde8", null ],
     [ "__builtin_clz", "d5/d5e/hadefs_8h.html#a46c7cf7af7be44cc2cb3109623841442", null ],
     [ "__builtin_clzl", "d5/d5e/hadefs_8h.html#ab9c5259f688ad5c787e606be36465c0d", null ],
     [ "__builtin_clzll", "d5/d5e/hadefs_8h.html#ae28a243f253d476408c9c3d91c2baf30", null ],
