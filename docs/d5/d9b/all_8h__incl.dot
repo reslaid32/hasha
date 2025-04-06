@@ -38,7 +38,7 @@ digraph "include/hasha/all.h"
   Node15 [id="Node000015",label="./crc.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$dc/de6/crc_8h.html",tooltip="Header file for CRC32 checksum calculation."];
   Node15 -> Node4 [id="edge18_Node000015_Node000004",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node16 [id="edge19_Node000001_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node16 [id="Node000016",label="./keccak.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d8/de7/include_2hasha_2keccak_8h.html",tooltip="Header file for Keccak-based hash functions."];
+  Node16 [id="Node000016",label="./keccak.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d6/dd8/keccak_8h.html",tooltip="Header file for Keccak-based hash functions."];
   Node16 -> Node4 [id="edge20_Node000016_Node000004",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node17 [id="edge21_Node000001_Node000017",color="steelblue1",style="solid",tooltip=" "];
   Node17 [id="Node000017",label="./md5.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$da/db0/md5_8h.html",tooltip="Header file for the MD5 cryptographic hash function."];
@@ -51,6 +51,5 @@ digraph "include/hasha/all.h"
   Node19 -> Node4 [id="edge26_Node000019_Node000004",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node20 [id="edge27_Node000001_Node000020",color="steelblue1",style="solid",tooltip=" "];
   Node20 [id="Node000020",label="./sha3.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/dda/sha3_8h.html",tooltip="Header file for SHA3 cryptographic hash functions."];
-  Node20 -> Node16 [id="edge28_Node000020_Node000016",color="steelblue1",style="solid",tooltip=" "];
-  Node20 -> Node4 [id="edge29_Node000020_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node20 -> Node4 [id="edge28_Node000020_Node000004",color="steelblue1",style="solid",tooltip=" "];
 }

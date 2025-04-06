@@ -31,7 +31,7 @@ EXTRACT_ANON_NSPACES   = NO
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 
-INPUT                  = .
+INPUT                  = ./include
 FILE_PATTERNS          = *.h
 RECURSIVE              = YES
 EXCLUDE                =

@@ -10,7 +10,7 @@ var dir_a4a1bd6a6f47eff74681f752ad8bc128 =
     [ "evp.h", "d5/d67/evp_8h.html", "d5/d67/evp_8h" ],
     [ "hasha.h", "d3/df9/hasha_8h.html", null ],
     [ "io.h", "dc/dac/io_8h.html", "dc/dac/io_8h" ],
-    [ "keccak.h", "d8/de7/include_2hasha_2keccak_8h.html", "d8/de7/include_2hasha_2keccak_8h" ],
+    [ "keccak.h", "d6/dd8/keccak_8h.html", "d6/dd8/keccak_8h" ],
     [ "keccakf1600.h", "d8/d46/keccakf1600_8h.html", "d8/d46/keccakf1600_8h" ],
     [ "md5.h", "da/db0/md5_8h.html", "da/db0/md5_8h" ],
     [ "sha1.h", "db/db5/sha1_8h.html", "db/db5/sha1_8h" ],
