@@ -59,5 +59,6 @@ digraph "include/hasha/internal/hadefs.h"
   Node4 -> Node21 [id="edge33_Node000004_Node000021",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node21 [id="Node000021",label="include/hasha/sha3.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d7/dda/sha3_8h.html",tooltip="Header file for SHA3 cryptographic hash functions."];
   Node21 -> Node7 [id="edge34_Node000021_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node14 [id="edge35_Node000001_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge35_Node000001_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge36_Node000001_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
 }

@@ -18,9 +18,9 @@ void ha_basic_throw(FILE *stream, int noabort, const char *func,
                     size_t line, char *level, char *fmt, va_list vargs)
 {
 #ifndef NOTIME
-  time_t rawtime;
+  time_t     rawtime;
   struct tm *timeinfo;
-  char timebuf[80];
+  char       timebuf[80];
 
   time(&rawtime);
   timeinfo = localtime(&rawtime);
@@ -72,7 +72,11 @@ HA_PUBFUN
 void ha_throw_error(const char *func, size_t line, char *fmt, ...)
 {
   int noabort = 0;
+#if 0
   ha_getopt(HA_OPT_NOABORT, &noabort);
+#else
+  noabort = g_ha_opts.noabort;
+#endif
 
   va_list vargs;
   va_start(vargs, fmt);
@@ -93,7 +97,12 @@ HA_PUBFUN
 void ha_throw_debug(const char *func, size_t line, char *fmt, ...)
 {
   int debug = 0;
+#if 0
   ha_getopt(HA_OPT_DEBUG, &debug);
+#else
+  debug = g_ha_opts.debug;
+#endif
+
   if (!debug) return;
   va_list vargs;
   va_start(vargs, fmt);

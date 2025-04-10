@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.8</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.9</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -103,6 +103,7 @@ $(function(){initNavTree('dc/dac/io_8h.html','../../'); initResizable(true); });
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">io.h File Reference</div></div>
 </div><!--header-->
@@ -126,6 +127,11 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="../../dc/dac/io_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ad389e9ada603a1839cd7825b92e7e528" id="r_ad389e9ada603a1839cd7825b92e7e528"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad389e9ada603a1839cd7825b92e7e528">ha_strhash_bound</a>(len)</td></tr>
+<tr class="separator:ad389e9ada603a1839cd7825b92e7e528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a012422efd4f7eba55fd6c8a191968291" id="r_a012422efd4f7eba55fd6c8a191968291"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a> <a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a012422efd4f7eba55fd6c8a191968291">ha_fputhash</a> (FILE *stream, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest, size_t digestlen)</td></tr>
@@ -134,13 +140,119 @@ Functions</h2></td></tr>
 <tr class="memitem:a52e275ac9b413a33f845e6ca407def7a" id="r_a52e275ac9b413a33f845e6ca407def7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52e275ac9b413a33f845e6ca407def7a">ha_puthash</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest, size_t digestlen)</td></tr>
 <tr class="memdesc:a52e275ac9b413a33f845e6ca407def7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs the hash digest to standard output.  <br /></td></tr>
 <tr class="separator:a52e275ac9b413a33f845e6ca407def7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1a80636d5c6217ece088a4ab2bd11be" id="r_ac1a80636d5c6217ece088a4ab2bd11be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1a80636d5c6217ece088a4ab2bd11be">ha_strhash</a> (char *dst, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> src, size_t len)</td></tr>
+<tr class="memdesc:ac1a80636d5c6217ece088a4ab2bd11be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hash digest to a hexadecimal string representation.  <br /></td></tr>
+<tr class="separator:ac1a80636d5c6217ece088a4ab2bd11be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d4938e4094019994c89d94b363466e" id="r_a64d4938e4094019994c89d94b363466e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64d4938e4094019994c89d94b363466e">ha_cmphash</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> lhs, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> rhs, size_t digestlen)</td></tr>
+<tr class="memdesc:a64d4938e4094019994c89d94b363466e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two hash digests byte by byte.  <br /></td></tr>
+<tr class="separator:a64d4938e4094019994c89d94b363466e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52fa4d492c6c9b735d0b56fc8de740da" id="r_a52fa4d492c6c9b735d0b56fc8de740da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52fa4d492c6c9b735d0b56fc8de740da">ha_cmphashstr</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> lhs, const char *rhs, size_t digestlen)</td></tr>
+<tr class="memdesc:a52fa4d492c6c9b735d0b56fc8de740da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares a hash digest with a hexadecimal string representation.  <br /></td></tr>
+<tr class="separator:a52fa4d492c6c9b735d0b56fc8de740da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for I/O operations related to hashing. </p>
 <p>This file defines the API for handling I/O operations with hash digests, including writing digests to a file stream and outputting digests to the standard output. </p>
 
 <p class="definition">Definition in file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ad389e9ada603a1839cd7825b92e7e528" name="ad389e9ada603a1839cd7825b92e7e528"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad389e9ada603a1839cd7825b92e7e528">&#9670;&#160;</a></span>ha_strhash_bound</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ha_strhash_bound</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>len</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">((len) * 2)</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00049">49</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a64d4938e4094019994c89d94b363466e" name="a64d4938e4094019994c89d94b363466e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d4938e4094019994c89d94b363466e">&#9670;&#160;</a></span>ha_cmphash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int ha_cmphash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>digestlen</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compares two hash digests byte by byte. </p>
+<p>This function compares two hash digests (byte arrays) of the same length. It returns <code>0</code> if the digests are equal, and a non-zero value if they are different.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>The first hash digest to compare. </td></tr>
+    <tr><td class="paramname">rhs</td><td>The second hash digest to compare. </td></tr>
+    <tr><td class="paramname">digestlen</td><td>The length of the hash digests. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>0</code> if the digests are equal, or a non-zero value if they are different. </dd></dl>
+
+</div>
+</div>
+<a id="a52fa4d492c6c9b735d0b56fc8de740da" name="a52fa4d492c6c9b735d0b56fc8de740da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52fa4d492c6c9b735d0b56fc8de740da">&#9670;&#160;</a></span>ha_cmphashstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int ha_cmphashstr </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>digestlen</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compares a hash digest with a hexadecimal string representation. </p>
+<p>This function compares a hash digest (byte array) with a hexadecimal string. It first converts the hash digest to its string representation and then compares the resulting string with the given hexadecimal string.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>The hash digest to compare. </td></tr>
+    <tr><td class="paramname">rhs</td><td>The hexadecimal string to compare with. </td></tr>
+    <tr><td class="paramname">digestlen</td><td>The length of the hash digest. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>0</code> if the digest and string are equal, or a non-zero value if they are different. </dd></dl>
+
+</div>
+</div>
 <a id="a012422efd4f7eba55fd6c8a191968291" name="a012422efd4f7eba55fd6c8a191968291"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a012422efd4f7eba55fd6c8a191968291">&#9670;&#160;</a></span>ha_fputhash()</h2>
 
@@ -208,6 +320,44 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bytes written, or 0 on failure. </dd></dl>
+
+</div>
+</div>
+<a id="ac1a80636d5c6217ece088a4ab2bd11be" name="ac1a80636d5c6217ece088a4ab2bd11be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1a80636d5c6217ece088a4ab2bd11be">&#9670;&#160;</a></span>ha_strhash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t ha_strhash </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>len</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a hash digest to a hexadecimal string representation. </p>
+<p>This function converts the given hash digest (byte array) into a hexadecimal string and stores it in the provided <code>dst</code> buffer. Each byte of the digest is converted to a two-character hexadecimal representation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dst</td><td>The destination buffer to store the hexadecimal string. </td></tr>
+    <tr><td class="paramname">src</td><td>The hash digest (byte array) to convert. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of the hash digest. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of characters written to <code>dst</code>. </dd></dl>
 
 </div>
 </div>

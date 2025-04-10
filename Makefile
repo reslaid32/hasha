@@ -6,6 +6,7 @@ LD=$(CC)
 OPT=-O$(OPT_LEVEL) $(ARCH_FLAGS)
 UTL_OPT=-O2
 
+LDFLAGS=-shared
 BASE_CFLAGS=-fPIC
 CFLAGS=$(BASE_CFLAGS) $(OPT)
 UTL_CFALGS=$(BASE_CFLAGS) $(UTL_OPT)
@@ -15,8 +16,7 @@ CFLAGS += -g
 endif
 
 CFLAGS+=$(EXTRA_CFLAGS)
-
-LDFLAGS=-shared -lc
+LDFLAGS+=$(EXTRA_LDLAGS)
 
 CRT=
 UTL_LDFLAGS=$(CRT) -lc
@@ -72,18 +72,18 @@ tests: $(TST_EXEC)
 # tests
 $(OBJ)/%.o: $(TST)/%.c
 	mkdir -p $(OBJ)
-	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@ -g
+	$(CC) -O0 -g -I$(INC) -c $< -o $@
 
 $(TST_EXEC): $(TST_OBJS) $(TARGET)
 	mkdir -p $(BIN)
-	$(LD) $(UTL_LDFLAGS) -o $@ $^ -L$(LIB) -lhasha
+	$(LD) -o $@ $^ -L$(LIB) -lhasha
 
 utils: $(UTL_EXEC)
 
 # utils
 $(UTL_BIN)/%: $(UTL)/%.c $(TARGET)
 	mkdir -p $(UTL_BIN)
-	$(CC) $(UTL_CFLAGS) -I$(INC) -o $@ $< -L$(LIB) -lhasha -g
+	$(CC) $(UTL_CFLAGS) -I$(INC) -o $@ $< -L$(LIB) -lhasha
 
 clean:
 	rm -rf $(BIN) $(LIB)

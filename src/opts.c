@@ -6,11 +6,6 @@
 
 #define HA_OPT_TYPE_MASK 0xFF000000
 
-struct ha_opts
-{
-  int noabort, debug;
-};
-
 struct ha_opts g_ha_opts = {0};
 
 HA_PUBFUN

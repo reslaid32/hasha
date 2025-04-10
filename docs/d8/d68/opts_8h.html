@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.8</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.9</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -103,12 +103,15 @@ $(function(){initNavTree('d8/d68/opts_8h.html','../../'); initResizable(true); }
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">opts.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">./internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d5/d5e/hadefs_8h_source.html">hadefs.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for opts.h:</div>
 <div class="dyncontent">
@@ -117,6 +120,11 @@ Include dependency graph for opts.h:</div>
 </div>
 <p><a href="../../d8/d68/opts_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d9a/structha__opts.html">ha_opts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aa2df35a51017fd9ca7d639d489f0363b" id="r_aa2df35a51017fd9ca7d639d489f0363b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a>&#160;&#160;&#160;0x01000000</td></tr>
@@ -125,6 +133,8 @@ Macros</h2></td></tr>
 <tr class="separator:ac1deac81ecfddd41f65b2c6c34944de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a208c44194016a0eedd6f07dceb0b8295" id="r_a208c44194016a0eedd6f07dceb0b8295"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a208c44194016a0eedd6f07dceb0b8295">HA_OPTID_DEBUG</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a208c44194016a0eedd6f07dceb0b8295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2372aaf4c603f1bce8dcb4e92b31f8ec" id="r_a2372aaf4c603f1bce8dcb4e92b31f8ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2372aaf4c603f1bce8dcb4e92b31f8ec">HA_OPTID_FASTCMP</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a2372aaf4c603f1bce8dcb4e92b31f8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e685bc1ab5babf40d99673768e775f3" id="r_a8e685bc1ab5babf40d99673768e775f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e685bc1ab5babf40d99673768e775f3">HA_OPT_NOABORT</a>&#160;&#160;&#160;(<a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a> | <a class="el" href="#ac1deac81ecfddd41f65b2c6c34944de0">HA_OPTID_NOABORT</a>)</td></tr>
 <tr class="separator:a8e685bc1ab5babf40d99673768e775f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf08203bc6bb10dcd854bd50c22e79ec" id="r_adf08203bc6bb10dcd854bd50c22e79ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf08203bc6bb10dcd854bd50c22e79ec">HA_OPT_DEBUG</a>&#160;&#160;&#160;(<a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a> | <a class="el" href="#a208c44194016a0eedd6f07dceb0b8295">HA_OPTID_DEBUG</a>)</td></tr>
@@ -136,6 +146,11 @@ Functions</h2></td></tr>
 <tr class="separator:a0e758fe36db53e8ddbebc8d4ab9c0858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a826b62b59aa2989f0f608ad71d7f75ce" id="r_a826b62b59aa2989f0f608ad71d7f75ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a826b62b59aa2989f0f608ad71d7f75ce">ha_getopt</a> (int opt, void *out)</td></tr>
 <tr class="separator:a826b62b59aa2989f0f608ad71d7f75ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:adad78b03fc6d831ab70145566f58a564" id="r_adad78b03fc6d831ab70145566f58a564"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="../../d2/d9a/structha__opts.html">ha_opts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adad78b03fc6d831ab70145566f58a564">g_ha_opts</a></td></tr>
+<tr class="separator:adad78b03fc6d831ab70145566f58a564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="adf08203bc6bb10dcd854bd50c22e79ec" name="adf08203bc6bb10dcd854bd50c22e79ec"></a>
@@ -150,7 +165,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00013">13</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00015">15</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -166,7 +181,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00012">12</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00014">14</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -182,7 +197,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00007">7</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00008">8</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -198,7 +213,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00010">10</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00011">11</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+
+</div>
+</div>
+<a id="a2372aaf4c603f1bce8dcb4e92b31f8ec" name="a2372aaf4c603f1bce8dcb4e92b31f8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2372aaf4c603f1bce8dcb4e92b31f8ec">&#9670;&#160;</a></span>HA_OPTID_FASTCMP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HA_OPTID_FASTCMP&#160;&#160;&#160;3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00012">12</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +245,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00009">9</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00010">10</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -257,6 +288,29 @@ Functions</h2></td></tr>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>...</em></span>&#160;)</td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="adad78b03fc6d831ab70145566f58a564" name="adad78b03fc6d831ab70145566f58a564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adad78b03fc6d831ab70145566f58a564">&#9670;&#160;</a></span>g_ha_opts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="../../d2/d9a/structha__opts.html">ha_opts</a> g_ha_opts</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

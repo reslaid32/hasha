@@ -5,6 +5,7 @@ var annotated_dup =
     [ "ha_blake3_context", "d6/d3a/structha__blake3__context.html", "d6/d3a/structha__blake3__context" ],
     [ "ha_keccak_context", "df/d3f/structha__keccak__context.html", "df/d3f/structha__keccak__context" ],
     [ "ha_md5_context", "d7/d73/structha__md5__context.html", "d7/d73/structha__md5__context" ],
+    [ "ha_opts", "d2/d9a/structha__opts.html", "d2/d9a/structha__opts" ],
     [ "ha_sha1_context", "d1/d52/structha__sha1__context.html", "d1/d52/structha__sha1__context" ],
     [ "ha_sha2_224_context", "db/dc6/structha__sha2__224__context.html", "db/dc6/structha__sha2__224__context" ],
     [ "ha_sha2_256_context", "d2/de8/structha__sha2__256__context.html", "d2/de8/structha__sha2__256__context" ],

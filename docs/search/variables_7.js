@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['major_0',['major',['../d4/dcf/structha__version__t.html#af4000adf325c8b5aa98865789cd6b44f',1,'ha_version_t']]],
-  ['minor_1',['minor',['../d4/dcf/structha__version__t.html#afa8497cee93456e97d6a57c670862304',1,'ha_version_t']]]
+  ['input_0',['input',['../d6/d3a/structha__blake3__context.html#aa0a69795c13b4e6f1d68ee28f96aaa61',1,'ha_blake3_context']]]
 ];
