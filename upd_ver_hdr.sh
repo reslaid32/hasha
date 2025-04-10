@@ -14,5 +14,7 @@ echo "#define __hasha_string_version \"$pkgver\"" >> ./src/ver.h
 echo "#endif" >> ./src/ver.h
 
 sed -i "s/^PROJECT_NUMBER *=.*/PROJECT_NUMBER         = \"$pkgver\"/" Doxyfile
+
+rm -rf docs
 doxygen Doxyfile
 

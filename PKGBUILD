@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('make' 'gcc')
 options=('!debug')
 
-check_before_install=true
+chck=true
 
 build() {
   cd "$srcdir/.."
@@ -22,7 +22,7 @@ build() {
 }
 
 check() {
-  if $check_before_install; then
+  if $chck; then
     cd "$srcdir/.."
     export LD_LIBRARY_PATH="$srcdir/../lib"
     make check
