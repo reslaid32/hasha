@@ -31,10 +31,12 @@ OBJ=$(BIN)/tmp
 TST=tests
 UTL=utils
 
-DESTDIR=/usr/
-BINDIR=$(DESTDIR)/bin
-LIBDIR=$(DESTDIR)/lib
-INCDIR=$(DESTDIR)/include
+DESTDIR ?= /
+PREFIX ?= /usr
+
+BINDIR=$(DESTDIR)$(PREFIX)/bin
+LIBDIR=$(DESTDIR)$(PREFIX)/lib
+INCDIR=$(DESTDIR)$(PREFIX)/include
 
 TARGET=$(LIB)/lib$(LIBNAME).so
 INST_LIB=$(LIBDIR)/lib$(LIBNAME).so
