@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Update version header and run Doxygen",
+      "type": "shell",
+      "command": "./upd_ver_hdr.sh",
+      "group": {
+          "kind": "build",
+          "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Running a script to update the version and generate documentation"
+    }
+  ]
+}
