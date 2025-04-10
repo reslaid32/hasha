@@ -7,6 +7,7 @@ url="https://github.com/reslaid32/hasha.git"
 license=('MIT')
 depends=('glibc')
 makedepends=('make' 'gcc')
+options=('!debug')
 
 check_before_install=true
 
