@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.8</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -123,8 +123,12 @@ Macros</h2></td></tr>
 <tr class="separator:aa2df35a51017fd9ca7d639d489f0363b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1deac81ecfddd41f65b2c6c34944de0" id="r_ac1deac81ecfddd41f65b2c6c34944de0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1deac81ecfddd41f65b2c6c34944de0">HA_OPTID_NOABORT</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:ac1deac81ecfddd41f65b2c6c34944de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a208c44194016a0eedd6f07dceb0b8295" id="r_a208c44194016a0eedd6f07dceb0b8295"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a208c44194016a0eedd6f07dceb0b8295">HA_OPTID_DEBUG</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a208c44194016a0eedd6f07dceb0b8295"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e685bc1ab5babf40d99673768e775f3" id="r_a8e685bc1ab5babf40d99673768e775f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e685bc1ab5babf40d99673768e775f3">HA_OPT_NOABORT</a>&#160;&#160;&#160;(<a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a> | <a class="el" href="#ac1deac81ecfddd41f65b2c6c34944de0">HA_OPTID_NOABORT</a>)</td></tr>
 <tr class="separator:a8e685bc1ab5babf40d99673768e775f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf08203bc6bb10dcd854bd50c22e79ec" id="r_adf08203bc6bb10dcd854bd50c22e79ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf08203bc6bb10dcd854bd50c22e79ec">HA_OPT_DEBUG</a>&#160;&#160;&#160;(<a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a> | <a class="el" href="#a208c44194016a0eedd6f07dceb0b8295">HA_OPTID_DEBUG</a>)</td></tr>
+<tr class="separator:adf08203bc6bb10dcd854bd50c22e79ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -134,6 +138,22 @@ Functions</h2></td></tr>
 <tr class="separator:a826b62b59aa2989f0f608ad71d7f75ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="adf08203bc6bb10dcd854bd50c22e79ec" name="adf08203bc6bb10dcd854bd50c22e79ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf08203bc6bb10dcd854bd50c22e79ec">&#9670;&#160;</a></span>HA_OPT_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HA_OPT_DEBUG&#160;&#160;&#160;(<a class="el" href="#aa2df35a51017fd9ca7d639d489f0363b">HA_OPT_TYPE_BOOL</a> | <a class="el" href="#a208c44194016a0eedd6f07dceb0b8295">HA_OPTID_DEBUG</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00013">13</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+
+</div>
+</div>
 <a id="a8e685bc1ab5babf40d99673768e775f3" name="a8e685bc1ab5babf40d99673768e775f3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e685bc1ab5babf40d99673768e775f3">&#9670;&#160;</a></span>HA_OPT_NOABORT</h2>
 
@@ -146,7 +166,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00011">11</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00012">12</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>
@@ -163,6 +183,22 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00007">7</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
+
+</div>
+</div>
+<a id="a208c44194016a0eedd6f07dceb0b8295" name="a208c44194016a0eedd6f07dceb0b8295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a208c44194016a0eedd6f07dceb0b8295">&#9670;&#160;</a></span>HA_OPTID_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HA_OPTID_DEBUG&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d68/opts_8h_source.html#l00010">10</a> of file <a class="el" href="../../d8/d68/opts_8h_source.html">opts.h</a>.</p>
 
 </div>
 </div>

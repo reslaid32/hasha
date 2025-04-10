@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.8</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -116,29 +116,42 @@ $(function(){initNavTree('da/d41/error_8h_source.html','../../'); initResizable(
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>              <span class="keywordtype">char</span> *fmt, ...);</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a">ha_throw_fatal</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a98877f248dbe51473b25127084801b56">   15</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a98877f248dbe51473b25127084801b56">ha_throw_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987">   18</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987">ha_throw_warn</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a0db7a81e375ce8bce7cccf0254d46476">   20</a></span><span class="preprocessor">#define ha_curpos __func__, __LINE__</span></div>
-<div class="foldopen" id="foldopen00021" data-start="" data-end="">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a85f2edca48dee78a49710dab73285449">   21</a></span><span class="preprocessor">#define ha_assert(cond, message, ...)                                 \</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">  if (!(cond))                                                        \</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">  {                                                                   \</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">    ha_throw_error(ha_curpos, &quot;assertion &quot; #cond &quot; failed: &quot; message, \</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">                   #__VA_ARGS__);                                     \</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">  }</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#ab63383d2b783f0f4cc8fcefcf1d7e3e2">   12</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#ab63383d2b783f0f4cc8fcefcf1d7e3e2">ha_throwd</a>(<span class="keywordtype">int</span> debug, <span class="keywordtype">int</span> noabort, <span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line,</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>               <span class="keywordtype">char</span> *level, <span class="keywordtype">char</span> *fmt, ...);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a">   16</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a">ha_throw_fatal</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a98877f248dbe51473b25127084801b56">   19</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a98877f248dbe51473b25127084801b56">ha_throw_error</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987">   22</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987">ha_throw_warn</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#if defined(NDEBUG)</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#define ha_throw_debug(...)</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#ae322bd56ec861a1afb1487522b205bec">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d41/error_8h.html#ae322bd56ec861a1afb1487522b205bec">ha_throw_debug</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *func, <span class="keywordtype">size_t</span> line, <span class="keywordtype">char</span> *fmt, ...);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a0db7a81e375ce8bce7cccf0254d46476">   31</a></span><span class="preprocessor">#define ha_curpos __func__, __LINE__</span></div>
+<div class="foldopen" id="foldopen00032" data-start="" data-end="">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../da/d41/error_8h.html#a85f2edca48dee78a49710dab73285449">   32</a></span><span class="preprocessor">#define ha_assert(cond, message, ...)                                 \</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">  if (!(cond))                                                        \</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">  {                                                                   \</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">    ha_throw_error(ha_curpos, &quot;assertion &quot; #cond &quot; failed: &quot; message, \</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">                   #__VA_ARGS__);                                     \</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">  }</span></div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aerror_8h_html_a2fab8b55d39ae88f081d28f37ca0b3d1"><div class="ttname"><a href="../../da/d41/error_8h.html#a2fab8b55d39ae88f081d28f37ca0b3d1">ha_throw</a></div><div class="ttdeci">HA_PUBFUN void ha_throw(int noabort, const char *func, size_t line, char *level, char *fmt,...)</div></div>
 <div class="ttc" id="aerror_8h_html_a63a65d803c4ab2df586a31cde3ac3987"><div class="ttname"><a href="../../da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987">ha_throw_warn</a></div><div class="ttdeci">HA_PUBFUN void ha_throw_warn(const char *func, size_t line, char *fmt,...)</div></div>
 <div class="ttc" id="aerror_8h_html_a884b4df18a08880fec47b0d954057c5a"><div class="ttname"><a href="../../da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a">ha_throw_fatal</a></div><div class="ttdeci">HA_PUBFUN void ha_throw_fatal(const char *func, size_t line, char *fmt,...)</div></div>
 <div class="ttc" id="aerror_8h_html_a98877f248dbe51473b25127084801b56"><div class="ttname"><a href="../../da/d41/error_8h.html#a98877f248dbe51473b25127084801b56">ha_throw_error</a></div><div class="ttdeci">HA_PUBFUN void ha_throw_error(const char *func, size_t line, char *fmt,...)</div></div>
+<div class="ttc" id="aerror_8h_html_ab63383d2b783f0f4cc8fcefcf1d7e3e2"><div class="ttname"><a href="../../da/d41/error_8h.html#ab63383d2b783f0f4cc8fcefcf1d7e3e2">ha_throwd</a></div><div class="ttdeci">HA_PUBFUN void ha_throwd(int debug, int noabort, const char *func, size_t line, char *level, char *fmt,...)</div></div>
+<div class="ttc" id="aerror_8h_html_ae322bd56ec861a1afb1487522b205bec"><div class="ttname"><a href="../../da/d41/error_8h.html#ae322bd56ec861a1afb1487522b205bec">ha_throw_debug</a></div><div class="ttdeci">HA_PUBFUN void ha_throw_debug(const char *func, size_t line, char *fmt,...)</div></div>
 <div class="ttc" id="ahadefs_8h_html_a98ce9ab2f04a86788a9ca32cf4545fb8"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div><div class="ttdeci">#define HA_PUBFUN</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00030">hadefs.h:30</a></div></div>
 <div class="ttc" id="ainternal_8h_html"><div class="ttname"><a href="../../db/dde/internal_8h.html">internal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

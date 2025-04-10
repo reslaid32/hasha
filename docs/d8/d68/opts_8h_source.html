@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.7</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.8</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -114,16 +114,18 @@ $(function(){initNavTree('d8/d68/opts_8h_source.html','../../'); initResizable(t
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#aa2df35a51017fd9ca7d639d489f0363b">    7</a></span><span class="preprocessor">#define HA_OPT_TYPE_BOOL 0x01000000</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#ac1deac81ecfddd41f65b2c6c34944de0">    9</a></span><span class="preprocessor">#define HA_OPTID_NOABORT 1</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a8e685bc1ab5babf40d99673768e775f3">   11</a></span><span class="preprocessor">#define HA_OPT_NOABORT (HA_OPT_TYPE_BOOL | HA_OPTID_NOABORT)</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">   14</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">ha_setopt</a>(<span class="keywordtype">int</span> opt, ...);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a826b62b59aa2989f0f608ad71d7f75ce">   17</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d68/opts_8h.html#a826b62b59aa2989f0f608ad71d7f75ce">ha_getopt</a>(<span class="keywordtype">int</span> opt, <span class="keywordtype">void</span> *out);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a208c44194016a0eedd6f07dceb0b8295">   10</a></span><span class="preprocessor">#define HA_OPTID_DEBUG 2</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a8e685bc1ab5babf40d99673768e775f3">   12</a></span><span class="preprocessor">#define HA_OPT_NOABORT (HA_OPT_TYPE_BOOL | HA_OPTID_NOABORT)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#adf08203bc6bb10dcd854bd50c22e79ec">   13</a></span><span class="preprocessor">#define HA_OPT_DEBUG (HA_OPT_TYPE_BOOL | HA_OPTID_DEBUG)</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">   16</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">ha_setopt</a>(<span class="keywordtype">int</span> opt, ...);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d8/d68/opts_8h.html#a826b62b59aa2989f0f608ad71d7f75ce">   19</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="../../d8/d68/opts_8h.html#a826b62b59aa2989f0f608ad71d7f75ce">ha_getopt</a>(<span class="keywordtype">int</span> opt, <span class="keywordtype">void</span> *out);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="ahadefs_8h_html_a98ce9ab2f04a86788a9ca32cf4545fb8"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div><div class="ttdeci">#define HA_PUBFUN</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00030">hadefs.h:30</a></div></div>
 <div class="ttc" id="ainternal_8h_html"><div class="ttname"><a href="../../db/dde/internal_8h.html">internal.h</a></div></div>
 <div class="ttc" id="aopts_8h_html_a0e758fe36db53e8ddbebc8d4ab9c0858"><div class="ttname"><a href="../../d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">ha_setopt</a></div><div class="ttdeci">HA_PUBFUN int ha_setopt(int opt,...)</div></div>

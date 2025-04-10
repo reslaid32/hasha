@@ -1,5 +1,10 @@
 pkgname=hasha
-pkgver=2.1.8
+
+pkgver=$(cat "VERSION")
+pkgver_maj=$(echo $pkgver | cut -d'.' -f1)
+pkgver_min=$(echo $pkgver | cut -d'.' -f2)
+pkgver_pat=$(echo $pkgver | cut -d'.' -f3)
+
 pkgrel=0
 pkgdesc="Standalone lightweight hashing library"
 arch=('x86_64')
