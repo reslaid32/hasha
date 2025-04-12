@@ -62,3 +62,4 @@ __pycache__
 
 pkg/
 *.tar.zst
+*.core
