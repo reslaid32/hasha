@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rate_0',['rate',['../df/d3f/structha__keccak__context.html#a33232585d869f0647f692a504cbc747e',1,'ha_keccak_context']]],
-  ['references_1',['References',['..//home/reslaidx/GitHub/hasha/include/hasha/keccakf1600.h#autotoc_md1',1,'']]]
+  ['patch_0',['patch',['../d4/dcf/structha__version__t.html#a0a56bc1997cc96129bc5475b5104a8a9',1,'ha_version_t']]],
+  ['primitive_2eh_1',['primitive.h',['../d1/d71/primitive_8h.html',1,'']]]
 ];

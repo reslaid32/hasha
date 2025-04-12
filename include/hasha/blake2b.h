@@ -17,7 +17,7 @@
 /** @def HA_BLAKE2B_BLOCK_SIZE
  *  @brief The size of a BLAKE2B block in bytes.
  */
-#define HA_BLAKE2B_BLOCK_SIZE 128
+#define HA_BLAKE2B_BLOCK_SIZE  128
 
 /** @def HA_BLAKE2B_DIGEST_SIZE
  *  @brief The default output digest size for BLAKE2B (512 bits).
@@ -34,12 +34,12 @@ HA_EXTERN_C_BEG
  */
 typedef struct ha_blake2b_context
 {
-  uint64_t h[8];                      /**< Internal hash state. */
-  uint64_t t[2];                      /**< Message counter. */
-  uint64_t f[2];                      /**< Finalization flags. */
-  uint8_t buf[HA_BLAKE2B_BLOCK_SIZE]; /**< Data buffer. */
-  size_t buflen; /**< Number of bytes currently in the buffer. */
-  size_t outlen; /**< Length of the hash output. */
+  uint64_t h[8];                       /**< Internal hash state. */
+  uint64_t t[2];                       /**< Message counter. */
+  uint64_t f[2];                       /**< Finalization flags. */
+  uint8_t  buf[HA_BLAKE2B_BLOCK_SIZE]; /**< Data buffer. */
+  size_t   buflen; /**< Number of bytes currently in the buffer. */
+  size_t   outlen; /**< Length of the hash output. */
 } ha_blake2b_context;
 
 /**

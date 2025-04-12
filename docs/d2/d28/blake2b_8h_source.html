@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.9</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.10</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -112,7 +112,7 @@ $(function(){initNavTree('d2/d28/blake2b_8h_source.html','../../'); initResizabl
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/dde/internal_8h.html">internal/internal.h</a>&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d2/d28/blake2b_8h.html#a8fd0973ee8017d89a6a5285922401e75">   20</a></span><span class="preprocessor">#define HA_BLAKE2B_BLOCK_SIZE 128</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d2/d28/blake2b_8h.html#a8fd0973ee8017d89a6a5285922401e75">   20</a></span><span class="preprocessor">#define HA_BLAKE2B_BLOCK_SIZE  128</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d2/d28/blake2b_8h.html#a1de0893294effcbc087b8130c2e3e8e0">   25</a></span><span class="preprocessor">#define HA_BLAKE2B_DIGEST_SIZE ha_bB(512)</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
@@ -121,12 +121,12 @@ $(function(){initNavTree('d2/d28/blake2b_8h_source.html','../../'); initResizabl
 <div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html">   35</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="../../dc/d9c/structha__blake2b__context.html">ha_blake2b_context</a></div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a56c55ff79968b18337d14aa211b3e5be">   37</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a56c55ff79968b18337d14aa211b3e5be">h</a>[8];                      </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#aee431357427bfb42db6ae3e503a7516c">   38</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#aee431357427bfb42db6ae3e503a7516c">t</a>[2];                      </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a3dc3dbc9fb6cd1e3540e514d6ba4872a">   39</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a3dc3dbc9fb6cd1e3540e514d6ba4872a">f</a>[2];                      </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a76754b2f8c244a076d9a8878f5b946b9">   40</a></span>  uint8_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a76754b2f8c244a076d9a8878f5b946b9">buf</a>[<a class="code hl_define" href="../../d2/d28/blake2b_8h.html#a8fd0973ee8017d89a6a5285922401e75">HA_BLAKE2B_BLOCK_SIZE</a>]; </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a37eaab7776d3da5700fb1472dbd05495">   41</a></span>  <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a37eaab7776d3da5700fb1472dbd05495">buflen</a>; </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a11629c238f98b182ee880bf20c186b94">   42</a></span>  <span class="keywordtype">size_t</span> <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a11629c238f98b182ee880bf20c186b94">outlen</a>; </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a56c55ff79968b18337d14aa211b3e5be">   37</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a56c55ff79968b18337d14aa211b3e5be">h</a>[8];                       </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#aee431357427bfb42db6ae3e503a7516c">   38</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#aee431357427bfb42db6ae3e503a7516c">t</a>[2];                       </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a3dc3dbc9fb6cd1e3540e514d6ba4872a">   39</a></span>  uint64_t <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a3dc3dbc9fb6cd1e3540e514d6ba4872a">f</a>[2];                       </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a76754b2f8c244a076d9a8878f5b946b9">   40</a></span>  uint8_t  <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a76754b2f8c244a076d9a8878f5b946b9">buf</a>[<a class="code hl_define" href="../../d2/d28/blake2b_8h.html#a8fd0973ee8017d89a6a5285922401e75">HA_BLAKE2B_BLOCK_SIZE</a>]; </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a37eaab7776d3da5700fb1472dbd05495">   41</a></span>  <span class="keywordtype">size_t</span>   <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a37eaab7776d3da5700fb1472dbd05495">buflen</a>; </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../dc/d9c/structha__blake2b__context.html#a11629c238f98b182ee880bf20c186b94">   42</a></span>  <span class="keywordtype">size_t</span>   <a class="code hl_variable" href="../../dc/d9c/structha__blake2b__context.html#a11629c238f98b182ee880bf20c186b94">outlen</a>; </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d2/d28/blake2b_8h.html#a3b0ecbb0fd94597ab6b1b58d81c69a9f">   43</a></span>} <a class="code hl_struct" href="../../dc/d9c/structha__blake2b__context.html">ha_blake2b_context</a>;</div>
 </div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>

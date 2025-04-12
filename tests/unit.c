@@ -15,7 +15,7 @@ static int         debug = 0;
 #define __fprintf(expr, stream, ...)                                      \
   if (expr) { fprintf(stream, ##__VA_ARGS__); }
 
-void rununit_0()
+void unit_0()
 {
   if (!input_len) input_len = strlen(input);
   {
@@ -353,11 +353,17 @@ void rununit_0()
   }
 }
 
-void rununit_1()
+void unit_1()
 {
   if (!input_len) input_len = strlen(input);
 
-  uint8_t         *digest = malloc(1024);
+  size_t digest_maxsize = 1024;
+
+#ifdef DIGEST_IN_HEAP
+  uint8_t *digest = malloc(digest_maxsize);
+#else
+  uint8_t digest[digest_maxsize];
+#endif
 
   ha_evp_phasher_t hasher = ha_evp_hasher_new();
 
@@ -677,15 +683,24 @@ void rununit_1()
 
   ha_evp_hasher_delete(hasher);
 
+#ifdef DIGEST_IN_HEAP
   free(digest);
+#endif
+
   return;
 }
 
-void rununit_2()
+void unit_2()
 {
   if (!input_len) input_len = strlen(input);
 
-  uint8_t         *digest = malloc(1024);
+  size_t digest_maxsize = 1024;
+
+#ifdef DIGEST_IN_HEAP
+  uint8_t *digest = malloc(digest_maxsize);
+#else
+  uint8_t digest[digest_maxsize];
+#endif
 
   ha_evp_phasher_t hasher = ha_evp_hasher_new();
 
@@ -1005,22 +1020,25 @@ void rununit_2()
 
   ha_evp_hasher_delete(hasher);
 
+#ifdef DIGEST_IN_HEAP
   free(digest);
+#endif
+
   return;
 }
 
 void rununit()
 {
   __fprintf(debug, stdout, "\n--- no evp\n");
-  rununit_0();
+  unit_0();
   __fprintf(debug, stdout, "\n--- evp [  ha_evp_hash]:\n");
-  rununit_1();
+  unit_1();
   __fprintf(debug, stdout, "\n--- evp [ha_evp_digest]:\n");
-  rununit_2();
+  unit_2();
   __fprintf(debug, stdout, "\n");
 }
 
-int main(int argc, char **argv)
+int unit(int argc, char **argv)
 {
   struct option long_options[] = {
       {"verbose", no_argument, NULL, 'v'},

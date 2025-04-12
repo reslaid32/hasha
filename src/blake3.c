@@ -3,9 +3,9 @@
 #include "../include/hasha/blake3.h"
 
 #define BLAKE3_FLAG_CHUNK_START (1u << 0)
-#define BLAKE3_FLAG_CHUNK_END (1u << 1)
-#define BLAKE3_FLAG_PARENT (1u << 2)
-#define BLAKE3_FLAG_ROOT (1u << 3)
+#define BLAKE3_FLAG_CHUNK_END   (1u << 1)
+#define BLAKE3_FLAG_PARENT      (1u << 2)
+#define BLAKE3_FLAG_ROOT        (1u << 3)
 
 static const uint32_t blake3_iv[8] = {
     0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a,
@@ -13,16 +13,16 @@ static const uint32_t blake3_iv[8] = {
 };
 
 static const uint8_t blake3_sigma[7][16] = {
-    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
-    {2, 6, 3, 10, 7, 0, 4, 13, 1, 11, 12, 5, 9, 14, 15, 8},
-    {3, 4, 10, 12, 13, 2, 7, 14, 6, 5, 9, 0, 11, 15, 8, 1},
-    {10, 7, 12, 9, 14, 3, 13, 15, 4, 0, 11, 2, 5, 8, 1, 6},
-    {12, 13, 9, 11, 15, 10, 14, 8, 7, 2, 5, 3, 0, 1, 6, 4},
-    {9, 14, 11, 5, 8, 12, 15, 1, 13, 3, 0, 10, 2, 6, 4, 7},
-    {11, 15, 5, 0, 1, 9, 8, 6, 14, 10, 2, 12, 3, 4, 7, 13},
+    { 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15},
+    { 2,  6,  3, 10,  7,  0,  4, 13,  1, 11, 12,  5,  9, 14, 15,  8},
+    { 3,  4, 10, 12, 13,  2,  7, 14,  6,  5,  9,  0, 11, 15,  8,  1},
+    {10,  7, 12,  9, 14,  3, 13, 15,  4,  0, 11,  2,  5,  8,  1,  6},
+    {12, 13,  9, 11, 15, 10, 14,  8,  7,  2,  5,  3,  0,  1,  6,  4},
+    { 9, 14, 11,  5,  8, 12, 15,  1, 13,  3,  0, 10,  2,  6,  4,  7},
+    {11, 15,  5,  0,  1,  9,  8,  6, 14, 10,  2, 12,  3,  4,  7, 13},
 };
 
-HA_PRVFUN void blake3_compress(uint32_t *outbuf,
+HA_PRVFUN void blake3_compress(uint32_t      *outbuf,
                                const uint32_t m[static 16],
                                const uint32_t h[static 8], uint64_t t,
                                uint32_t b, uint32_t d)
@@ -54,13 +54,11 @@ HA_PRVFUN void blake3_compress(uint32_t *outbuf,
   ha_primitive_blake32_round(blake3_sigma, 6);
 
   if (d & BLAKE3_FLAG_ROOT)
-  {
     for (i = 8; i < 16; ++i) outbuf[i] = v[i] ^ h[i - 8];
-  }
   for (i = 0; i < 8; ++i) outbuf[i] = v[i] ^ v[i + 8];
 }
 
-HA_PRVFUN void blake3_load(uint32_t d[static 16],
+HA_PRVFUN void blake3_load(uint32_t      d[static 16],
                            const uint8_t s[static 64])
 {
   uint32_t *end;
@@ -72,7 +70,7 @@ HA_PRVFUN void blake3_load(uint32_t d[static 16],
   }
 }
 
-HA_PRVFUN void blake3_block(ha_blake3_context *ctx,
+HA_PRVFUN void blake3_block(ha_blake3_context   *ctx,
                             const unsigned char *buf)
 {
   uint32_t m[16], flags, *cv = ctx->cv;
@@ -115,7 +113,7 @@ HA_PUBFUN void ha_blake3_update(ha_blake3_context *ctx, ha_inbuf_t data,
                                 size_t length)
 {
   const uint8_t *pos = data;
-  size_t n;
+  size_t         n;
 
   if (ctx->bytes)
   {
@@ -137,7 +135,7 @@ HA_PUBFUN void ha_blake3_final(ha_blake3_context *ctx, ha_digest_t digest,
                                size_t length)
 {
   uint32_t f, b, x = 0, *in, *cv, m[16], root[16];
-  size_t i;
+  size_t   i;
 
   cv = ctx->cv;
   memset(ctx->input + ctx->bytes, 0, 64 - ctx->bytes);

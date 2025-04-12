@@ -2,11 +2,11 @@
 
 #include "../include/hasha/internal/opts.h"
 
-#include <stdarg.h>
-
 #define HA_OPT_TYPE_MASK 0xFF000000
 
 struct ha_opts g_ha_opts = {0};
+
+#if 0
 
 HA_PUBFUN
 int ha_setopt(int opt, ...)
@@ -71,3 +71,5 @@ int ha_getopt(int opt, void *out)
 
   return 0;
 }
+
+#endif

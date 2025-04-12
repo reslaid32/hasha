@@ -1,12 +1,12 @@
 
+#include "../include/hasha/internal/internal.h"
+
+#if __HA_FEATURE(EVP)
+
 #define HA_BUILD
 
-#include "../include/hasha/evp.h"
-
-#include <stdbool.h>
-#include <stdlib.h>
-
 #include "../include/hasha/all.h"
+#include "../include/hasha/evp.h"
 #include "../include/hasha/internal/error.h"
 
 static char *g_ha_evp_error_strings[] = {
@@ -53,41 +53,41 @@ enum ha_evp_hasher_fun_mod ha_enum_base(uint8_t)
 struct ha_evp_hasher
 {
   enum ha_evp_hashty hashty;
-  size_t digestlen;
-  uint16_t krate; /* keccak rate, may be unused */
-  enum ha_pb kpb; /* keccak pad byte, may be unused */
-  bool kustom;    /* keccak custom */
+  size_t             digestlen;
+  uint16_t           krate;  /* keccak rate, may be unused */
+  enum ha_pb         kpb;    /* keccak pad byte, may be unused */
+  bool               kustom; /* keccak custom */
 
-  void *ctx;
-  size_t ctx_size;
-  bool ctx_allocated;
+  void              *ctx;
+  size_t             ctx_size;
+  bool               ctx_allocated;
 
   union
   {
     ha_evp_generic_init_fn generic;
-    ha_evp_keyed_init_fn keyed;
-    ha_evp_keccak_init_fn keccak;
+    ha_evp_keyed_init_fn   keyed;
+    ha_evp_keccak_init_fn  keccak;
   } init_fn;
   enum ha_evp_hasher_fun_mod init_fn_mod;
 
-  ha_evp_update_fn update_fn;
+  ha_evp_update_fn           update_fn;
 
   union
   {
-    ha_evp_generic_final_fn generic;
+    ha_evp_generic_final_fn  generic;
     ha_evp_flexible_final_fn flexible;
   } final_fn;
   enum ha_evp_hasher_fun_mod final_fn_mod;
 
   union
   {
-    ha_evp_generic_hash_fn generic;
+    ha_evp_generic_hash_fn  generic;
     ha_evp_flexible_hash_fn flexible;
-    ha_evp_keccak_hash_fn keccak;
+    ha_evp_keccak_hash_fn   keccak;
   } hash_fn;
   enum ha_evp_hasher_fun_mod hash_fn_mod;
 };
-const size_t g_ha_evp_hasher_size = sizeof(struct ha_evp_hasher);
+const size_t       g_ha_evp_hasher_size = sizeof(struct ha_evp_hasher);
 
 static const char *g_ha_evp_hashty_strings[8] = {
     "blake2b", "blake2s", "blake3", "keccak",
@@ -111,7 +111,7 @@ const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty)
 
 HA_PUBFUN
 void ha_evp_hasher_set_keccak_custom(struct ha_evp_hasher *hasher,
-                                     bool custom)
+                                     bool                  custom)
 {
   hasher->kustom = custom;
 }
@@ -123,7 +123,7 @@ HA_PUBFUN bool ha_evp_hasher_keccak_custom(struct ha_evp_hasher *hasher)
 
 HA_PUBFUN
 void ha_evp_hasher_set_keccak_rate(struct ha_evp_hasher *hasher,
-                                   uint16_t rate)
+                                   uint16_t              rate)
 {
   hasher->krate = rate;
 }
@@ -163,11 +163,11 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
       hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(sha1);
       hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
 
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha1);
+      hasher->update_fn       = (ha_evp_update_fn)ha_update_fun(sha1);
 
       hasher->final_fn.generic =
           (ha_evp_generic_final_fn)ha_final_fun(sha1);
-      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+      hasher->final_fn_mod    = HA_EVPHR_MOD_GENERIC;
 
       hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(sha1);
       hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
@@ -179,11 +179,11 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
       hasher->init_fn.generic = (ha_evp_generic_init_fn)ha_init_fun(md5);
       hasher->init_fn_mod     = HA_EVPHR_MOD_GENERIC;
 
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(md5);
+      hasher->update_fn       = (ha_evp_update_fn)ha_update_fun(md5);
 
       hasher->final_fn.generic =
           (ha_evp_generic_final_fn)ha_final_fun(md5);
-      hasher->final_fn_mod = HA_EVPHR_MOD_GENERIC;
+      hasher->final_fn_mod    = HA_EVPHR_MOD_GENERIC;
 
       hasher->hash_fn.generic = (ha_evp_generic_hash_fn)ha_hash_fun(md5);
       hasher->hash_fn_mod     = HA_EVPHR_MOD_GENERIC;
@@ -201,7 +201,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha2_224);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_224);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha2_224);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha2_224);
@@ -219,7 +219,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha2_256);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_256);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha2_256);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha2_256);
@@ -237,7 +237,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha2_384);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_384);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha2_384);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha2_384);
@@ -255,7 +255,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha2_512);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha2_512);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha2_512);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha2_512);
@@ -280,7 +280,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
           (ha_evp_generic_init_fn)ha_init_fun(blake2b);
       hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(blake2b);
+      hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(blake2b);
 
       hasher->final_fn.flexible =
           (ha_evp_flexible_final_fn)ha_final_fun(blake2b);
@@ -298,7 +298,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
           (ha_evp_generic_init_fn)ha_init_fun(blake2s);
       hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(blake2s);
+      hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(blake2s);
 
       hasher->final_fn.flexible =
           (ha_evp_flexible_final_fn)ha_final_fun(blake2s);
@@ -316,7 +316,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
           (ha_evp_generic_init_fn)ha_init_fun(blake3);
       hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-      hasher->update_fn = (ha_evp_update_fn)ha_update_fun(blake3);
+      hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(blake3);
 
       hasher->final_fn.flexible =
           (ha_evp_flexible_final_fn)ha_final_fun(blake3);
@@ -338,7 +338,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
             (ha_evp_keccak_init_fn)ha_init_fun(keccak);
         hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
 
-        hasher->update_fn = (ha_evp_update_fn)ha_update_fun(keccak);
+        hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(keccak);
 
         hasher->final_fn.flexible =
             (ha_evp_flexible_final_fn)ha_final_fun(keccak);
@@ -438,7 +438,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
             (ha_evp_keccak_init_fn)ha_init_fun(keccak);
         hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
 
-        hasher->update_fn = (ha_evp_update_fn)ha_update_fun(keccak);
+        hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(keccak);
 
         hasher->final_fn.flexible =
             (ha_evp_flexible_final_fn)ha_final_fun(keccak);
@@ -458,7 +458,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha3_224);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha3_224);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha3_224);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha3_224);
@@ -475,7 +475,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha3_256);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha3_256);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha3_256);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha3_256);
@@ -492,7 +492,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha3_384);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha3_384);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha3_384);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha3_384);
@@ -509,7 +509,7 @@ void ha_evp_setup_hasher(struct ha_evp_hasher *hasher)
               (ha_evp_generic_init_fn)ha_init_fun(sha3_512);
           hasher->init_fn_mod = HA_EVPHR_MOD_GENERIC;
 
-          hasher->update_fn = (ha_evp_update_fn)ha_update_fun(sha3_512);
+          hasher->update_fn   = (ha_evp_update_fn)ha_update_fun(sha3_512);
 
           hasher->final_fn.generic =
               (ha_evp_generic_final_fn)ha_final_fun(sha3_512);
@@ -561,7 +561,10 @@ struct ha_evp_hasher *ha_evp_hasher_new()
 }
 
 HA_PUBFUN
-void ha_evp_hasher_delete(struct ha_evp_hasher *ptr) { free(ptr); }
+void ha_evp_hasher_delete(struct ha_evp_hasher *ptr)
+{
+  free(ptr);
+}
 
 HA_PUBFUN
 void ha_evp_hasher_init(struct ha_evp_hasher *hasher,
@@ -717,3 +720,5 @@ void ha_evp_digest(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
   ha_evp_update(hasher, buf, len);
   ha_evp_final(hasher, digest);
 }
+
+#endif

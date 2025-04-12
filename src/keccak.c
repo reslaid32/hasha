@@ -39,7 +39,7 @@ HA_PUBFUN void ha_keccak_224_update(ha_keccak_context *ctx,
 }
 
 HA_PUBFUN void ha_keccak_224_final(ha_keccak_context *ctx,
-                                   ha_digest_t digest)
+                                   ha_digest_t        digest)
 {
   ha_imp_keccak_final(ctx, HA_PB_KECCAK, digest,
                       HA_KECCAK_224_DIGEST_SIZE);
@@ -66,7 +66,7 @@ HA_PUBFUN void ha_keccak_256_update(ha_keccak_context *ctx,
 }
 
 HA_PUBFUN void ha_keccak_256_final(ha_keccak_context *ctx,
-                                   ha_digest_t digest)
+                                   ha_digest_t        digest)
 {
   ha_imp_keccak_final(ctx, HA_PB_KECCAK, digest,
                       HA_KECCAK_256_DIGEST_SIZE);
@@ -94,7 +94,7 @@ HA_PUBFUN void ha_keccak_384_update(ha_keccak_context *ctx,
 }
 
 HA_PUBFUN void ha_keccak_384_final(ha_keccak_context *ctx,
-                                   ha_digest_t digest)
+                                   ha_digest_t        digest)
 {
   ha_imp_keccak_final(ctx, HA_PB_KECCAK, digest,
                       HA_KECCAK_384_DIGEST_SIZE);
@@ -122,7 +122,7 @@ HA_PUBFUN void ha_keccak_512_update(ha_keccak_context *ctx,
 }
 
 HA_PUBFUN void ha_keccak_512_final(ha_keccak_context *ctx,
-                                   ha_digest_t digest)
+                                   ha_digest_t        digest)
 {
   ha_imp_keccak_final(ctx, HA_PB_KECCAK, digest,
                       HA_KECCAK_512_DIGEST_SIZE);

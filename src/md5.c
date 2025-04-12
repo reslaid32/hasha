@@ -2,6 +2,8 @@
 
 #include "../include/hasha/md5.h"
 
+#include "./endian.h"
+
 static const uint32_t MD5_T[64] = {
     0xd76aa478, 0xe8c7b756, 0x242070db, 0xc1bdceee, 0xf57c0faf, 0x4787c62a,
     0xa8304613, 0xfd469501, 0x698098d8, 0x8b44f7af, 0xffff5bb1, 0x895cd7be,
@@ -26,11 +28,18 @@ HA_PRVFUN void md5_transform(ha_md5_context *ctx, const uint8_t *block)
   uint32_t a, b, c, d, f, g, temp;
   uint32_t m[16];
 
-  for (int i = 0; i < 16; ++i)
-  {
-    m[i] = (block[i * 4]) | (block[i * 4 + 1] << 8) |
+#ifdef HA_ONLY_LE
+  for (int i = 0; i < 16; i++)
+    m[i] = block[i * 4] | (block[i * 4 + 1] << 8) |
            (block[i * 4 + 2] << 16) | (block[i * 4 + 3] << 24);
+#else
+  for (int i = 0; i < 16; i++)
+  {
+    uint32_t word;
+    memcpy(&word, block + i * 4, 4);
+    m[i] = le32_to_cpu(word);
   }
+#endif
 
   a = ctx->state[0];
   b = ctx->state[1];
@@ -96,13 +105,13 @@ HA_PUBFUN void ha_md5_update(ha_md5_context *ctx, ha_inbuf_t data,
            buffer_space);
     md5_transform(ctx, ctx->buffer);
     data += buffer_space;
-    len -= buffer_space;
+    len  -= buffer_space;
 
     while (len >= HA_MD5_BLOCK_SIZE)
     {
       md5_transform(ctx, data);
       data += HA_MD5_BLOCK_SIZE;
-      len -= HA_MD5_BLOCK_SIZE;
+      len  -= HA_MD5_BLOCK_SIZE;
     }
   }
 
@@ -124,10 +133,17 @@ HA_PUBFUN void ha_md5_final(ha_md5_context *ctx, ha_digest_t digest)
 
   memset(ctx->buffer + buffer_index, 0,
          HA_MD5_BLOCK_SIZE - buffer_index - 8);
+
+#ifdef HA_ONLY_LE
   uint64_t bit_count_le = ctx->bit_count;
   memcpy(ctx->buffer + HA_MD5_BLOCK_SIZE - 8, &bit_count_le, 8);
+#else
+  store_le64(ctx->buffer + HA_MD5_BLOCK_SIZE - 8, ctx->bit_count);
+#endif
+
   md5_transform(ctx, ctx->buffer);
 
+#ifdef HA_ONLY_LE
   for (int i = 0; i < 4; i++)
   {
     digest[i * 4]     = (ctx->state[i]) & 0xFF;
@@ -135,6 +151,9 @@ HA_PUBFUN void ha_md5_final(ha_md5_context *ctx, ha_digest_t digest)
     digest[i * 4 + 2] = (ctx->state[i] >> 16) & 0xFF;
     digest[i * 4 + 3] = (ctx->state[i] >> 24) & 0xFF;
   }
+#else
+  for (int i = 0; i < 4; i++) store_le32(digest + i * 4, ctx->state[i]);
+#endif
 }
 
 HA_PUBFUN void ha_md5_hash(ha_inbuf_t data, size_t len, ha_digest_t digest)

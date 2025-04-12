@@ -37,7 +37,7 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-224, which is 144 bytes.
  */
-#define HA_KECCAK_224_RATE 144
+#define HA_KECCAK_224_RATE        144
 
 /**
  * @def HA_KECCAK_224_DIGEST_SIZE
@@ -55,7 +55,7 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-256, which is 136 bytes.
  */
-#define HA_KECCAK_256_RATE 136
+#define HA_KECCAK_256_RATE        136
 
 /**
  * @def HA_KECCAK_256_DIGEST_SIZE
@@ -73,7 +73,7 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-384, which is 104 bytes.
  */
-#define HA_KECCAK_384_RATE 104
+#define HA_KECCAK_384_RATE        104
 
 /**
  * @def HA_KECCAK_384_DIGEST_SIZE
@@ -91,7 +91,7 @@
  * This defines the rate (number of bits processed per round) for
  * Keccak-512, which is 72 bytes.
  */
-#define HA_KECCAK_512_RATE 72
+#define HA_KECCAK_512_RATE        72
 
 /**
  * @def HA_KECCAK_512_DIGEST_SIZE
@@ -135,7 +135,7 @@ typedef struct ha_keccak_context
    * This value indicates the rate of the Keccak hash function for the
    * specific variant (e.g., 136 for Keccak-256).
    */
-  size_t rate;
+  size_t  rate;
 
   /**
    * @brief The capacity (remaining bits).
@@ -143,7 +143,7 @@ typedef struct ha_keccak_context
    * This value holds the capacity of the Keccak function, which defines
    * the number of bits used to absorb the input data.
    */
-  size_t capacity;
+  size_t  capacity;
 
   /**
    * @brief The current index for absorbing data.
@@ -151,7 +151,7 @@ typedef struct ha_keccak_context
    * This index keeps track of how much data has been absorbed in the
    * current round.
    */
-  size_t absorb_index;
+  size_t  absorb_index;
 
   /**
    * @brief The current index for squeezing data.
@@ -159,7 +159,7 @@ typedef struct ha_keccak_context
    * This index keeps track of how much data has been squeezed and output
    * in the current round.
    */
-  size_t squeeze_index;
+  size_t  squeeze_index;
 } ha_keccak_context;
 
 /**
@@ -255,7 +255,7 @@ HA_PUBFUN void ha_keccak_224_update(ha_keccak_224_context *ctx,
  * @param ctx Pointer to the Keccak-224 context.
  */
 HA_PUBFUN void ha_keccak_224_final(ha_keccak_224_context *ctx,
-                                   ha_digest_t digest);
+                                   ha_digest_t            digest);
 
 /**
  * @brief Computes the Keccak-224 hash in a single operation.
@@ -301,7 +301,7 @@ HA_PUBFUN void ha_keccak_256_update(ha_keccak_256_context *ctx,
  * @param ctx Pointer to the Keccak-256 context.
  */
 HA_PUBFUN void ha_keccak_256_final(ha_keccak_256_context *ctx,
-                                   ha_digest_t digest);
+                                   ha_digest_t            digest);
 
 /**
  * @brief Computes the Keccak-256 hash in a single operation.
@@ -339,7 +339,7 @@ HA_PUBFUN void ha_keccak_384_update(ha_keccak_384_context *ctx,
  * absorbed.
  */
 HA_PUBFUN void ha_keccak_384_final(ha_keccak_384_context *ctx,
-                                   ha_digest_t digest);
+                                   ha_digest_t            digest);
 
 /**
  * @brief Computes the Keccak-384 hash in a single operation.
@@ -372,7 +372,7 @@ HA_PUBFUN void ha_keccak_512_update(ha_keccak_512_context *ctx,
  * absorbed.
  */
 HA_PUBFUN void ha_keccak_512_final(ha_keccak_512_context *ctx,
-                                   ha_digest_t digest);
+                                   ha_digest_t            digest);
 
 /**
  * @brief Computes the Keccak-512 hash in a single operation.

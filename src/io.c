@@ -1,12 +1,10 @@
-#define HA_BUILD
-
 #include "../include/hasha/io.h"
 
-#include <stdbool.h>
-#include <stdio.h>
+#if (__HA_FEATURE(IO))
+
+#define HA_BUILD
 
 #include "../include/hasha/internal/error.h"
-#include "../include/hasha/internal/internal.h"
 #include "../include/hasha/internal/types.h"
 
 static char *g_ha_io_error_strings[] = {
@@ -45,14 +43,28 @@ size_t ha_puthash(ha_digest_t digest, size_t digestlen)
   return ha_fputhash(stdout, digest, digestlen);
 }
 
+#endif
+
 HA_PUBFUN
 size_t ha_strhash(char *dst, ha_digest_t src, size_t len)
 {
+#if !(__HA_FEATURE(IO))
   if (!dst) return 0;
   size_t written = 0;
   for (size_t i = 0; i < len; ++i)
     written += sprintf(&dst[i * 2], "%02x", src[i]);
   return written;
+#else
+  if (!dst) return 0;
+  static const char hex_digits[] = "0123456789abcdef";
+  for (size_t i = 0; i < len; ++i)
+  {
+    unsigned char byte = src[i];
+    dst[i * 2]         = hex_digits[(byte >> 4) & 0x0F];
+    dst[i * 2 + 1]     = hex_digits[byte & 0x0F];
+  }
+  return len * 2;
+#endif
 }
 
 HA_PUBFUN

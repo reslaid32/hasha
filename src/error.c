@@ -1,16 +1,15 @@
+#include "../include/hasha/internal/internal.h"
+
+#if __HA_FEATURE(IO)
+
 #define HA_BUILD
 
 #include "../include/hasha/internal/error.h"
-
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
 
 #ifndef NOTIME
 #include <time.h>
 #endif
 
-#include "../include/hasha/internal/internal.h"
 #include "../include/hasha/internal/opts.h"
 
 HA_PRVFUN
@@ -109,3 +108,5 @@ void ha_throw_debug(const char *func, size_t line, char *fmt, ...)
   ha_basic_throw(stderr, 1, func, line, "debug", fmt, vargs);
   va_end(vargs);
 }
+
+#endif

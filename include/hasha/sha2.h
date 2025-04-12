@@ -31,63 +31,63 @@
  * @brief The block size in bytes for the SHA-2 224-bit algorithm (64
  * bytes).
  */
-#define HA_SHA2_224_BLOCK_SIZE 64
+#define HA_SHA2_224_BLOCK_SIZE      64
 
 /**
  * @def HA_SHA2_224_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 224-bit algorithm (28
  * bytes).
  */
-#define HA_SHA2_224_DIGEST_SIZE ha_bB(224)
+#define HA_SHA2_224_DIGEST_SIZE     ha_bB(224)
 
 /**
  * @def HA_SHA2_256_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 256-bit algorithm (64
  * bytes).
  */
-#define HA_SHA2_256_BLOCK_SIZE 64
+#define HA_SHA2_256_BLOCK_SIZE      64
 
 /**
  * @def HA_SHA2_256_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 256-bit algorithm (32
  * bytes).
  */
-#define HA_SHA2_256_DIGEST_SIZE ha_bB(256)
+#define HA_SHA2_256_DIGEST_SIZE     ha_bB(256)
 
 /**
  * @def HA_SHA2_384_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 384-bit algorithm (128
  * bytes).
  */
-#define HA_SHA2_384_BLOCK_SIZE 128
+#define HA_SHA2_384_BLOCK_SIZE      128
 
 /**
  * @def HA_SHA2_384_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 384-bit algorithm (48
  * bytes).
  */
-#define HA_SHA2_384_DIGEST_SIZE ha_bB(384)
+#define HA_SHA2_384_DIGEST_SIZE     ha_bB(384)
 
 /**
  * @def HA_SHA2_512_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 512-bit algorithm (128
  * bytes).
  */
-#define HA_SHA2_512_BLOCK_SIZE 128
+#define HA_SHA2_512_BLOCK_SIZE      128
 
 /**
  * @def HA_SHA2_512_DIGEST_SIZE
  * @brief The digest size in bytes for the SHA-2 512-bit algorithm (64
  * bytes).
  */
-#define HA_SHA2_512_DIGEST_SIZE ha_bB(512)
+#define HA_SHA2_512_DIGEST_SIZE     ha_bB(512)
 
 /**
  * @def HA_SHA2_512_224_BLOCK_SIZE
  * @brief The block size in bytes for the SHA-2 512-224 algorithm (128
  * bytes).
  */
-#define HA_SHA2_512_224_BLOCK_SIZE 128
+#define HA_SHA2_512_224_BLOCK_SIZE  128
 
 /**
  * @def HA_SHA2_512_224_DIGEST_SIZE
@@ -101,7 +101,7 @@
  * @brief The block size in bytes for the SHA-2 512-256 algorithm (128
  * bytes).
  */
-#define HA_SHA2_512_256_BLOCK_SIZE 128
+#define HA_SHA2_512_256_BLOCK_SIZE  128
 
 /**
  * @def HA_SHA2_512_256_DIGEST_SIZE
@@ -123,9 +123,9 @@ typedef struct ha_sha2_224_context
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
+          bit_count; /**< Bit count representing the total input length. */
   uint8_t buffer[HA_SHA2_224_BLOCK_SIZE]; /**< Buffer used for processing
-                                          data in 512-bit blocks. */
+                                       data in 512-bit blocks. */
 } ha_sha2_224_context;
 
 /**
@@ -139,9 +139,9 @@ typedef struct ha_sha2_256_context
 {
   uint32_t state[8]; /**< Internal state (8 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
+          bit_count; /**< Bit count representing the total input length. */
   uint8_t buffer[HA_SHA2_256_BLOCK_SIZE]; /**< Buffer used for processing
-                                          data in 512-bit blocks. */
+                                       data in 512-bit blocks. */
 } ha_sha2_256_context;
 
 /**
@@ -154,10 +154,10 @@ typedef struct ha_sha2_256_context
 typedef struct ha_sha2_384_context
 {
   uint64_t state[8];     /**< Internal state (8 words). */
-  uint64_t bit_count[2]; /**< Bit count representing the total input length
-                            (2 parts). */
-  uint8_t buffer[HA_SHA2_384_BLOCK_SIZE]; /**< Buffer used for processing
-                                          data in 512-bit blocks. */
+  uint64_t bit_count[2]; /**< Bit count representing the total input
+                            length (2 parts). */
+  uint8_t  buffer[HA_SHA2_384_BLOCK_SIZE]; /**< Buffer used for processing
+                                        data in 512-bit blocks. */
 } ha_sha2_384_context;
 
 /**
@@ -171,9 +171,9 @@ typedef struct ha_sha2_512_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
+          bit_count; /**< Bit count representing the total input length. */
   uint8_t buffer[HA_SHA2_512_BLOCK_SIZE]; /**< Buffer used for processing
-                                          data in 512-bit blocks. */
+                                       data in 512-bit blocks. */
 } ha_sha2_512_context;
 
 /**
@@ -187,7 +187,7 @@ typedef struct ha_sha2_512_224_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
+      bit_count;     /**< Bit count representing the total input length. */
   uint8_t
       buffer[HA_SHA2_512_224_BLOCK_SIZE]; /**< Buffer used for processing
                                           data in 512-bit blocks. */
@@ -204,7 +204,7 @@ typedef struct ha_sha2_512_256_context
 {
   uint64_t state[8]; /**< Internal state (8 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
+      bit_count;     /**< Bit count representing the total input length. */
   uint8_t
       buffer[HA_SHA2_512_256_BLOCK_SIZE]; /**< Buffer used for processing
                                           data in 512-bit blocks. */
@@ -221,7 +221,7 @@ typedef struct ha_sha2_512_256_context
  * @param data Pointer to the input data block (64 bytes).
  */
 HA_PUBFUN void ha_sha2_224_transform(ha_sha2_224_context *ctx,
-                                     ha_inbuf_t data);
+                                     ha_inbuf_t           data);
 
 /**
  * @brief Initializes the SHA-2 224-bit context.
@@ -258,7 +258,7 @@ HA_PUBFUN void ha_sha2_224_update(ha_sha2_224_context *ctx,
  * 224-bit digest (28 bytes).
  */
 HA_PUBFUN void ha_sha2_224_final(ha_sha2_224_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA-2 224-bit hash in a one-shot operation.
@@ -286,7 +286,7 @@ HA_PUBFUN void ha_sha2_224_hash(ha_inbuf_t data, size_t length,
  * @param data Pointer to the input data block (64 bytes).
  */
 HA_PUBFUN void ha_sha2_256_transform(ha_sha2_256_context *ctx,
-                                     ha_inbuf_t data);
+                                     ha_inbuf_t           data);
 
 /**
  * @brief Initializes the SHA-2 256-bit context.
@@ -323,7 +323,7 @@ HA_PUBFUN void ha_sha2_256_update(ha_sha2_256_context *ctx,
  * 256-bit digest (32 bytes).
  */
 HA_PUBFUN void ha_sha2_256_final(ha_sha2_256_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA-2 256-bit hash in a one-shot operation.
@@ -351,7 +351,7 @@ HA_PUBFUN void ha_sha2_256_hash(ha_inbuf_t data, size_t length,
  * @param data Pointer to the input data block (128 bytes).
  */
 HA_PUBFUN void ha_sha2_384_transform(ha_sha2_384_context *ctx,
-                                     ha_inbuf_t data);
+                                     ha_inbuf_t           data);
 
 /**
  * @brief Initializes the SHA-2 384-bit context.
@@ -388,7 +388,7 @@ HA_PUBFUN void ha_sha2_384_update(ha_sha2_384_context *ctx,
  * 384-bit digest (48 bytes).
  */
 HA_PUBFUN void ha_sha2_384_final(ha_sha2_384_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA-2 384-bit hash in a one-shot operation.
@@ -416,7 +416,7 @@ HA_PUBFUN void ha_sha2_384_hash(ha_inbuf_t data, size_t length,
  * @param data Pointer to the input data block (128 bytes).
  */
 HA_PUBFUN void ha_sha2_512_transform(ha_sha2_512_context *ctx,
-                                     ha_inbuf_t data);
+                                     ha_inbuf_t           data);
 
 /**
  * @brief Initializes the SHA-2 512-bit context.
@@ -453,7 +453,7 @@ HA_PUBFUN void ha_sha2_512_update(ha_sha2_512_context *ctx,
  * 512-bit digest (64 bytes).
  */
 HA_PUBFUN void ha_sha2_512_final(ha_sha2_512_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA-2 512-bit hash in a one-shot operation.
@@ -481,7 +481,7 @@ HA_PUBFUN void ha_sha2_512_hash(ha_inbuf_t data, size_t length,
  * @param data Pointer to the input data block (128 bytes).
  */
 HA_PUBFUN void ha_sha2_512_224_transform(ha_sha2_512_224_context *ctx,
-                                         ha_inbuf_t data);
+                                         ha_inbuf_t               data);
 
 /**
  * @brief Initializes the SHA-2 512-224-bit context.
@@ -519,7 +519,7 @@ HA_PUBFUN void ha_sha2_512_224_update(ha_sha2_512_224_context *ctx,
  * 512-224-bit digest (28 bytes).
  */
 HA_PUBFUN void ha_sha2_512_224_final(ha_sha2_512_224_context *ctx,
-                                     ha_digest_t digest);
+                                     ha_digest_t              digest);
 
 /**
  * @brief Computes the SHA-2 512-224-bit hash in a one-shot operation.
@@ -547,7 +547,7 @@ HA_PUBFUN void ha_sha2_512_224_hash(ha_inbuf_t data, size_t length,
  * @param data Pointer to the input data block (128 bytes).
  */
 HA_PUBFUN void ha_sha2_512_256_transform(ha_sha2_512_256_context *ctx,
-                                         ha_inbuf_t data);
+                                         ha_inbuf_t               data);
 
 /**
  * @brief Initializes the SHA-2 512-256-bit context.
@@ -585,7 +585,7 @@ HA_PUBFUN void ha_sha2_512_256_update(ha_sha2_512_256_context *ctx,
  * 512-256-bit digest (32 bytes).
  */
 HA_PUBFUN void ha_sha2_512_256_final(ha_sha2_512_256_context *ctx,
-                                     ha_digest_t digest);
+                                     ha_digest_t              digest);
 
 /**
  * @brief Computes the SHA-2 512-256-bit hash in a one-shot operation.

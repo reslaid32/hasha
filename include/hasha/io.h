@@ -10,12 +10,13 @@
 #ifndef __HASHA_IO_H
 #define __HASHA_IO_H
 
-#include <stdio.h>
-
+#include "./internal/feature.h"
 #include "./internal/hadefs.h"
 #include "./internal/internal.h"
 
 HA_EXTERN_C_BEG
+
+#if __HA_FEATURE(IO)
 
 /**
  * @brief Writes the hash digest to the specified file stream.
@@ -45,6 +46,8 @@ size_t ha_fputhash(FILE *stream, ha_digest_t digest, size_t digestlen);
  */
 HA_PUBFUN
 size_t ha_puthash(ha_digest_t digest, size_t digestlen);
+
+#endif /* __HA_FEATURE(IO) */
 
 #define ha_strhash_bound(len) ((len) * 2)
 

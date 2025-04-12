@@ -4,6 +4,8 @@
 
 #include "./internal.h"
 
+#if __HA_FEATURE(IO)
+
 HA_PUBFUN
 void ha_throw(int noabort, const char *func, size_t line, char *level,
               char *fmt, ...);
@@ -29,11 +31,25 @@ void ha_throw_debug(const char *func, size_t line, char *fmt, ...);
 #endif
 
 #define ha_curpos __func__, __LINE__
-#define ha_assert(cond, message, ...)                                 \
-  if (!(cond))                                                        \
-  {                                                                   \
-    ha_throw_error(ha_curpos, "assertion " #cond " failed: " message, \
-                   #__VA_ARGS__);                                     \
+#define ha_assert(cond, message, ...)                                     \
+  if (!(cond))                                                            \
+  {                                                                       \
+    ha_throw_error(ha_curpos, "assertion " #cond " failed: " message,     \
+                   #__VA_ARGS__);                                         \
   }
+
+#else
+
+#define ha_throw(...)
+#define ha_throwd(...)
+#define ha_throw_fatal(...)
+#define ha_throw_error(...)
+#define ha_throw_error(...)
+#define ha_throw_warn(...)
+#define ha_throw_debug(...)
+#define ha_curpos
+#define ha_assert(...)
+
+#endif
 
 #endif

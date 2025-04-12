@@ -13,7 +13,7 @@
 
 #include "internal/internal.h"
 
-#define HA_BLAKE2S_BLOCK_SIZE 64
+#define HA_BLAKE2S_BLOCK_SIZE  64
 #define HA_BLAKE2S_DIGEST_SIZE ha_bB(256)
 
 HA_EXTERN_C_BEG
@@ -26,9 +26,9 @@ HA_EXTERN_C_BEG
  */
 typedef struct ha_blake2s_context
 {
-  uint32_t h[8]; /**< Internal hash state. */
-  uint32_t t[2]; /**< Message counter. */
-  uint32_t f[2]; /**< Finalization flags. */
+  uint32_t h[8];                  /**< Internal hash state. */
+  uint32_t t[2];                  /**< Message counter. */
+  uint32_t f[2];                  /**< Finalization flags. */
   uint8_t
       buf[HA_BLAKE2S_BLOCK_SIZE]; /**< Buffer for partial input blocks. */
   size_t buflen; /**< Number of bytes currently in the buffer. */

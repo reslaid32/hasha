@@ -16,32 +16,33 @@
 #ifndef __HASHA_EVP_H
 #define __HASHA_EVP_H
 
+#include "./internal/feature.h"
 #include "./internal/hadefs.h"
 #include "./internal/internal.h"
 
 /**
  * @brief Context type for a specific hash algorithm.
  */
-#define ha_ctx(hash) ha_##hash##_context
+#define ha_ctx(hash)        ha_##hash##_context
 
 /**
  * @brief Function macros for initializing, updating, and finalizing
  * hashing operations.
  */
-#define ha_init_fun(hash) ha_##hash##_init
+#define ha_init_fun(hash)   ha_##hash##_init
 #define ha_update_fun(hash) ha_##hash##_update
-#define ha_final_fun(hash) ha_##hash##_final
-#define ha_hash_fun(hash) ha_##hash##_hash
+#define ha_final_fun(hash)  ha_##hash##_final
+#define ha_hash_fun(hash)   ha_##hash##_hash
 
 /**
  * @brief Initializes the hash context for a specific algorithm.
  */
-#define ha_init(hash, ctx) ha_##hash##_init(ctx)
+#define ha_init(hash, ctx)  ha_##hash##_init(ctx)
 
 /**
  * @brief Updates the hash context with more data.
  */
-#define ha_update(hash, ctx, buf, buflen) \
+#define ha_update(hash, ctx, buf, buflen)                                 \
   ha_##hash##_update(ctx, buf, buflen)
 
 /**
@@ -52,19 +53,19 @@
 /**
  * @brief Computes the hash in a single operation.
  */
-#define ha_hash(hash, buf, buflen, digest, ...) \
+#define ha_hash(hash, buf, buflen, digest, ...)                           \
   ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__)
 
 #ifdef HA_ADA
 /**
  * @brief Hashes data in a single operation using ADA-style syntax.
  */
-#define ha_ada_hash(hash, buf, len, digest, ...) \
-  do {                                           \
-    ha_ctx(hash) ctx;                            \
-    ha_init(hash, &ctx);                         \
-    ha_update(hash, &ctx, buf, len);             \
-    ha_final(hash, &ctx, digest, ##__VA_ARGS__); \
+#define ha_ada_hash(hash, buf, len, digest, ...)                          \
+  do {                                                                    \
+    ha_ctx(hash) ctx;                                                     \
+    ha_init(hash, &ctx);                                                  \
+    ha_update(hash, &ctx, buf, len);                                      \
+    ha_final(hash, &ctx, digest, ##__VA_ARGS__);                          \
   } while (0)
 
 /**
@@ -92,6 +93,8 @@
 #endif
 #endif
 
+#if __HA_FEATURE(EVP)
+
 /**
  * @enum ha_evp_hashty
  * @brief Enum for available hash algorithms.
@@ -115,7 +118,7 @@ enum ha_evp_hashty ha_enum_base(uint8_t)
 /**
  * @brief Size of the EVP hasher structure.
  */
-extern const size_t g_ha_evp_hasher_size;
+extern const size_t          g_ha_evp_hasher_size;
 
 /**
  * @brief Opaque structure for the EVP hasher state.
@@ -135,7 +138,7 @@ const char *ha_evp_hashty_tostr(enum ha_evp_hashty hashty);
  */
 HA_PUBFUN
 void ha_evp_hasher_set_keccak_rate(struct ha_evp_hasher *hasher,
-                                   uint16_t rate);
+                                   uint16_t              rate);
 /**
  * @brief Getter for ha_evp_hasher krate field
  */
@@ -147,7 +150,7 @@ size_t ha_evp_hasher_keccak_rate(struct ha_evp_hasher *hasher);
  */
 HA_PUBFUN
 void ha_evp_hasher_set_keccak_custom(struct ha_evp_hasher *hasher,
-                                     bool custom);
+                                     bool                  custom);
 
 /**
  * @brief Getter for ha_evp_hasher kustom field
@@ -208,8 +211,8 @@ HA_PUBFUN void ha_evp_hasher_delete(struct ha_evp_hasher *ptr);
  * @param digestlen The desired digest length, or 0 for the default.
  */
 HA_PUBFUN void ha_evp_hasher_init(struct ha_evp_hasher *hasher,
-                                  enum ha_evp_hashty hashty,
-                                  size_t digestlen);
+                                  enum ha_evp_hashty    hashty,
+                                  size_t                digestlen);
 
 /**
  * @brief Cleans up the internal state of the EVP hasher.
@@ -232,8 +235,8 @@ HA_PUBFUN void ha_evp_hasher_cleanup(struct ha_evp_hasher *hasher);
  * @param digestlen The desired digest length, or 0 for the default.
  */
 HA_PUBFUN void ha_evp_hasher_reinit(struct ha_evp_hasher *hasher,
-                                    enum ha_evp_hashty hashty,
-                                    size_t digestlen);
+                                    enum ha_evp_hashty    hashty,
+                                    size_t                digestlen);
 
 /**
  * @brief Initializes the EVP hash.
@@ -270,7 +273,7 @@ HA_PUBFUN void ha_evp_update(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
  * stored.
  */
 HA_PUBFUN void ha_evp_final(struct ha_evp_hasher *hasher,
-                            ha_digest_t digest);
+                            ha_digest_t           digest);
 
 /**
  * @brief Computes the EVP hash in a single (hash) operation.
@@ -334,9 +337,7 @@ class evp
   {
     hasher_.reset(ha_evp_hasher_new());
     if (!hasher_)
-    {
       throw std::runtime_error("Failed to (re)create EVP hasher");
-    }
   }
 
   /**
@@ -374,10 +375,7 @@ class evp
         digestlen_(digestlen),
         hasher_(ha_evp_hasher_new(), &ha_evp_hasher_delete)
   {
-    if (!hasher_)
-    {
-      throw std::runtime_error("Failed to create EVP hasher");
-    }
+    if (!hasher_) throw std::runtime_error("Failed to create EVP hasher");
     init_hasher();
   }
 
@@ -474,10 +472,10 @@ class evp
   }
 
  private:
-  ha_evp_hashty hashty_; /**< Hash algorithm type */
-  size_t digestlen_;     /**< Digest length */
+  ha_evp_hashty hashty_;    /**< Hash algorithm type */
+  size_t        digestlen_; /**< Digest length */
   std::unique_ptr<ha_evp_hasher_t, decltype(&ha_evp_hasher_delete)>
-      hasher_; /**< EVP hasher instance */
+      hasher_;              /**< EVP hasher instance */
 
   evp(const evp &)            = delete;
   evp &operator=(const evp &) = delete;
@@ -486,5 +484,7 @@ class evp
 }  // namespace ha
 
 #endif
+
+#endif /* __HA_FEATURE(EVP) */
 
 #endif

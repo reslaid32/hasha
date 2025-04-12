@@ -38,7 +38,7 @@ static char *ha_bench_error_strings[] = {
     long long start_us = start.tv_sec * 1000000LL + start.tv_nsec / 1000; \
     long long end_us   = end.tv_sec * 1000000LL + end.tv_nsec / 1000;     \
     long long time_taken_us       = end_us - start_us;                    \
-    double time_taken_s           = (double)time_taken_us / 1000000.0;    \
+    double    time_taken_s        = (double)time_taken_us / 1000000.0;    \
     double avg_time_per_iteration = (double)time_taken_us / (ITERATIONS); \
     printf(                                                               \
         "%s: Total time: %lld us (%lf s), Avg per iteration: %.2f us\n",  \
@@ -118,10 +118,7 @@ HA_PRVFUN void file_bufread(char *content, size_t sz, size_t bufsz,
   {
     if (total_read + to_read > sz) to_read = sz - total_read;
     bytes_read = fread(content + total_read, 1, to_read, file);
-    if (bytes_read == 0)
-    {
-      break;  // End-of-file or read error.
-    }
+    if (bytes_read == 0) break;  // End-of-file or read error.
     total_read += bytes_read;
   }
 
@@ -131,20 +128,21 @@ HA_PRVFUN void file_bufread(char *content, size_t sz, size_t bufsz,
 
 int main(int argc, char *argv[])
 {
-  int iterations        = 1;        // Default iterations
-  const char *input     = "hello";  // Default input string
-  const char *algos     = "all";    // Default: run all algorithms
-  const char *file_path = NULL;     // Default: (null)
-  const char *save_file = NULL;     // Default: (null)
+  int                  iterations = 1;        // Default iterations
+  const char          *input      = "hello";  // Default input string
+  const char          *algos      = "all";  // Default: run all algorithms
+  const char          *file_path  = NULL;   // Default: (null)
+  const char          *save_file  = NULL;   // Default: (null)
 
   static struct option long_options[] = {
       {"iters", required_argument, 0, 't'},
       {"input", required_argument, 0, 'i'},
-      {"file", required_argument, 0, 'f'},
+      { "file", required_argument, 0, 'f'},
       {"algos", required_argument, 0, 'a'},
       {"svres", required_argument, 0, 'r'},
-      {"help", no_argument, 0, 'h'},
-      {0, 0, 0, 0}};
+      { "help",       no_argument, 0, 'h'},
+      {      0,                 0, 0,   0}
+  };
 
   int opt, option_index = 0;
   while ((opt = getopt_long(argc, argv, "t:i:a:h:r:f:", long_options,
@@ -183,9 +181,9 @@ int main(int argc, char *argv[])
     }
   }
 
-  FILE *file;
-  size_t file_size = 0;
-  int file_opened  = 0;
+  FILE  *file;
+  size_t file_size   = 0;
+  int    file_opened = 0;
 
   if (file_path)
   {
@@ -405,7 +403,7 @@ int main(int argc, char *argv[])
       else if (strncmp(token, "blake2s_", 7) == 0)
       {
         char *endptr;
-        long digest_bits = strtol(token + 8, &endptr, 10);
+        long  digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
           ha_throw_error(ha_curpos,
@@ -415,7 +413,7 @@ int main(int argc, char *argv[])
         else
         {
           size_t digest_bytes = ha_bB(digest_bits);
-          char benchname[64];
+          char   benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE2S-%ld",
                    digest_bits);
           BENCHMARK(iterations, benchname, ha_blake2s_hash, result_file,
@@ -427,7 +425,7 @@ int main(int argc, char *argv[])
       else if (strncmp(token, "blake2b_", 7) == 0)
       {
         char *endptr;
-        long digest_bits = strtol(token + 8, &endptr, 10);
+        long  digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
           ha_throw_error(ha_curpos,
@@ -437,7 +435,7 @@ int main(int argc, char *argv[])
         else
         {
           size_t digest_bytes = ha_bB(digest_bits);
-          char benchname[64];
+          char   benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE2B-%ld",
                    digest_bits);
           BENCHMARK(iterations, benchname, ha_blake2b_hash, result_file,
@@ -449,7 +447,7 @@ int main(int argc, char *argv[])
       else if (strncmp(token, "blake3_", 7) == 0)
       {
         char *endptr;
-        long digest_bits = strtol(token + 7, &endptr, 10);
+        long  digest_bits = strtol(token + 7, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
           ha_throw_error(ha_curpos,
@@ -459,7 +457,7 @@ int main(int argc, char *argv[])
         else
         {
           size_t digest_bytes = ha_bB(digest_bits);
-          char benchname[64];
+          char   benchname[64];
           snprintf(benchname, sizeof(benchname), "hasha BLAKE3-%ld",
                    digest_bits);
           BENCHMARK(iterations, benchname, ha_blake3_hash, result_file,
@@ -479,8 +477,8 @@ int main(int argc, char *argv[])
     free(algos_copy);
   }
 
-  if (result_file) { fclose(result_file); }
-  if (file_opened) { free((void *)input); }
+  if (result_file) fclose(result_file);
+  if (file_opened) free((void *)input);
 
   printf("\nBenchmark Complete!\n");
   return 0;

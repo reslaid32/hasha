@@ -2,11 +2,26 @@
 
 #include "../include/hasha/sha1.h"
 
+#include "./endian.h"
+
 HA_PUBFUN void ha_sha1_transform(ha_sha1_context *ctx,
-                                 const uint8_t *block)
+                                 const uint8_t   *block)
 {
   uint32_t w[80];
   uint32_t a, b, c, d, e;
+
+#ifdef HA_ONLY_LE
+  for (int i = 0; i < 16; i++)
+    w[i] = (block[i * 4] << 24) | (block[i * 4 + 1] << 16) |
+           (block[i * 4 + 2] << 8) | block[i * 4 + 3];
+#else
+  for (int i = 0; i < 16; i++)
+  {
+    uint32_t word;
+    memcpy(&word, block + i * 4, 4);
+    w[i] = be32_to_cpu(word);
+  }
+#endif
 
   for (int i = 0; i < 16; i++)
   {
@@ -91,13 +106,13 @@ HA_PUBFUN void ha_sha1_update(ha_sha1_context *ctx, ha_inbuf_t data,
            buffer_space);
     ha_sha1_transform(ctx, ctx->buffer);
     data += buffer_space;
-    len -= buffer_space;
+    len  -= buffer_space;
 
     while (len >= HA_SHA1_BLOCK_SIZE)
     {
       ha_sha1_transform(ctx, data);
       data += HA_SHA1_BLOCK_SIZE;
-      len -= HA_SHA1_BLOCK_SIZE;
+      len  -= HA_SHA1_BLOCK_SIZE;
     }
   }
 
@@ -119,14 +134,21 @@ HA_PUBFUN void ha_sha1_final(ha_sha1_context *ctx, ha_digest_t digest)
 
   memset(ctx->buffer + buffer_index, 0,
          HA_SHA1_BLOCK_SIZE - buffer_index - 8);
+
+#ifdef HA_ONLY_LE
   uint64_t bit_count_be =
       (ctx->bit_count << 56) |
       ((ctx->bit_count & 0x0000FF0000000000ULL) >> 8) |
       ((ctx->bit_count & 0x00FF000000000000ULL) >> 16) |
       ((ctx->bit_count & 0xFF00000000000000ULL) >> 24);
   memcpy(ctx->buffer + HA_SHA1_BLOCK_SIZE - 8, &bit_count_be, 8);
+#else
+  store_be64(ctx->buffer + HA_SHA1_BLOCK_SIZE - 8, ctx->bit_count);
+#endif
+
   ha_sha1_transform(ctx, ctx->buffer);
 
+#ifdef HA_ONLY_LE
   for (int i = 0; i < 5; i++)
   {
     digest[i * 4]     = (ctx->state[i] >> 24) & 0xFF;
@@ -134,6 +156,9 @@ HA_PUBFUN void ha_sha1_final(ha_sha1_context *ctx, ha_digest_t digest)
     digest[i * 4 + 2] = (ctx->state[i] >> 8) & 0xFF;
     digest[i * 4 + 3] = ctx->state[i] & 0xFF;
   }
+#else
+  for (int i = 0; i < 5; i++) store_be32(digest + i * 4, ctx->state[i]);
+#endif
 }
 
 HA_PUBFUN void ha_sha1_hash(ha_inbuf_t data, size_t len,

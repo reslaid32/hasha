@@ -23,7 +23,7 @@ static char *ha_sum_error_strings[] = {
 
 void print_digest(const ha_digest_t digest, size_t size)
 {
-  for (size_t i = 0; i < size; ++i) { printf("%02x", digest[i]); }
+  for (size_t i = 0; i < size; ++i) printf("%02x", digest[i]);
   printf("\n");
 }
 
@@ -143,25 +143,25 @@ void hash_data(const char *algorithm, ha_inbuf_t data, size_t length,
   else if (strncmp(algorithm, "blake2b_", 7) == 0)
   {
     const char *len_str = algorithm + 8;
-    char *end;
-    long len     = strtol(len_str, &end, 10);
-    *digest_size = ha_bB(len);
+    char       *end;
+    long        len = strtol(len_str, &end, 10);
+    *digest_size    = ha_bB(len);
     ha_blake2b_hash(data, length, digest, *digest_size);
   }
   else if (strncmp(algorithm, "blake2s_", 7) == 0)
   {
     const char *len_str = algorithm + 8;
-    char *end;
-    long len     = strtol(len_str, &end, 10);
-    *digest_size = ha_bB(len);
+    char       *end;
+    long        len = strtol(len_str, &end, 10);
+    *digest_size    = ha_bB(len);
     ha_blake2s_hash(data, length, digest, *digest_size);
   }
   else if (strncmp(algorithm, "blake3_", 7) == 0)
   {
     const char *len_str = algorithm + 7;
-    char *end;
-    long len     = strtol(len_str, &end, 10);
-    *digest_size = ha_bB(len);
+    char       *end;
+    long        len = strtol(len_str, &end, 10);
+    *digest_size    = ha_bB(len);
     ha_blake3_hash(data, length, digest, *digest_size);
   }
   else
@@ -177,9 +177,7 @@ int verify_hash(const uint8_t *calculated_digest, size_t digest_size,
 {
   char calculated_hash[2 * digest_size + 1];
   for (size_t i = 0; i < digest_size; ++i)
-  {
     sprintf(&calculated_hash[2 * i], "%02x", calculated_digest[i]);
-  }
 
   int hashmatch = HASH_MATCH_NO;
   if (strcmp(calculated_hash, expected_hash) == 0)
@@ -203,17 +201,14 @@ int main(int argc, char *argv[])
 
   const char *algorithm   = argv[1];
   const char *data_source = argv[2];
-  uint8_t *data           = NULL;
-  size_t length           = 0;
-  uint8_t digest[64];  // Maximum digest size
-  size_t digest_size        = 0;
-  int needFree              = 0;
+  uint8_t    *data        = NULL;
+  size_t      length      = 0;
+  uint8_t     digest[64];  // Maximum digest size
+  size_t      digest_size   = 0;
+  int         needFree      = 0;
   const char *expected_hash = NULL;
 
-  if (argc > 4 && strcmp(argv[4], "-verify") == 0)
-  {
-    expected_hash = argv[5];
-  }
+  if (argc > 4 && strcmp(argv[4], "-verify") == 0) expected_hash = argv[5];
 
   if (strcmp(data_source, "-s") == 0)
   {
@@ -281,7 +276,7 @@ int main(int argc, char *argv[])
       if (length >= capacity)
       {
         capacity *= 2;
-        data = (uint8_t *)realloc(data, capacity);
+        data      = (uint8_t *)realloc(data, capacity);
         if (!data)
         {
           ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
@@ -305,10 +300,12 @@ int main(int argc, char *argv[])
   hash_data(algorithm, data, length, digest, &digest_size);
 
   // Verify hash if necessary
-  if (expected_hash) { verify_hash(digest, digest_size, expected_hash); }
-  else { print_digest(digest, digest_size); }
+  if (expected_hash)
+    verify_hash(digest, digest_size, expected_hash);
+  else
+    print_digest(digest, digest_size);
 
-  if (needFree) { free(data); }
+  if (needFree) free(data);
 
   return EXIT_SUCCESS;
 }

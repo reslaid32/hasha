@@ -3,9 +3,10 @@
 #include "../include/hasha/sha2.h"
 
 #include "../include/hasha/sha2_k.h"
+#include "./endian.h"
 
 HA_PUBFUN void ha_sha2_224_transform(ha_sha2_224_context *ctx,
-                                     const uint8_t *block)
+                                     const uint8_t       *block)
 {
   ha_sha2_256_transform((ha_sha2_256_context *)ctx, block);
 }
@@ -24,7 +25,7 @@ HA_PUBFUN void ha_sha2_224_update(ha_sha2_224_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_224_final(ha_sha2_224_context *ctx,
-                                 ha_digest_t digest)
+                                 ha_digest_t          digest)
 {
   uint8_t full_digest[HA_SHA2_256_DIGEST_SIZE];
   ha_sha2_256_final((ha_sha2_256_context *)ctx, full_digest);
@@ -42,16 +43,26 @@ HA_PUBFUN void ha_sha2_224_hash(ha_inbuf_t data, size_t length,
 }
 
 HA_PUBFUN void ha_sha2_256_transform(ha_sha2_256_context *ctx,
-                                     const uint8_t *block)
+                                     const uint8_t       *block)
 {
   uint32_t W[64];
   uint32_t a, b, c, d, e, f, g, h;
 
+#ifdef HA_ONLY_LE
   for (int t = 0; t < 16; ++t)
   {
     W[t] = (block[t * 4] << 24) | (block[t * 4 + 1] << 16) |
            (block[t * 4 + 2] << 8) | block[t * 4 + 3];
   }
+#else
+  for (int t = 0; t < 16; t++)
+  {
+    uint32_t word;
+    memcpy(&word, block + t * 4, 4);
+    W[t] = be32_to_cpu(word);
+  }
+#endif
+
   for (int t = 16; t < 64; ++t)
   {
     W[t] = ha_primitive_sigma1_32(W[t - 2]) + W[t - 7] +
@@ -110,10 +121,10 @@ HA_PUBFUN void ha_sha2_256_init(ha_sha2_256_context *ctx)
 HA_PUBFUN void ha_sha2_256_update(ha_sha2_256_context *ctx,
                                   ha_inbuf_t data, size_t length)
 {
-  size_t buffer_fill = ctx->bit_count / 8 % HA_SHA2_256_BLOCK_SIZE;
-  ctx->bit_count += (uint64_t)length * 8;
+  size_t buffer_fill  = ctx->bit_count / 8 % HA_SHA2_256_BLOCK_SIZE;
+  ctx->bit_count     += (uint64_t)length * 8;
 
-  size_t offset = 0;
+  size_t offset       = 0;
   while (length > 0)
   {
     size_t space     = HA_SHA2_256_BLOCK_SIZE - buffer_fill;
@@ -121,8 +132,8 @@ HA_PUBFUN void ha_sha2_256_update(ha_sha2_256_context *ctx,
 
     memcpy(ctx->buffer + buffer_fill, data + offset, copy_size);
     buffer_fill += copy_size;
-    offset += copy_size;
-    length -= copy_size;
+    offset      += copy_size;
+    length      -= copy_size;
 
     if (buffer_fill == HA_SHA2_256_BLOCK_SIZE)
     {
@@ -133,7 +144,7 @@ HA_PUBFUN void ha_sha2_256_update(ha_sha2_256_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_256_final(ha_sha2_256_context *ctx,
-                                 ha_digest_t digest)
+                                 ha_digest_t          digest)
 {
   size_t buffer_fill         = ctx->bit_count / 8 % HA_SHA2_256_BLOCK_SIZE;
   ctx->buffer[buffer_fill++] = 0x80;
@@ -155,13 +166,17 @@ HA_PUBFUN void ha_sha2_256_final(ha_sha2_256_context *ctx,
   }
   ha_sha2_256_transform(ctx, ctx->buffer);
 
-  for (int i = 0; i < 8; ++i)
+#ifdef HA_ONLY_LE
+  for (int i = 0; i < 8; i++)
   {
-    digest[i * 4]     = (ctx->state[i] >> 24) & 0xff;
-    digest[i * 4 + 1] = (ctx->state[i] >> 16) & 0xff;
-    digest[i * 4 + 2] = (ctx->state[i] >> 8) & 0xff;
-    digest[i * 4 + 3] = ctx->state[i] & 0xff;
+    digest[i * 4]     = (ctx->state[i] >> 24) & 0xFF;
+    digest[i * 4 + 1] = (ctx->state[i] >> 16) & 0xFF;
+    digest[i * 4 + 2] = (ctx->state[i] >> 8) & 0xFF;
+    digest[i * 4 + 3] = ctx->state[i] & 0xFF;
   }
+#else
+  for (int i = 0; i < 8; i++) store_be32(digest + i * 4, ctx->state[i]);
+#endif
 }
 
 HA_PUBFUN void ha_sha2_256_hash(ha_inbuf_t data, size_t length,
@@ -174,7 +189,7 @@ HA_PUBFUN void ha_sha2_256_hash(ha_inbuf_t data, size_t length,
 }
 
 HA_PUBFUN void ha_sha2_384_transform(ha_sha2_384_context *ctx,
-                                     const uint8_t *block)
+                                     const uint8_t       *block)
 {
   ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
@@ -193,7 +208,7 @@ HA_PUBFUN void ha_sha2_384_update(ha_sha2_384_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_384_final(ha_sha2_384_context *ctx,
-                                 ha_digest_t digest)
+                                 ha_digest_t          digest)
 {
   uint8_t full_digest[HA_SHA2_512_DIGEST_SIZE];
   ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);
@@ -211,12 +226,13 @@ HA_PUBFUN void ha_sha2_384_hash(ha_inbuf_t data, size_t length,
 }
 
 HA_PUBFUN void ha_sha2_512_transform(ha_sha2_512_context *ctx,
-                                     const uint8_t *block)
+                                     const uint8_t       *block)
 {
   uint64_t m[80];
   uint64_t a, b, c, d, e, f, g, h;
   uint64_t T1, T2;
 
+#ifdef HA_ONLY_LE
   for (int i = 0; i < 16; ++i)
   {
     m[i] = ((uint64_t)block[i * 8] << 56) |
@@ -228,6 +244,14 @@ HA_PUBFUN void ha_sha2_512_transform(ha_sha2_512_context *ctx,
            ((uint64_t)block[i * 8 + 6] << 8) |
            ((uint64_t)block[i * 8 + 7]);
   }
+#else
+  for (int i = 0; i < 16; i++)
+  {
+    uint64_t word;
+    memcpy(&word, block + i * 8, 8);
+    m[i] = be64_to_cpu(word);
+  }
+#endif
 
   for (int i = 16; i < 80; ++i)
   {
@@ -250,14 +274,14 @@ HA_PUBFUN void ha_sha2_512_transform(ha_sha2_512_context *ctx,
          HA_SHA2_512_K[i] + m[i];
     T2 = ha_primitive_Sigma0_64(a) + ha_primitive_maj(a, b, c);
 
-    h = g;
-    g = f;
-    f = e;
-    e = d + T1;
-    d = c;
-    c = b;
-    b = a;
-    a = T1 + T2;
+    h  = g;
+    g  = f;
+    f  = e;
+    e  = d + T1;
+    d  = c;
+    c  = b;
+    b  = a;
+    a  = T1 + T2;
   }
 
   ctx->state[0] += a;
@@ -288,18 +312,18 @@ HA_PUBFUN void ha_sha2_512_init(ha_sha2_512_context *ctx)
 HA_PUBFUN void ha_sha2_512_update(ha_sha2_512_context *ctx,
                                   ha_inbuf_t data, size_t len)
 {
-  size_t buffer_fill = (ctx->bit_count / 8) % HA_SHA2_512_BLOCK_SIZE;
-  ctx->bit_count += (uint64_t)len * 8;
+  size_t buffer_fill  = (ctx->bit_count / 8) % HA_SHA2_512_BLOCK_SIZE;
+  ctx->bit_count     += (uint64_t)len * 8;
 
-  size_t offset = 0;
+  size_t offset       = 0;
   while (len > 0)
   {
     size_t space_in_buffer = HA_SHA2_512_BLOCK_SIZE - buffer_fill;
     size_t to_copy = (len < space_in_buffer) ? len : space_in_buffer;
     memcpy(ctx->buffer + buffer_fill, data + offset, to_copy);
     buffer_fill += to_copy;
-    offset += to_copy;
-    len -= to_copy;
+    offset      += to_copy;
+    len         -= to_copy;
 
     if (buffer_fill == HA_SHA2_512_BLOCK_SIZE)
     {
@@ -310,7 +334,7 @@ HA_PUBFUN void ha_sha2_512_update(ha_sha2_512_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_512_final(ha_sha2_512_context *ctx,
-                                 ha_digest_t digest)
+                                 ha_digest_t          digest)
 {
   size_t buffer_fill = (ctx->bit_count / 8) % HA_SHA2_512_BLOCK_SIZE;
   ctx->buffer[buffer_fill++] = 0x80;
@@ -333,6 +357,7 @@ HA_PUBFUN void ha_sha2_512_final(ha_sha2_512_context *ctx,
 
   ha_sha2_512_transform(ctx, ctx->buffer);
 
+#ifdef HA_ONLY_LE
   for (int i = 0; i < 8; ++i)
   {
     digest[i * 8 + 0] = (ctx->state[i] >> 56) & 0xff;
@@ -344,6 +369,9 @@ HA_PUBFUN void ha_sha2_512_final(ha_sha2_512_context *ctx,
     digest[i * 8 + 6] = (ctx->state[i] >> 8) & 0xff;
     digest[i * 8 + 7] = ctx->state[i] & 0xff;
   }
+#else
+  for (int i = 0; i < 8; i++) store_be64(digest + i * 8, ctx->state[i]);
+#endif
 }
 
 HA_PUBFUN void ha_sha2_512_hash(ha_inbuf_t data, size_t length,
@@ -356,7 +384,7 @@ HA_PUBFUN void ha_sha2_512_hash(ha_inbuf_t data, size_t length,
 }
 
 HA_PUBFUN void ha_sha2_512_224_transform(ha_sha2_512_224_context *ctx,
-                                         const uint8_t *block)
+                                         const uint8_t           *block)
 {
   ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
@@ -375,7 +403,7 @@ HA_PUBFUN void ha_sha2_512_224_update(ha_sha2_512_224_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_512_224_final(ha_sha2_512_224_context *ctx,
-                                     ha_digest_t digest)
+                                     ha_digest_t              digest)
 {
   uint8_t full_digest[HA_SHA2_512_DIGEST_SIZE];
   ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);
@@ -393,7 +421,7 @@ HA_PUBFUN void ha_sha2_512_224_hash(ha_inbuf_t data, size_t length,
 }
 
 HA_PUBFUN void ha_sha2_512_256_transform(ha_sha2_512_256_context *ctx,
-                                         const uint8_t *block)
+                                         const uint8_t           *block)
 {
   ha_sha2_512_transform((ha_sha2_512_context *)ctx, block);
 }
@@ -412,7 +440,7 @@ HA_PUBFUN void ha_sha2_512_256_update(ha_sha2_512_256_context *ctx,
 }
 
 HA_PUBFUN void ha_sha2_512_256_final(ha_sha2_512_256_context *ctx,
-                                     ha_digest_t digest)
+                                     ha_digest_t              digest)
 {
   uint8_t full_digest[HA_SHA2_512_DIGEST_SIZE];
   ha_sha2_512_final((ha_sha2_512_context *)ctx, full_digest);

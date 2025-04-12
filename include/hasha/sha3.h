@@ -32,7 +32,7 @@
  * @def HA_SHA3_224_RATE
  * @brief The rate (in bytes) used for the SHA3-224 algorithm.
  */
-#define HA_SHA3_224_RATE 144
+#define HA_SHA3_224_RATE        144
 
 /**
  * @def HA_SHA3_224_DIGEST_SIZE
@@ -44,7 +44,7 @@
  * @def HA_SHA3_256_RATE
  * @brief The rate (in bytes) used for the SHA3-256 algorithm.
  */
-#define HA_SHA3_256_RATE 136
+#define HA_SHA3_256_RATE        136
 
 /**
  * @def HA_SHA3_256_DIGEST_SIZE
@@ -56,7 +56,7 @@
  * @def HA_SHA3_384_RATE
  * @brief The rate (in bytes) used for the SHA3-384 algorithm.
  */
-#define HA_SHA3_384_RATE 104
+#define HA_SHA3_384_RATE        104
 
 /**
  * @def HA_SHA3_384_DIGEST_SIZE
@@ -68,7 +68,7 @@
  * @def HA_SHA3_512_RATE
  * @brief The rate (in bytes) used for the SHA3-512 algorithm.
  */
-#define HA_SHA3_512_RATE 72
+#define HA_SHA3_512_RATE        72
 
 /**
  * @def HA_SHA3_512_DIGEST_SIZE
@@ -87,7 +87,7 @@ HA_EXTERN_C_BEG
  */
 typedef struct ha_keccak_context ha_sha3_context;
 
-typedef ha_sha3_context ha_sha3_224_context, ha_sha3_256_context,
+typedef ha_sha3_context          ha_sha3_224_context, ha_sha3_256_context,
     ha_sha3_384_context, ha_sha3_512_context;
 
 /**
@@ -123,7 +123,7 @@ HA_PUBFUN void ha_sha3_224_update(ha_sha3_224_context *ctx,
  * stored.
  */
 HA_PUBFUN void ha_sha3_224_final(ha_sha3_224_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA3-224 hash in a one-shot operation.
@@ -173,7 +173,7 @@ HA_PUBFUN void ha_sha3_256_update(ha_sha3_256_context *ctx,
  * stored.
  */
 HA_PUBFUN void ha_sha3_256_final(ha_sha3_256_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 /**
  * @brief Computes the SHA3-256 hash in a one-shot operation.
  *
@@ -222,7 +222,7 @@ HA_PUBFUN void ha_sha3_384_update(ha_sha3_384_context *ctx,
  * stored.
  */
 HA_PUBFUN void ha_sha3_384_final(ha_sha3_384_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA3-384 hash in a one-shot operation.
@@ -272,7 +272,7 @@ HA_PUBFUN void ha_sha3_512_update(ha_sha3_512_context *ctx,
  * stored.
  */
 HA_PUBFUN void ha_sha3_512_final(ha_sha3_512_context *ctx,
-                                 ha_digest_t digest);
+                                 ha_digest_t          digest);
 
 /**
  * @brief Computes the SHA3-512 hash in a one-shot operation.

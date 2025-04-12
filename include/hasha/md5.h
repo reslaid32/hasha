@@ -25,7 +25,7 @@
  * @def HA_MD5_BLOCK_SIZE
  * @brief Block size (in bytes) for the MD5 algorithm.
  */
-#define HA_MD5_BLOCK_SIZE 64
+#define HA_MD5_BLOCK_SIZE  64
 
 /**
  * @def HA_MD5_DIGEST_SIZE
@@ -46,9 +46,9 @@ typedef struct ha_md5_context
 {
   uint32_t state[4]; /**< Current MD5 state (4 words). */
   uint64_t
-      bit_count; /**< Bit count representing the total input length. */
-  uint8_t buffer[HA_MD5_BLOCK_SIZE]; /**< Buffer used for processing input
-                                     data in 512-bit blocks. */
+          bit_count; /**< Bit count representing the total input length. */
+  uint8_t buffer[HA_MD5_BLOCK_SIZE]; /**< Buffer used for processing
+                                     input data in 512-bit blocks. */
 } ha_md5_context;
 
 /**

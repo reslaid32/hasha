@@ -41,7 +41,7 @@ typedef struct ha_blake3_context
    * This buffer temporarily holds up to 64 bytes of input data being
    * processed at a time during the hash update operation.
    */
-  uint8_t input[64];
+  uint8_t   input[64];
 
   /**
    * @brief The number of bytes processed so far.
@@ -50,7 +50,7 @@ typedef struct ha_blake3_context
    * hash function so far, including those passed in previous
    * `blake3_update` calls.
    */
-  uint32_t bytes;
+  uint32_t  bytes;
 
   /**
    * @brief The block counter for the current chunk.
@@ -58,7 +58,7 @@ typedef struct ha_blake3_context
    * This counter tracks the number of blocks that have been processed
    * within the current chunk of data being hashed.
    */
-  uint32_t block;
+  uint32_t  block;
 
   /**
    * @brief The chunk counter for tracking progress.
@@ -66,7 +66,7 @@ typedef struct ha_blake3_context
    * This variable tracks the number of chunks that have been processed
    * during the hashing process.
    */
-  uint64_t chunk;
+  uint64_t  chunk;
 
   /**
    * @brief Pointer to the current hash state.
@@ -84,7 +84,7 @@ typedef struct ha_blake3_context
    * process. It is large enough to hold multiple rounds of hashing state,
    * with each round consisting of 8 words (32 bytes).
    */
-  uint32_t cv_buf[54 * 8];
+  uint32_t  cv_buf[54 * 8];
 } ha_blake3_context;
 
 /**
