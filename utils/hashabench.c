@@ -320,7 +320,6 @@ int main(int argc, char *argv[])
         BENCHMARK(iterations, "hasha SHA1", ha_sha1_hash, result_file,
                   (const uint8_t *)input, input_len, output);
       }
-
       else if (strcmp(token, "sha224") == 0)
       {
         BENCHMARK(iterations, "hasha SHA224", ha_sha2_224_hash,
@@ -372,7 +371,6 @@ int main(int argc, char *argv[])
         BENCHMARK(iterations, "hasha SHA3-512", ha_sha3_512_hash,
                   result_file, (const uint8_t *)input, input_len, output);
       }
-
       else if (strcmp(token, "keccak224") == 0)
       {
         BENCHMARK(iterations, "hasha KECCAK-224", ha_keccak_224_hash,
@@ -399,7 +397,6 @@ int main(int argc, char *argv[])
         BENCHMARK(iterations, "KECCAKF-1600", ha_keccakf1600, result_file,
                   state);
       }
-
       else if (strncmp(token, "blake2s_", 7) == 0)
       {
         char *endptr;
@@ -421,7 +418,6 @@ int main(int argc, char *argv[])
                     digest_bytes);
         }
       }
-
       else if (strncmp(token, "blake2b_", 7) == 0)
       {
         char *endptr;
@@ -443,7 +439,6 @@ int main(int argc, char *argv[])
                     digest_bytes);
         }
       }
-
       else if (strncmp(token, "blake3_", 7) == 0)
       {
         char *endptr;

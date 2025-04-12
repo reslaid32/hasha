@@ -14,7 +14,7 @@ static char *ha_cli_error_strings[] = {
 
 int main(int argc, char *argv[])
 {
-  if (argc != 2) { goto usage; }
+  if (argc != 2) goto usage;
 
   ha_version_t hashav = ha_version();
 

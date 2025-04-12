@@ -55,8 +55,8 @@
 
 #if !defined(HA_EXTERN_C_BEG)
 #if defined(__cplusplus)
-#define HA_EXTERN_C_BEG \
-  HA_EXTERN_C           \
+#define HA_EXTERN_C_BEG                                                   \
+  HA_EXTERN_C                                                             \
   {
 #else
 #define HA_EXTERN_C_BEG
@@ -90,15 +90,15 @@
   ((((x) >> 24) & 0xFF) | (((x) >> 8) & 0xFF00) | (((x) & 0xFF00) << 8) | \
    (((x) & 0xFF) << 24))
 
-#define __builtin_bswap64(x)                              \
-  ((((x) >> 56) & 0xFF) | (((x) >> 40) & 0xFF00) |        \
-   (((x) >> 24) & 0xFF0000) | (((x) >> 8) & 0xFF000000) | \
-   (((x) & 0xFF000000) << 8) | (((x) & 0xFF0000) << 24) | \
+#define __builtin_bswap64(x)                                              \
+  ((((x) >> 56) & 0xFF) | (((x) >> 40) & 0xFF00) |                        \
+   (((x) >> 24) & 0xFF0000) | (((x) >> 8) & 0xFF000000) |                 \
+   (((x) & 0xFF000000) << 8) | (((x) & 0xFF0000) << 24) |                 \
    (((x) & 0xFF00) << 40) | (((x) & 0xFF) << 56))
 
 /* Expect and assume implementations */
-#define __builtin_expect(expr, value) (expr)
-#define __builtin_assume(expr) ((void)0)
+#define __builtin_expect(expr, value)  (expr)
+#define __builtin_assume(expr)         ((void)0)
 #define __builtin_assume_assigned(var) ((void)(var))
 
 /* Population count */
@@ -107,8 +107,8 @@ HA_HDR_PUBFUN int __builtin_popcount(unsigned int x)
   int count = 0;
   while (x)
   {
-    count += x & 1;
-    x >>= 1;
+    count  += x & 1;
+    x     >>= 1;
   }
   return count;
 }
@@ -149,15 +149,15 @@ HA_HDR_PUBFUN int __builtin_clzll(unsigned long long x)
          __builtin_clzl((unsigned long)(x >> 32));
 }
 
-#define __builtin_rotateleft32(x, n) (((x) << (n)) | ((x) >> (32 - (n))))
+#define __builtin_rotateleft32(x, n)  (((x) << (n)) | ((x) >> (32 - (n))))
 #define __builtin_rotateright32(x, n) (((x) >> (n)) | ((x) << (32 - (n))))
 
-#define __builtin_rotateleft64(x, n) (((x) << (n)) | ((x) >> (64 - (n))))
+#define __builtin_rotateleft64(x, n)  (((x) << (n)) | ((x) >> (64 - (n))))
 #define __builtin_rotateright64(x, n) (((x) >> (n)) | ((x) << (64 - (n))))
 
-#define __builtin_parity(x) (__builtin_popcount(x) & 1)
+#define __builtin_parity(x)           (__builtin_popcount(x) & 1)
 
-#define __builtin_abs(x) ((x) < 0 ? -(x) : (x))
+#define __builtin_abs(x)              ((x) < 0 ? -(x) : (x))
 
 #define __builtin_unreachable()
 
