@@ -23,7 +23,7 @@ size_t ha_fputhash(FILE *stream, ha_digest_t digest, size_t digestlen)
   }
   int    ret     = 0;
   size_t written = 0;
-  for (int i = 0; i < digestlen; ++i)
+  for (size_t i = 0; i < digestlen; ++i)
   {
     ret = fprintf(stream, "%.2x", digest[i]);
     if (ret < 0)
@@ -76,8 +76,10 @@ int ha_cmphash(ha_digest_t lhs, ha_digest_t rhs, size_t digestlen)
 HA_PUBFUN
 int ha_cmphashstr(ha_digest_t lhs, const char *rhs, size_t digestlen)
 {
-  size_t s_hashlen = ha_strhash_bound(digestlen);
+  size_t s_hashlen = ha_strhash_bound(digestlen); 
+/* unused
   size_t s_written = 0;
+*/  
   char   s_hash[s_hashlen + 1];
 
   s_written         = ha_strhash(s_hash, lhs, digestlen);
