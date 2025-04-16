@@ -1,8 +1,8 @@
+#define HA_BUILD
+
 #include "../include/hasha/io.h"
 
 #if (__HA_FEATURE(IO))
-
-#define HA_BUILD
 
 #include "../include/hasha/internal/error.h"
 #include "../include/hasha/internal/types.h"
@@ -76,13 +76,13 @@ int ha_cmphash(ha_digest_t lhs, ha_digest_t rhs, size_t digestlen)
 HA_PUBFUN
 int ha_cmphashstr(ha_digest_t lhs, const char *rhs, size_t digestlen)
 {
-  size_t s_hashlen = ha_strhash_bound(digestlen); 
-/* unused
-  size_t s_written = 0;
-*/  
+  size_t s_hashlen = ha_strhash_bound(digestlen);
+  /* unused
+    size_t s_written = 0;
+  */
   char   s_hash[s_hashlen + 1];
 
-  s_written         = ha_strhash(s_hash, lhs, digestlen);
+  /* s_written         = */ ha_strhash(s_hash, lhs, digestlen);
   s_hash[s_hashlen] = '\0';
 
   return strcmp(s_hash, rhs);
