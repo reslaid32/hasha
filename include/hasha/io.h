@@ -49,7 +49,10 @@ size_t ha_puthash(ha_digest_t digest, size_t digestlen);
 
 #endif /* __HA_FEATURE(IO) */
 
-#define ha_strhash_bound(len) ((len) * 2)
+#define ha_hash2str_bound(len) ((len) * 2)
+#define ha_str2hash_bound(len) ((len) / 2)
+
+#define ha_strhash_bound(len)  ha_hash2str_bound(len)
 
 /**
  * @brief Converts a hash digest to a hexadecimal string representation.
@@ -65,7 +68,30 @@ size_t ha_puthash(ha_digest_t digest, size_t digestlen);
  * @return The number of characters written to `dst`.
  */
 HA_PUBFUN
-size_t ha_strhash(char *dst, ha_digest_t src, size_t len);
+size_t ha_hash2str(char *dst, ha_digest_t src, size_t len);
+
+/**
+ * @brief Converts a hexadecimal string representation to a hash digest.
+ *
+ * This function converts the provided hexadecimal string into its
+ * corresponding binary hash digest. Each byte in the resulting digest is
+ * represented by two hexadecimal characters in the input string. The
+ * conversion stops after processing `len` bytes (i.e. `2 * len` characters
+ * from the input string), or earlier if an invalid hexadecimal digit is
+ * encountered.
+ *
+ * @param dst The destination buffer where the binary hash digest will be
+ * stored.
+ * @param src The source hexadecimal string to be converted. It should
+ * contain at least 2 * len valid hexadecimal characters.
+ * @param len The expected number of bytes in the binary hash digest.
+ * @return The number of bytes successfully converted and written to `dst`.
+ */
+HA_PUBFUN
+size_t ha_str2hash(ha_digest_t dst, const char *src, size_t len);
+
+HA_DEPRECATED("ha_hashstr now deprecated, use ha_hash2str instead")
+HA_PUBFUN size_t ha_strhash(char *dst, ha_digest_t src, size_t len);
 
 /**
  * @brief Compares two hash digests byte by byte.

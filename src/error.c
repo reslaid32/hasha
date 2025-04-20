@@ -1,8 +1,8 @@
+#define HA_BUILD
+
 #include "../include/hasha/internal/internal.h"
 
 #if __HA_FEATURE(IO)
-
-#define HA_BUILD
 
 #include "../include/hasha/internal/error.h"
 

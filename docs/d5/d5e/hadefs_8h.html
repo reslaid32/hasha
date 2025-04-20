@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.10</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.11</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -305,16 +305,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  ((((x) &gt;&gt; 56) &amp; 0xFF) | (((x) &gt;&gt; 40) &amp; 0xFF00) |        \</div>
-<div class="line">   (((x) &gt;&gt; 24) &amp; 0xFF0000) | (((x) &gt;&gt; 8) &amp; 0xFF000000) | \</div>
-<div class="line">   (((x) &amp; 0xFF000000) &lt;&lt; 8) | (((x) &amp; 0xFF0000) &lt;&lt; 24) | \</div>
+<b>Value:</b><div class="fragment"><div class="line">  ((((x) &gt;&gt; 56) &amp; 0xFF) | (((x) &gt;&gt; 40) &amp; 0xFF00) |                        \</div>
+<div class="line">   (((x) &gt;&gt; 24) &amp; 0xFF0000) | (((x) &gt;&gt; 8) &amp; 0xFF000000) |                 \</div>
+<div class="line">   (((x) &amp; 0xFF000000) &lt;&lt; 8) | (((x) &amp; 0xFF0000) &lt;&lt; 24) |                 \</div>
 <div class="line">   (((x) &amp; 0xFF00) &lt;&lt; 40) | (((x) &amp; 0xFF) &lt;&lt; 56))</div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="../../d5/d5e/hadefs_8h_source.html#l00093">93</a> of file <a class="el" href="../../d5/d5e/hadefs_8h_source.html">hadefs.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span><span class="preprocessor">#define __builtin_bswap64(x)                              \</span></div>
-<div class="line"><span class="lineno">   94</span><span class="preprocessor">  ((((x) &gt;&gt; 56) &amp; 0xFF) | (((x) &gt;&gt; 40) &amp; 0xFF00) |        \</span></div>
-<div class="line"><span class="lineno">   95</span><span class="preprocessor">   (((x) &gt;&gt; 24) &amp; 0xFF0000) | (((x) &gt;&gt; 8) &amp; 0xFF000000) | \</span></div>
-<div class="line"><span class="lineno">   96</span><span class="preprocessor">   (((x) &amp; 0xFF000000) &lt;&lt; 8) | (((x) &amp; 0xFF0000) &lt;&lt; 24) | \</span></div>
+<div class="fragment"><div class="line"><span class="lineno">   93</span><span class="preprocessor">#define __builtin_bswap64(x)                                              \</span></div>
+<div class="line"><span class="lineno">   94</span><span class="preprocessor">  ((((x) &gt;&gt; 56) &amp; 0xFF) | (((x) &gt;&gt; 40) &amp; 0xFF00) |                        \</span></div>
+<div class="line"><span class="lineno">   95</span><span class="preprocessor">   (((x) &gt;&gt; 24) &amp; 0xFF0000) | (((x) &gt;&gt; 8) &amp; 0xFF000000) |                 \</span></div>
+<div class="line"><span class="lineno">   96</span><span class="preprocessor">   (((x) &amp; 0xFF000000) &lt;&lt; 8) | (((x) &amp; 0xFF0000) &lt;&lt; 24) |                 \</span></div>
 <div class="line"><span class="lineno">   97</span><span class="preprocessor">   (((x) &amp; 0xFF00) &lt;&lt; 40) | (((x) &amp; 0xFF) &lt;&lt; 56))</span></div>
 </div><!-- fragment -->
 </div>
@@ -812,8 +812,8 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  107</span>  <span class="keywordtype">int</span> count = 0;</div>
 <div class="line"><span class="lineno">  108</span>  <span class="keywordflow">while</span> (x)</div>
 <div class="line"><span class="lineno">  109</span>  {</div>
-<div class="line"><span class="lineno">  110</span>    count += x &amp; 1;</div>
-<div class="line"><span class="lineno">  111</span>    x &gt;&gt;= 1;</div>
+<div class="line"><span class="lineno">  110</span>    count  += x &amp; 1;</div>
+<div class="line"><span class="lineno">  111</span>    x     &gt;&gt;= 1;</div>
 <div class="line"><span class="lineno">  112</span>  }</div>
 <div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> count;</div>
 <div class="line"><span class="lineno">  114</span>}</div>

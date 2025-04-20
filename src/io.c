@@ -46,9 +46,9 @@ size_t ha_puthash(ha_digest_t digest, size_t digestlen)
 #endif
 
 HA_PUBFUN
-size_t ha_strhash(char *dst, ha_digest_t src, size_t len)
+size_t ha_hash2str(char *dst, ha_digest_t src, size_t len)
 {
-#if !(__HA_FEATURE(IO))
+#if (__HA_FEATURE(IO))
   if (!dst) return 0;
   size_t written = 0;
   for (size_t i = 0; i < len; ++i)
@@ -59,12 +59,66 @@ size_t ha_strhash(char *dst, ha_digest_t src, size_t len)
   static const char hex_digits[] = "0123456789abcdef";
   for (size_t i = 0; i < len; ++i)
   {
-    unsigned char byte = src[i];
-    dst[i * 2]         = hex_digits[(byte >> 4) & 0x0F];
-    dst[i * 2 + 1]     = hex_digits[byte & 0x0F];
+    uint8_t byte   = src[i];
+    dst[i * 2]     = hex_digits[(byte >> 4) & 0x0F];
+    dst[i * 2 + 1] = hex_digits[byte & 0x0F];
   }
   return len * 2;
 #endif
+}
+
+HA_PUBFUN
+size_t ha_str2hash(ha_digest_t dst, const char *src, size_t len)
+{
+#if (__HA_FEATURE(IO))
+  if (!dst || !src) return 0;
+  size_t converted = 0;
+  for (size_t i = 0; i < len; ++i)
+  {
+    char     buf[3] = {src[i * 2], src[i * 2 + 1], '\0'};
+    uint32_t byte;
+    if (sscanf(buf, "%02x", &byte) != 1) break;
+    dst[i] = (uint8_t)byte;
+    ++converted;
+  }
+  return converted;
+#else
+  if (!dst || !src) return 0;
+  size_t converted = 0;
+  for (size_t i = 0; i < len; ++i)
+  {
+    int  high, low;
+    char high_char = src[i * 2];
+    char low_char  = src[i * 2 + 1];
+
+    if (high_char >= '0' && high_char <= '9')
+      high = high_char - '0';
+    else if (high_char >= 'a' && high_char <= 'f')
+      high = high_char - 'a' + 10;
+    else if (high_char >= 'A' && high_char <= 'F')
+      high = high_char - 'A' + 10;
+    else
+      break;
+
+    if (low_char >= '0' && low_char <= '9')
+      low = low_char - '0';
+    else if (low_char >= 'a' && low_char <= 'f')
+      low = low_char - 'a' + 10;
+    else if (low_char >= 'A' && low_char <= 'F')
+      low = low_char - 'A' + 10;
+    else
+      break;
+
+    dst[i] = (uint8_t)((high << 4) | low);
+    ++converted;
+  }
+  return converted;
+#endif
+}
+
+HA_PUBFUN size_t ha_strhash(char *dst, ha_digest_t src, size_t len)
+{
+  return ha_hash2str(dst, src, len);
 }
 
 HA_PUBFUN
@@ -82,7 +136,7 @@ int ha_cmphashstr(ha_digest_t lhs, const char *rhs, size_t digestlen)
   */
   char   s_hash[s_hashlen + 1];
 
-  /* s_written         = */ ha_strhash(s_hash, lhs, digestlen);
+  /* s_written         = */ ha_hash2str(s_hash, lhs, digestlen);
   s_hash[s_hashlen] = '\0';
 
   return strcmp(s_hash, rhs);
