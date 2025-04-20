@@ -12,9 +12,9 @@ ALL (LIBRARY, UTILS, TESTS):
 
 (UN)INSTALLING:
 INSTALL (+LIBRARY, UTILS):
-  $ sudo make install DESTDIR="/data/data/com.termux/files/usr/"
+  $ sudo make install DESTDIR="/data/data/com.termux/files/"
 UNINSTALL:
-  $ sudo make uninstall DESTDIR="/data/data/com.termux/files/usr/"
+  $ sudo make uninstall DESTDIR="/data/data/com.termux/files/"
 
 BENCHMARK: (LIBRARY MUST BE INSTALLED FIRST)
   $ make bench
