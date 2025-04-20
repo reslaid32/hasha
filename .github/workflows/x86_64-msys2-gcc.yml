@@ -23,7 +23,7 @@ jobs:
     - name: Install required tools
       shell: msys2 {0}
       run: |
-        pacman -S --noconfirm make mingw-w64-x86_64-gcc make
+        pacman -S --noconfirm make gcc
 
     - name: Performing test
       shell: msys2 {0}
