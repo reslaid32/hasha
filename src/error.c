@@ -13,62 +13,69 @@
 #include "../include/hasha/internal/opts.h"
 
 HA_PRVFUN
-void ha_basic_throw(FILE *stream, int noabort, const char *func,
-                    size_t line, char *level, char *fmt, va_list vargs)
+void
+ha_basic_throw (FILE *stream, int noabort, const char *func, size_t line,
+                char *level, char *fmt, va_list vargs)
 {
 #ifndef NOTIME
-  time_t     rawtime;
+  time_t rawtime;
   struct tm *timeinfo;
-  char       timebuf[80];
+  char timebuf[80];
 
-  time(&rawtime);
-  timeinfo = localtime(&rawtime);
-  strftime(timebuf, sizeof(timebuf), "%Y-%m-%d %H:%M:%S", timeinfo);
+  time (&rawtime);
+  timeinfo = localtime (&rawtime);
+  strftime (timebuf, sizeof (timebuf), "%Y-%m-%d %H:%M:%S", timeinfo);
 #endif
 
-  fprintf(stream, "%s:%zu: %s: ", func, line, level);
-  vfprintf(stream, fmt, vargs);
+  fprintf (stream, "%s:%zu: %s: ", func, line, level);
+  vfprintf (stream, fmt, vargs);
 #ifndef NOTIME
-  fprintf(stream, "    at %s", timebuf);
+  fprintf (stream, "    at %s", timebuf);
 #endif
-  fprintf(stream, "\n");
+  fprintf (stream, "\n");
 
-  if (noabort) return;
-  abort();
+  if (noabort)
+    return;
+  abort ();
 }
 
 HA_PUBFUN
-void ha_throw(int noabort, const char *func, size_t line, char *level,
-              char *fmt, ...)
+void
+ha_throw (int noabort, const char *func, size_t line, char *level, char *fmt,
+          ...)
 {
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, noabort, func, line, level, fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, noabort, func, line, level, fmt, vargs);
+  va_end (vargs);
 }
 
 HA_PUBFUN
-void ha_throwd(int debug, int noabort, const char *func, size_t line,
-               char *level, char *fmt, ...)
+void
+ha_throwd (int debug, int noabort, const char *func, size_t line, char *level,
+           char *fmt, ...)
 {
-  if (!debug) return;
+  if (!debug)
+    return;
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, noabort, func, line, level, fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, noabort, func, line, level, fmt, vargs);
+  va_end (vargs);
 }
 
 HA_PUBFUN
-void ha_throw_fatal(const char *func, size_t line, char *fmt, ...)
+void
+ha_throw_fatal (const char *func, size_t line, char *fmt, ...)
 {
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, 0, func, line, "fatal", fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, 0, func, line, "fatal", fmt, vargs);
+  va_end (vargs);
 }
 
 HA_PUBFUN
-void ha_throw_error(const char *func, size_t line, char *fmt, ...)
+void
+ha_throw_error (const char *func, size_t line, char *fmt, ...)
 {
   int noabort = 0;
 #if 0
@@ -78,22 +85,24 @@ void ha_throw_error(const char *func, size_t line, char *fmt, ...)
 #endif
 
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, noabort, func, line, "error", fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, noabort, func, line, "error", fmt, vargs);
+  va_end (vargs);
 }
 
 HA_PUBFUN
-void ha_throw_warn(const char *func, size_t line, char *fmt, ...)
+void
+ha_throw_warn (const char *func, size_t line, char *fmt, ...)
 {
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, 1, func, line, "warn", fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, 1, func, line, "warn", fmt, vargs);
+  va_end (vargs);
 }
 
 HA_PUBFUN
-void ha_throw_debug(const char *func, size_t line, char *fmt, ...)
+void
+ha_throw_debug (const char *func, size_t line, char *fmt, ...)
 {
   int debug = 0;
 #if 0
@@ -102,11 +111,12 @@ void ha_throw_debug(const char *func, size_t line, char *fmt, ...)
   debug = g_ha_opts.debug;
 #endif
 
-  if (!debug) return;
+  if (!debug)
+    return;
   va_list vargs;
-  va_start(vargs, fmt);
-  ha_basic_throw(stderr, 1, func, line, "debug", fmt, vargs);
-  va_end(vargs);
+  va_start (vargs, fmt);
+  ha_basic_throw (stderr, 1, func, line, "debug", fmt, vargs);
+  va_end (vargs);
 }
 
 #endif

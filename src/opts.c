@@ -4,7 +4,7 @@
 
 #define HA_OPT_TYPE_MASK 0xFF000000
 
-struct ha_opts g_ha_opts = {0};
+struct ha_opts g_ha_opts = { 0 };
 
 #if 0
 
