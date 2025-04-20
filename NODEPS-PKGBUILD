@@ -18,7 +18,7 @@ do_chck=true
 
 build() {
   cd "$srcdir/.."
-  make clean all
+  make all
 }
 
 check() {
