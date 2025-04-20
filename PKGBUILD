@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('make' 'gcc')
 options=('!debug')
 
-chck=true
+do_chck=true
 
 build() {
   cd "$srcdir/.."
@@ -22,7 +22,7 @@ build() {
 }
 
 check() {
-  if $chck; then
+  if $do_chck; then
     cd "$srcdir/.."
     export LD_LIBRARY_PATH="$srcdir/../lib"
     make check

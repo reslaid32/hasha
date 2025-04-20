@@ -2,3 +2,4 @@
 * text=auto
 docs/** linguist-vendored
 *.html linguist-vendored
+* text eol=lf
