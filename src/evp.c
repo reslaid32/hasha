@@ -1,9 +1,9 @@
 
+#define HA_BUILD
+
 #include "../include/hasha/internal/internal.h"
 
 #if __HA_FEATURE(EVP)
-
-#define HA_BUILD
 
 #include "../include/hasha/all.h"
 #include "../include/hasha/evp.h"
@@ -557,7 +557,10 @@ void ha_evp_free_context(struct ha_evp_hasher *hasher)
 HA_PUBFUN
 struct ha_evp_hasher *ha_evp_hasher_new()
 {
-  return malloc(g_ha_evp_hasher_size);
+  struct ha_evp_hasher *ptr =
+      (struct ha_evp_hasher *)malloc(g_ha_evp_hasher_size);
+  memset(ptr, 0, g_ha_evp_hasher_size);
+  return ptr;
 }
 
 HA_PUBFUN

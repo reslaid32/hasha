@@ -1,0 +1,40 @@
+pkgname=hasha
+
+pkgver=$(cat "VERSION")
+pkgver_maj=$(echo $pkgver | cut -d'.' -f1)
+pkgver_min=$(echo $pkgver | cut -d'.' -f2)
+pkgver_pat=$(echo $pkgver | cut -d'.' -f3)
+
+pkgrel=0
+pkgdesc="Standalone lightweight hashing library"
+arch=('x86_64')
+url="https://github.com/reslaid32/hasha.git"
+license=('MIT')
+depends=()
+makedepends=('make' 'gcc')
+options=('!debug')
+
+chck=true
+
+build() {
+  cd "$srcdir/.."
+  make clean all
+}
+
+check() {
+  if $chck; then
+    cd "$srcdir/.."
+    if [ -d "$srcdir/../lib" ] && [ -d "$srcdir/../bin" ]; then
+      cp -r $srcdir/../lib/* $srcdir/../bin/
+    else
+      echo "Error: 'lib' or 'bin' directory does not exist."
+      exit 1
+    fi
+    make check
+  fi
+}
+
+package() {
+  cd "$srcdir/.."
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+}

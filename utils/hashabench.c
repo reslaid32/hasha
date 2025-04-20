@@ -29,7 +29,7 @@ static char *ha_bench_error_strings[] = {
 
 // #define INCLUDE_OPENSSL
 
-#define BENCHMARK(ITERATIONS, LABEL, FUNC, FILE_, ...)                    \
+#define BENCHMARK_UNIX(ITERATIONS, LABEL, FUNC, FILE_, ...)               \
   do {                                                                    \
     struct timespec start, end;                                           \
     clock_gettime(CLOCK_MONOTONIC, &start);                               \
@@ -49,6 +49,37 @@ static char *ha_bench_error_strings[] = {
               time_taken_s, avg_time_per_iteration);                      \
     }                                                                     \
   } while (0)
+
+#define BENCHMARK_WIN32(ITERATIONS, LABEL, FUNC, FILE_, ...)              \
+  do {                                                                    \
+    LARGE_INTEGER frequency, start, end;                                  \
+    QueryPerformanceFrequency(&frequency);                                \
+    QueryPerformanceCounter(&start);                                      \
+                                                                          \
+    for (int i = 0; i < (ITERATIONS); ++i) { FUNC(__VA_ARGS__); }         \
+                                                                          \
+    QueryPerformanceCounter(&end);                                        \
+    long long start_time = start.QuadPart;                                \
+    long long end_time   = end.QuadPart;                                  \
+    double    time_taken_s =                                              \
+        (double)(end_time - start_time) / frequency.QuadPart;             \
+    double avg_time_per_iteration = time_taken_s / (ITERATIONS);          \
+                                                                          \
+    printf("%s: Total time: %lf s, Avg per iteration: %.2f us\n", LABEL,  \
+           time_taken_s, avg_time_per_iteration * 1000000.0);             \
+    if (FILE_)                                                            \
+    {                                                                     \
+      fprintf(FILE_, "%s,%lf,%.2f\n", LABEL, time_taken_s,                \
+              avg_time_per_iteration * 1000000.0);                        \
+    }                                                                     \
+  } while (0)
+
+#ifdef _WIN32
+#include <windows.h>
+#define BENCHMARK BENCHMARK_WIN32
+#else
+#define BENCHMARK BENCHMARK_UNIX
+#endif
 
 // Function to display help/usage information
 HA_PRVFUN void print_usage(const char *prog_name)

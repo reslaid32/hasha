@@ -21,6 +21,14 @@ LDFLAGS+=$(EXTRA_LDLAGS)
 CRT=
 UTL_LDFLAGS=$(CRT) -lc
 
+ifeq ($(OS),Windows_NT)
+  LIBPREFIX=
+	LIBEXT=dll
+else
+  LIBPREFIX=lib
+	LIBEXT=so
+endif
+
 LIBNAME=hasha
 
 LIB=lib
@@ -35,11 +43,15 @@ DESTDIR ?= /
 PREFIX ?= /usr
 
 BINDIR=$(DESTDIR)$(PREFIX)/bin
-LIBDIR=$(DESTDIR)$(PREFIX)/lib
+ifeq ($(OS),Windows_NT)
+  LIBDIR=$(DESTDIR)$(PREFIX)/bin
+else
+	LIBDIR=$(DESTDIR)$(PREFIX)/lib
+endif
 INCDIR=$(DESTDIR)$(PREFIX)/include
 
-TARGET=$(LIB)/lib$(LIBNAME).so
-INST_LIB=$(LIBDIR)/lib$(LIBNAME).so
+TARGET=$(LIB)/$(LIBPREFIX)$(LIBNAME).$(LIBEXT)
+INST_LIB=$(LIBDIR)/$(LIBPREFIX)$(LIBNAME).$(LIBEXT)
 INST_INC=$(INCDIR)/$(LIBNAME)
 
 SRCS=$(wildcard $(SRC)/*.c)
@@ -88,6 +100,19 @@ $(UTL_BIN)/%: $(UTL)/%.c $(TARGET)
 clean:
 	rm -rf $(BIN) $(LIB)
 
+install-hdr: $(TARGET)
+	install -d $(INST_INC) $(INST_INC)/internal
+	find $(INC)/$(LIBNAME) -type f | while read -r file; do \
+		target_dir=$(INST_INC)/$$(dirname "$${file#$(INC)/$(LIBNAME)/}"); \
+		mkdir -p "$$target_dir"; \
+		install -m 644 "$$file" "$$target_dir/"; \
+	done
+	@echo "lib$(LIBNAME) headers installed"
+
+uninstall-hdr:
+	rm -rf $(INST_INC)
+	@echo "lib$(LIBNAME) headers uninstalled"
+
 install-lib: $(TARGET)
 	# Install the shared library
 	install -d $(LIBDIR)
@@ -96,24 +121,17 @@ install-lib: $(TARGET)
 	# Install the header file
 	# install -d $(INST_INC)
 
-	mkdir -p $(INST_INC) $(INST_INC)/internal
-	# install -m 644 $(wildcard $(INC)/$(LIBNAME)/*) $(INST_INC)
-	cp -r $(wildcard $(INC)/$(LIBNAME)/*) $(INST_INC)
-
 	@echo "lib$(LIBNAME) installed"
 
-uninstall-lib:
+uninstall-lib: uninstall-hdr
 	# Remove the shared library
 	rm -f $(INST_LIB)
-
-	# Remove the header file
-	rm -rf $(INST_INC)
 
 	@echo "lib$(LIBNAME) uninstalled"
 
 install-execs: $(UTL_EXEC)
 	# Install example executables to the binary directory
-	install -d $(BINDIR)
+	install -d -p $(BINDIR)
 	for exec in $(UTL_EXEC); do \
 		install -m 755 $$exec $(BINDIR); \
 	done
@@ -135,7 +153,7 @@ bench: $(UTL_BIN)/hashabench
 	@echo "Running benchmark..."
 	$(UTL_BIN)/hashabench
 
-install: install-lib install-execs
-uninstall: uninstall-execs uninstall-lib
+install: install-hdr install-lib install-execs
+uninstall: uninstall-hdr uninstall-execs uninstall-lib
 
 .PHONY: all install uninstall check bench

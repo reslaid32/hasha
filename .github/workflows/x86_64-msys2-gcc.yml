@@ -1,0 +1,41 @@
+name: "(x86_64) On Windows [MSYS2 GCC]"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up MSYS2
+      uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+ 
+    - name: Install required tools
+      shell: msys2 {0}
+      run: |
+        pacman -S --noconfirm make mingw-w64-x86_64-gcc make
+
+    - name: Performing test
+      shell: msys2 {0}
+      run: |
+        make CC=gcc all && cp ./lib/* . && make check
+
+    - name: Performing benchmark
+      shell: msys2 {0}
+      run: |
+        make CC=gcc all && cp ./lib/* . && make bench
+
+    - name: Makefine a package
+      shell: msys2 {0}
+      run: |
+        makepkg -p NODEPS-PKGBUILD -fsi
