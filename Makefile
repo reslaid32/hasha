@@ -115,11 +115,11 @@ install-hdr: $(TARGET)
 		mkdir -p "$$target_dir"; \
 		install -m 644 "$$file" "$$target_dir/"; \
 	done
-	@echo "lib$(LIBNAME) headers installed"
+	@echo "  INST  $(INC)/$(LIBNAME)/"
 
 uninstall-hdr:
 	rm -rf $(INST_INC)
-	@echo "lib$(LIBNAME) headers uninstalled"
+	@echo "  UNST  $(INC)/$(LIBNAME)/"
 
 install-lib: $(TARGET)
 	# Install the shared library
@@ -129,36 +129,33 @@ install-lib: $(TARGET)
 	# Install the header file
 	# install -d $(INST_INC)
 
-	@echo "lib$(LIBNAME) installed"
+	@echo "  INST  $(TARGET)"
 
 uninstall-lib: uninstall-hdr
 	# Remove the shared library
 	rm -f $(INST_LIB)
 
-	@echo "lib$(LIBNAME) uninstalled"
+	@echo "  UNST  $(TARGET)"
 
 install-execs: $(UTL_EXEC)
 	# Install example executables to the binary directory
 	install -d -p $(BINDIR)
 	for exec in $(UTL_EXEC); do \
 		install -m 755 $$exec $(BINDIR); \
+		echo "  INST  $$exec"; \
 	done
-
-	@echo "$(LIBNAME) utils installed"
 
 uninstall-execs:
 	# Remove installed example executables
 	for exec in $(notdir $(UTL_EXEC)); do \
 		rm -f $(BINDIR)/$$exec; \
+		echo "  UNST  $$exec"; \
 	done
-
-	@echo "$(LIBNAME) utils uninstalled"
 
 check: $(TST_EXEC)
 	$(TST_EXEC)
 
 bench: $(UTL_BIN)/hashabench
-	@echo "Running benchmark..."
 	$(UTL_BIN)/hashabench
 
 install: install-hdr install-lib install-execs
