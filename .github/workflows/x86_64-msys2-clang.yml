@@ -38,4 +38,4 @@ jobs:
     - name: Makefine a package
       shell: msys2 {0}
       run: |
-        makepkg -p NODEPS-PKGBUILD -sf --noconfirm
+        makepkg -p PKGBUILD-NODEPS -sf --noconfirm
