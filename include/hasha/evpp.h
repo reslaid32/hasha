@@ -109,11 +109,11 @@ class Hasher
  public:
   explicit Hasher(ha_evp_hashty type      = HA_EVPTY_UNDEFINED,
                   size_t        digestlen = 0)
-      : hashty_(type),
-        digestlen_(digestlen),
-        hasher_(ha_evp_hasher_new(), &ha_evp_hasher_delete)
+      : hasher_(ha_evp_hasher_new(), &ha_evp_hasher_delete)
   {
     if (!hasher_) throw std::runtime_error("Failed to create EVP hasher");
+    setDigestLength(digestlen);
+    setType(type);
   }
 
   ~Hasher()                             = default;
@@ -373,6 +373,7 @@ class evp
    */
   evp * final(std::vector<uint8_t> &digest)
   {
+    digest.resize(digestlen_);
     final(digest.data());
     return this;
   }
