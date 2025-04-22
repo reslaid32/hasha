@@ -1,4 +1,4 @@
-name: "(x86_64) On Windows [MSYS2  GCC]"
+name: "(x86_64) On Msys2  [ GCC]"
 
 on:
   push:

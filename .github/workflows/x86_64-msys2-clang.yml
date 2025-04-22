@@ -1,4 +1,5 @@
-name: "(x86_64) On Windows [MSYS2 LLVM]"
+name: "(x86_64) On Msys2  [LLVM]"
+
 
 on:
   push:
