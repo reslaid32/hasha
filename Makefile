@@ -1,5 +1,7 @@
 ﻿include Makefile.config
 
+MAKEFLAGS += -s
+
 CC=cc
 LD=$(CC)
 
@@ -68,14 +70,16 @@ UTL_EXEC = $(patsubst $(UTL)/%.c,$(UTL_BIN)/%,$(UTL_SRCS))
 
 lib: $(TARGET)
 
-all: lib utils tests
+all: lib tests utils
 
 # library
 $(TARGET): $(OBJS)
+	@echo "  LD    $@"
 	mkdir -p $(LIB) $(BIN)
 	$(LD) $(LDFLAGS) -o $@ $^
 
 $(OBJ)/%.o: $(SRC)/%.c
+	@echo "  CC    $@"
 	mkdir -p $(OBJ)
 	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
 
@@ -83,10 +87,12 @@ tests: $(TST_EXEC)
 
 # tests
 $(OBJ)/%.o: $(TST)/%.c
+	@echo "  CC    $@"
 	mkdir -p $(OBJ)
 	$(CC) -O0 -g -I$(INC) -c $< -o $@
 
 $(TST_EXEC): $(TST_OBJS) $(TARGET)
+	@echo "  LD    $@"
 	mkdir -p $(BIN)
 	$(LD) -o $@ $^ -L$(LIB) -lhasha
 
@@ -94,10 +100,12 @@ utils: $(UTL_EXEC)
 
 # utils
 $(UTL_BIN)/%: $(UTL)/%.c $(TARGET)
+	@echo "  CCLD  $@"
 	mkdir -p $(UTL_BIN)
 	$(CC) $(UTL_CFLAGS) -I$(INC) -o $@ $< -L$(LIB) -lhasha
 
 clean:
+	@echo "  RM    bin/    lib/"
 	rm -rf $(BIN) $(LIB)
 
 install-hdr: $(TARGET)
