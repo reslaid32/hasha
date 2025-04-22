@@ -14,5 +14,6 @@ var searchData=
   ['ha_5fsha2_5f512_5f256_5fcontext_11',['ha_sha2_512_256_context',['../d1/d01/structha__sha2__512__256__context.html',1,'']]],
   ['ha_5fsha2_5f512_5fcontext_12',['ha_sha2_512_context',['../df/dc5/structha__sha2__512__context.html',1,'']]],
   ['ha_5fsha3_5fcontext_13',['ha_sha3_context',['../dc/d75/structha__sha3__context.html',1,'']]],
-  ['ha_5fversion_5ft_14',['ha_version_t',['../d4/dcf/structha__version__t.html',1,'']]]
+  ['ha_5fversion_5ft_14',['ha_version_t',['../d4/dcf/structha__version__t.html',1,'']]],
+  ['hasher_15',['Hasher',['../d1/dcb/classhasha_1_1Hasher.html',1,'hasha']]]
 ];

@@ -61,7 +61,7 @@ HA_PUBFUN void ha_keccakf1600(uint64_t *state);
  *         This ID can be used for debugging, performance tracking, or
  * identifying specific optimizations used in the implementation.
  */
-HA_PUBFUN int  ha_keccakf1600_implid();
+HA_PUBFUN int  ha_keccakf1600_implid(void);
 
 HA_EXTERN_C_END
 

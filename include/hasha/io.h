@@ -13,6 +13,7 @@
 #include "./internal/feature.h"
 #include "./internal/hadefs.h"
 #include "./internal/internal.h"
+#include "internal/types.h"
 
 HA_EXTERN_C_BEG
 
@@ -31,7 +32,7 @@ HA_EXTERN_C_BEG
  * @return The number of bytes written, or 0 on failure.
  */
 HA_PUBFUN
-size_t ha_fputhash(FILE *stream, ha_digest_t digest, size_t digestlen);
+size_t ha_fputhash(FILE *stream, ha_cdigest_t digest, size_t digestlen);
 
 /**
  * @brief Outputs the hash digest to standard output.
@@ -45,7 +46,7 @@ size_t ha_fputhash(FILE *stream, ha_digest_t digest, size_t digestlen);
  * @return The number of bytes written, or 0 on failure.
  */
 HA_PUBFUN
-size_t ha_puthash(ha_digest_t digest, size_t digestlen);
+size_t ha_puthash(ha_cdigest_t digest, size_t digestlen);
 
 #endif /* __HA_FEATURE(IO) */
 
@@ -68,7 +69,7 @@ size_t ha_puthash(ha_digest_t digest, size_t digestlen);
  * @return The number of characters written to `dst`.
  */
 HA_PUBFUN
-size_t ha_hash2str(char *dst, ha_digest_t src, size_t len);
+size_t ha_hash2str(char *dst, ha_cdigest_t src, size_t len);
 
 /**
  * @brief Converts a hexadecimal string representation to a hash digest.
@@ -91,7 +92,7 @@ HA_PUBFUN
 size_t ha_str2hash(ha_digest_t dst, const char *src, size_t len);
 
 HA_DEPRECATED("ha_hashstr now deprecated, use ha_hash2str instead")
-HA_PUBFUN size_t ha_strhash(char *dst, ha_digest_t src, size_t len);
+HA_PUBFUN size_t ha_strhash(char *dst, ha_cdigest_t src, size_t len);
 
 /**
  * @brief Compares two hash digests byte by byte.
@@ -107,7 +108,7 @@ HA_PUBFUN size_t ha_strhash(char *dst, ha_digest_t src, size_t len);
  * different.
  */
 HA_PUBFUN
-int ha_cmphash(ha_digest_t lhs, ha_digest_t rhs, size_t digestlen);
+int ha_cmphash(ha_cdigest_t lhs, ha_cdigest_t rhs, size_t digestlen);
 
 /**
  * @brief Compares a hash digest with a hexadecimal string representation.
@@ -124,7 +125,7 @@ int ha_cmphash(ha_digest_t lhs, ha_digest_t rhs, size_t digestlen);
  * they are different.
  */
 HA_PUBFUN
-int ha_cmphashstr(ha_digest_t lhs, const char *rhs, size_t digestlen);
+int ha_cmphashstr(ha_cdigest_t lhs, const char *rhs, size_t digestlen);
 
 HA_EXTERN_C_END
 

@@ -158,7 +158,7 @@ ha_keccakf1600 (uint64_t *state)
 }
 
 HA_PUBFUN int
-ha_keccakf1600_implid ()
+ha_keccakf1600_implid (void)
 {
   return HASHA_KECCAKF1600_IMPLID;
 }

@@ -105,14 +105,21 @@
  */
 enum ha_evp_hashty ha_enum_base(uint8_t)
 {
-  HA_EVPTY_BLAKE2B, /**< BLAKE2b hash */
-  HA_EVPTY_BLAKE2S, /**< BLAKE2s hash */
-  HA_EVPTY_BLAKE3,  /**< BLAKE3 hash */
-  HA_EVPTY_KECCAK,  /**< Keccak (pre-standard SHA-3) */
-  HA_EVPTY_MD5,     /**< MD5 hash */
-  HA_EVPTY_SHA1,    /**< SHA-1 hash */
-  HA_EVPTY_SHA2,    /**< SHA-2 (SHA-224/256/384/512) */
-  HA_EVPTY_SHA3     /**< SHA-3 (standardized version) */
+  HA_EVPTY_UNDEFINED, /**< Undefined (not handled) */
+  HA_EVPTY_BLAKE2B,   /**< BLAKE2b hash */
+  HA_EVPTY_BLAKE2S,   /**< BLAKE2s hash */
+  HA_EVPTY_BLAKE3,    /**< BLAKE3 hash */
+  HA_EVPTY_KECCAK,    /**< Keccak (pre-standard SHA-3) */
+  HA_EVPTY_MD5,       /**< MD5 hash */
+  HA_EVPTY_SHA1,      /**< SHA-1 hash */
+  HA_EVPTY_SHA2,      /**< SHA-2 (SHA-224/256/384/512) */
+  HA_EVPTY_SHA3,      /**< SHA-3 (standardized version) */
+};
+
+enum ha_enum_base(int8_t)
+{
+  /* constant: i8 */
+  HA_EVPTY_SIZE_DYNAMIC = -1,
 };
 
 /**
@@ -126,6 +133,14 @@ extern const size_t          g_ha_evp_hasher_size;
 typedef struct ha_evp_hasher ha_evp_hasher_t, *ha_evp_phasher_t;
 
 HA_EXTERN_C_BEG
+
+/**
+ * @brief Get fixed hash size
+ * @returns If hashty has a fixed hash size (e.g. sha1, md5) - returns
+ *  fixed hash size, otherwise returns HA_EVPTY_SIZE_DYNAMIC (-1)
+ */
+HA_PUBFUN
+signed long ha_evp_hashty_get_digestlen(enum ha_evp_hashty hashty);
 
 /** @brief Returns g_ha_evp_hashty_strings[hashty] (with error handling) */
 HA_PUBFUN
@@ -187,7 +202,7 @@ size_t ha_evp_hasher_digestlen(struct ha_evp_hasher *hasher);
  *
  * @return Pointer to the new EVP hasher, or NULL on failure.
  */
-HA_PUBFUN struct ha_evp_hasher *ha_evp_hasher_new();
+HA_PUBFUN struct ha_evp_hasher *ha_evp_hasher_new(void);
 
 /**
  * @brief Frees the memory of an EVP hasher.
@@ -309,181 +324,6 @@ void ha_evp_digest(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
                    size_t len, ha_digest_t digest);
 
 HA_EXTERN_C_END
-
-#ifdef HA_CPLUSPLUS
-
-#include <memory>
-#include <stdexcept>
-#include <vector>
-
-namespace ha
-{
-
-/**
- * @class evp
- * @brief C++ wrapper for the EVP hasher.
- *
- * This class provides a C++ interface for using the EVP hasher,
- * making it easier to work with hashing algorithms in object-oriented
- * code.
- */
-class evp
-{
- private:
-  /**
-   * @brief Allocates a new EVP hasher.
-   */
-  void new_hasher()
-  {
-    hasher_.reset(ha_evp_hasher_new());
-    if (!hasher_)
-      throw std::runtime_error("Failed to (re)create EVP hasher");
-  }
-
-  /**
-   * @brief Initializes the EVP hasher.
-   */
-  void init_hasher()
-  {
-    ha_evp_hasher_init(hasher_.get(), hashty_, digestlen_);
-  }
-
-  /**
-   * @brief Reinitializes the EVP hasher.
-   */
-  void reinit_hasher()
-  {
-    ha_evp_hasher_reinit(hasher_.get(), hashty_, digestlen_);
-  }
-
-  /**
-   * @brief Cleans up the EVP hasher.
-   */
-  void cleanup_hasher() { ha_evp_hasher_cleanup(hasher_.get()); }
-
-  /**
-   * @brief Deletes the EVP hasher.
-   */
-  void delete_hasher() { ha_evp_hasher_delete(hasher_.get()); }
-
- public:
-  /**
-   * @brief Constructs a new evp object with the specified hash algorithm.
-   */
-  explicit evp(ha_evp_hashty hashty, size_t digestlen = 0)
-      : hashty_(hashty),
-        digestlen_(digestlen),
-        hasher_(ha_evp_hasher_new(), &ha_evp_hasher_delete)
-  {
-    if (!hasher_) throw std::runtime_error("Failed to create EVP hasher");
-    init_hasher();
-  }
-
-  /**
-   * @brief Sets the hash algorithm type.
-   */
-  evp *set_hashty(ha_evp_hashty hashty)
-  {
-    hashty_ = hashty;
-    return this;
-  }
-
-  /**
-   * @brief Sets the digest length.
-   */
-  evp *set_digestlen(size_t digestlen)
-  {
-    digestlen_ = digestlen;
-    return this;
-  }
-
-  /**
-   * @brief Commits the changes (reinitializes the hasher).
-   */
-  evp *commit()
-  {
-    reinit_hasher();
-    return this;
-  }
-
-  /**
-   * @brief Initializes the EVP hasher.
-   */
-  evp *init()
-  {
-    ha_evp_init(hasher_.get());
-    return this;
-  }
-
-  /**
-   * @brief Updates the EVP hasher with data.
-   */
-  evp *update(ha_inbuf_t data, size_t len)
-  {
-    ha_evp_update(hasher_.get(), data, len);
-    return this;
-  }
-
-  /**
-   * @brief Updates the EVP hasher with a vector of data.
-   */
-  evp *update(const std::vector<uint8_t> &data)
-  {
-    update(data.data(), data.size());
-    return this;
-  }
-
-  /**
-   * @brief Finalizes the hash computation and returns the digest.
-   */
-  evp * final(ha_outbuf_t digest)
-  {
-    ha_evp_final(hasher_.get(), digest);
-    return this;
-  }
-
-  /**
-   * @brief Finalizes the hash computation and stores the digest in a
-   * vector.
-   */
-  evp * final(std::vector<uint8_t> &digest)
-  {
-    final(digest.data());
-    return this;
-  }
-
-  /**
-   * @brief Computes the hash and stores the result in the digest.
-   */
-  evp *hash(ha_inbuf_t data, size_t len, ha_outbuf_t digest)
-  {
-    ha_evp_hash(hasher_.get(), data, len, digest);
-    return this;
-  }
-
-  /**
-   * @brief Computes the hash for a vector of data.
-   */
-  evp *hash(const std::vector<uint8_t> &data, std::vector<uint8_t> &digest)
-  {
-    digest.resize(digestlen_);
-    ha_evp_hash(hasher_.get(), data.data(), data.size(), digest.data());
-    return this;
-  }
-
- private:
-  ha_evp_hashty hashty_;    /**< Hash algorithm type */
-  size_t        digestlen_; /**< Digest length */
-  std::unique_ptr<ha_evp_hasher_t, decltype(&ha_evp_hasher_delete)>
-      hasher_;              /**< EVP hasher instance */
-
-  evp(const evp &)            = delete;
-  evp &operator=(const evp &) = delete;
-};
-
-}  // namespace ha
-
-#endif
 
 #endif /* __HA_FEATURE(EVP) */
 

@@ -3,19 +3,35 @@
 
 #include "../include/hasha/internal/internal.h"
 
+#if defined(__has_include)
 #if __has_include(<endian.h>)
 #include <endian.h>
+#elif __has_include(<sys/endian.h>)
+#include <sys/endian.h>
+#elif __has_include(<machine/endian.h>)
+#include <machine/endian.h>
 #endif
-
-#if defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-#define HA_BIG_ENDIAN
-#elif defined(__BYTE_ORDER__) && __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
-#define HA_LITTLE_ENDIAN
+#elif defined(__linux__)
+#include <endian.h>
+#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__)
+#include <sys/endian.h>
+#elif defined(__APPLE__)
+#include <machine/endian.h>
+#elif defined(_WIN32)
+#ifndef __ORDER_LITTLE_ENDIAN__
+#define __ORDER_LITTLE_ENDIAN__ 1234
+#endif
+#ifndef __ORDER_BIG_ENDIAN
+#define __ORDER_BIG_ENDIAN 4321
+#endif
+#ifndef __BYTE_ORDER__
+#define __BYTE_ORDER__ __ORDER_LITTLE_ENDIAN__
+#endif
 #else
-#error "Unknown byte order"
+#error cannot determine endian.h location for this compiler.
 #endif
 
-#ifdef HA_BIG_ENDIAN
+#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
 static inline uint32_t
 le32_to_cpu (uint32_t x)
 {
@@ -102,7 +118,7 @@ store_be64 (uint8_t *p, uint64_t x)
   memcpy (p, &x, 8);
 }
 
-#else // HA_LITTLE_ENDIAN
+#elif __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
 
 #define le32_to_cpu(x) (x)
 #define le64_to_cpu(x) (x)
@@ -190,6 +206,8 @@ store_be64 (uint8_t *p, uint64_t x)
   p[7] = x & 0xFF;
 }
 
+#else
+#error unexpected __BYTE_ORDER__
 #endif
 
 #endif

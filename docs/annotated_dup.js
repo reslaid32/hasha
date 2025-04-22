@@ -1,5 +1,8 @@
 var annotated_dup =
 [
+    [ "hasha", "d8/d3e/namespacehasha.html", [
+      [ "Hasher", "d1/dcb/classhasha_1_1Hasher.html", "d1/dcb/classhasha_1_1Hasher" ]
+    ] ],
     [ "ha_blake2b_context", "dc/d9c/structha__blake2b__context.html", "dc/d9c/structha__blake2b__context" ],
     [ "ha_blake2s_context", "d6/d30/structha__blake2s__context.html", "d6/d30/structha__blake2s__context" ],
     [ "ha_blake3_context", "d6/d3a/structha__blake3__context.html", "d6/d3a/structha__blake3__context" ],

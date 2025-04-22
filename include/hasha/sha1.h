@@ -57,18 +57,6 @@ typedef struct ha_sha1_context
 } ha_sha1_context;
 
 /**
- * @brief SHA-1 constant K values used in the transformation function.
- */
-static const uint32_t SHA1_K[4]  = {0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC,
-                                    0xCA62C1D6};
-
-/**
- * @brief SHA-1 initial hash values.
- */
-static const uint32_t SHA1_H0[5] = {0x67452301, 0xEFCDAB89, 0x98BADCFE,
-                                    0x10325476, 0xC3D2E1F0};
-
-/**
  * @brief Performs the SHA-1 transformation step on a 512-bit data block.
  *
  * This function processes the given data block and updates the internal
@@ -77,8 +65,8 @@ static const uint32_t SHA1_H0[5] = {0x67452301, 0xEFCDAB89, 0x98BADCFE,
  * @param ctx Pointer to the SHA-1 context structure.
  * @param block Pointer to the 512-bit (64-byte) input data block.
  */
-HA_PUBFUN void        ha_sha1_transform(ha_sha1_context *ctx,
-                                        const uint8_t   *block);
+HA_PUBFUN void ha_sha1_transform(ha_sha1_context *ctx,
+                                 const uint8_t   *block);
 
 /**
  * @brief Initializes the SHA-1 context for a new hash computation.
@@ -89,7 +77,7 @@ HA_PUBFUN void        ha_sha1_transform(ha_sha1_context *ctx,
  *
  * @param ctx Pointer to the SHA-1 context structure.
  */
-HA_PUBFUN void        ha_sha1_init(ha_sha1_context *ctx);
+HA_PUBFUN void ha_sha1_init(ha_sha1_context *ctx);
 
 /**
  * @brief Updates the SHA-1 context with new data.
@@ -102,8 +90,8 @@ HA_PUBFUN void        ha_sha1_init(ha_sha1_context *ctx);
  * @param data Pointer to the input data.
  * @param len The length of the input data.
  */
-HA_PUBFUN void        ha_sha1_update(ha_sha1_context *ctx, ha_inbuf_t data,
-                                     size_t len);
+HA_PUBFUN void ha_sha1_update(ha_sha1_context *ctx, ha_inbuf_t data,
+                              size_t len);
 
 /**
  * @brief Finalizes the SHA-1 context and produces the resulting hash

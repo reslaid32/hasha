@@ -1,18 +1,5 @@
 var hadefs_8h =
 [
-    [ "__builtin_abs", "d5/d5e/hadefs_8h.html#a47f9a49067a80c12e001de2ff075d6cc", null ],
-    [ "__builtin_assume", "d5/d5e/hadefs_8h.html#aca59f8c02791a8ad45dbf84812113588", null ],
-    [ "__builtin_assume_assigned", "d5/d5e/hadefs_8h.html#a03a3020af124f29bd8dd8a9838d5a827", null ],
-    [ "__builtin_bswap16", "d5/d5e/hadefs_8h.html#afd7d1c7d475f636d79507f6031163ecb", null ],
-    [ "__builtin_bswap32", "d5/d5e/hadefs_8h.html#aa386cc0d1051fc268e5ecffedefbe781", null ],
-    [ "__builtin_bswap64", "d5/d5e/hadefs_8h.html#a9227d8cc28c40efecb0d6285226827dc", null ],
-    [ "__builtin_expect", "d5/d5e/hadefs_8h.html#a74eb0ea39efa400df03b6a066cb02af9", null ],
-    [ "__builtin_parity", "d5/d5e/hadefs_8h.html#a31db8bd79a5285c25989c258b81d5fda", null ],
-    [ "__builtin_rotateleft32", "d5/d5e/hadefs_8h.html#a1b33a24e00eb08fa3fefae8500dbb0cf", null ],
-    [ "__builtin_rotateleft64", "d5/d5e/hadefs_8h.html#a84dbefb058d3e12f4d9391444c31359a", null ],
-    [ "__builtin_rotateright32", "d5/d5e/hadefs_8h.html#ae48e07a6dd6d1657efec4e6aca300b4e", null ],
-    [ "__builtin_rotateright64", "d5/d5e/hadefs_8h.html#a0a8c94225ac4530dc8ff7a2345f63f34", null ],
-    [ "__builtin_unreachable", "d5/d5e/hadefs_8h.html#a53ea7a7bf98594ae0b0a1cc690706043", null ],
     [ "ha_Bb", "d5/d5e/hadefs_8h.html#abc9d33439971ef4bb101b658b655400f", null ],
     [ "ha_bB", "d5/d5e/hadefs_8h.html#a7ff6890f9896fef2c6324638fd3d5085", null ],
     [ "HA_DEPRECATED", "d5/d5e/hadefs_8h.html#a5f909c65e39cbc5e5429644579d43bb8", null ],
@@ -25,11 +12,5 @@ var hadefs_8h =
     [ "ha_in_range", "d5/d5e/hadefs_8h.html#a0a762576c6a4c59d6d4b0dcbd8e6c1cc", null ],
     [ "HA_PRVFUN", "d5/d5e/hadefs_8h.html#a6cbe846f2556a930fe7708c2f3f0d910", null ],
     [ "HA_PUBFUN", "d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8", null ],
-    [ "ha_register", "d5/d5e/hadefs_8h.html#ac326d0cff634aa40b3a54dec2daebde8", null ],
-    [ "__builtin_clz", "d5/d5e/hadefs_8h.html#a46c7cf7af7be44cc2cb3109623841442", null ],
-    [ "__builtin_clzl", "d5/d5e/hadefs_8h.html#ab9c5259f688ad5c787e606be36465c0d", null ],
-    [ "__builtin_clzll", "d5/d5e/hadefs_8h.html#ae28a243f253d476408c9c3d91c2baf30", null ],
-    [ "__builtin_popcount", "d5/d5e/hadefs_8h.html#a5ddf396dfcdaeb84e9b98a7047c7c9a4", null ],
-    [ "__builtin_popcountl", "d5/d5e/hadefs_8h.html#af92bc8d55b44a3192ede785e0e3461d9", null ],
-    [ "__builtin_popcountll", "d5/d5e/hadefs_8h.html#a7770eb634d9f96939b399f8b35cc99f8", null ]
+    [ "ha_register", "d5/d5e/hadefs_8h.html#ac326d0cff634aa40b3a54dec2daebde8", null ]
 ];

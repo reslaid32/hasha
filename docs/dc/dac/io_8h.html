@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.12</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.13</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -114,6 +114,7 @@ $(function(){initNavTree('dc/dac/io_8h.html','../../'); initResizable(true); });
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d2/d74/feature_8h_source.html">./internal/feature.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/d5e/hadefs_8h_source.html">./internal/hadefs.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../db/dde/internal_8h_source.html">./internal/internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d9/d49/types_8h_source.html">internal/types.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for io.h:</div>
 <div class="dyncontent">
@@ -138,26 +139,26 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a012422efd4f7eba55fd6c8a191968291" id="r_a012422efd4f7eba55fd6c8a191968291"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a> <a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a012422efd4f7eba55fd6c8a191968291">ha_fputhash</a> (FILE *stream, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest, size_t digestlen)</td></tr>
-<tr class="memdesc:a012422efd4f7eba55fd6c8a191968291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the hash digest to the specified file stream.  <br /></td></tr>
-<tr class="separator:a012422efd4f7eba55fd6c8a191968291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52e275ac9b413a33f845e6ca407def7a" id="r_a52e275ac9b413a33f845e6ca407def7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52e275ac9b413a33f845e6ca407def7a">ha_puthash</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> digest, size_t digestlen)</td></tr>
-<tr class="memdesc:a52e275ac9b413a33f845e6ca407def7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs the hash digest to standard output.  <br /></td></tr>
-<tr class="separator:a52e275ac9b413a33f845e6ca407def7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03b1bd870d26237b83edc6e52ea80581" id="r_a03b1bd870d26237b83edc6e52ea80581"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03b1bd870d26237b83edc6e52ea80581">ha_hash2str</a> (char *dst, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> src, size_t len)</td></tr>
-<tr class="memdesc:a03b1bd870d26237b83edc6e52ea80581"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hash digest to a hexadecimal string representation.  <br /></td></tr>
-<tr class="separator:a03b1bd870d26237b83edc6e52ea80581"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6275a9d4dc2751e5160f4b3a552a2f46" id="r_a6275a9d4dc2751e5160f4b3a552a2f46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6275a9d4dc2751e5160f4b3a552a2f46">ha_str2hash</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> dst, const char *src, size_t len)</td></tr>
+<tr class="memitem:a216344a7d339f9238d952913be6ee738" id="r_a216344a7d339f9238d952913be6ee738"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a> <a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a216344a7d339f9238d952913be6ee738">ha_fputhash</a> (FILE *stream, <a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> digest, size_t digestlen)</td></tr>
+<tr class="memdesc:a216344a7d339f9238d952913be6ee738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the hash digest to the specified file stream.  <br /></td></tr>
+<tr class="separator:a216344a7d339f9238d952913be6ee738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9814dd05387473f3bcea5b14cac8bc" id="r_a3f9814dd05387473f3bcea5b14cac8bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f9814dd05387473f3bcea5b14cac8bc">ha_puthash</a> (<a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> digest, size_t digestlen)</td></tr>
+<tr class="memdesc:a3f9814dd05387473f3bcea5b14cac8bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs the hash digest to standard output.  <br /></td></tr>
+<tr class="separator:a3f9814dd05387473f3bcea5b14cac8bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ce46af87cab59058729455314bfedf" id="r_a44ce46af87cab59058729455314bfedf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44ce46af87cab59058729455314bfedf">ha_hash2str</a> (char *dst, <a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> src, size_t len)</td></tr>
+<tr class="memdesc:a44ce46af87cab59058729455314bfedf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hash digest to a hexadecimal string representation.  <br /></td></tr>
+<tr class="separator:a44ce46af87cab59058729455314bfedf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6275a9d4dc2751e5160f4b3a552a2f46" id="r_a6275a9d4dc2751e5160f4b3a552a2f46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6275a9d4dc2751e5160f4b3a552a2f46">ha_str2hash</a> (<a class="el" href="../../d9/d49/types_8h.html#a9c1c65e88543b5487a92ab141951c437">ha_digest_t</a> dst, const char *src, size_t len)</td></tr>
 <tr class="memdesc:a6275a9d4dc2751e5160f4b3a552a2f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a hexadecimal string representation to a hash digest.  <br /></td></tr>
 <tr class="separator:a6275a9d4dc2751e5160f4b3a552a2f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1a80636d5c6217ece088a4ab2bd11be" id="r_ac1a80636d5c6217ece088a4ab2bd11be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1a80636d5c6217ece088a4ab2bd11be">ha_strhash</a> (char *dst, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> src, size_t len)</td></tr>
-<tr class="separator:ac1a80636d5c6217ece088a4ab2bd11be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64d4938e4094019994c89d94b363466e" id="r_a64d4938e4094019994c89d94b363466e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64d4938e4094019994c89d94b363466e">ha_cmphash</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> lhs, <a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> rhs, size_t digestlen)</td></tr>
-<tr class="memdesc:a64d4938e4094019994c89d94b363466e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two hash digests byte by byte.  <br /></td></tr>
-<tr class="separator:a64d4938e4094019994c89d94b363466e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fa4d492c6c9b735d0b56fc8de740da" id="r_a52fa4d492c6c9b735d0b56fc8de740da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52fa4d492c6c9b735d0b56fc8de740da">ha_cmphashstr</a> (<a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a> lhs, const char *rhs, size_t digestlen)</td></tr>
-<tr class="memdesc:a52fa4d492c6c9b735d0b56fc8de740da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares a hash digest with a hexadecimal string representation.  <br /></td></tr>
-<tr class="separator:a52fa4d492c6c9b735d0b56fc8de740da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd4aa30514d13b357b88a8798eed9c1" id="r_acfd4aa30514d13b357b88a8798eed9c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfd4aa30514d13b357b88a8798eed9c1">ha_strhash</a> (char *dst, <a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> src, size_t len)</td></tr>
+<tr class="separator:acfd4aa30514d13b357b88a8798eed9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5100db9ee2e30de8bb629f568119f721" id="r_a5100db9ee2e30de8bb629f568119f721"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5100db9ee2e30de8bb629f568119f721">ha_cmphash</a> (<a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> lhs, <a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> rhs, size_t digestlen)</td></tr>
+<tr class="memdesc:a5100db9ee2e30de8bb629f568119f721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two hash digests byte by byte.  <br /></td></tr>
+<tr class="separator:a5100db9ee2e30de8bb629f568119f721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b37e4ae57351409a6130b5ab27d1a41" id="r_a9b37e4ae57351409a6130b5ab27d1a41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b37e4ae57351409a6130b5ab27d1a41">ha_cmphashstr</a> (<a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a> lhs, const char *rhs, size_t digestlen)</td></tr>
+<tr class="memdesc:a9b37e4ae57351409a6130b5ab27d1a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares a hash digest with a hexadecimal string representation.  <br /></td></tr>
+<tr class="separator:a9b37e4ae57351409a6130b5ab27d1a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for I/O operations related to hashing. </p>
@@ -181,7 +182,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((len) * 2)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00052">52</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00053">53</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
 
 </div>
 </div>
@@ -201,7 +202,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">((len) / 2)</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00053">53</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00054">54</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
 
 </div>
 </div>
@@ -220,15 +221,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><a class="code hl_define" href="#a5160f902bd8f81d3ae076ae93a0f8c73">ha_hash2str_bound</a>(len)</div>
-<div class="ttc" id="aio_8h_html_a5160f902bd8f81d3ae076ae93a0f8c73"><div class="ttname"><a href="#a5160f902bd8f81d3ae076ae93a0f8c73">ha_hash2str_bound</a></div><div class="ttdeci">#define ha_hash2str_bound(len)</div><div class="ttdef"><b>Definition</b> <a href="../../dc/dac/io_8h_source.html#l00052">io.h:52</a></div></div>
+<div class="ttc" id="aio_8h_html_a5160f902bd8f81d3ae076ae93a0f8c73"><div class="ttname"><a href="#a5160f902bd8f81d3ae076ae93a0f8c73">ha_hash2str_bound</a></div><div class="ttdeci">#define ha_hash2str_bound(len)</div><div class="ttdef"><b>Definition</b> <a href="../../dc/dac/io_8h_source.html#l00053">io.h:53</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00055">55</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dac/io_8h_source.html#l00056">56</a> of file <a class="el" href="../../dc/dac/io_8h_source.html">io.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a64d4938e4094019994c89d94b363466e" name="a64d4938e4094019994c89d94b363466e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64d4938e4094019994c89d94b363466e">&#9670;&#160;</a></span>ha_cmphash()</h2>
+<a id="a5100db9ee2e30de8bb629f568119f721" name="a5100db9ee2e30de8bb629f568119f721"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5100db9ee2e30de8bb629f568119f721">&#9670;&#160;</a></span>ha_cmphash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,12 +237,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int ha_cmphash </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>rhs</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -265,8 +266,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a52fa4d492c6c9b735d0b56fc8de740da" name="a52fa4d492c6c9b735d0b56fc8de740da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52fa4d492c6c9b735d0b56fc8de740da">&#9670;&#160;</a></span>ha_cmphashstr()</h2>
+<a id="a9b37e4ae57351409a6130b5ab27d1a41" name="a9b37e4ae57351409a6130b5ab27d1a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b37e4ae57351409a6130b5ab27d1a41">&#9670;&#160;</a></span>ha_cmphashstr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +275,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> int ha_cmphashstr </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>lhs</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -303,8 +304,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a012422efd4f7eba55fd6c8a191968291" name="a012422efd4f7eba55fd6c8a191968291"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a012422efd4f7eba55fd6c8a191968291">&#9670;&#160;</a></span>ha_fputhash()</h2>
+<a id="a216344a7d339f9238d952913be6ee738" name="a216344a7d339f9238d952913be6ee738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a216344a7d339f9238d952913be6ee738">&#9670;&#160;</a></span>ha_fputhash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -317,7 +318,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>digest</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>digest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -341,8 +342,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a03b1bd870d26237b83edc6e52ea80581" name="a03b1bd870d26237b83edc6e52ea80581"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03b1bd870d26237b83edc6e52ea80581">&#9670;&#160;</a></span>ha_hash2str()</h2>
+<a id="a44ce46af87cab59058729455314bfedf" name="a44ce46af87cab59058729455314bfedf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ce46af87cab59058729455314bfedf">&#9670;&#160;</a></span>ha_hash2str()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -355,7 +356,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -379,8 +380,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a52e275ac9b413a33f845e6ca407def7a" name="a52e275ac9b413a33f845e6ca407def7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52e275ac9b413a33f845e6ca407def7a">&#9670;&#160;</a></span>ha_puthash()</h2>
+<a id="a3f9814dd05387473f3bcea5b14cac8bc" name="a3f9814dd05387473f3bcea5b14cac8bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9814dd05387473f3bcea5b14cac8bc">&#9670;&#160;</a></span>ha_puthash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -388,7 +389,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t ha_puthash </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>digest</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>digest</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -420,7 +421,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t ha_str2hash </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a9c1c65e88543b5487a92ab141951c437">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>dst</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -449,8 +450,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1a80636d5c6217ece088a4ab2bd11be" name="ac1a80636d5c6217ece088a4ab2bd11be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1a80636d5c6217ece088a4ab2bd11be">&#9670;&#160;</a></span>ha_strhash()</h2>
+<a id="acfd4aa30514d13b357b88a8798eed9c1" name="acfd4aa30514d13b357b88a8798eed9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd4aa30514d13b357b88a8798eed9c1">&#9670;&#160;</a></span>ha_strhash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,7 +464,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">ha_digest_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
+          <td class="paramtype"><a class="el" href="../../d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">ha_cdigest_t</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

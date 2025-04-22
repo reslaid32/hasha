@@ -34,4 +34,5 @@ digraph "include/hasha/io.h"
   Node4 -> Node14 [id="edge15_Node000004_Node000014",color="steelblue1",style="solid",tooltip=" "];
   Node14 [id="Node000014",label="./types.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$d9/d49/types_8h.html",tooltip=" "];
   Node14 -> Node5 [id="edge16_Node000014_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node14 [id="edge17_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
 }

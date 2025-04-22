@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.12</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.13</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -127,13 +127,14 @@ $(function(){initNavTree('globals_h.html',''); initResizable(true); });
 <li>ha_blake3_hash()&#160;:&#160;<a class="el" href="d0/d8f/blake3_8h.html#a4fb4fb76db80b7dfe0fdb147a2b392f1">blake3.h</a></li>
 <li>ha_blake3_init()&#160;:&#160;<a class="el" href="d0/d8f/blake3_8h.html#a9889a00ceaca838fc8a93e807fdf9dd7">blake3.h</a></li>
 <li>ha_blake3_update()&#160;:&#160;<a class="el" href="d0/d8f/blake3_8h.html#acc2cf0751994422b32fc6c094a72179e">blake3.h</a></li>
-<li>ha_cmphash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a64d4938e4094019994c89d94b363466e">io.h</a></li>
-<li>ha_cmphashstr()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a52fa4d492c6c9b735d0b56fc8de740da">io.h</a></li>
+<li>ha_cdigest_t&#160;:&#160;<a class="el" href="d9/d49/types_8h.html#a95651e7122d0db218354afb02e1ddae8">types.h</a></li>
+<li>ha_cmphash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a5100db9ee2e30de8bb629f568119f721">io.h</a></li>
+<li>ha_cmphashstr()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a9b37e4ae57351409a6130b5ab27d1a41">io.h</a></li>
 <li>ha_crc32_hash()&#160;:&#160;<a class="el" href="dc/de6/crc_8h.html#ac58766101f9e50a12c6a23656be15110">crc.h</a></li>
 <li>ha_ctx&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a8c6c6c3641b74db92f4e9d0dc1291ea8">evp.h</a></li>
 <li>ha_curpos&#160;:&#160;<a class="el" href="da/d41/error_8h.html#a0db7a81e375ce8bce7cccf0254d46476">error.h</a></li>
 <li>HA_DEPRECATED&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#a5f909c65e39cbc5e5429644579d43bb8">hadefs.h</a></li>
-<li>ha_digest_t&#160;:&#160;<a class="el" href="d9/d49/types_8h.html#ae014341b89dd41cf7ddc7b85374e8f1f">types.h</a></li>
+<li>ha_digest_t&#160;:&#160;<a class="el" href="d9/d49/types_8h.html#a9c1c65e88543b5487a92ab141951c437">types.h</a></li>
 <li>ha_enum_base&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#a53f3f77070f5f32588e69d56bcdeb67c">hadefs.h</a>, <a class="el" href="d5/d67/evp_8h.html#ad37394366ced61da3723c70065eda5ed">evp.h</a>, <a class="el" href="d6/dd8/keccak_8h.html#ad690e065caaa6583be27dd1e47b8031c">keccak.h</a></li>
 <li>ha_evp_digest()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a827843b0270ebd5f411e9db9db1c826b">evp.h</a></li>
 <li>ha_evp_final()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#aeb750b91d4a8e7ac2c1f04cd88b7b59c">evp.h</a></li>
@@ -146,25 +147,27 @@ $(function(){initNavTree('globals_h.html',''); initResizable(true); });
 <li>ha_evp_hasher_init()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a7bffd26c85868859925758acb47aece6">evp.h</a></li>
 <li>ha_evp_hasher_keccak_custom()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a86c7961b9ee2a87cb0f7d3bf531f42a6">evp.h</a></li>
 <li>ha_evp_hasher_keccak_rate()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a42b97058f73cfa94aee4faaeb3b1b60a">evp.h</a></li>
-<li>ha_evp_hasher_new()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#aba178e33f54c7beffcf87f2a41325820">evp.h</a></li>
+<li>ha_evp_hasher_new()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a1f46e7b74f10c50be815e500e608f8fb">evp.h</a></li>
 <li>ha_evp_hasher_reinit()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#ac608f7910d65f10d79cccc08abfca2e8">evp.h</a></li>
 <li>ha_evp_hasher_set_keccak_custom()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a319065f5126a540526ced2d10d6efb64">evp.h</a></li>
 <li>ha_evp_hasher_set_keccak_rate()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a5fcbb567bbe64968ac4e8d221687b784">evp.h</a></li>
 <li>ha_evp_hasher_t&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#af8b9109733f19b16368623fa1c4ce201">evp.h</a></li>
-<li>ha_evp_hashty_tostr()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a52c7042efd2b9c549e1820a973959e2b">evp.h</a></li>
+<li>ha_evp_hashty_get_digestlen()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a571cccc3d4c4ab29f0fdb321cf2ca603">evp.h</a></li>
+<li>ha_evp_hashty_tostr()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a8ceeed9e145e5d5368087816c1e68eb6">evp.h</a></li>
 <li>ha_evp_init()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac">evp.h</a></li>
 <li>ha_evp_phasher_t&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#aea1c857132e3a387ad131a38ab4626ce">evp.h</a></li>
 <li>ha_evp_update()&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#ac40d0a936413bb45e2662f0e625ad3cb">evp.h</a></li>
+<li>ha_evpp_auto_commit&#160;:&#160;<a class="el" href="dc/d53/evpp_8h.html#a552d90cac294b759a5ddd087407254d0">evpp.h</a></li>
 <li>HA_EXPORT&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#a7cdea6b38d29bb4c89acbc67725e2b5e">hadefs.h</a></li>
 <li>HA_EXTERN_C&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#afe964cedb23e1520d99aa484810abda4">hadefs.h</a></li>
 <li>HA_EXTERN_C_BEG&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">hadefs.h</a></li>
 <li>HA_EXTERN_C_END&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#aa193a051230554a2beb966141ac37c9e">hadefs.h</a></li>
 <li>ha_final&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#aec79d6adcf60d1429b4ad71734e16c86">evp.h</a></li>
 <li>ha_final_fun&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a66b3c04cd6b5c29a06f3cad3dde6f9ce">evp.h</a></li>
-<li>ha_fputhash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a012422efd4f7eba55fd6c8a191968291">io.h</a></li>
+<li>ha_fputhash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a216344a7d339f9238d952913be6ee738">io.h</a></li>
 <li>ha_getopt()&#160;:&#160;<a class="el" href="d8/d68/opts_8h.html#a826b62b59aa2989f0f608ad71d7f75ce">opts.h</a></li>
 <li>ha_hash&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#a3b968c67668c1e9cc5ac858e03a9a71e">evp.h</a></li>
-<li>ha_hash2str()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a03b1bd870d26237b83edc6e52ea80581">io.h</a></li>
+<li>ha_hash2str()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a44ce46af87cab59058729455314bfedf">io.h</a></li>
 <li>ha_hash2str_bound&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a5160f902bd8f81d3ae076ae93a0f8c73">io.h</a></li>
 <li>ha_hash_fun&#160;:&#160;<a class="el" href="d5/d67/evp_8h.html#afcbb5079277b1f6abebfc537721a986c">evp.h</a></li>
 <li>HA_HDR_PUBFUN&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#adba801f1442268e2decd528538ee3107">hadefs.h</a></li>
@@ -206,7 +209,7 @@ $(function(){initNavTree('globals_h.html',''); initResizable(true); });
 <li>ha_keccak_init()&#160;:&#160;<a class="el" href="d6/dd8/keccak_8h.html#aab2685282fedc8407766d96cb88f21a9">keccak.h</a></li>
 <li>ha_keccak_update()&#160;:&#160;<a class="el" href="d6/dd8/keccak_8h.html#a85d6704086ac882a57bfe2f7895f6a7c">keccak.h</a></li>
 <li>ha_keccakf1600()&#160;:&#160;<a class="el" href="d8/d46/keccakf1600_8h.html#a851b5463a57c0640dcbf748471ffef4e">keccakf1600.h</a></li>
-<li>ha_keccakf1600_implid()&#160;:&#160;<a class="el" href="d8/d46/keccakf1600_8h.html#a40b0a728cec3609a911750a12de66716">keccakf1600.h</a></li>
+<li>ha_keccakf1600_implid()&#160;:&#160;<a class="el" href="d8/d46/keccakf1600_8h.html#a924d4832845154bc63c4644941854e9d">keccakf1600.h</a></li>
 <li>HA_MD5_BLOCK_SIZE&#160;:&#160;<a class="el" href="da/db0/md5_8h.html#a63ffa4617bf481abe035130228c72c4f">md5.h</a></li>
 <li>ha_md5_context&#160;:&#160;<a class="el" href="da/db0/md5_8h.html#af076675b9eb57091329ad14fe04d602a">md5.h</a></li>
 <li>HA_MD5_DIGEST_SIZE&#160;:&#160;<a class="el" href="da/db0/md5_8h.html#a15824cefcc7bbb9ae5483dfdc5347858">md5.h</a></li>
@@ -251,7 +254,7 @@ $(function(){initNavTree('globals_h.html',''); initResizable(true); });
 <li>ha_primitive_sigma1_64&#160;:&#160;<a class="el" href="d1/d71/primitive_8h.html#a4fd9577ce629735c37a2baf73d58ab1f">primitive.h</a></li>
 <li>HA_PRVFUN&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#a6cbe846f2556a930fe7708c2f3f0d910">hadefs.h</a></li>
 <li>HA_PUBFUN&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">hadefs.h</a></li>
-<li>ha_puthash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a52e275ac9b413a33f845e6ca407def7a">io.h</a></li>
+<li>ha_puthash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a3f9814dd05387473f3bcea5b14cac8bc">io.h</a></li>
 <li>ha_register&#160;:&#160;<a class="el" href="d5/d5e/hadefs_8h.html#ac326d0cff634aa40b3a54dec2daebde8">hadefs.h</a></li>
 <li>ha_setopt()&#160;:&#160;<a class="el" href="d8/d68/opts_8h.html#a0e758fe36db53e8ddbebc8d4ab9c0858">opts.h</a></li>
 <li>HA_SHA1_BLOCK_SIZE&#160;:&#160;<a class="el" href="db/db5/sha1_8h.html#a0b95c572695beae56731a651d39d184d">sha1.h</a></li>
@@ -341,7 +344,7 @@ $(function(){initNavTree('globals_h.html',''); initResizable(true); });
 <li>ha_sha3_context&#160;:&#160;<a class="el" href="d7/dda/sha3_8h.html#a705f4e9a9124ed7ce894506f5d8af539">sha3.h</a></li>
 <li>ha_str2hash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#a6275a9d4dc2751e5160f4b3a552a2f46">io.h</a></li>
 <li>ha_str2hash_bound&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#ac1c821880d762bfba50fa7b3d2502b7b">io.h</a></li>
-<li>ha_strhash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#ac1a80636d5c6217ece088a4ab2bd11be">io.h</a></li>
+<li>ha_strhash()&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#acfd4aa30514d13b357b88a8798eed9c1">io.h</a></li>
 <li>ha_strhash_bound&#160;:&#160;<a class="el" href="dc/dac/io_8h.html#ad389e9ada603a1839cd7825b92e7e528">io.h</a></li>
 <li>ha_throw()&#160;:&#160;<a class="el" href="da/d41/error_8h.html#a2fab8b55d39ae88f081d28f37ca0b3d1">error.h</a></li>
 <li>ha_throw_debug()&#160;:&#160;<a class="el" href="da/d41/error_8h.html#ae322bd56ec861a1afb1487522b205bec">error.h</a></li>

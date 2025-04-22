@@ -14,7 +14,7 @@ static char *g_ha_io_error_strings[] = {
 
 HA_PUBFUN
 size_t
-ha_fputhash (FILE *stream, ha_digest_t digest, size_t digestlen)
+ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen)
 {
   if (!stream)
     {
@@ -40,7 +40,7 @@ ha_fputhash (FILE *stream, ha_digest_t digest, size_t digestlen)
 
 HA_PUBFUN
 size_t
-ha_puthash (ha_digest_t digest, size_t digestlen)
+ha_puthash (ha_cdigest_t digest, size_t digestlen)
 {
   return ha_fputhash (stdout, digest, digestlen);
 }
@@ -49,7 +49,7 @@ ha_puthash (ha_digest_t digest, size_t digestlen)
 
 HA_PUBFUN
 size_t
-ha_hash2str (char *dst, ha_digest_t src, size_t len)
+ha_hash2str (char *dst, ha_cdigest_t src, size_t len)
 {
 #if (__HA_FEATURE(IO))
   if (!dst)
@@ -126,21 +126,21 @@ ha_str2hash (ha_digest_t dst, const char *src, size_t len)
 }
 
 HA_PUBFUN size_t
-ha_strhash (char *dst, ha_digest_t src, size_t len)
+ha_strhash (char *dst, ha_cdigest_t src, size_t len)
 {
   return ha_hash2str (dst, src, len);
 }
 
 HA_PUBFUN
 int
-ha_cmphash (ha_digest_t lhs, ha_digest_t rhs, size_t digestlen)
+ha_cmphash (ha_cdigest_t lhs, ha_cdigest_t rhs, size_t digestlen)
 {
   return memcmp (lhs, rhs, digestlen);
 }
 
 HA_PUBFUN
 int
-ha_cmphashstr (ha_digest_t lhs, const char *rhs, size_t digestlen)
+ha_cmphashstr (ha_cdigest_t lhs, const char *rhs, size_t digestlen)
 {
   size_t s_hashlen = ha_strhash_bound (digestlen);
   /* unused

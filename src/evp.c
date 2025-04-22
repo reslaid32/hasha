@@ -110,6 +110,21 @@ ha_evp_hashty_tostr (enum ha_evp_hashty hashty)
 }
 
 HA_PUBFUN
+signed long /* slong */
+ha_evp_hashty_get_digestlen (enum ha_evp_hashty hashty)
+{
+  switch (hashty)
+    {
+    case HA_EVPTY_MD5:
+      return HA_MD5_DIGEST_SIZE;
+    case HA_EVPTY_SHA1:
+      return HA_SHA1_DIGEST_SIZE;
+    default:
+      return HA_EVPTY_SIZE_DYNAMIC;
+    }
+}
+
+HA_PUBFUN
 void
 ha_evp_hasher_set_keccak_custom (struct ha_evp_hasher *hasher, bool custom)
 {
@@ -563,7 +578,7 @@ ha_evp_free_context (struct ha_evp_hasher *hasher)
 
 HA_PUBFUN
 struct ha_evp_hasher *
-ha_evp_hasher_new ()
+ha_evp_hasher_new (void)
 {
   struct ha_evp_hasher *ptr
       = (struct ha_evp_hasher *)malloc (g_ha_evp_hasher_size);
