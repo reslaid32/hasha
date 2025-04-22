@@ -2,7 +2,7 @@
 
 #include "../include/hasha/internal/internal.h"
 
-#if __HA_FEATURE(EVP)
+#if ha_has_feature(EVP)
 
 #include "../include/hasha/all.h"
 #include "../include/hasha/evp.h"

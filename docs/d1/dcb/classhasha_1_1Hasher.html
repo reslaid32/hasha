@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.13</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.14</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -171,7 +171,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>C++ wrapper for the EVP hasher. </p>
 <p>This class provides a C++ interface for using the EVP hasher, making it easier to work with hashing algorithms in object-oriented code. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00096">96</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00097">97</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0cfd86625d6ce832336ff9dd052967eb" name="a0cfd86625d6ce832336ff9dd052967eb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0cfd86625d6ce832336ff9dd052967eb">&#9670;&#160;</a></span>Hasher() <span class="overload">[1/3]</span></h2>
@@ -200,13 +200,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00099">99</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  101</span>      : hashty_(type),</div>
-<div class="line"><span class="lineno">  102</span>        digestlen_(digestlen),</div>
-<div class="line"><span class="lineno">  103</span>        hasher_(<a class="code hl_function" href="../../d5/d67/evp_8h.html#a1f46e7b74f10c50be815e500e608f8fb">ha_evp_hasher_new</a>(), &amp;<a class="code hl_function" href="../../d5/d67/evp_8h.html#a3f2a413b286984b1d52a098523ebaf45">ha_evp_hasher_delete</a>)</div>
-<div class="line"><span class="lineno">  104</span>  {</div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> (!hasher_) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create EVP hasher&quot;</span>);</div>
-<div class="line"><span class="lineno">  106</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00100">100</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  102</span>      : hashty_(type),</div>
+<div class="line"><span class="lineno">  103</span>        digestlen_(digestlen),</div>
+<div class="line"><span class="lineno">  104</span>        hasher_(<a class="code hl_function" href="../../d5/d67/evp_8h.html#a1f46e7b74f10c50be815e500e608f8fb">ha_evp_hasher_new</a>(), &amp;<a class="code hl_function" href="../../d5/d67/evp_8h.html#a3f2a413b286984b1d52a098523ebaf45">ha_evp_hasher_delete</a>)</div>
+<div class="line"><span class="lineno">  105</span>  {</div>
+<div class="line"><span class="lineno">  106</span>    <span class="keywordflow">if</span> (!hasher_) <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Failed to create EVP hasher&quot;</span>);</div>
+<div class="line"><span class="lineno">  107</span>  }</div>
 <div class="ttc" id="aevp_8h_html_a1f46e7b74f10c50be815e500e608f8fb"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a1f46e7b74f10c50be815e500e608f8fb">ha_evp_hasher_new</a></div><div class="ttdeci">HA_PUBFUN struct ha_evp_hasher * ha_evp_hasher_new(void)</div><div class="ttdoc">Creates a new EVP hasher. ( malloc(g_ha_evp_hasher_size) )</div></div>
 <div class="ttc" id="aevp_8h_html_a3f2a413b286984b1d52a098523ebaf45"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a3f2a413b286984b1d52a098523ebaf45">ha_evp_hasher_delete</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_hasher_delete(struct ha_evp_hasher *ptr)</div><div class="ttdoc">Frees the memory of an EVP hasher.</div></div>
 </div><!-- fragment -->
@@ -312,11 +312,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00218">218</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  219</span>  {</div>
-<div class="line"><span class="lineno">  220</span>    <span class="keywordflow">if</span> (hasher_) <a class="code hl_function" href="../../d5/d67/evp_8h.html#ac608f7910d65f10d79cccc08abfca2e8">ha_evp_hasher_reinit</a>(hasher_.get(), hashty_, digestlen_);</div>
-<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  222</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00219">219</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>  {</div>
+<div class="line"><span class="lineno">  221</span>    <span class="keywordflow">if</span> (hasher_) <a class="code hl_function" href="../../d5/d67/evp_8h.html#ac608f7910d65f10d79cccc08abfca2e8">ha_evp_hasher_reinit</a>(hasher_.get(), hashty_, digestlen_);</div>
+<div class="line"><span class="lineno">  222</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  223</span>  }</div>
 <div class="ttc" id="aevp_8h_html_ac608f7910d65f10d79cccc08abfca2e8"><div class="ttname"><a href="../../d5/d67/evp_8h.html#ac608f7910d65f10d79cccc08abfca2e8">ha_evp_hasher_reinit</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_hasher_reinit(struct ha_evp_hasher *hasher, enum ha_evp_hashty hashty, size_t digestlen)</div><div class="ttdoc">Reinitializes the EVP hasher with a new algorithm and digest length.</div></div>
 </div><!-- fragment -->
 </div>
@@ -344,12 +344,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00196">196</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  197</span>  {</div>
-<div class="line"><span class="lineno">  198</span>    std::vector&lt;uint8_t&gt; <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>(digestlen_);</div>
-<div class="line"><span class="lineno">  199</span>    <span class="keyword">final</span>(<a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
-<div class="line"><span class="lineno">  200</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>;</div>
-<div class="line"><span class="lineno">  201</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00197">197</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  198</span>  {</div>
+<div class="line"><span class="lineno">  199</span>    std::vector&lt;uint8_t&gt; <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>(digestlen_);</div>
+<div class="line"><span class="lineno">  200</span>    <span class="keyword">final</span>(<a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
+<div class="line"><span class="lineno">  201</span>    <span class="keywordflow">return</span> <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>;</div>
+<div class="line"><span class="lineno">  202</span>  }</div>
 <div class="ttc" id="anamespacehasha_html_a3135fa65e60f46f7ffbb6ab75b390a1b"><div class="ttname"><a href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">hasha::digest</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; digest</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00024">evpp.h:24</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -378,12 +378,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00189">189</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  190</span>  {</div>
-<div class="line"><span class="lineno">  191</span>    <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.resize(digestlen_);</div>
-<div class="line"><span class="lineno">  192</span>    <span class="keyword">final</span>(<a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.data());</div>
-<div class="line"><span class="lineno">  193</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  194</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00190">190</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  191</span>  {</div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.resize(digestlen_);</div>
+<div class="line"><span class="lineno">  193</span>    <span class="keyword">final</span>(<a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.data());</div>
+<div class="line"><span class="lineno">  194</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  195</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -411,11 +411,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00183">183</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>  {</div>
-<div class="line"><span class="lineno">  185</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#aeb750b91d4a8e7ac2c1f04cd88b7b59c">ha_evp_final</a>(hasher_.get(), <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
-<div class="line"><span class="lineno">  186</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  187</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00184">184</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  185</span>  {</div>
+<div class="line"><span class="lineno">  186</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#aeb750b91d4a8e7ac2c1f04cd88b7b59c">ha_evp_final</a>(hasher_.get(), <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
+<div class="line"><span class="lineno">  187</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  188</span>  }</div>
 <div class="ttc" id="aevp_8h_html_aeb750b91d4a8e7ac2c1f04cd88b7b59c"><div class="ttname"><a href="../../d5/d67/evp_8h.html#aeb750b91d4a8e7ac2c1f04cd88b7b59c">ha_evp_final</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_final(struct ha_evp_hasher *hasher, ha_digest_t digest)</div><div class="ttdoc">Finalizes the EVP hash and produces the output digest. ( like ha_final(hash, ctx, digest,...</div></div>
 </div><!-- fragment -->
 </div>
@@ -443,8 +443,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00140">140</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>{ <span class="keywordflow">return</span> digestlen_; }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00141">141</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>{ <span class="keywordflow">return</span> digestlen_; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -472,11 +472,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00142">142</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  143</span>  {</div>
-<div class="line"><span class="lineno">  144</span>    digestlen = digestlen_;</div>
-<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  146</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00143">143</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  144</span>  {</div>
+<div class="line"><span class="lineno">  145</span>    digestlen = digestlen_;</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  147</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -503,8 +503,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00132">132</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  132</span>{ <span class="keywordflow">return</span> hashty_; }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00133">133</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>{ <span class="keywordflow">return</span> hashty_; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -532,11 +532,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00134">134</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  135</span>  {</div>
-<div class="line"><span class="lineno">  136</span>    hashty = hashty_;</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  138</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00135">135</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  136</span>  {</div>
+<div class="line"><span class="lineno">  137</span>    hashty = hashty_;</div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  139</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -568,13 +568,13 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00210">210</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  212</span>  {</div>
-<div class="line"><span class="lineno">  213</span>    <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.resize(digestlen_);</div>
-<div class="line"><span class="lineno">  214</span>    <a class="code hl_function" href="#abfe7cfeec913226e572f002af5c98d3f">hash</a>(data.data(), data.size(), <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.data());</div>
-<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  216</span>  }</div>
-<div class="ttc" id="aclasshasha_1_1Hasher_html_abfe7cfeec913226e572f002af5c98d3f"><div class="ttname"><a href="#abfe7cfeec913226e572f002af5c98d3f">hasha::Hasher::hash</a></div><div class="ttdeci">auto hash(const uint8_t *data, size_t length, uint8_t *digest) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00203">evpp.h:203</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00211">211</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  213</span>  {</div>
+<div class="line"><span class="lineno">  214</span>    <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.resize(digestlen_);</div>
+<div class="line"><span class="lineno">  215</span>    <a class="code hl_function" href="#abfe7cfeec913226e572f002af5c98d3f">hash</a>(data.data(), data.size(), <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>.data());</div>
+<div class="line"><span class="lineno">  216</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  217</span>  }</div>
+<div class="ttc" id="aclasshasha_1_1Hasher_html_abfe7cfeec913226e572f002af5c98d3f"><div class="ttname"><a href="#abfe7cfeec913226e572f002af5c98d3f">hasha::Hasher::hash</a></div><div class="ttdeci">auto hash(const uint8_t *data, size_t length, uint8_t *digest) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00204">evpp.h:204</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -611,11 +611,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00203">203</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  205</span>  {</div>
-<div class="line"><span class="lineno">  206</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#a9876640ac5ede047078fd40983c5a8ae">ha_evp_hash</a>(hasher_.get(), data, length, <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
-<div class="line"><span class="lineno">  207</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  208</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00204">204</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>  {</div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#a9876640ac5ede047078fd40983c5a8ae">ha_evp_hash</a>(hasher_.get(), data, length, <a class="code hl_typedef" href="../../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b">digest</a>);</div>
+<div class="line"><span class="lineno">  208</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  209</span>  }</div>
 <div class="ttc" id="aevp_8h_html_a9876640ac5ede047078fd40983c5a8ae"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a9876640ac5ede047078fd40983c5a8ae">ha_evp_hash</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_hash(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len, ha_digest_t digest)</div><div class="ttdoc">Computes the EVP hash in a single (hash) operation. ( like ha_hash(hash, buf, len,...</div></div>
 </div><!-- fragment -->
 </div>
@@ -644,11 +644,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00148">148</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>  {</div>
-<div class="line"><span class="lineno">  150</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a>(hasher_.get());</div>
-<div class="line"><span class="lineno">  151</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  152</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00149">149</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>  {</div>
+<div class="line"><span class="lineno">  151</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a>(hasher_.get());</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  153</span>  }</div>
 <div class="ttc" id="aevp_8h_html_a153dd81f39ee95b3549ffdf56e489bac"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_init(struct ha_evp_hasher *hasher)</div><div class="ttdoc">Initializes the EVP hash. ( like ha_init(hash, ctx) )</div></div>
 </div><!-- fragment -->
 </div>
@@ -726,8 +726,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00224">224</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  224</span>{ <span class="keywordflow">return</span> <span class="keyword">this</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00225">225</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  225</span>{ <span class="keywordflow">return</span> <span class="keyword">this</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -754,8 +754,8 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00226">226</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  226</span>{ <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00227">227</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>{ <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -783,12 +783,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00125">125</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>  {</div>
-<div class="line"><span class="lineno">  127</span>    digestlen_ = length;</div>
-<div class="line"><span class="lineno">  128</span>    <a class="code hl_define" href="../../dc/d53/evpp_8h.html#a552d90cac294b759a5ddd087407254d0">ha_evpp_auto_commit</a>();</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  130</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00126">126</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>  {</div>
+<div class="line"><span class="lineno">  128</span>    digestlen_ = length;</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_define" href="../../dc/d53/evpp_8h.html#a552d90cac294b759a5ddd087407254d0">ha_evpp_auto_commit</a>();</div>
+<div class="line"><span class="lineno">  130</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  131</span>  }</div>
 <div class="ttc" id="aevpp_8h_html_a552d90cac294b759a5ddd087407254d0"><div class="ttname"><a href="../../dc/d53/evpp_8h.html#a552d90cac294b759a5ddd087407254d0">ha_evpp_auto_commit</a></div><div class="ttdeci">#define ha_evpp_auto_commit()</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00017">evpp.h:17</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -817,17 +817,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00114">114</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  115</span>  {</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordtype">signed</span> <span class="keywordtype">long</span> tmp = 0;</div>
-<div class="line"><span class="lineno">  117</span> </div>
-<div class="line"><span class="lineno">  118</span>    hashty_         = type;</div>
-<div class="line"><span class="lineno">  119</span>    <span class="keywordflow">if</span> ((tmp = <a class="code hl_function" href="../../d5/d67/evp_8h.html#a571cccc3d4c4ab29f0fdb321cf2ca603">ha_evp_hashty_get_digestlen</a>(type)) &gt; 0)</div>
-<div class="line"><span class="lineno">  120</span>      <a class="code hl_function" href="#ae28ca1731e90cc8b9f7abeb4b934843d">setDigestLength</a>(tmp);</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  123</span>  }</div>
-<div class="ttc" id="aclasshasha_1_1Hasher_html_ae28ca1731e90cc8b9f7abeb4b934843d"><div class="ttname"><a href="#ae28ca1731e90cc8b9f7abeb4b934843d">hasha::Hasher::setDigestLength</a></div><div class="ttdeci">auto setDigestLength(size_t length) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00125">evpp.h:125</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00115">115</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>  {</div>
+<div class="line"><span class="lineno">  117</span>    <span class="keywordtype">signed</span> <span class="keywordtype">long</span> tmp = 0;</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    hashty_         = type;</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> ((tmp = <a class="code hl_function" href="../../d5/d67/evp_8h.html#a571cccc3d4c4ab29f0fdb321cf2ca603">ha_evp_hashty_get_digestlen</a>(type)) &gt; 0)</div>
+<div class="line"><span class="lineno">  121</span>      <a class="code hl_function" href="#ae28ca1731e90cc8b9f7abeb4b934843d">setDigestLength</a>(tmp);</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  124</span>  }</div>
+<div class="ttc" id="aclasshasha_1_1Hasher_html_ae28ca1731e90cc8b9f7abeb4b934843d"><div class="ttname"><a href="#ae28ca1731e90cc8b9f7abeb4b934843d">hasha::Hasher::setDigestLength</a></div><div class="ttdeci">auto setDigestLength(size_t length) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00126">evpp.h:126</a></div></div>
 <div class="ttc" id="aevp_8h_html_a571cccc3d4c4ab29f0fdb321cf2ca603"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a571cccc3d4c4ab29f0fdb321cf2ca603">ha_evp_hashty_get_digestlen</a></div><div class="ttdeci">HA_EXTERN_C_BEG HA_PUBFUN signed long ha_evp_hashty_get_digestlen(enum ha_evp_hashty hashty)</div><div class="ttdoc">Get fixed hash size.</div></div>
 </div><!-- fragment -->
 </div>
@@ -856,11 +856,11 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00166">166</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  167</span>  {</div>
-<div class="line"><span class="lineno">  168</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(str, strlen(str));</div>
-<div class="line"><span class="lineno">  169</span>  }</div>
-<div class="ttc" id="aclasshasha_1_1Hasher_html_a652a687e8bd2de43186ca22d2558e2c7"><div class="ttname"><a href="#a652a687e8bd2de43186ca22d2558e2c7">hasha::Hasher::update</a></div><div class="ttdeci">auto update(const void *data, size_t length) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00154">evpp.h:154</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00167">167</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  168</span>  {</div>
+<div class="line"><span class="lineno">  169</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(str, strlen(str));</div>
+<div class="line"><span class="lineno">  170</span>  }</div>
+<div class="ttc" id="aclasshasha_1_1Hasher_html_a652a687e8bd2de43186ca22d2558e2c7"><div class="ttname"><a href="#a652a687e8bd2de43186ca22d2558e2c7">hasha::Hasher::update</a></div><div class="ttdeci">auto update(const void *data, size_t length) -&gt; Hasher &amp;</div><div class="ttdef"><b>Definition</b> <a href="../../dc/d53/evpp_8h_source.html#l00155">evpp.h:155</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -888,10 +888,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00171">171</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  172</span>  {</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(str.data(), str.size());</div>
-<div class="line"><span class="lineno">  174</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00172">172</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  173</span>  {</div>
+<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(str.data(), str.size());</div>
+<div class="line"><span class="lineno">  175</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -919,10 +919,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00161">161</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  162</span>  {</div>
-<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(data.data(), data.size());</div>
-<div class="line"><span class="lineno">  164</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00162">162</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>  {</div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="#a652a687e8bd2de43186ca22d2558e2c7">update</a>(data.data(), data.size());</div>
+<div class="line"><span class="lineno">  165</span>  }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -954,12 +954,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00154">154</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  155</span>  {</div>
-<div class="line"><span class="lineno">  156</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#ac40d0a936413bb45e2662f0e625ad3cb">ha_evp_update</a>(hasher_.get(), <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>uint8_t *<span class="keyword">&gt;</span>(data),</div>
-<div class="line"><span class="lineno">  157</span>                  length);</div>
-<div class="line"><span class="lineno">  158</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><span class="lineno">  159</span>  }</div>
+<p class="definition">Definition at line <a class="el" href="../../dc/d53/evpp_8h_source.html#l00155">155</a> of file <a class="el" href="../../dc/d53/evpp_8h_source.html">evpp.h</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>  {</div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_function" href="../../d5/d67/evp_8h.html#ac40d0a936413bb45e2662f0e625ad3cb">ha_evp_update</a>(hasher_.get(), <span class="keyword">static_cast&lt;</span><span class="keyword">const </span>uint8_t *<span class="keyword">&gt;</span>(data),</div>
+<div class="line"><span class="lineno">  158</span>                  length);</div>
+<div class="line"><span class="lineno">  159</span>    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">  160</span>  }</div>
 <div class="ttc" id="aevp_8h_html_ac40d0a936413bb45e2662f0e625ad3cb"><div class="ttname"><a href="../../d5/d67/evp_8h.html#ac40d0a936413bb45e2662f0e625ad3cb">ha_evp_update</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_update(struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len)</div><div class="ttdoc">Updates the EVP hash with input data. ( like ha_update(hash, ctx, buf, len) )</div></div>
 </div><!-- fragment -->
 </div>

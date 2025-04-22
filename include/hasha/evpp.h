@@ -1,11 +1,12 @@
 #pragma once
 
-#include <hasha/evp.h>
-#include <hasha/io.h>
-
 #include <memory>
 #include <stdexcept>
 #include <vector>
+
+#include "evp.h"
+#include "internal/hadefs.h"
+#include "io.h"
 
 #if defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
 #include <span>
@@ -26,6 +27,7 @@ using digest = std::vector<uint8_t>;
 namespace hex
 {
 
+HA_HDR_PUBFUN
 std::string encode(digest &digest)
 {
   std::string str(ha_hash2str_bound(digest.size()), '\0');
@@ -33,12 +35,14 @@ std::string encode(digest &digest)
   return str;
 }
 
+HA_HDR_PUBFUN
 void encode(std::string &s, digest &digest)
 {
   s.resize(ha_hash2str_bound(digest.size()));
   ha_hash2str(s.data(), digest.data(), digest.size());
 }
 
+HA_HDR_PUBFUN
 digest decode(const std::string &s)
 {
   digest digest(ha_str2hash_bound(s.length()));
@@ -46,6 +50,7 @@ digest decode(const std::string &s)
   return digest;
 }
 
+HA_HDR_PUBFUN
 void decode(digest &digest, const std::string &s)
 {
   digest.resize(ha_str2hash_bound(s.length()));
@@ -54,23 +59,28 @@ void decode(digest &digest, const std::string &s)
 
 }  // namespace hex
 
-void put(std::ostream &os, digest &digest)
+HA_HDR_PUBFUN
+void put(std::ostream &os, digest &digest, const char *end = NULL)
 {
   string s;
   hex::encode(s, digest);
   os << s;
+  if (end) os << string(end);
 }
 
-void put(FILE *file, digest &digest)
+HA_HDR_PUBFUN
+void put(FILE *file, digest &digest, const char *end = NULL)
 {
-  ha_fputhash(file, digest.data(), digest.size());
+  ha_fputhash(file, digest.data(), digest.size(), end);
 }
 
-void put(digest &digest)
+HA_HDR_PUBFUN
+void put(digest &digest, const char *end = NULL)
 {
-  put(stdout, digest);
+  put(stdout, digest, end);
 }
 
+HA_HDR_PUBFUN
 bool compare(const digest &lhs, const digest &rhs)
 {
   size_t len = std::min /* using min, not max — safe for UB */ (
@@ -78,6 +88,7 @@ bool compare(const digest &lhs, const digest &rhs)
   return ha_cmphash(lhs.data(), rhs.data(), len) == 0;
 }
 
+HA_HDR_PUBFUN
 bool compare(const digest &lhs, const std::string &rhs)
 {
   size_t len = std::min /* using min, not max — safe for UB */ (

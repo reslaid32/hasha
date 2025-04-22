@@ -11,7 +11,7 @@ var namespacehasha =
     [ "string", "d8/d3e/namespacehasha.html#ab608ceb5a3db575a788e921925a54ce7", null ],
     [ "compare", "d8/d3e/namespacehasha.html#a9b6224a98347ce563d6132af61a1d0a5", null ],
     [ "compare", "d8/d3e/namespacehasha.html#ab5956204e77dddcfb81a277ffbfb979a", null ],
-    [ "put", "d8/d3e/namespacehasha.html#a89ec5505c8ba11f12b497d8a1d28ae22", null ],
-    [ "put", "d8/d3e/namespacehasha.html#a0ace7d75df7aedc305b7203fe549e6a0", null ],
-    [ "put", "d8/d3e/namespacehasha.html#ac8ec7ac12ae1c3f5310de5e952b0ae19", null ]
+    [ "put", "d8/d3e/namespacehasha.html#ab54dabdc319fef0027010e161f30b79a", null ],
+    [ "put", "d8/d3e/namespacehasha.html#a80d0c60c98e7adf52b54f85ebaed2ef0", null ],
+    [ "put", "d8/d3e/namespacehasha.html#a21b58ff92f14a9d7bda3b6ec19e42a78", null ]
 ];

@@ -2,7 +2,7 @@
 
 #include "../include/hasha/internal/internal.h"
 
-#if __HA_FEATURE(IO)
+#if ha_has_feature(IO)
 
 #include "../include/hasha/internal/error.h"
 

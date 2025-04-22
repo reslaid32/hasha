@@ -1,7 +1,8 @@
 #ifndef __HASHA_INTERNAL_FEATURE_H
 #define __HASHA_INTERNAL_FEATURE_H
 
-#define __HA_FEATURE(Name) __HA_FEATURE__##Name
+#define ha_has_feature(Name) __HA_FEATURE(Name)
+#define __HA_FEATURE(Name)   __HA_FEATURE__##Name
 
 /* __HA_FEATURE(EVP) */
 #ifndef __HA_FEATURE__EVP

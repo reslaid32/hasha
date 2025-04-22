@@ -17,7 +17,11 @@
 
 HA_EXTERN_C_BEG
 
-#if __HA_FEATURE(IO)
+#if ha_has_feature(IO)
+
+#define HA_IO_ENDLINE_LF   "\n"
+#define HA_IO_ENDLINE_CRLF "\r\n"
+#define HA_IO_ENDLINE      HA_IO_ENDLINE_LF
 
 /**
  * @brief Writes the hash digest to the specified file stream.
@@ -29,10 +33,12 @@ HA_EXTERN_C_BEG
  * @param stream The file stream to write the digest to.
  * @param digest The hash digest to write.
  * @param digestlen The length of the hash digest.
+ * @param end It will be printed at the end, unless of course it is NULL
  * @return The number of bytes written, or 0 on failure.
  */
 HA_PUBFUN
-size_t ha_fputhash(FILE *stream, ha_cdigest_t digest, size_t digestlen);
+size_t ha_fputhash(FILE *stream, ha_cdigest_t digest, size_t digestlen,
+                   const char *end);
 
 /**
  * @brief Outputs the hash digest to standard output.
@@ -43,12 +49,13 @@ size_t ha_fputhash(FILE *stream, ha_cdigest_t digest, size_t digestlen);
  *
  * @param digest The hash digest to output.
  * @param digestlen The length of the hash digest.
+ * @param end It will be printed at the end, unless of course it is NULL
  * @return The number of bytes written, or 0 on failure.
  */
 HA_PUBFUN
-size_t ha_puthash(ha_cdigest_t digest, size_t digestlen);
+size_t ha_puthash(ha_cdigest_t digest, size_t digestlen, const char *end);
 
-#endif /* __HA_FEATURE(IO) */
+#endif /* ha_has_feature(IO) */
 
 #define ha_hash2str_bound(len) ((len) * 2)
 #define ha_str2hash_bound(len) ((len) / 2)

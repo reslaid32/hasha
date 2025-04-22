@@ -2,7 +2,7 @@
 
 #include "../include/hasha/io.h"
 
-#if (__HA_FEATURE(IO))
+#if (ha_has_feature(IO))
 
 #include "../include/hasha/internal/error.h"
 #include "../include/hasha/internal/types.h"
@@ -14,7 +14,8 @@ static char *g_ha_io_error_strings[] = {
 
 HA_PUBFUN
 size_t
-ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen)
+ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen,
+             const char *end)
 {
   if (!stream)
     {
@@ -34,15 +35,16 @@ ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen)
         }
       written += ret;
     }
-  written += fprintf (stream, "\n");
+  if (end)
+    written += fprintf (stream, "%s", end);
   return written;
 }
 
 HA_PUBFUN
 size_t
-ha_puthash (ha_cdigest_t digest, size_t digestlen)
+ha_puthash (ha_cdigest_t digest, size_t digestlen, const char *end)
 {
-  return ha_fputhash (stdout, digest, digestlen);
+  return ha_fputhash (stdout, digest, digestlen, end);
 }
 
 #endif
@@ -51,7 +53,7 @@ HA_PUBFUN
 size_t
 ha_hash2str (char *dst, ha_cdigest_t src, size_t len)
 {
-#if (__HA_FEATURE(IO))
+#if (ha_has_feature(IO))
   if (!dst)
     return 0;
   size_t written = 0;
@@ -76,7 +78,7 @@ HA_PUBFUN
 size_t
 ha_str2hash (ha_digest_t dst, const char *src, size_t len)
 {
-#if (__HA_FEATURE(IO))
+#if (ha_has_feature(IO))
   if (!dst || !src)
     return 0;
   size_t converted = 0;

@@ -4,7 +4,7 @@
 
 #include "./internal.h"
 
-#if __HA_FEATURE(IO)
+#if ha_has_feature(IO)
 
 HA_PUBFUN
 void ha_throw(int noabort, const char *func, size_t line, char *level,

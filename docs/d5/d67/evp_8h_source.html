@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.13</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.14</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -163,7 +163,7 @@ $(function(){initNavTree('d5/d67/evp_8h_source.html','../../'); initResizable(tr
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#if __HA_FEATURE(EVP)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#if ha_has_feature(EVP)</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span></div>
 <div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="../../d5/d67/evp_8h.html#ad37394366ced61da3723c70065eda5ed">  106</a></span><span class="keyword">enum</span> ha_evp_hashty <a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#a53f3f77070f5f32588e69d56bcdeb67c">ha_enum_base</a>(uint8_t)</div>
@@ -253,7 +253,7 @@ $(function(){initNavTree('d5/d67/evp_8h_source.html','../../'); initResizable(tr
 <div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span> </div>
 <div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span><a class="code hl_define" href="../../d5/d5e/hadefs_8h.html#aa193a051230554a2beb966141ac37c9e">HA_EXTERN_C_END</a></div>
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span> </div>
-<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#endif </span><span class="comment">/* __HA_FEATURE(EVP) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span><span class="preprocessor">#endif </span><span class="comment">/* ha_has_feature(EVP) */</span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span> </div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aevp_8h_html_a153dd81f39ee95b3549ffdf56e489bac"><div class="ttname"><a href="../../d5/d67/evp_8h.html#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a></div><div class="ttdeci">HA_PUBFUN void ha_evp_init(struct ha_evp_hasher *hasher)</div><div class="ttdoc">Initializes the EVP hash. ( like ha_init(hash, ctx) )</div></div>
@@ -280,10 +280,10 @@ $(function(){initNavTree('d5/d67/evp_8h_source.html','../../'); initResizable(tr
 <div class="ttc" id="aevp_8h_html_af8b9109733f19b16368623fa1c4ce201"><div class="ttname"><a href="../../d5/d67/evp_8h.html#af8b9109733f19b16368623fa1c4ce201">ha_evp_hasher_t</a></div><div class="ttdeci">struct ha_evp_hasher ha_evp_hasher_t</div><div class="ttdoc">Opaque structure for the EVP hasher state.</div><div class="ttdef"><b>Definition</b> <a href="#l00133">evp.h:133</a></div></div>
 <div class="ttc" id="afeature_8h_html"><div class="ttname"><a href="../../d2/d74/feature_8h.html">feature.h</a></div></div>
 <div class="ttc" id="ahadefs_8h_html"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html">hadefs.h</a></div></div>
-<div class="ttc" id="ahadefs_8h_html_a53f3f77070f5f32588e69d56bcdeb67c"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a53f3f77070f5f32588e69d56bcdeb67c">ha_enum_base</a></div><div class="ttdeci">#define ha_enum_base(T)</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00089">hadefs.h:89</a></div></div>
-<div class="ttc" id="ahadefs_8h_html_a98ce9ab2f04a86788a9ca32cf4545fb8"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div><div class="ttdeci">#define HA_PUBFUN</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00030">hadefs.h:30</a></div></div>
-<div class="ttc" id="ahadefs_8h_html_aa193a051230554a2beb966141ac37c9e"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#aa193a051230554a2beb966141ac37c9e">HA_EXTERN_C_END</a></div><div class="ttdeci">#define HA_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00070">hadefs.h:70</a></div></div>
-<div class="ttc" id="ahadefs_8h_html_ad41d76ec58fcc74518acfe1245db9c3f"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a></div><div class="ttdeci">#define HA_EXTERN_C_BEG</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00062">hadefs.h:62</a></div></div>
+<div class="ttc" id="ahadefs_8h_html_a53f3f77070f5f32588e69d56bcdeb67c"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a53f3f77070f5f32588e69d56bcdeb67c">ha_enum_base</a></div><div class="ttdeci">#define ha_enum_base(T)</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00093">hadefs.h:93</a></div></div>
+<div class="ttc" id="ahadefs_8h_html_a98ce9ab2f04a86788a9ca32cf4545fb8"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a></div><div class="ttdeci">#define HA_PUBFUN</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00034">hadefs.h:34</a></div></div>
+<div class="ttc" id="ahadefs_8h_html_aa193a051230554a2beb966141ac37c9e"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#aa193a051230554a2beb966141ac37c9e">HA_EXTERN_C_END</a></div><div class="ttdeci">#define HA_EXTERN_C_END</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00074">hadefs.h:74</a></div></div>
+<div class="ttc" id="ahadefs_8h_html_ad41d76ec58fcc74518acfe1245db9c3f"><div class="ttname"><a href="../../d5/d5e/hadefs_8h.html#ad41d76ec58fcc74518acfe1245db9c3f">HA_EXTERN_C_BEG</a></div><div class="ttdeci">#define HA_EXTERN_C_BEG</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d5e/hadefs_8h_source.html#l00066">hadefs.h:66</a></div></div>
 <div class="ttc" id="ainternal_8h_html"><div class="ttname"><a href="../../db/dde/internal_8h.html">internal.h</a></div></div>
 <div class="ttc" id="atypes_8h_html_a9c1c65e88543b5487a92ab141951c437"><div class="ttname"><a href="../../d9/d49/types_8h.html#a9c1c65e88543b5487a92ab141951c437">ha_digest_t</a></div><div class="ttdeci">__ha_out_buf_type ha_digest_t</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d49/types_8h_source.html#l00015">types.h:15</a></div></div>
 <div class="ttc" id="atypes_8h_html_af0ecc7c4ddc68214febd7f70aae5002f"><div class="ttname"><a href="../../d9/d49/types_8h.html#af0ecc7c4ddc68214febd7f70aae5002f">ha_inbuf_t</a></div><div class="ttdeci">__ha_in_buf_type ha_inbuf_t</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d49/types_8h_source.html#l00012">types.h:12</a></div></div>

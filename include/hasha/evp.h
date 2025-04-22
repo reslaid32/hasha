@@ -93,7 +93,7 @@
 #endif
 #endif
 
-#if __HA_FEATURE(EVP)
+#if ha_has_feature(EVP)
 
 /**
  * @enum ha_evp_hashty
@@ -325,6 +325,6 @@ void ha_evp_digest(struct ha_evp_hasher *hasher, ha_inbuf_t buf,
 
 HA_EXTERN_C_END
 
-#endif /* __HA_FEATURE(EVP) */
+#endif /* ha_has_feature(EVP) */
 
 #endif

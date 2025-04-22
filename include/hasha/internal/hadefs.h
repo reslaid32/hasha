@@ -2,6 +2,10 @@
 #ifndef __HASHA_INTERNAL_HADEFS_H
 #define __HASHA_INTERNAL_HADEFS_H
 
+#ifdef HA_NO_DEPRECATED
+#define HA_DEPRECATED(msg)
+#endif
+
 #if !defined(HA_DEPRECATED)
 #define HA_DEPRECATED(msg) __attribute__((deprecated(msg)))
 #endif  // HA_DEPRECATED
