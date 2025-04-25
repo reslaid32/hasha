@@ -1054,15 +1054,15 @@ int e2e(int argc, char **argv)
         debug = 1;
         break;
       case '?':
-        ha_throw(1, ha_curpos, "usage", "%s [-v|--verbose]", argv[0]);
+        ha_throw(1, 1, ha_curpos, "usage", "%s [-v|--verbose]", argv[0]);
         exit(EXIT_FAILURE);
-        break;
+        /* break; // unreachable */
       default:
         break;
     }
   }
 
   rune2e();
-  ha_throwd(debug, 1, ha_curpos, "e2e", "all tests passsed");
+  __fprintf(debug, stdout, "%s: %s\n", "e2e", "all tests passsed");
   return 0;
 }

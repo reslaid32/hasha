@@ -1,0 +1,58 @@
+#!/bin/bash
+
+EVP=1
+IO=1
+
+print_help() {
+  cat <<EOF
+Usage: $0 [options]
+
+Options:
+  --enable-evp=true/false, --enable-evp=1/0
+      Enable or disable EVP support (default is enabled).
+
+  --enable-io=true/false, --enable-io=1/0
+      Enable or disable IO support (default is enabled).
+
+  --help
+      Show this help message and exit.
+
+EOF
+}
+
+for arg in "$@"; do
+  case $arg in
+    --enable-evp=true|--enable-evp=1)
+      EVP=1
+      ;;
+    --enable-evp=false|--enable-evp=0)
+      EVP=0
+      ;;
+    --enable-io=true|--enable-io=1)
+      IO=1
+      ;;
+    --enable-io=false|--enable-io=0)
+      IO=0
+      ;;
+    --help)
+      print_help
+      exit 0
+      ;;
+    *)
+      echo "error: unexpected argument: $arg"
+      print_help
+      exit 1
+      ;;
+  esac
+done
+
+cat > include/hasha/internal/config.h <<EOF
+#ifndef __hasha_internal_config_h
+#define __hasha_internal_config_h
+#define __HA_FEATURE__EVP $EVP
+#define __HA_FEATURE__IO  $IO
+#define __HA_FEATURE__
+#endif /* __hasha_internal_config_h */
+EOF
+
+echo "Configuration complete."

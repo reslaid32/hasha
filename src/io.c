@@ -19,7 +19,7 @@ ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen,
 {
   if (!stream)
     {
-      ha_throw_error (ha_curpos, g_ha_io_error_strings[ARGUMENT_ERROR],
+      ha_throw_error (0, ha_curpos, g_ha_io_error_strings[ARGUMENT_ERROR],
                       "*stream", "(null)");
       return 0;
     }
@@ -30,7 +30,7 @@ ha_fputhash (FILE *stream, ha_cdigest_t digest, size_t digestlen,
       ret = fprintf (stream, "%.2x", digest[i]);
       if (ret < 0)
         {
-          ha_throw_error (ha_curpos, "fprintf() < 0");
+          ha_throw_error (0, ha_curpos, "fprintf() < 0");
           return 0;
         }
       written += ret;
@@ -59,6 +59,8 @@ ha_hash2str (char *dst, ha_cdigest_t src, size_t len)
   size_t written = 0;
   for (size_t i = 0; i < len; ++i)
     written += sprintf (&dst[i * 2], "%02x", src[i]);
+  // if (len == 16)
+  // printf ("%zu : %s\n", len, dst);
   return written;
 #else
   if (!dst)

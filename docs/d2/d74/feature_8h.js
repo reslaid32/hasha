@@ -1,7 +1,6 @@
 var feature_8h =
 [
     [ "__HA_FEATURE", "d2/d74/feature_8h.html#a57effcb3359b87a7a9c48fd41a59682f", null ],
-    [ "__HA_FEATURE__EVP", "d2/d74/feature_8h.html#ab90617a96ea7cd3b02462d3ac0dabd66", null ],
-    [ "__HA_FEATURE__IO", "d2/d74/feature_8h.html#a3f0ea4632dd4ec4d9ee815e1b1f8e02e", null ],
+    [ "__HA_FEATURE__NEVP", "d2/d74/feature_8h.html#a8f90256a0bee31ca43e2e925123fb46d", null ],
     [ "ha_has_feature", "d2/d74/feature_8h.html#a2b40d9589a7e703cb3d56286510db7ef", null ]
 ];

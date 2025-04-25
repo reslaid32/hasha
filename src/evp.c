@@ -32,6 +32,8 @@ typedef void (*ha_evp_keccak_init_fn) (void *, size_t);
 typedef void (*ha_evp_update_fn) (void *, ha_inbuf_t, size_t);
 
 typedef void (*ha_evp_generic_final_fn) (void *, ha_digest_t);
+typedef void (*ha_evp_keccak_final_fn) (void *, enum ha_pb, ha_digest_t,
+                                        size_t);
 typedef void (*ha_evp_flexible_final_fn) (void *, ha_digest_t, size_t);
 
 typedef void (*ha_evp_generic_hash_fn) (ha_inbuf_t, size_t, ha_digest_t);
@@ -53,9 +55,11 @@ struct ha_evp_hasher
 {
   enum ha_evp_hashty hashty;
   size_t digestlen;
-  uint16_t krate; /* keccak rate, may be unused */
-  enum ha_pb kpb; /* keccak pad byte, may be unused */
-  bool kustom;    /* keccak custom */
+
+  /* keccak opts */
+  uint16_t k_rate;       /* keccak rate, may be unused */
+  enum ha_pb k_pad_byte; /* keccak pad byte, may be unused */
+  bool k_custom;         /* keccak custom */
 
   void *ctx;
   size_t ctx_size;
@@ -75,6 +79,7 @@ struct ha_evp_hasher
   {
     ha_evp_generic_final_fn generic;
     ha_evp_flexible_final_fn flexible;
+    ha_evp_keccak_final_fn keccak;
   } final_fn;
   enum ha_evp_hasher_fun_mod final_fn_mod;
 
@@ -101,8 +106,8 @@ ha_evp_hashty_tostr (enum ha_evp_hashty hashty)
 
   if (hashty >= hashty_n)
     {
-      ha_throw_warn (ha_curpos, g_ha_evp_error_strings[ARG_ERROR], 0, "hashty",
-                     g_ha_evp_error_strings[OUT_OF_BOUNDS_ERROR]);
+      ha_throw_warn (0, ha_curpos, g_ha_evp_error_strings[ARG_ERROR], 0,
+                     "hashty", g_ha_evp_error_strings[OUT_OF_BOUNDS_ERROR]);
       return "unknown";
     }
 
@@ -128,27 +133,27 @@ HA_PUBFUN
 void
 ha_evp_hasher_set_keccak_custom (struct ha_evp_hasher *hasher, bool custom)
 {
-  hasher->kustom = custom;
+  hasher->k_custom = custom;
 }
 
 HA_PUBFUN bool
 ha_evp_hasher_keccak_custom (struct ha_evp_hasher *hasher)
 {
-  return hasher->kustom;
+  return hasher->k_custom;
 }
 
 HA_PUBFUN
 void
 ha_evp_hasher_set_keccak_rate (struct ha_evp_hasher *hasher, uint16_t rate)
 {
-  hasher->krate = rate;
+  hasher->k_rate = rate;
 }
 
 HA_PUBFUN
 size_t
 ha_evp_hasher_keccak_rate (struct ha_evp_hasher *hasher)
 {
-  return hasher->krate;
+  return hasher->k_rate;
 }
 
 HA_PUBFUN
@@ -287,7 +292,7 @@ ha_evp_setup_hasher (struct ha_evp_hasher *hasher)
               break;
             }
           default:
-            return ha_throw_error (ha_curpos,
+            return ha_throw_error (0, ha_curpos,
                                    g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                    "digest length");
           }
@@ -350,17 +355,17 @@ ha_evp_setup_hasher (struct ha_evp_hasher *hasher)
       {
         hasher->ctx_size = sizeof (ha_ctx (keccak));
 
-        if (hasher->kustom)
+        if (hasher->k_custom)
           {
-            hasher->kpb = HA_PB_KECCAK;
+            hasher->k_pad_byte = HA_PB_KECCAK;
             hasher->init_fn.keccak
                 = (ha_evp_keccak_init_fn)ha_init_fun (keccak);
             hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
 
             hasher->update_fn = (ha_evp_update_fn)ha_update_fun (keccak);
 
-            hasher->final_fn.flexible
-                = (ha_evp_flexible_final_fn)ha_final_fun (keccak);
+            hasher->final_fn.keccak
+                = (ha_evp_keccak_final_fn)ha_final_fun (keccak);
             hasher->final_fn_mod = HA_EVPHR_MOD_FLEXIBLE;
 
             hasher->hash_fn.keccak
@@ -440,7 +445,7 @@ ha_evp_setup_hasher (struct ha_evp_hasher *hasher)
               break;
             }
           default:
-            return ha_throw_error (ha_curpos,
+            return ha_throw_error (0, ha_curpos,
                                    g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                    "digest length");
           }
@@ -450,17 +455,17 @@ ha_evp_setup_hasher (struct ha_evp_hasher *hasher)
       {
         hasher->ctx_size = sizeof (ha_ctx (sha3));
 
-        if (hasher->kustom)
+        if (hasher->k_custom)
           {
-            hasher->kpb = HA_PB_SHA3;
+            hasher->k_pad_byte = HA_PB_SHA3;
             hasher->init_fn.keccak
                 = (ha_evp_keccak_init_fn)ha_init_fun (keccak);
             hasher->init_fn_mod = HA_EVPHR_MOD_KECCAK;
 
             hasher->update_fn = (ha_evp_update_fn)ha_update_fun (keccak);
 
-            hasher->final_fn.flexible
-                = (ha_evp_flexible_final_fn)ha_final_fun (keccak);
+            hasher->final_fn.keccak
+                = (ha_evp_keccak_final_fn)ha_final_fun (keccak);
             hasher->final_fn_mod = HA_EVPHR_MOD_FLEXIBLE;
 
             hasher->hash_fn.keccak
@@ -540,14 +545,14 @@ ha_evp_setup_hasher (struct ha_evp_hasher *hasher)
               break;
             }
           default:
-            return ha_throw_error (ha_curpos,
+            return ha_throw_error (0, ha_curpos,
                                    g_ha_evp_error_strings[UNEXPECTED_ERROR],
                                    "digest length");
           }
         break;
       }
     default:
-      return ha_throw_error (ha_curpos,
+      return ha_throw_error (0, ha_curpos,
                              g_ha_evp_error_strings[UNEXPECTED_ERROR],
                              "digest length");
     }
@@ -602,8 +607,9 @@ ha_evp_hasher_init (struct ha_evp_hasher *hasher, enum ha_evp_hashty hashty,
   hasher->digestlen = digestlen;
   hasher->ctx_allocated = false;
   ha_evp_setup_hasher (hasher);
-  ha_assert (ha_evp_allocate_context (hasher), "%s",
-             g_ha_evp_error_strings[BAD_ALLOC_ERROR],
+
+  bool a = ha_evp_allocate_context (hasher);
+  ha_assert (a, "%s", g_ha_evp_error_strings[BAD_ALLOC_ERROR],
              "malloc() returns (null)");
 }
 
@@ -612,8 +618,9 @@ void
 ha_evp_hasher_cleanup (struct ha_evp_hasher *hasher)
 {
   if (!(hasher))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "*hasher", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "*hasher",
+                           "(null)");
   ha_evp_free_context (hasher);
 }
 
@@ -631,8 +638,9 @@ void
 ha_evp_init (struct ha_evp_hasher *hasher)
 {
   if (!(hasher))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "*hasher", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "*hasher",
+                           "(null)");
 
   memset (hasher->ctx, 0, hasher->ctx_size);
 
@@ -642,11 +650,12 @@ ha_evp_init (struct ha_evp_hasher *hasher)
       hasher->init_fn.generic (hasher->ctx);
       break;
     case HA_EVPHR_MOD_KECCAK:
-      hasher->init_fn.keccak (hasher->ctx, hasher->krate);
+      hasher->init_fn.keccak (hasher->ctx, hasher->k_rate);
       break;
     default:
-      return ha_throw_error (
-          ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR], "init");
+      return ha_throw_error (0, ha_curpos,
+                             g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+                             "init");
     }
 }
 
@@ -655,16 +664,18 @@ void
 ha_evp_update (struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len)
 {
   if (!(hasher))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "*hasher", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "*hasher",
+                           "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error (0, ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                            "hasher->ctx");
 
   if (!(buf))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "buf", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "buf",
+                           "(null)");
 
   hasher->update_fn (hasher->ctx, buf, len);
 }
@@ -674,16 +685,18 @@ void
 ha_evp_final (struct ha_evp_hasher *hasher, ha_digest_t digest)
 {
   if (!(hasher))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "*hasher", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "*hasher",
+                           "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error (0, ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                            "hasher->ctx");
 
   if (!(digest))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "digest", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "digest",
+                           "(null)");
 
   switch (hasher->final_fn_mod)
     {
@@ -693,8 +706,12 @@ ha_evp_final (struct ha_evp_hasher *hasher, ha_digest_t digest)
     case HA_EVPHR_MOD_FLEXIBLE:
       hasher->final_fn.flexible (hasher->ctx, digest, hasher->digestlen);
       break;
+    case HA_EVPHR_MOD_KECCAK:
+      hasher->final_fn.keccak (hasher->ctx, hasher->k_pad_byte, digest,
+                               hasher->digestlen);
+      break;
     default:
-      return ha_throw_error (ha_curpos,
+      return ha_throw_error (0, ha_curpos,
                              g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
                              "final");
     }
@@ -706,16 +723,18 @@ ha_evp_hash (struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
              ha_digest_t digest)
 {
   if (!(hasher))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "*hasher", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "*hasher",
+                           "(null)");
 
   if (!(hasher->ctx))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
+    return ha_throw_error (0, ha_curpos, g_ha_evp_error_strings[IS_NULL_ERROR],
                            "hasher->ctx");
 
   if (!(digest))
-    return ha_throw_error (ha_curpos, g_ha_evp_error_strings[ARG_VALUE_ERROR],
-                           "digest", "(null)");
+    return ha_throw_error (0, ha_curpos,
+                           g_ha_evp_error_strings[ARG_VALUE_ERROR], "digest",
+                           "(null)");
 
   switch (hasher->hash_fn_mod)
     {
@@ -726,12 +745,13 @@ ha_evp_hash (struct ha_evp_hasher *hasher, ha_inbuf_t buf, size_t len,
       hasher->hash_fn.flexible (buf, len, digest, hasher->digestlen);
       break;
     case HA_EVPHR_MOD_KECCAK:
-      hasher->hash_fn.keccak (hasher->krate, hasher->kpb, buf, len, digest,
-                              hasher->digestlen);
+      hasher->hash_fn.keccak (hasher->k_rate, hasher->k_pad_byte, buf, len,
+                              digest, hasher->digestlen);
       break;
     default:
-      return ha_throw_error (
-          ha_curpos, g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR], "hash");
+      return ha_throw_error (0, ha_curpos,
+                             g_ha_evp_error_strings[UNEXPECTED_FUN_MOD_ERROR],
+                             "hash");
     }
 }
 

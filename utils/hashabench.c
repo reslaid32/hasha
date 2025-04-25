@@ -188,7 +188,7 @@ int main(int argc, char *argv[])
           char errbuf[256];
           snprintf(errbuf, sizeof(errbuf),
                    "invalid number of iterations: %s", optarg);
-          ha_throw_error(ha_curpos, ha_bench_error_strings[ARG_ERROR],
+          ha_throw_error(0, ha_curpos, ha_bench_error_strings[ARG_ERROR],
                          errbuf);
           return 1;
         }
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
     if (!file)
     {
       perror("fopen()");
-      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_bench_error_strings[BASIC_ERROR],
                      "opening file");
       return 1;
     }
@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
     if (!input)
     {
       perror("malloc()");
-      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_bench_error_strings[BASIC_ERROR],
                      "memory allocating");
       fclose(file);
       return 1;
@@ -249,7 +249,7 @@ int main(int argc, char *argv[])
     if (!result_file)
     {
       perror("fopen()");
-      ha_throw_error(ha_curpos, ha_bench_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_bench_error_strings[BASIC_ERROR],
                      "opening file");
       return 1;
     }
@@ -434,7 +434,7 @@ int main(int argc, char *argv[])
         long  digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          ha_throw_error(ha_curpos,
+          ha_throw_error(0, ha_curpos,
                          ha_bench_error_strings[INVALID_DIGEST_LEN_ERROR],
                          "blake2s", token);
         }
@@ -455,7 +455,7 @@ int main(int argc, char *argv[])
         long  digest_bits = strtol(token + 8, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          ha_throw_error(ha_curpos,
+          ha_throw_error(0, ha_curpos,
                          ha_bench_error_strings[INVALID_DIGEST_LEN_ERROR],
                          "blake2b", token);
         }
@@ -476,7 +476,7 @@ int main(int argc, char *argv[])
         long  digest_bits = strtol(token + 7, &endptr, 10);
         if ((token + 7) == endptr || digest_bits <= 0)
         {
-          ha_throw_error(ha_curpos,
+          ha_throw_error(0, ha_curpos,
                          ha_bench_error_strings[INVALID_DIGEST_LEN_ERROR],
                          "blake3", token);
         }
@@ -495,8 +495,8 @@ int main(int argc, char *argv[])
       {
         char errbuf[256];
         snprintf(errbuf, sizeof(errbuf), "algorithm: %s", token);
-        ha_throw_error(ha_curpos, ha_bench_error_strings[UNSUPPORTED_ERR],
-                       errbuf);
+        ha_throw_error(0, ha_curpos,
+                       ha_bench_error_strings[UNSUPPORTED_ERR], errbuf);
       }
       token = strtok(NULL, " ,");
     }

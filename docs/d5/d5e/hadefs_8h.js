@@ -1,5 +1,6 @@
 var hadefs_8h =
 [
+    [ "__ha_alias2", "d5/d5e/hadefs_8h.html#a36f84aa18bf1fbc423359769a48a52c3", null ],
     [ "ha_Bb", "d5/d5e/hadefs_8h.html#abc9d33439971ef4bb101b658b655400f", null ],
     [ "ha_bB", "d5/d5e/hadefs_8h.html#a7ff6890f9896fef2c6324638fd3d5085", null ],
     [ "HA_DEPRECATED", "d5/d5e/hadefs_8h.html#a5f909c65e39cbc5e5429644579d43bb8", null ],

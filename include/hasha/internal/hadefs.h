@@ -99,4 +99,8 @@
 #define ha_register
 #endif
 
+#ifndef __ha_alias2
+#define __ha_alias2(func) __attribute__((alias(func)))
+#endif
+
 #endif

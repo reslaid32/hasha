@@ -51,10 +51,15 @@ ha_keccak_224_final (ha_keccak_context *ctx, ha_digest_t digest)
 HA_PUBFUN void
 ha_keccak_224_hash (ha_inbuf_t data, size_t length, ha_digest_t digest)
 {
+#if 0
   ha_keccak_context ctx;
   ha_imp_keccak_init (&ctx, HA_KECCAK_224_RATE);
   ha_imp_keccak_update (&ctx, data, length);
   ha_imp_keccak_final (&ctx, HA_PB_KECCAK, digest, HA_KECCAK_224_DIGEST_SIZE);
+#else
+  ha_imp_keccak_hash (HA_PB_KECCAK, data, length, HA_KECCAK_224_RATE, digest,
+                      HA_KECCAK_224_DIGEST_SIZE);
+#endif
 }
 
 HA_PUBFUN void
@@ -78,10 +83,15 @@ ha_keccak_256_final (ha_keccak_context *ctx, ha_digest_t digest)
 HA_PUBFUN void
 ha_keccak_256_hash (ha_inbuf_t data, size_t length, ha_digest_t digest)
 {
+#if 0
   ha_keccak_256_context ctx;
   ha_imp_keccak_init (&ctx, HA_KECCAK_256_RATE);
   ha_imp_keccak_update (&ctx, data, length);
   ha_imp_keccak_final (&ctx, HA_PB_KECCAK, digest, HA_KECCAK_256_DIGEST_SIZE);
+#else
+  ha_imp_keccak_hash (HA_PB_KECCAK, data, length, HA_KECCAK_256_RATE, digest,
+                      HA_KECCAK_256_DIGEST_SIZE);
+#endif
 }
 
 HA_PUBFUN void
@@ -105,10 +115,15 @@ ha_keccak_384_final (ha_keccak_context *ctx, ha_digest_t digest)
 HA_PUBFUN void
 ha_keccak_384_hash (ha_inbuf_t data, size_t length, ha_digest_t digest)
 {
+#if 0
   ha_keccak_context ctx;
   ha_imp_keccak_init (&ctx, HA_KECCAK_384_RATE);
   ha_imp_keccak_update (&ctx, data, length);
   ha_imp_keccak_final (&ctx, HA_PB_KECCAK, digest, HA_KECCAK_384_DIGEST_SIZE);
+#else
+  ha_imp_keccak_hash (HA_PB_KECCAK, data, length, HA_KECCAK_384_RATE, digest,
+                      HA_KECCAK_384_DIGEST_SIZE);
+#endif
 }
 
 HA_PUBFUN void
@@ -132,8 +147,13 @@ ha_keccak_512_final (ha_keccak_context *ctx, ha_digest_t digest)
 HA_PUBFUN void
 ha_keccak_512_hash (ha_inbuf_t data, size_t length, ha_digest_t digest)
 {
+#if 0
   ha_keccak_context ctx;
   ha_imp_keccak_init (&ctx, HA_KECCAK_512_RATE);
   ha_imp_keccak_update (&ctx, data, length);
   ha_imp_keccak_final (&ctx, HA_PB_KECCAK, digest, HA_KECCAK_512_DIGEST_SIZE);
+#else
+  ha_imp_keccak_hash (HA_PB_KECCAK, data, length, HA_KECCAK_512_RATE, digest,
+                      HA_KECCAK_512_DIGEST_SIZE);
+#endif
 }

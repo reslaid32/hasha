@@ -1,9 +1,14 @@
-﻿include Makefile.config
+﻿CONFIG = conf.mk
+-include $(CONFIG)
 
 MAKEFLAGS += -s
 
-CC=cc
-LD=$(CC)
+CC ?= cc
+LD = $(CC)
+
+ifneq ($(strip $(FOO)),)
+	LD += -fuse-ld=$(USELD)
+endif
 
 OPT=-O$(OPT_LEVEL) $(ARCH_FLAGS)
 UTL_OPT=-O2
@@ -14,7 +19,7 @@ CFLAGS=$(BASE_CFLAGS) $(OPT)
 UTL_CFALGS=$(BASE_CFLAGS) $(UTL_OPT)
 
 ifeq ($(DEBUG), 1)
-CFLAGS += -g
+	CFLAGS += -g
 endif
 
 CFLAGS+=$(EXTRA_CFLAGS)
@@ -153,12 +158,31 @@ uninstall-execs:
 	done
 
 check: $(TST_EXEC)
+	@echo "  UNIT  $(TST_EXEC)"
 	$(TST_EXEC)
+
+vcheck: $(TST_EXEC)
+	@echo "  UNIT  $(TST_EXEC)"
+	$(TST_EXEC) -v
 
 bench: $(UTL_BIN)/hashabench
 	$(UTL_BIN)/hashabench
 
+autoconfig:
+	@echo "# Compiler"                                 >  $(CONFIG)
+	@echo "CC             := cc"                       >> $(CONFIG)
+	@echo "# Linker [CC -fuse-ld=(USELD)]" >> $(CONFIG)
+	@echo "USELD          := # mold"                  >> $(CONFIG)
+	@echo "# Optimization level [CC -O(OPT_LEVEL)]" >> $(CONFIG)
+	@echo "OPT_LEVEL      := 3"                       >> $(CONFIG)
+	@echo "# Enable debug symbols [CC -g]"            >> $(CONFIG)
+	@echo "DEBUG          := 0"                       >> $(CONFIG)
+	@echo "# Extra flags"                             >> $(CONFIG)
+	@echo "ARCH_FLAGS     := -march=native -mtune=native" >> $(CONFIG)
+	@echo "EXTRA_CFLAGS   := -Wall -Wextra"           >> $(CONFIG)
+	@echo "EXTRA_LDFLAGS  := # -flto"                 >> $(CONFIG)
+
 install: install-hdr install-lib install-execs
 uninstall: uninstall-hdr uninstall-execs uninstall-lib
 
-.PHONY: all install uninstall check bench
+.PHONY: autoconfig all install uninstall check vcheck bench

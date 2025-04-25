@@ -166,7 +166,7 @@ void hash_data(const char *algorithm, ha_inbuf_t data, size_t length,
   }
   else
   {
-    ha_throw_error(ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
+    ha_throw_error(0, ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
                    "algorithm '%s'", algorithm);
     exit(EXIT_FAILURE);
   }
@@ -183,7 +183,7 @@ int verify_hash(const uint8_t *calculated_digest, size_t digest_size,
   if (strcmp(calculated_hash, expected_hash) == 0)
     hashmatch = HASH_MATCH_YES;
 
-  ha_throw(1, ha_curpos, "info", "verification: %s",
+  ha_throw(1, 0, ha_curpos, "info", "verification: %s",
            ha_sum_error_strings[hashmatch]);
   return hashmatch;
 }
@@ -193,7 +193,7 @@ int main(int argc, char *argv[])
   if (argc < 3)
   {
     ha_version_t hashav = ha_version();
-    ha_throw(1, ha_curpos, "info", "libhasha version: %u.%u.%u",
+    ha_throw(1, 0, ha_curpos, "info", "libhasha version: %u.%u.%u",
              hashav.major, hashav.minor, hashav.patch);
     print_usage(argv[0]);
     return EXIT_FAILURE;
@@ -214,7 +214,7 @@ int main(int argc, char *argv[])
   {
     if (argc < 4)
     {
-      ha_throw_error(ha_curpos, ha_sum_error_strings[MISSING_ERR],
+      ha_throw_error(0, ha_curpos, ha_sum_error_strings[MISSING_ERR],
                      "string");
       return EXIT_FAILURE;
     }
@@ -225,13 +225,14 @@ int main(int argc, char *argv[])
   {
     if (argc < 4)
     {
-      ha_throw_error(ha_curpos, ha_sum_error_strings[MISSING_ERR], "file");
+      ha_throw_error(0, ha_curpos, ha_sum_error_strings[MISSING_ERR],
+                     "file");
       return EXIT_FAILURE;
     }
     FILE *file = fopen(argv[3], "rb");
     if (!file)
     {
-      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_sum_error_strings[BASIC_ERROR],
                      "opening file");
       perror("fopen()");
       return EXIT_FAILURE;
@@ -246,7 +247,7 @@ int main(int argc, char *argv[])
     data = (uint8_t *)malloc(length);
     if (!data)
     {
-      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_sum_error_strings[BASIC_ERROR],
                      "memory allocating");
       perror("malloc()");
       fclose(file);
@@ -264,7 +265,7 @@ int main(int argc, char *argv[])
     data            = (uint8_t *)malloc(capacity);
     if (!data)
     {
-      ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+      ha_throw_error(0, ha_curpos, ha_sum_error_strings[BASIC_ERROR],
                      "memory allocating");
       perror("malloc()");
       return EXIT_FAILURE;
@@ -279,7 +280,7 @@ int main(int argc, char *argv[])
         data      = (uint8_t *)realloc(data, capacity);
         if (!data)
         {
-          ha_throw_error(ha_curpos, ha_sum_error_strings[BASIC_ERROR],
+          ha_throw_error(0, ha_curpos, ha_sum_error_strings[BASIC_ERROR],
                          "memory reallocating");
           perror("realloc()");
           return EXIT_FAILURE;
@@ -291,7 +292,7 @@ int main(int argc, char *argv[])
   }
   else
   {
-    ha_throw_error(ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
+    ha_throw_error(0, ha_curpos, ha_sum_error_strings[UNSUPPORTED_ERR],
                    "data source '%s'", data_source);
     return EXIT_FAILURE;
   }

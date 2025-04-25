@@ -2,10 +2,10 @@ var error_8h =
 [
     [ "ha_assert", "da/d41/error_8h.html#a85f2edca48dee78a49710dab73285449", null ],
     [ "ha_curpos", "da/d41/error_8h.html#a0db7a81e375ce8bce7cccf0254d46476", null ],
-    [ "ha_throw", "da/d41/error_8h.html#a2fab8b55d39ae88f081d28f37ca0b3d1", null ],
-    [ "ha_throw_debug", "da/d41/error_8h.html#ae322bd56ec861a1afb1487522b205bec", null ],
-    [ "ha_throw_error", "da/d41/error_8h.html#a98877f248dbe51473b25127084801b56", null ],
-    [ "ha_throw_fatal", "da/d41/error_8h.html#a884b4df18a08880fec47b0d954057c5a", null ],
-    [ "ha_throw_warn", "da/d41/error_8h.html#a63a65d803c4ab2df586a31cde3ac3987", null ],
-    [ "ha_throwd", "da/d41/error_8h.html#ab63383d2b783f0f4cc8fcefcf1d7e3e2", null ]
+    [ "ha_throw", "da/d41/error_8h.html#a074268bb24cefb4d680d1bc8ffce4b73", null ],
+    [ "ha_throw_debug", "da/d41/error_8h.html#a54034e87496aff2caaecc23bb5cee9f4", null ],
+    [ "ha_throw_error", "da/d41/error_8h.html#a9ac9535d034a07e3471a48c041479e2a", null ],
+    [ "ha_throw_fatal", "da/d41/error_8h.html#a06354605a619654237ee5612b4dcf19e", null ],
+    [ "ha_throw_warn", "da/d41/error_8h.html#a4e720b46910aebaab4d91e074cbe2030", null ],
+    [ "ha_throwd", "da/d41/error_8h.html#a2f925a661908aef91dca0cdcba564106", null ]
 ];
