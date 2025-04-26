@@ -10,6 +10,10 @@ ifneq ($(strip $(FOO)),)
 	LD += -fuse-ld=$(USELD)
 endif
 
+ifeq ("$(strip $(CC))","chibicc")
+	EXTRA_CFLAGS += -I./chibicc/include/ 
+endif
+
 OPT=-O$(OPT_LEVEL) $(ARCH_FLAGS)
 UTL_OPT=-O2
 
