@@ -3,3 +3,4 @@
 docs/** linguist-vendored
 *.html linguist-vendored
 * text eol=lf
+*.png binary
