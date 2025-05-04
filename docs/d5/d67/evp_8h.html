@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.17</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.18</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -194,9 +194,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a15c36ff672b4ef5a49feae5015975930" id="r_a15c36ff672b4ef5a49feae5015975930"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> enum ha_evp_hashty&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15c36ff672b4ef5a49feae5015975930">ha_evp_hasher_hashty</a> (struct ha_evp_hasher *hasher)</td></tr>
 <tr class="memdesc:a15c36ff672b4ef5a49feae5015975930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for ha_evp_hasher ctx_hashty field.  <br /></td></tr>
 <tr class="separator:a15c36ff672b4ef5a49feae5015975930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3925e0947cc37c743dcccf6487c6bd10" id="r_a3925e0947cc37c743dcccf6487c6bd10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3925e0947cc37c743dcccf6487c6bd10">ha_evp_hasher_set_hashty</a> (struct ha_evp_hasher *hasher, enum ha_evp_hashty hashty)</td></tr>
+<tr class="memdesc:a3925e0947cc37c743dcccf6487c6bd10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for ha_evp_hasher ctx_hashty field.  <br /></td></tr>
+<tr class="separator:a3925e0947cc37c743dcccf6487c6bd10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed15b98c0066a4071d826fdd0de2d533" id="r_aed15b98c0066a4071d826fdd0de2d533"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed15b98c0066a4071d826fdd0de2d533">ha_evp_hasher_digestlen</a> (struct ha_evp_hasher *hasher)</td></tr>
 <tr class="memdesc:aed15b98c0066a4071d826fdd0de2d533"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for ha_evp_hasher ctx_digestlen field.  <br /></td></tr>
 <tr class="separator:aed15b98c0066a4071d826fdd0de2d533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ac85404d447e494051d9abb66c8114" id="r_a43ac85404d447e494051d9abb66c8114"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a43ac85404d447e494051d9abb66c8114">ha_evp_hasher_set_digestlen</a> (struct ha_evp_hasher *hasher, size_t digestlen)</td></tr>
+<tr class="memdesc:a43ac85404d447e494051d9abb66c8114"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setter for ha_evp_hasher ctx_digestlen field.  <br /></td></tr>
+<tr class="separator:a43ac85404d447e494051d9abb66c8114"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f46e7b74f10c50be815e500e608f8fb" id="r_a1f46e7b74f10c50be815e500e608f8fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> struct ha_evp_hasher *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f46e7b74f10c50be815e500e608f8fb">ha_evp_hasher_new</a> (void)</td></tr>
 <tr class="memdesc:a1f46e7b74f10c50be815e500e608f8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new EVP hasher. ( malloc(g_ha_evp_hasher_size) )  <br /></td></tr>
 <tr class="separator:a1f46e7b74f10c50be815e500e608f8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -212,6 +218,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac608f7910d65f10d79cccc08abfca2e8" id="r_ac608f7910d65f10d79cccc08abfca2e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac608f7910d65f10d79cccc08abfca2e8">ha_evp_hasher_reinit</a> (struct ha_evp_hasher *hasher, enum ha_evp_hashty hashty, size_t digestlen)</td></tr>
 <tr class="memdesc:ac608f7910d65f10d79cccc08abfca2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitializes the EVP hasher with a new algorithm and digest length.  <br /></td></tr>
 <tr class="separator:ac608f7910d65f10d79cccc08abfca2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c71bd3cbf0135a6fe0eab379341bfb" id="r_aa8c71bd3cbf0135a6fe0eab379341bfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8c71bd3cbf0135a6fe0eab379341bfb">ha_evp_hasher_commit</a> (struct ha_evp_hasher *hasher)</td></tr>
+<tr class="memdesc:aa8c71bd3cbf0135a6fe0eab379341bfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitializes the EVP hasher.  <br /></td></tr>
+<tr class="separator:aa8c71bd3cbf0135a6fe0eab379341bfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a153dd81f39ee95b3549ffdf56e489bac" id="r_a153dd81f39ee95b3549ffdf56e489bac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a153dd81f39ee95b3549ffdf56e489bac">ha_evp_init</a> (struct ha_evp_hasher *hasher)</td></tr>
 <tr class="memdesc:a153dd81f39ee95b3549ffdf56e489bac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the EVP hash. ( like <a class="el" href="#ab0bf4aacaf14b7da40204da16494b9ce" title="Initializes the hash context for a specific algorithm.">ha_init(hash, ctx)</a> )  <br /></td></tr>
 <tr class="separator:a153dd81f39ee95b3549ffdf56e489bac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -724,6 +733,31 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aa8c71bd3cbf0135a6fe0eab379341bfb" name="aa8c71bd3cbf0135a6fe0eab379341bfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8c71bd3cbf0135a6fe0eab379341bfb">&#9670;&#160;</a></span>ha_evp_hasher_commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void ha_evp_hasher_commit </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reinitializes the EVP hasher. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hasher</td><td>Pointer to the EVP hasher to reinitialize without changes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a203bc910eb146d7d3be92bddd7115824" name="a203bc910eb146d7d3be92bddd7115824"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a203bc910eb146d7d3be92bddd7115824">&#9670;&#160;</a></span>ha_evp_hasher_ctxsize()</h2>
 
@@ -940,6 +974,52 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a43ac85404d447e494051d9abb66c8114" name="a43ac85404d447e494051d9abb66c8114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43ac85404d447e494051d9abb66c8114">&#9670;&#160;</a></span>ha_evp_hasher_set_digestlen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void ha_evp_hasher_set_digestlen </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>digestlen</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter for ha_evp_hasher ctx_digestlen field. </p>
+
+</div>
+</div>
+<a id="a3925e0947cc37c743dcccf6487c6bd10" name="a3925e0947cc37c743dcccf6487c6bd10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3925e0947cc37c743dcccf6487c6bd10">&#9670;&#160;</a></span>ha_evp_hasher_set_hashty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8">HA_PUBFUN</a> void ha_evp_hasher_set_hashty </td>
+          <td>(</td>
+          <td class="paramtype">struct ha_evp_hasher *</td>          <td class="paramname"><span class="paramname"><em>hasher</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum ha_evp_hashty</td>          <td class="paramname"><span class="paramname"><em>hashty</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setter for ha_evp_hasher ctx_hashty field. </p>
 
 </div>
 </div>

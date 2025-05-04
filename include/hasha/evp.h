@@ -188,11 +188,25 @@ HA_PUBFUN
 enum ha_evp_hashty ha_evp_hasher_hashty(struct ha_evp_hasher *hasher);
 
 /**
+ * @brief Setter for ha_evp_hasher ctx_hashty field
+ */
+HA_PUBFUN
+void ha_evp_hasher_set_hashty(struct ha_evp_hasher *hasher,
+                              enum ha_evp_hashty    hashty);
+
+/**
  * @brief Getter for ha_evp_hasher ctx_digestlen field
  * @return Returns ha_evp_hasher->digestlen
  */
 HA_PUBFUN
 size_t ha_evp_hasher_digestlen(struct ha_evp_hasher *hasher);
+
+/**
+ * @brief Setter for ha_evp_hasher ctx_digestlen field
+ */
+HA_PUBFUN
+void ha_evp_hasher_set_digestlen(struct ha_evp_hasher *hasher,
+                                 size_t                digestlen);
 
 /**
  * @brief Creates a new EVP hasher. ( malloc(g_ha_evp_hasher_size) )
@@ -252,6 +266,13 @@ HA_PUBFUN void ha_evp_hasher_cleanup(struct ha_evp_hasher *hasher);
 HA_PUBFUN void ha_evp_hasher_reinit(struct ha_evp_hasher *hasher,
                                     enum ha_evp_hashty    hashty,
                                     size_t                digestlen);
+
+/**
+ * @brief Reinitializes the EVP hasher
+ *
+ * @param hasher Pointer to the EVP hasher to reinitialize without changes.
+ */
+HA_PUBFUN void ha_evp_hasher_commit(struct ha_evp_hasher *hasher);
 
 /**
  * @brief Initializes the EVP hash.

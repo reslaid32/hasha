@@ -171,10 +171,25 @@ ha_evp_hasher_hashty (struct ha_evp_hasher *hasher)
 }
 
 HA_PUBFUN
+void
+ha_evp_hasher_set_hashty (struct ha_evp_hasher *hasher,
+                          enum ha_evp_hashty hashty)
+{
+  hasher->hashty = hashty;
+}
+
+HA_PUBFUN
 size_t
 ha_evp_hasher_digestlen (struct ha_evp_hasher *hasher)
 {
   return hasher->digestlen;
+}
+
+HA_PUBFUN
+void
+ha_evp_hasher_set_digestlen (struct ha_evp_hasher *hasher, size_t digestlen)
+{
+  hasher->digestlen = digestlen;
 }
 
 HA_PRVFUN
@@ -631,6 +646,14 @@ ha_evp_hasher_reinit (struct ha_evp_hasher *hasher, enum ha_evp_hashty hashty,
 {
   ha_evp_hasher_cleanup (hasher);
   ha_evp_hasher_init (hasher, hashty, digestlen);
+}
+
+HA_PUBFUN
+void
+ha_evp_hasher_commit (struct ha_evp_hasher *hasher)
+{
+  ha_evp_hasher_cleanup (hasher);
+  ha_evp_hasher_init (hasher, hasher->hashty, hasher->digestlen);
 }
 
 HA_PUBFUN
