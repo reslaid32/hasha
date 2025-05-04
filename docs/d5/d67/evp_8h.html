@@ -32,7 +32,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.16</span>
+   <div id="projectname">libhasha<span id="projectnumber">&#160;2.1.17</span>
    </div>
   </td>
     <td>        <div id="MSearchBox" class="MSearchBoxInactive">
@@ -347,13 +347,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__)</div>
+<b>Value:</b><div class="fragment"><div class="line">  ha_##hash##_hash(buf, buflen, digest, ##__VA_ARGS__)</div>
 </div><!-- fragment -->
 <p>Computes the hash in a single operation. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d5/d67/evp_8h_source.html#l00056">56</a> of file <a class="el" href="../../d5/d67/evp_8h_source.html">evp.h</a>.</p>
 <div class="fragment"><div class="line"><span class="lineno">   56</span><span class="preprocessor">#define ha_hash(hash, buf, buflen, digest, ...)                           \</span></div>
-<div class="line"><span class="lineno">   57</span><span class="preprocessor">  ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__)</span></div>
+<div class="line"><span class="lineno">   57</span><span class="preprocessor">  ha_##hash##_hash(buf, buflen, digest, ##__VA_ARGS__)</span></div>
 </div><!-- fragment -->
 </div>
 </div>

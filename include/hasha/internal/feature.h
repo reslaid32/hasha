@@ -3,6 +3,7 @@
 
 #include "config.h"
 
+#define ha_feature(Name)     ha_has_feature(Name)
 #define ha_has_feature(Name) __HA_FEATURE(Name)
 #define __HA_FEATURE(Name)   __HA_FEATURE__##Name
 

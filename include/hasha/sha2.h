@@ -23,6 +23,14 @@
 #if !defined(__HASHA_SHA2_H)
 #define __HASHA_SHA2_H
 
+/* dangerous */
+#ifdef HA_SHA2_ALIAS_MAP
+#define sha224 sha2_256
+#define sha256 sha2_256
+#define sha384 sha2_384
+#define sha512 sha2_512
+#endif
+
 #include "internal/internal.h"
 /* #include "sha2_k.h" */ /* not used in header */
 

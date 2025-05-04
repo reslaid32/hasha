@@ -54,7 +54,7 @@
  * @brief Computes the hash in a single operation.
  */
 #define ha_hash(hash, buf, buflen, digest, ...)                           \
-  ha_##hash##_hash(ctx, buf, buflen, digest, ##__VA_ARGS__)
+  ha_##hash##_hash(buf, buflen, digest, ##__VA_ARGS__)
 
 #ifdef HA_ADA
 /**
