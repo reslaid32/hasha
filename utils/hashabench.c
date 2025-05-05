@@ -495,8 +495,8 @@ int main(int argc, char *argv[])
       {
         char errbuf[256];
         snprintf(errbuf, sizeof(errbuf), "algorithm: %s", token);
-        ha_throw_error(0, ha_curpos,
-                       ha_bench_error_strings[UNSUPPORTED_ERR], errbuf);
+        ha_throw_warn(1, ha_curpos,
+                      ha_bench_error_strings[UNSUPPORTED_ERR], errbuf);
       }
       token = strtok(NULL, " ,");
     }
