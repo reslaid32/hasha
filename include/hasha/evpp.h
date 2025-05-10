@@ -112,8 +112,8 @@ class Hasher
       : hasher_(ha_evp_hasher_new(), &ha_evp_hasher_delete)
   {
     if (!hasher_) throw std::runtime_error("Failed to create EVP hasher");
-    setDigestLength(digestlen);
-    setType(type);
+    setup(type, digestlen);
+    commit();
   }
 
   ~Hasher()                             = default;
@@ -137,6 +137,13 @@ class Hasher
   {
     digestlen_ = length;
     ha_evpp_auto_commit();
+    return *this;
+  }
+
+  auto setup(ha_evp_hashty hashty, size_t length = 0) -> Hasher &
+  {
+    setType(hashty);
+    if (length) setDigestLength(length);
     return *this;
   }
 
@@ -224,6 +231,13 @@ class Hasher
     digest.resize(digestlen_);
     hash(data.data(), data.size(), digest.data());
     return *this;
+  }
+
+  auto hash(const std::string &str, std::vector<uint8_t> &digest)
+      -> Hasher &
+  {
+    std::vector<uint8_t> data(str.begin(), str.end());
+    return hash(data, digest);
   }
 
   auto commit() -> Hasher &
