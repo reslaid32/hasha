@@ -29,22 +29,10 @@
 /* #include "keccak1600.h" */ /* not used in header */
 
 /**
- * @def HA_SHA3_224_RATE
- * @brief The rate (in bytes) used for the SHA3-224 algorithm.
- */
-#define HA_SHA3_224_RATE        144
-
-/**
  * @def HA_SHA3_224_DIGEST_SIZE
  * @brief The digest size (in bytes) for the SHA3-224 algorithm (224 bits).
  */
 #define HA_SHA3_224_DIGEST_SIZE ha_bB(224)
-
-/**
- * @def HA_SHA3_256_RATE
- * @brief The rate (in bytes) used for the SHA3-256 algorithm.
- */
-#define HA_SHA3_256_RATE        136
 
 /**
  * @def HA_SHA3_256_DIGEST_SIZE
@@ -53,22 +41,10 @@
 #define HA_SHA3_256_DIGEST_SIZE ha_bB(256)
 
 /**
- * @def HA_SHA3_384_RATE
- * @brief The rate (in bytes) used for the SHA3-384 algorithm.
- */
-#define HA_SHA3_384_RATE        104
-
-/**
  * @def HA_SHA3_384_DIGEST_SIZE
  * @brief The digest size (in bytes) for the SHA3-384 algorithm (384 bits).
  */
 #define HA_SHA3_384_DIGEST_SIZE ha_bB(384)
-
-/**
- * @def HA_SHA3_512_RATE
- * @brief The rate (in bytes) used for the SHA3-512 algorithm.
- */
-#define HA_SHA3_512_RATE        72
 
 /**
  * @def HA_SHA3_512_DIGEST_SIZE

@@ -1,20 +1,9 @@
 #define HA_BUILD
 
 #include "../include/hasha/sha1.h"
+#include "../include/hasha/sha1_k.h"
 
 #include "./endian.h"
-
-/**
- * @brief SHA-1 constant K values used in the transformation function.
- */
-static const uint32_t SHA1_K[4]
-    = { 0x5A827999, 0x6ED9EBA1, 0x8F1BBCDC, 0xCA62C1D6 };
-
-/**
- * @brief SHA-1 initial hash values.
- */
-static const uint32_t SHA1_H0[5]
-    = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0 };
 
 HA_PUBFUN void
 ha_sha1_transform (ha_sha1_context *ctx, const uint8_t *block)
@@ -60,22 +49,22 @@ ha_sha1_transform (ha_sha1_context *ctx, const uint8_t *block)
       if (i < 20)
         {
           f = (b & c) | ((~b) & d);
-          k = SHA1_K[0];
+          k = HA_SHA1_K[0];
         }
       else if (i < 40)
         {
           f = b ^ c ^ d;
-          k = SHA1_K[1];
+          k = HA_SHA1_K[1];
         }
       else if (i < 60)
         {
           f = (b & c) | (b & d) | (c & d);
-          k = SHA1_K[2];
+          k = HA_SHA1_K[2];
         }
       else
         {
           f = b ^ c ^ d;
-          k = SHA1_K[3];
+          k = HA_SHA1_K[3];
         }
 
       uint32_t temp = ha_primitive_rotl32 (a, 5) + f + e + k + w[i];
@@ -101,7 +90,7 @@ ha_sha1_init (ha_sha1_context *ctx)
   // ctx->state[2] = 0x98BADCFE;
   // ctx->state[3] = 0x10325476;
   // ctx->state[4] = 0xC3D2E1F0;
-  memcpy (ctx->state, SHA1_H0, sizeof (SHA1_H0));
+  memcpy (ctx->state, HA_SHA1_H0, sizeof (HA_SHA1_H0));
   ctx->bit_count = 0;
   memset (ctx->buffer, 0, HA_SHA1_BLOCK_SIZE);
 }

@@ -31,15 +31,6 @@
 /* #include "keccak1600.h" */ /* not used in header */
 
 /**
- * @def HA_KECCAK_224_RATE
- * @brief The rate of the Keccak-224 hash function.
- *
- * This defines the rate (number of bits processed per round) for
- * Keccak-224, which is 144 bytes.
- */
-#define HA_KECCAK_224_RATE        144
-
-/**
  * @def HA_KECCAK_224_DIGEST_SIZE
  * @brief The digest size for the Keccak-224 hash function.
  *
@@ -47,15 +38,6 @@
  * bits. This value is automatically calculated using the `ha_bB` macro.
  */
 #define HA_KECCAK_224_DIGEST_SIZE ha_bB(224)
-
-/**
- * @def HA_KECCAK_256_RATE
- * @brief The rate of the Keccak-256 hash function.
- *
- * This defines the rate (number of bits processed per round) for
- * Keccak-256, which is 136 bytes.
- */
-#define HA_KECCAK_256_RATE        136
 
 /**
  * @def HA_KECCAK_256_DIGEST_SIZE
@@ -67,15 +49,6 @@
 #define HA_KECCAK_256_DIGEST_SIZE ha_bB(256)
 
 /**
- * @def HA_KECCAK_384_RATE
- * @brief The rate of the Keccak-384 hash function.
- *
- * This defines the rate (number of bits processed per round) for
- * Keccak-384, which is 104 bytes.
- */
-#define HA_KECCAK_384_RATE        104
-
-/**
  * @def HA_KECCAK_384_DIGEST_SIZE
  * @brief The digest size for the Keccak-384 hash function.
  *
@@ -83,15 +56,6 @@
  * bits. This value is automatically calculated using the `ha_bB` macro.
  */
 #define HA_KECCAK_384_DIGEST_SIZE ha_bB(384)
-
-/**
- * @def HA_KECCAK_512_RATE
- * @brief The rate of the Keccak-512 hash function.
- *
- * This defines the rate (number of bits processed per round) for
- * Keccak-512, which is 72 bytes.
- */
-#define HA_KECCAK_512_RATE        72
 
 /**
  * @def HA_KECCAK_512_DIGEST_SIZE

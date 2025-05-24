@@ -3,6 +3,7 @@
 #define __hasha_imp_keccak_h
 
 #include "../include/hasha/keccak.h"
+#include "../include/hasha/keccak_k.h"
 #include "../include/hasha/keccakf1600.h"
 #include "./endian.h"
 
