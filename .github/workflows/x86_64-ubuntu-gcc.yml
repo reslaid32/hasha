@@ -1,4 +1,4 @@
-name: "(x86_64) On Ubuntu [ GCC]"
+name: "CI/CD on gcc"
 
 on:
   push:
@@ -14,10 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Configuring
+      run: |
+        make autoconfig
+      
+    - name: Building
+      run: |
+        make all CC=gcc
+
+    - name: Instaslling
+      run: |
+        sudo make install
+
     - name: Performing test
       run: |
-        sudo make all install check uninstall clean CC=gcc
+        make check
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean CC=gcc
+        make bench
+
+    - name: Cleanup
+      run: |
+        make clean
+

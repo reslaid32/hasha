@@ -1,4 +1,4 @@
-name: "(x86_64) On Ubuntu [ TCC]"
+name: "CI/CD on tcc"
 
 on:
   push:
@@ -14,15 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install TCC
+    - name: Configuring
       run: |
-        sudo apt update
-        sudo apt install -y tcc
+        make autoconfig
+      
+    - name: Building
+      run: |
+        make all CC=tcc
+
+    - name: Instaslling
+      run: |
+        sudo make install
 
     - name: Performing test
       run: |
-        sudo make all install check uninstall clean CC=tcc
+        make check
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean CC=tcc
+        make bench
+
+    - name: Cleanup
+      run: |
+        make clean
+

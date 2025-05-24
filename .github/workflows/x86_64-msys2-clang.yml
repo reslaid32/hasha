@@ -1,5 +1,4 @@
-name: "(x86_64) On Msys2  [LLVM]"
-
+name: "CI/CD on msys2-clang"
 
 on:
   push:
@@ -26,15 +25,30 @@ jobs:
       run: |
         pacman -S --noconfirm make clang
 
+    - name: Configuring
+      shell: msys2 {0}
+      run: |
+        make autoconfig
+
+    - name: Building
+      shell: msys2 {0}
+      run: |
+        make all CC=clang
+    
+    - name: Installing
+      shell: msys2 {0}
+      run: |
+        cp ./lib/* .
+
     - name: Performing test
       shell: msys2 {0}
       run: |
-        make CC=clang all && cp ./lib/* . && make check
+        make check
 
     - name: Performing benchmark
       shell: msys2 {0}
       run: |
-        make CC=clang all && cp ./lib/* . && make bench
+        make bench
 
     - name: Makefine a package
       shell: msys2 {0}

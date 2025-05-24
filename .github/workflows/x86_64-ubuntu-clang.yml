@@ -1,4 +1,4 @@
-name: "(x86_64) On Ubuntu [LLVM]"
+name: "CI/CD on clang"
 
 on:
   push:
@@ -14,10 +14,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Configuring
+      run: |
+        make autoconfig
+      
+    - name: Building
+      run: |
+        make all CC=clang
+
+    - name: Installing
+      run: |
+        sudo make install
+
     - name: Performing test
       run: |
-        sudo make all install check uninstall clean CC=clang
+        make check
 
     - name: Performing benchmark
       run: |
-        sudo make all install bench uninstall clean CC=clang
+        make bench
+
+    - name: Cleanup
+      run: |
+        make clean
+

@@ -182,7 +182,7 @@ autoconfig:
 	@echo "DEBUG          := 0"                       >> $(CONFIG)
 	@echo "# Extra flags"                             >> $(CONFIG)
 	@echo "ARCH_FLAGS     := -march=native -mtune=native" >> $(CONFIG)
-	@echo "EXTRA_CFLAGS   := -Wall -Wextra"           >> $(CONFIG)
+	@echo "EXTRA_CFLAGS   := -fPIC -Wall -Wextra"     >> $(CONFIG)
 	@echo "EXTRA_LDFLAGS  := # -flto"                 >> $(CONFIG)
 
 install: install-hdr install-lib install-execs

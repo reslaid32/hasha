@@ -1,4 +1,4 @@
-name: "(x86_64) On Msys2  [ GCC]"
+name: "CI/CD on msys2-gcc"
 
 on:
   push:
@@ -23,17 +23,32 @@ jobs:
     - name: Install required tools
       shell: msys2 {0}
       run: |
-        pacman -S --noconfirm make gcc
+        pacman -S --noconfirm make clang
+
+    - name: Configuring
+      shell: msys2 {0}
+      run: |
+        make autoconfig
+
+    - name: Building
+      shell: msys2 {0}
+      run: |
+        make all CC=gcc
+    
+    - name: Installing
+      shell: msys2 {0}
+      run: |
+        cp ./lib/* .
 
     - name: Performing test
       shell: msys2 {0}
       run: |
-        make CC=gcc all && cp ./lib/* . && make check
+        make check
 
     - name: Performing benchmark
       shell: msys2 {0}
       run: |
-        make CC=gcc all && cp ./lib/* . && make bench
+        make bench
 
     - name: Makefine a package
       shell: msys2 {0}
