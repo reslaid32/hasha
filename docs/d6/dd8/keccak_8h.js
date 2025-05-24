@@ -2,13 +2,9 @@ var keccak_8h =
 [
     [ "ha_keccak_context", "df/d3f/structha__keccak__context.html", "df/d3f/structha__keccak__context" ],
     [ "HA_KECCAK_224_DIGEST_SIZE", "d6/dd8/keccak_8h.html#ae9df96400a0b31ce4159e18346bc75d4", null ],
-    [ "HA_KECCAK_224_RATE", "d6/dd8/keccak_8h.html#a43a255893551ac46f779db1b77e4c230", null ],
     [ "HA_KECCAK_256_DIGEST_SIZE", "d6/dd8/keccak_8h.html#ac837e919c0c4cf5b7dc848f4ba65a752", null ],
-    [ "HA_KECCAK_256_RATE", "d6/dd8/keccak_8h.html#acc29637cb7dc57b9f2c377542359c03c", null ],
     [ "HA_KECCAK_384_DIGEST_SIZE", "d6/dd8/keccak_8h.html#a78cd48367d504e189b17be65ea9abd56", null ],
-    [ "HA_KECCAK_384_RATE", "d6/dd8/keccak_8h.html#a89b78314503105a46810abe2b54e1a61", null ],
     [ "HA_KECCAK_512_DIGEST_SIZE", "d6/dd8/keccak_8h.html#af2b88601f5fe7816109c80167e73a939", null ],
-    [ "HA_KECCAK_512_RATE", "d6/dd8/keccak_8h.html#a407ae91571cc4a27c9c61e24e5fbcef4", null ],
     [ "ha_keccak_224_context", "d6/dd8/keccak_8h.html#a54552c7a61538bbbd0e55d73e7e33371", null ],
     [ "ha_keccak_256_context", "d6/dd8/keccak_8h.html#a127072e387bb7539ec49edcf8b82a8ab", null ],
     [ "ha_keccak_384_context", "d6/dd8/keccak_8h.html#af8425eaf0c21df91815fa0a98acd1bdc", null ],
