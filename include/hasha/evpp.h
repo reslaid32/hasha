@@ -8,10 +8,6 @@
 #include "internal/hadefs.h"
 #include "io.h"
 
-#if defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
-#include <span>
-#endif
-
 #if defined(HA_EVPP_AUTO_COMMIT)
 #define ha_evpp_auto_commit() commit()
 #else
@@ -20,58 +16,119 @@
 
 namespace hasha
 {
+using string      = std::string;
+using byte        = uint8_t;
 
-using string = std::string;
-using digest = std::vector<uint8_t>;
+using raw_digest  = byte *;
+using raw_cdigest = const byte *;
 
-namespace hex
+using digest      = std::vector<byte>;
+
+struct basic_encoding
 {
+ public:
+  virtual std::string encode(digest &digest)                       = 0;
+  virtual std::string encode(raw_cdigest digest, size_t size)      = 0;
+  virtual digest      decode(const std::string &str)               = 0;
+  virtual void        decode(const std::string &str, raw_digest digest,
+                             size_t size)                          = 0;
+  virtual void        decode(digest &digest, const std::string &s) = 0;
+};
 
-HA_HDR_PUBFUN
-std::string encode(digest &digest)
+namespace encodings
 {
-  std::string str(ha_hash2str_bound(digest.size()), '\0');
-  ha_hash2str(str.data(), digest.data(), digest.size());
-  return str;
-}
-
-HA_HDR_PUBFUN
-void encode(std::string &s, digest &digest)
+struct hex_encoding : public basic_encoding
 {
-  s.resize(ha_hash2str_bound(digest.size()));
-  ha_hash2str(s.data(), digest.data(), digest.size());
-}
+ public:
+  HA_INL_FUN
+  std::string encode(digest &digest) override
+  {
+    std::string str(ha_hash2str_bound(digest.size()), '\0');
+    ha_hash2str(str.data(), digest.data(), digest.size());
+    return str;
+  }
 
-HA_HDR_PUBFUN
-digest decode(const std::string &s)
+  HA_INL_FUN
+  std::string encode(raw_cdigest digest, size_t size) override
+  {
+    std::string str(ha_hash2str_bound(size), '\0');
+    ha_hash2str(str.data(), digest, size);
+    return str;
+  }
+
+  HA_INL_FUN
+  digest decode(const std::string &s) override
+  {
+    digest digest(ha_str2hash_bound(s.length()));
+    ha_str2hash(digest.data(), s.data(), digest.size());
+    return digest;
+  }
+
+  HA_INL_FUN
+  void decode(const std::string &s, raw_digest digest,
+              size_t size) override
+  {
+    ha_str2hash(digest, s.data(), size);
+  }
+
+  HA_INL_FUN
+  void decode(digest &digest, const std::string &s) override
+  {
+    digest.resize(ha_str2hash_bound(s.length()));
+    ha_str2hash(digest.data(), s.data(), digest.size());
+  }
+};
+
+using hex = hex_encoding;
+}  // namespace encodings
+
+template <typename Encoding = encodings::hex_encoding>
+HA_HDR_PUBFUN void put(
+    std::ostream &os, raw_cdigest digest, size_t size,
+    const char               *end      = NULL,
+    std::shared_ptr<Encoding> encoding = std::make_shared<Encoding>())
 {
-  digest digest(ha_str2hash_bound(s.length()));
-  ha_str2hash(digest.data(), s.data(), digest.size());
-  return digest;
-}
-
-HA_HDR_PUBFUN
-void decode(digest &digest, const std::string &s)
-{
-  digest.resize(ha_str2hash_bound(s.length()));
-  ha_str2hash(digest.data(), s.data(), digest.size());
-}
-
-}  // namespace hex
-
-HA_HDR_PUBFUN
-void put(std::ostream &os, digest &digest, const char *end = NULL)
-{
-  string s;
-  hex::encode(s, digest);
+  string s = encoding->encode(digest, size);
   os << s;
   if (end) os << string(end);
 }
 
-HA_HDR_PUBFUN
-void put(FILE *file, digest &digest, const char *end = NULL)
+template <typename Encoding = encodings::hex_encoding>
+HA_HDR_PUBFUN void put(std::ostream &os, digest &digest,
+                       const char                      *end = NULL,
+                       const std::shared_ptr<Encoding> &encoding =
+                           std::make_shared<Encoding>())
 {
-  ha_fputhash(file, digest.data(), digest.size(), end);
+  put<Encoding>(os, digest.data(), digest.size(), end, encoding);
+}
+
+template <typename Encoding = encodings::hex_encoding>
+HA_HDR_PUBFUN void put(FILE *stream, raw_digest digest, size_t size,
+                       const char                      *end = NULL,
+                       const std::shared_ptr<Encoding> &encoding =
+                           std::make_shared<Encoding>())
+{
+  if (!stream) return;
+  string s = encoding->encode(digest, size);
+  fprintf(stream, "%s", s.c_str());
+  if (end) fprintf(stream, "%s", end);
+  return;
+}
+
+template <typename Encoding = encodings::hex_encoding>
+HA_HDR_PUBFUN void put(FILE *stream, digest &digest,
+                       const char                      *end = NULL,
+                       const std::shared_ptr<Encoding> &encoding =
+                           std::make_shared<Encoding>())
+{
+  put<Encoding>(stream, digest.data(), digest.size(), end, encoding);
+}
+
+HA_HDR_PUBFUN
+void put(FILE *file, raw_cdigest digest, size_t size,
+         const char *end = NULL)
+{
+  ha_fputhash(file, digest, size, end);
 }
 
 HA_HDR_PUBFUN
@@ -81,11 +138,28 @@ void put(digest &digest, const char *end = NULL)
 }
 
 HA_HDR_PUBFUN
+void put(raw_cdigest digest, size_t size, const char *end = NULL)
+{
+  put(stdout, digest, size, end);
+}
+
+HA_HDR_PUBFUN
 bool compare(const digest &lhs, const digest &rhs)
 {
+  if (lhs.size() != rhs.size()) return false;
   size_t len = std::min /* using min, not max — safe for UB */ (
       lhs.size(), rhs.size());
   return ha_cmphash(lhs.data(), rhs.data(), len) == 0;
+}
+
+HA_HDR_PUBFUN
+bool compare(const raw_cdigest lhs, size_t lsize, const raw_cdigest rhs,
+             size_t rsize)
+{
+  if (lsize != rsize) return false;
+  size_t len =
+      std::min /* using min, not max — safe for UB */ (lsize, rsize);
+  return ha_cmphash(lhs, rhs, len) == 0;
 }
 
 HA_HDR_PUBFUN
@@ -190,13 +264,6 @@ class Hasher
   {
     return update(str.data(), str.size());
   }
-
-#if defined(__cpp_lib_span) && __cpp_lib_span >= 202002L
-  auto update(std::span<const uint8_t> data) -> Hasher &
-  {
-    return update(data.data(), data.size());
-  }
-#endif
 
   auto final(uint8_t *digest) -> Hasher &
   {

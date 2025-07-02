@@ -34,14 +34,18 @@
 #define HA_PUBFUN HA_EXPORT
 #endif  // HA_PUBFUN
 
-#if !defined(HA_PRVFUN)
+#if !defined(HA_INL_FUN)
 #if defined(_MSC_VER)
-#define HA_PRVFUN static __forceinline
+#define HA_INL_FUN __forceinline
 #elif defined(__GNUC__) || defined(__clang__)
-#define HA_PRVFUN static __inline__ __attribute__((always_inline))
+#define HA_INL_FUN __inline__ __attribute__((always_inline))
 #else
-#define HA_PRVFUN static inline
+#define HA_INL_FUN inline
 #endif
+#endif  // HA_INL_FUN
+
+#if !defined(HA_PRVFUN)
+#define HA_PRVFUN static HA_INL_FUN
 #endif  // HA_PRVFUN
 
 #if !defined(HA_HDR_PUBFUN)
