@@ -36,6 +36,7 @@ var NAVTREE =
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
@@ -58,8 +59,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d7/dda/sha3_8h.html#a0b6bcb8194db63a6681c31697c686a06"
+"d6/dd8/keccak_8h.html#af185460efbc1a1c9a404cc62d3671e51",
+"df/dfa/blake2s_8h.html#a3fb1bbacae1cad43bc00e17bb2c59883"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';
 var SYNCOFFMSG = 'click to enable panel synchronization';
+var LISTOFALLMEMBERS = 'List of all members';

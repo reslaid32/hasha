@@ -11,6 +11,7 @@ var hadefs_8h =
     [ "HA_EXTERN_C_END", "d5/d5e/hadefs_8h.html#aa193a051230554a2beb966141ac37c9e", null ],
     [ "HA_HDR_PUBFUN", "d5/d5e/hadefs_8h.html#adba801f1442268e2decd528538ee3107", null ],
     [ "ha_in_range", "d5/d5e/hadefs_8h.html#a0a762576c6a4c59d6d4b0dcbd8e6c1cc", null ],
+    [ "HA_INL_FUN", "d5/d5e/hadefs_8h.html#a5dab87e4834214d3219505ae53a38a77", null ],
     [ "HA_PRVFUN", "d5/d5e/hadefs_8h.html#a6cbe846f2556a930fe7708c2f3f0d910", null ],
     [ "HA_PUBFUN", "d5/d5e/hadefs_8h.html#a98ce9ab2f04a86788a9ca32cf4545fb8", null ],
     [ "ha_register", "d5/d5e/hadefs_8h.html#ac326d0cff634aa40b3a54dec2daebde8", null ]

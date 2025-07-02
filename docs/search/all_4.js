@@ -1,6 +1,6 @@
 var searchData=
 [
   ['debug_0',['debug',['../d2/d9a/structha__opts.html#a4c4a9a832d667da9ba66e81025e3f0ec',1,'ha_opts']]],
-  ['decode_1',['decode',['../dd/dbb/namespacehasha_1_1hex.html#a401f8fc1ff49f04cfb121be716758da5',1,'hasha::hex::decode(const std::string &amp;s)'],['../dd/dbb/namespacehasha_1_1hex.html#a64d4209f3652b1cc3bf23af71239b776',1,'hasha::hex::decode(digest &amp;digest, const std::string &amp;s)']]],
-  ['digest_2',['digest',['../d8/d3e/namespacehasha.html#a3135fa65e60f46f7ffbb6ab75b390a1b',1,'hasha']]]
+  ['decode_1',['decode',['../d2/daf/structhasha_1_1basic__encoding.html#a9855469cf8b3382836d7b2745def4749',1,'hasha::basic_encoding::decode(const std::string &amp;str)=0'],['../d2/daf/structhasha_1_1basic__encoding.html#aa84f1572b754945632c58544be4b5e72',1,'hasha::basic_encoding::decode(const std::string &amp;str, raw_digest digest, size_t size)=0'],['../d2/daf/structhasha_1_1basic__encoding.html#acf52feb18d6b2b98723c775cae1a9ee4',1,'hasha::basic_encoding::decode(digest &amp;digest, const std::string &amp;s)=0'],['../de/d92/structhasha_1_1encodings_1_1hex__encoding.html#afb3f225eec0a6836dc8c5040fb98d0c7',1,'hasha::encodings::hex_encoding::decode(const std::string &amp;s) override'],['../de/d92/structhasha_1_1encodings_1_1hex__encoding.html#a4f17298706f1da1d66f944d6576acd22',1,'hasha::encodings::hex_encoding::decode(const std::string &amp;s, raw_digest digest, size_t size) override'],['../de/d92/structhasha_1_1encodings_1_1hex__encoding.html#ac9323e490da98cde1d5cf9aab9ae8f68',1,'hasha::encodings::hex_encoding::decode(digest &amp;digest, const std::string &amp;s) override']]],
+  ['digest_2',['digest',['../d8/d3e/namespacehasha.html#a5584747b90f934e13e10649e64fc8c96',1,'hasha']]]
 ];
